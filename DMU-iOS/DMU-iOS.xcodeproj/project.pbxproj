@@ -11,6 +11,7 @@
 		F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760632B3AE1CB00C09F29 /* ContentView.swift */; };
 		F96760662B3AE1CC00C09F29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760652B3AE1CC00C09F29 /* Assets.xcassets */; };
 		F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */; };
+		F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F212B3AF5A900A6E2D1 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		F96760632B3AE1CB00C09F29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F96760652B3AE1CC00C09F29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F9B77F212B3AF5A900A6E2D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				F96760632B3AE1CB00C09F29 /* ContentView.swift */,
 				F96760652B3AE1CC00C09F29 /* Assets.xcassets */,
 				F96760672B3AE1CC00C09F29 /* Preview Content */,
+				F9B77F212B3AF5A900A6E2D1 /* Color.swift */,
 			);
 			path = "DMU-iOS";
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
+				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
