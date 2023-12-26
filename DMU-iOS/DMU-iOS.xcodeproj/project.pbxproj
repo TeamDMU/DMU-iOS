@@ -22,6 +22,7 @@
 		F9B77F372B3AF9D900A6E2D1 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9B77F2E2B3AF9D900A6E2D1 /* Pretendard-Light.otf */; };
 		F9B77F382B3AF9D900A6E2D1 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9B77F2F2B3AF9D900A6E2D1 /* Pretendard-Regular.otf */; };
 		F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */; };
+		F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F9B77F2E2B3AF9D900A6E2D1 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		F9B77F2F2B3AF9D900A6E2D1 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				F96760632B3AE1CB00C09F29 /* ContentView.swift */,
 				F96760652B3AE1CC00C09F29 /* Assets.xcassets */,
 				F96760672B3AE1CC00C09F29 /* Preview Content */,
+				F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */,
 			);
 			path = "DMU-iOS";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			files = (
 				F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
+				F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
 			);
