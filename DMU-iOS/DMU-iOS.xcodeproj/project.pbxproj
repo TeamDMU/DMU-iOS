@@ -23,6 +23,9 @@
 		F9B77F382B3AF9D900A6E2D1 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9B77F2F2B3AF9D900A6E2D1 /* Pretendard-Regular.otf */; };
 		F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */; };
 		F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */; };
+		F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42402B3C24E300307BA7 /* CustomButton.swift */; };
+		F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */; };
+		F9EE42482B3C302600307BA7 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42472B3C302600307BA7 /* Department.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		F9B77F2F2B3AF9D900A6E2D1 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F9EE42402B3C24E300307BA7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-One.swift"; sourceTree = "<group>"; };
+		F9EE42472B3C302600307BA7 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,8 @@
 		F96760602B3AE1CB00C09F29 /* DMU-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE42462B3C300100307BA7 /* Models */,
+				F9EE423E2B3C24C200307BA7 /* Views */,
 				F9B77F262B3AF91C00A6E2D1 /* Info.plist */,
 				F9B77F392B3AFA4900A6E2D1 /* colors */,
 				F9B77F232B3AF70200A6E2D1 /* fonts */,
@@ -83,7 +91,6 @@
 				F96760632B3AE1CB00C09F29 /* ContentView.swift */,
 				F96760652B3AE1CC00C09F29 /* Assets.xcassets */,
 				F96760672B3AE1CC00C09F29 /* Preview Content */,
-				F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */,
 			);
 			path = "DMU-iOS";
 			sourceTree = "<group>";
@@ -119,6 +126,48 @@
 				F9B77F212B3AF5A900A6E2D1 /* Color.swift */,
 			);
 			path = colors;
+			sourceTree = "<group>";
+		};
+		F9EE423E2B3C24C200307BA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE42432B3C274F00307BA7 /* Onboarding */,
+				F9EE42422B3C26FF00307BA7 /* Splash */,
+				F9EE423F2B3C24CB00307BA7 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9EE423F2B3C24CB00307BA7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE42402B3C24E300307BA7 /* CustomButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F9EE42422B3C26FF00307BA7 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		F9EE42432B3C274F00307BA7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F9EE42462B3C300100307BA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE42472B3C302600307BA7 /* Department.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,9 +251,12 @@
 			files = (
 				F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
+				F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */,
+				F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */,
 				F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
+				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
