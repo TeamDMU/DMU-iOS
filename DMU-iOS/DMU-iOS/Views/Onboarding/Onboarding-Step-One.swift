@@ -98,7 +98,7 @@ struct Onboarding_Step_One: View {
                 Spacer()  // 버튼을 아래쪽으로 밀어내는 데 사용합니다.
                 CustomButton(title: "다음", action: {
                     print("버튼 클릭!")
-                })
+                }, isEnabled: !searchText.isEmpty)
             }
         }
     }
