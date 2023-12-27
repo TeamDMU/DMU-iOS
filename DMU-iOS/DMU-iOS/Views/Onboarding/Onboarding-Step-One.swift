@@ -10,6 +10,8 @@ import SwiftUI
 struct Onboarding_Step_One: View {
     
     @State private var searchText = ""
+    @State private var isListVisible = true
+    @State private var isTextInList = false
     
     var body: some View {
         
@@ -61,36 +63,57 @@ struct Onboarding_Step_One: View {
                     Spacer()
                 }
                 .padding(.leading, 49)
-                    
+                
             }
             .padding(.top, 40)
             
             // 학과 검색창
-            VStack {
+            VStack(spacing: 10) {
                 HStack {
                     Spacer()
                     Image(systemName: "magnifyingglass")  // 아이콘 추가
-                        .foregroundColor(.gray)
+                        .foregroundColor(Department.list.firstIndex(of: searchText) != nil ? Color.blue300 : Color.gray300)
                         .frame(width: 30, height: 30)
                     
-                    TextField("소속 학과를 검색해주세요.", text: $searchText)  // placeholder 변경
+                    TextField("소속 학과를 검색해주세요.", text: $searchText)
+                        .foregroundColor(isTextInList ? Color.blue300 : Color.gray300) // 상태 변수에 따라 색상 변경
+                        .onChange(of: searchText) { newValue in  // 입력창 값 변경 감지
+                            // 입력창 값이 변경되면 리스트 다시 표시
+                            // 단, 입력창 값이 이미 리스트에 있는 경우에는 리스트를 표시하지 않음
+                            self.isListVisible = !newValue.isEmpty && !(Department.list.contains(newValue))
+                            self.isTextInList = Department.list.contains(newValue) // 상태 변수 업데이트
+                        }
                 }
                 .frame(height: 52)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Department.list.firstIndex(of: searchText) != nil ? Color.blue300 : Color.gray300, lineWidth: 2)  // 테두리 색상 변경
+                    )
                 .padding(.horizontal, 20)
+
                 
-                List {
-                    // 사용자가 입력한 키워드를 포함하는 학과만 표시
-                    ForEach(Department.list.filter({ "\($0)".contains(searchText) }), id: \.self) { department in
-                        // 리스트의 학과를 선택하면 그 학과의 이름이 검색창에 입력됨
-                        Text(department).onTapGesture {
-                            self.searchText = department
+                if isListVisible {
+                    List {
+                        // 사용자가 입력한 키워드를 포함하는 학과만 표시
+                        ForEach(Department.list.filter({ "\($0)".contains(searchText) }), id: \.self) { department in
+                            
+                            // 리스트의 학과를 선택하면 그 학과의 이름이 검색창에 입력됨
+                            Text(department).onTapGesture {
+                                self.searchText = department
+                                self.isListVisible = false
+                            }
                         }
+                        .listRowBackground(Color.white)  // 리스트 배경색을 흰색으로 설정
                     }
+                    .listStyle(PlainListStyle())  // 리스트 스타일을 Plain으로 설정하여 배경색과 프레임 제거
+                    .padding(.horizontal, 20)  // List 양옆 여백 설정
+                    .padding(.leading, -20)
+                    .frame(maxHeight: 200)  // List의 최대 높이 설정. 이 넘으면 스크롤 발생
                 }
             }
             .padding(.top, 40)
+
+            
             
             
             // 다음 버튼
@@ -98,7 +121,7 @@ struct Onboarding_Step_One: View {
                 Spacer()  // 버튼을 아래쪽으로 밀어내는 데 사용합니다.
                 CustomButton(title: "다음", action: {
                     print("버튼 클릭!")
-                }, isEnabled: !searchText.isEmpty)
+                }, isEnabled: Department.list.contains(searchText))
             }
         }
     }
