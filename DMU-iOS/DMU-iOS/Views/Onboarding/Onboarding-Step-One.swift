@@ -100,6 +100,16 @@ struct DepartmentSearchView: View {
                         self.isListVisible = !newValue.isEmpty && !(Department.list.contains(newValue))
                         self.isTextInList = Department.list.contains(newValue)
                     }
+                if !searchText.isEmpty {
+                    Button(action: {
+                        self.searchText = ""
+                    }) {
+                        Image(systemName: "multiply.circle.fill")
+                            .foregroundColor(.gray300)
+                            .frame(width: 30, height: 30)
+                    }
+                    .padding(.trailing, 16)
+                }
             }
             .frame(height: 52)
             .overlay(
