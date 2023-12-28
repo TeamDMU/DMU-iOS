@@ -10,7 +10,7 @@ struct CustomKeyword: View {
         ["기숙사", "동아리", "학생회"]
     ]
     
-    @State private var selectedKeywords = [String: [String]]()
+    @Binding var selectedKeywords: [String: [String]]
     
     var body: some View {
         ScrollView {
@@ -22,13 +22,18 @@ struct CustomKeyword: View {
                             .foregroundColor(Color.gray600)
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 88), spacing: 0, alignment: .leading)], spacing: 16) {
                             ForEach(contents[index], id: \.self) { content in
-                                SelectableButton(content: content, isSelected: selectedKeywords[titles[index], default: []].contains(content)) {
-                                    if selectedKeywords[titles[index], default: []].contains(content) {
-                                        selectedKeywords[titles[index]]?.removeAll { $0 == content }
+                                SelectableButton(content: content, isSelected: Binding(get: {
+                                    self.selectedKeywords[titles[index], default: []].contains(content)
+                                }, set: { newValue in
+                                    if newValue {
+                                        self.selectedKeywords[titles[index], default: []].append(content)
                                     } else {
-                                        selectedKeywords[titles[index], default: []].append(content)
+                                        self.selectedKeywords[titles[index]]?.removeAll { $0 == content }
+                                        if self.selectedKeywords[titles[index]]?.isEmpty == true {
+                                            self.selectedKeywords[titles[index]] = nil
+                                        }
                                     }
-                                }
+                                }), action: {})
                             }
                         }
                         Divider()
@@ -39,15 +44,19 @@ struct CustomKeyword: View {
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }
     }
+    
 }
 
 struct SelectableButton: View {
     let content: String
-    let isSelected: Bool
+    @Binding var isSelected: Bool
     let action: () -> Void
 
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            action()
+            self.isSelected.toggle()
+        }) {
             Text(content)
                 .font(.SemiBold16)
                 .foregroundColor(isSelected ? Color.white : Color.gray400)
@@ -62,10 +71,3 @@ struct SelectableButton: View {
         .buttonStyle(PlainButtonStyle())
     }
 }
-
-struct CustomKeyword_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomKeyword()
-    }
-}
-

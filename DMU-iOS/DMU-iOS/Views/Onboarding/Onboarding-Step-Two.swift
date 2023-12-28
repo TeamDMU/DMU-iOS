@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Onboarding_Step_Two: View {
+    
+    @State private var selectedKeywords = [String: [String]]()
+    
     var body: some View {
         VStack {
             HStack {
@@ -58,10 +61,10 @@ struct Onboarding_Step_Two: View {
         }
         .padding(.top, 40)
         
-        CustomKeyword()
+        CustomKeyword(selectedKeywords: $selectedKeywords)
         
         Spacer()
-        CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: true)
+        CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
         
     }
 }
