@@ -10,18 +10,32 @@ import SwiftUI
 struct Onboarding_Step_Two: View {
     
     @State private var selectedKeywords = [String: [String]]()
+    @State private var isStepThreeViewActive = false
+    
+    @Binding var isFirstLanching: Bool
     
     var body: some View {
         
-        OnboardingTitleView2()
-        
-        ProgressBarView2()
-        
-        CustomKeyword(selectedKeywords: $selectedKeywords)
-        
-        Spacer()
-        CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
-        
+        VStack {
+            OnboardingTitleView2()
+            
+            ProgressBarView2()
+            
+            CustomKeyword(selectedKeywords: $selectedKeywords)
+            
+            Spacer()
+            CustomButton(title: "다음", action: { 
+                print("버튼 클릭!")
+                if !selectedKeywords.isEmpty {
+                    self.isStepThreeViewActive = true
+                }
+            }, isEnabled: !selectedKeywords.isEmpty)
+            .navigationDestination(isPresented: $isStepThreeViewActive) {
+                Onboarding_Step_Three(isFirstLanching: $isFirstLanching)
+            }
+            
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -84,5 +98,5 @@ struct ProgressBarView2: View {
 }
 
 #Preview {
-    Onboarding_Step_Two()
+    Onboarding_Step_Two(isFirstLanching: .constant(true))
 }

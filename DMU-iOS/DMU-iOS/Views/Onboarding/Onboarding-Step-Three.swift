@@ -9,6 +9,9 @@ import SwiftUI
 
 struct Onboarding_Step_Three: View {
     @State private var isOn = false
+    @State private var isMainViewActive = false
+        
+    @Binding var isFirstLanching: Bool
     
     var body: some View {
         
@@ -20,7 +23,15 @@ struct Onboarding_Step_Three: View {
         
         Spacer()
         
-        CustomButton(title: "알림 설정 및 시작하기", action: { print("버튼 클릭!") }, isEnabled: true)
+        CustomButton(title: "알림 설정 및 시작하기", action: {
+            print("버튼 클릭!")
+            self.isMainViewActive = true
+            isFirstLanching.toggle()
+        }, isEnabled: true)
+        .fullScreenCover(isPresented: $isMainViewActive){
+            HomeView()
+        }
+
     }
 }
 
@@ -45,6 +56,7 @@ struct OnboardingTitleView3: View {
             .padding(.leading, -20)
         }
         .padding(.top, 60)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -122,5 +134,5 @@ struct NotificationSettingsView: View {
 }
 
 #Preview {
-    Onboarding_Step_Three()
+    Onboarding_Step_Three(isFirstLanching: .constant(true))
 }
