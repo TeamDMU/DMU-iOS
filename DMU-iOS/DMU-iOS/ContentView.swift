@@ -10,22 +10,32 @@ import UserNotifications
 
 struct ContentView: View {
     
-    @State var showMainView = false
+    @State var showSplashView = true
+    @State var showOnboardingView = false
+    
+    // 사용자 안내 온보딩 페이지를 앱 설치 후 최초 실행할 때만 띄우도록 하는 변수.
+    // @AppStorage에 저장되어 앱 종료 후에도 유지됨.
+    @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
     
     var body: some View {
         VStack {
-            if showMainView {
-                Text("main")
-            } else {
+            if showSplashView {
                 SplashView()
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            requestNotificationAuthorization()
                             withAnimation {
-                                showMainView = true
+                                showSplashView = false
+                                if isFirstLaunching {
+                                    showOnboardingView = true
+                                }
                             }
+                            requestNotificationAuthorization()
                         }
                     }
+            } else if showOnboardingView {
+                Onboarding_Step_One(isFirstLanching: $isFirstLaunching)
+            } else {
+                HomeView()
             }
         }
     }

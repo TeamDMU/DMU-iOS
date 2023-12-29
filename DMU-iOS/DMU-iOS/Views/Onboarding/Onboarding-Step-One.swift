@@ -14,6 +14,8 @@ struct Onboarding_Step_One: View {
     @State private var isTextInList = false
     @State private var isStepTwoViewActive = false
     
+    @Binding var isFirstLanching: Bool
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -31,7 +33,7 @@ struct Onboarding_Step_One: View {
                     }
                 }, isEnabled: Department.list.contains(searchText))
                 .navigationDestination(isPresented: $isStepTwoViewActive) {
-                    Onboarding_Step_Two()
+                    Onboarding_Step_Two(isFirstLanching: $isFirstLanching)
                 }
             }
         }
@@ -154,5 +156,5 @@ struct DepartmentSearchView: View {
 }
 
 #Preview {
-    Onboarding_Step_One()
+    Onboarding_Step_One(isFirstLanching: .constant(true))
 }

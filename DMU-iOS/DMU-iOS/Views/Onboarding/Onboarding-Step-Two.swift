@@ -12,6 +12,8 @@ struct Onboarding_Step_Two: View {
     @State private var selectedKeywords = [String: [String]]()
     @State private var isStepThreeViewActive = false
     
+    @Binding var isFirstLanching: Bool
+    
     var body: some View {
         
         VStack {
@@ -29,7 +31,7 @@ struct Onboarding_Step_Two: View {
                 }
             }, isEnabled: !selectedKeywords.isEmpty)
             .navigationDestination(isPresented: $isStepThreeViewActive) {
-                Onboarding_Step_Three()
+                Onboarding_Step_Three(isFirstLanching: $isFirstLanching)
             }
             
         }
@@ -96,5 +98,5 @@ struct ProgressBarView2: View {
 }
 
 #Preview {
-    Onboarding_Step_Two()
+    Onboarding_Step_Two(isFirstLanching: .constant(true))
 }
