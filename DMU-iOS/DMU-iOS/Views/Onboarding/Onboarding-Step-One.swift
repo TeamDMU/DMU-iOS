@@ -15,8 +15,10 @@ struct Onboarding_Step_One: View {
     
     var body: some View {
         VStack {
-            OnboardingTitleView()
-            ProgressBarView()
+            OnboardingTitleView1()
+            
+            ProgressBarView1()
+            
             DepartmentSearchView(searchText: $searchText, isListVisible: $isListVisible, isTextInList: $isTextInList)
             Spacer()
             CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: Department.list.contains(searchText))
@@ -24,7 +26,7 @@ struct Onboarding_Step_One: View {
     }
 }
 
-struct OnboardingTitleView: View {
+struct OnboardingTitleView1: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
@@ -46,7 +48,7 @@ struct OnboardingTitleView: View {
     }
 }
 
-struct ProgressBarView: View {
+struct ProgressBarView1: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack {

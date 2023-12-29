@@ -12,6 +12,21 @@ struct Onboarding_Step_Two: View {
     @State private var selectedKeywords = [String: [String]]()
     
     var body: some View {
+        
+        OnboardingTitleView2()
+        
+        ProgressBarView2()
+        
+        CustomKeyword(selectedKeywords: $selectedKeywords)
+        
+        Spacer()
+        CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
+        
+    }
+}
+
+struct OnboardingTitleView2: View {
+    var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
@@ -31,7 +46,12 @@ struct Onboarding_Step_Two: View {
             .padding(.leading, -20)
         }
         .padding(.top, 60)
-        
+    }
+}
+
+
+struct ProgressBarView2: View {
+    var body: some View {
         VStack(alignment: .center) {
             HStack {
                 Circle()
@@ -60,12 +80,6 @@ struct Onboarding_Step_Two: View {
             
         }
         .padding(.top, 40)
-        
-        CustomKeyword(selectedKeywords: $selectedKeywords)
-        
-        Spacer()
-        CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
-        
     }
 }
 
