@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901F2642B3EA51A002F6E3C /* Onboarding-Step-Three.swift */; };
 		F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */; };
 		F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */; };
 		F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F901F2642B3EA51A002F6E3C /* Onboarding-Step-Three.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-Three.swift"; sourceTree = "<group>"; };
 		F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-Two.swift"; sourceTree = "<group>"; };
 		F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyword.swift; sourceTree = "<group>"; };
 		F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DMU-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 			children = (
 				F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */,
 				F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */,
+				F901F2642B3EA51A002F6E3C /* Onboarding-Step-Three.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */,
 				F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
+				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
 				F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */,
 				F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */,
 				F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */,
