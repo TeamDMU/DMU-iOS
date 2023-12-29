@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     
@@ -19,12 +20,22 @@ struct ContentView: View {
                 SplashView()
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            requestNotificationAuthorization()
                             withAnimation {
                                 showMainView = true
                             }
                         }
                     }
             }
+        }
+    }
+}
+
+func requestNotificationAuthorization() {
+    let center = UNUserNotificationCenter.current()
+    center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        if let error = error {
+            print("Authorization request error: \(error)")
         }
     }
 }
