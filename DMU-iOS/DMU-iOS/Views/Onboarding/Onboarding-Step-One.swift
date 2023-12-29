@@ -12,7 +12,7 @@ struct Onboarding_Step_One: View {
     @State private var searchText = ""
     @State private var isListVisible = true
     @State private var isTextInList = false
-    @State private var isNextViewActive = false
+    @State private var isStepTwoViewActive = false
     
     var body: some View {
         NavigationStack {
@@ -27,10 +27,10 @@ struct Onboarding_Step_One: View {
                 CustomButton(title: "다음", action: {
                     print("버튼 클릭!")
                     if Department.list.contains(searchText) {
-                        self.isNextViewActive = true
+                        self.isStepTwoViewActive = true
                     }
                 }, isEnabled: Department.list.contains(searchText))
-                .navigationDestination(isPresented: $isNextViewActive) {
+                .navigationDestination(isPresented: $isStepTwoViewActive) {
                     Onboarding_Step_Two()
                 }
             }

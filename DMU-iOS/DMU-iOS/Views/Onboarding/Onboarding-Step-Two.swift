@@ -10,6 +10,7 @@ import SwiftUI
 struct Onboarding_Step_Two: View {
     
     @State private var selectedKeywords = [String: [String]]()
+    @State private var isStepThreeViewActive = false
     
     var body: some View {
         
@@ -21,7 +22,15 @@ struct Onboarding_Step_Two: View {
             CustomKeyword(selectedKeywords: $selectedKeywords)
             
             Spacer()
-            CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
+            CustomButton(title: "다음", action: { 
+                print("버튼 클릭!")
+                if !selectedKeywords.isEmpty {
+                    self.isStepThreeViewActive = true
+                }
+            }, isEnabled: !selectedKeywords.isEmpty)
+            .navigationDestination(isPresented: $isStepThreeViewActive) {
+                Onboarding_Step_Three()
+            }
             
         }
         .navigationBarBackButtonHidden(true)

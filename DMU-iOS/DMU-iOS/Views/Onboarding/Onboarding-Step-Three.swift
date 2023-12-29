@@ -45,6 +45,7 @@ struct OnboardingTitleView3: View {
             .padding(.leading, -20)
         }
         .padding(.top, 60)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
