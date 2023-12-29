@@ -13,15 +13,18 @@ struct Onboarding_Step_Two: View {
     
     var body: some View {
         
-        OnboardingTitleView2()
-        
-        ProgressBarView2()
-        
-        CustomKeyword(selectedKeywords: $selectedKeywords)
-        
-        Spacer()
-        CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
-        
+        VStack {
+            OnboardingTitleView2()
+            
+            ProgressBarView2()
+            
+            CustomKeyword(selectedKeywords: $selectedKeywords)
+            
+            Spacer()
+            CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: !selectedKeywords.isEmpty)
+            
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

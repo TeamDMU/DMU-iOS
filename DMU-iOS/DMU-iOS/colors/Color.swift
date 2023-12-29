@@ -16,9 +16,6 @@ extension Color {
     static let Gray500 = Color("Gray500")
     static let Gray600 = Color("Gray600")
     
-    static let White = Color("White")
-    static let Black = Color("Black")
-    
     static let Blue100 = Color("Blue100")
     static let Blue200 = Color("Blue200")
     static let Blue300 = Color("Blue300")

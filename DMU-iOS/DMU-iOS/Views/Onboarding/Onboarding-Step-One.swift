@@ -12,16 +12,28 @@ struct Onboarding_Step_One: View {
     @State private var searchText = ""
     @State private var isListVisible = true
     @State private var isTextInList = false
+    @State private var isNextViewActive = false
     
     var body: some View {
-        VStack {
-            OnboardingTitleView1()
-            
-            ProgressBarView1()
-            
-            DepartmentSearchView(searchText: $searchText, isListVisible: $isListVisible, isTextInList: $isTextInList)
-            Spacer()
-            CustomButton(title: "다음", action: { print("버튼 클릭!") }, isEnabled: Department.list.contains(searchText))
+        NavigationStack {
+            VStack {
+                OnboardingTitleView1()
+                
+                ProgressBarView1()
+                
+                DepartmentSearchView(searchText: $searchText, isListVisible: $isListVisible, isTextInList: $isTextInList)
+                Spacer()
+                
+                CustomButton(title: "다음", action: {
+                    print("버튼 클릭!")
+                    if Department.list.contains(searchText) {
+                        self.isNextViewActive = true
+                    }
+                }, isEnabled: Department.list.contains(searchText))
+                .navigationDestination(isPresented: $isNextViewActive) {
+                    Onboarding_Step_Two()
+                }
+            }
         }
     }
 }
@@ -98,9 +110,9 @@ struct DepartmentSearchView: View {
                 
                 TextField("소속 학과를 검색해주세요.", text: $searchText)
                     .foregroundColor(isTextInList ? Color.blue300 : Color.gray300)
-                    .onChange(of: searchText) { newValue in
-                        self.isListVisible = !newValue.isEmpty && !(Department.list.contains(newValue))
-                        self.isTextInList = Department.list.contains(newValue)
+                    .onChange(of: searchText) {
+                        self.isListVisible = !searchText.isEmpty && !(Department.list.contains(searchText))
+                        self.isTextInList = Department.list.contains(searchText)
                     }
                 if !searchText.isEmpty {
                     Button(action: {
