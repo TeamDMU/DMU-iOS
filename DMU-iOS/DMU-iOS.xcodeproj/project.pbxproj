@@ -20,6 +20,7 @@
 		F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C592B416EF7001779E3 /* SettingView.swift */; };
 		F9AF3C602B4170B2001779E3 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C5F2B4170B2001779E3 /* TabBarView.swift */; };
 		F9AF3C632B418190001779E3 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C622B418190001779E3 /* Notice.swift */; };
+		F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C662B418DFE001779E3 /* NoticeViewModel.swift */; };
 		F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F212B3AF5A900A6E2D1 /* Color.swift */; };
 		F9B77F302B3AF9D900A6E2D1 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9B77F272B3AF9D900A6E2D1 /* Pretendard-Bold.otf */; };
 		F9B77F312B3AF9D900A6E2D1 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9B77F282B3AF9D900A6E2D1 /* Pretendard-ExtraLight.otf */; };
@@ -53,6 +54,7 @@
 		F9AF3C592B416EF7001779E3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		F9AF3C5F2B4170B2001779E3 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F9AF3C622B418190001779E3 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		F9AF3C662B418DFE001779E3 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		F9B77F212B3AF5A900A6E2D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F9B77F262B3AF91C00A6E2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F9B77F272B3AF9D900A6E2D1 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				F9EE42462B3C300100307BA7 /* Models */,
 				F9EE423E2B3C24C200307BA7 /* Views */,
+				F9AF3C642B418DC5001779E3 /* ViewModels */,
 				F9B77F262B3AF91C00A6E2D1 /* Info.plist */,
 				F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */,
 				F96760632B3AE1CB00C09F29 /* ContentView.swift */,
@@ -167,6 +170,22 @@
 			isa = PBXGroup;
 			children = (
 				F9AF3C622B418190001779E3 /* Notice.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F9AF3C642B418DC5001779E3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F9AF3C652B418DCD001779E3 /* Home */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F9AF3C652B418DCD001779E3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F9AF3C662B418DFE001779E3 /* NoticeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -352,6 +371,7 @@
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,
+				F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */,
 				F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

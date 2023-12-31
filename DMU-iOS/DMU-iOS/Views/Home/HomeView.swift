@@ -11,93 +11,120 @@ struct HomeView: View {
     
     @State private var selectedTab = "대학공지"
     
-    // 날짜 형식을 바꿔주는 함수
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: date)
-    }
+    @ObservedObject var viewModel = NoticeViewModel()
     
     var body: some View {
         VStack {
-            HStack {
-                Image("logo")
-                    .resizable()
-                    .frame(width: 75, height: 34)
-                    .padding(.leading)
-                Spacer()
-                Button(action: {
-                    
-                }) {
-                    Image(systemName: "bell")
-                        .resizable()
-                        .frame(width: 20, height: 22)
-                        .foregroundColor(.blue300)
-                        .padding(.trailing)
-                }
-                    
-            }
+            TopBarView()
             
-            HStack {
-                Button(action: {
-                    selectedTab = "대학공지"
-                }) {
-                    Text("대학 공지")
-                        .font(.Bold16)
-                        .foregroundColor(selectedTab == "대학공지" ? .blue300 : .gray400)
-                        .frame(width: 196.5, height: 44)
-                        .background(Color.white)
-                        .overlay(
-                            selectedTab == "대학공지" ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(.blue300) : nil
-                        )
-                }.buttonStyle(PlainButtonStyle())
-                
-                Button(action: {
-                    selectedTab = "학부공지"
-                }) {
-                    Text("학부 공지")
-                        .font(.Bold16)
-                        .foregroundColor(selectedTab == "학부공지" ? .blue300 : .gray400)
-                        .frame(width: 196.5, height: 44)
-                        .background(Color.white)
-                        .overlay(
-                            selectedTab == "학부공지" ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(.blue300) : nil
-                        )
-                }.buttonStyle(PlainButtonStyle())
-            }
+            TabSelectionView(selectedTab: $viewModel.selectedTab)
             
-            ScrollView {
-                LazyVStack(alignment: .leading) {
-                    ForEach(sampleData.filter { $0.noticeType == selectedTab }) { notice in
-                        VStack(alignment: .leading) {
-                            Text(notice.title)
-                                .font(.Medium16)
-                                .foregroundColor(.black)
-                            HStack {
-                                Text(formatDate(notice.date))
-                                    .font(.Regular12)
-                                    .foregroundColor(.gray400)
-                                Text(notice.staffName)
-                                    .font(.Regular12)
-                                    .foregroundColor(.gray400)
-                                    .padding(.leading, 12)
-                            }
-                            .padding(.top, 10)
-                        }
-                        .padding(16)
-                        .background(Color.white)
-                        .cornerRadius(0)
-                        .shadow(color: .gray, radius: 0, x: 0, y: 0)
-                        
-                        Divider().background(Color.gray200)
-                    }
-                }
-            }
-            .padding(.horizontal, 0)
-            .background(Color.white)
+            NoticeListView(notices: viewModel.filteredNotices(), viewModel: viewModel)
         }
         .background(Color.white.ignoresSafeArea())
+        
+    }
+}
+
+struct TopBarView: View {
+    var body: some View {
+        HStack {
+            Image("logo")
+                .resizable()
+                .frame(width: 75, height: 34)
+                .padding(.leading)
+            Spacer()
+            BellButton()
+        }
+    }
+}
+
+struct BellButton: View {
+    var body: some View {
+        Button(action: {}) {
+            Image(systemName: "bell")
+                .resizable()
+                .frame(width: 20, height: 22)
+                .foregroundColor(.blue300)
+                .padding(.trailing)
+        }
+    }
+}
+
+struct TabSelectionView: View {
+    @Binding var selectedTab: String
     
+    var body: some View {
+        HStack {
+            TabButton(title: "대학공지", selectedTab: $selectedTab)
+            TabButton(title: "학부공지", selectedTab: $selectedTab)
+        }
+    }
+}
+
+struct TabButton: View {
+    let title: String
+    @Binding var selectedTab: String
+    
+    var body: some View {
+        Button(action: {
+            selectedTab = title
+        }) {
+            Text(title)
+                .font(.Bold16)
+                .foregroundColor(selectedTab == title ? .blue300 : .gray400)
+                .frame(width: 196.5, height: 44)
+                .background(Color.white)
+                .overlay(
+                    selectedTab == title ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(.blue300) : nil
+                )
+        }.buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct NoticeListView: View {
+    let notices: [Notice]
+    let viewModel: NoticeViewModel
+    
+    var body: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading) {
+                ForEach(notices) { notice in
+                    NoticeView(notice: notice, viewModel: viewModel)
+                    Divider().background(Color.gray200)
+                }
+            }
+        }
+        .padding(.horizontal, 0)
+        .background(Color.white)
+        
+    }
+}
+
+struct NoticeView: View {
+    let notice: Notice
+    var viewModel: NoticeViewModel
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(notice.title)
+                .font(.Medium16)
+                .foregroundColor(.black)
+            HStack {
+                Text(viewModel.formatDate(notice.date))
+                    .font(.Regular12)
+                    .foregroundColor(.gray400)
+                Text(notice.staffName)
+                    .font(.Regular12)
+                    .foregroundColor(.gray400)
+                    .padding(.leading, 12)
+            }
+            .padding(.top, 10)
+        }
+        .padding(16)
+        .background(Color.white)
+        .cornerRadius(0)
+        .shadow(color: .gray, radius: 0, x: 0, y: 0)
     }
 }
 

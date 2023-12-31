@@ -9,6 +9,14 @@ import SwiftUI
 
 @main
 struct DMU_iOSApp: App {
+    
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        UITabBar.appearance().standardAppearance = appearance
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

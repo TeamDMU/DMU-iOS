@@ -12,7 +12,7 @@ class TabBarViewModel: ObservableObject {
 }
 
 enum Tab: String {
-    case home, search, schedule, diet, settings
+    case home, search, schedule, meal, settings
 }
 
 struct TabBarView: View {
@@ -67,7 +67,7 @@ struct TabBarView: View {
                         .font(.Medium12)
                         .foregroundColor(.gray400)
                 }
-                .tag(Tab.diet)
+                .tag(Tab.meal)
             
             SettingView()
                 .tabItem {
@@ -82,6 +82,7 @@ struct TabBarView: View {
                 .tag(Tab.settings)
         }
         .accentColor(.blue300)
+        .ignoresSafeArea(edges: .all)
     }
 }
 
