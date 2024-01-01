@@ -33,6 +33,7 @@
 		F9B77F382B3AF9D900A6E2D1 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9B77F2F2B3AF9D900A6E2D1 /* Pretendard-Regular.otf */; };
 		F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */; };
 		F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */; };
+		F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */; };
 		F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D426232B3F076A008EBCC7 /* HomeView.swift */; };
 		F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42402B3C24E300307BA7 /* CustomButton.swift */; };
 		F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */; };
@@ -68,6 +69,7 @@
 		F9B77F2F2B3AF9D900A6E2D1 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F9D426232B3F076A008EBCC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F9EE42402B3C24E300307BA7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-One.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				F9AF3C652B418DCD001779E3 /* Home */,
+				F9BB5B682B42D30F002EDB68 /* Search */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -213,6 +216,14 @@
 				F9B77F212B3AF5A900A6E2D1 /* Color.swift */,
 			);
 			path = colors;
+			sourceTree = "<group>";
+		};
+		F9BB5B682B42D30F002EDB68 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F9D426222B3F0739008EBCC7 /* Home */ = {
@@ -360,6 +371,7 @@
 				F9AF3C632B418190001779E3 /* Notice.swift in Sources */,
 				F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */,
 				F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */,
+				F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
 				F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */,
 				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
