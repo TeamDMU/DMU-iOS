@@ -119,7 +119,7 @@ struct NoticeView: View {
                     .foregroundColor(.gray400)
                     .padding(.leading, 12)
             }
-            .padding(.top, 10)
+            .padding(.top, 1)
         }
         .padding(16)
         .background(Color.white)

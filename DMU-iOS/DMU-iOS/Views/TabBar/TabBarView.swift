@@ -33,7 +33,7 @@ struct TabBarView: View {
                 }
                 .tag(Tab.home)
             
-            SearchView()
+            SearchView(viewModel: SearchViewModel())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                         .resizable()
