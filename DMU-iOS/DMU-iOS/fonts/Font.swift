@@ -13,6 +13,7 @@ extension Font {
     // Bold
     static let Bold32: Font = .custom("Pretendard-Bold", size: 32)
     static let Bold24: Font = .custom("Pretendard-Bold", size: 24)
+    static let Bold18: Font = .custom("Pretendard-Bold", size: 18)
     static let Bold16: Font = .custom("Pretendard-Bold", size: 16)
     
     // SemiBold

@@ -11,9 +11,17 @@ struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
-        VStack {
-            SearchBar(viewModel: viewModel)
-            SearchResults(viewModel: viewModel)
+        NavigationStack {
+            VStack {
+                SearchBar(viewModel: viewModel)
+                if !viewModel.recentSearches.isEmpty && viewModel.searchText.isEmpty {
+                    RecentSearchesView(viewModel: viewModel)
+                }
+                SearchResults(viewModel: viewModel)
+            }
+            .navigationDestination(isPresented: $viewModel.isNavigating) {
+                SearchDetailView(viewModel: viewModel)
+            }
         }
     }
 }
@@ -23,23 +31,29 @@ struct SearchBar: View {
 
     var body: some View {
         HStack {
-            TextField("검색어를 입력하세요.", text: $viewModel.searchText)
-                .padding(12)
-                .padding(.horizontal, 28)
-                .font(.Medium16)
-                .foregroundColor(Color.blue300)
-                .background(Color.blue100)
-                .cornerRadius(8)
-                .overlay(
-                    SearchBarOverlay(viewModel: viewModel)
-                )
-                .padding(.horizontal, 20)
-                .onTapGesture {
-                    withAnimation {
-                        viewModel.isEditing = true
-                    }
+            TextField("검색어를 입력하세요.", text: $viewModel.searchText, onCommit: {
+                viewModel.performSearch()
+                withAnimation {
+                    viewModel.isEditing = false
+                    hideKeyboard()
                 }
-
+            })
+            .padding(12)
+            .padding(.horizontal, 28)
+            .font(.Medium16)
+            .foregroundColor(Color.blue300)
+            .background(Color.blue100)
+            .cornerRadius(8)
+            .overlay(
+                SearchBarOverlay(viewModel: viewModel)
+            )
+            .padding(.horizontal, 20)
+            .onTapGesture {
+                withAnimation {
+                    viewModel.isEditing = true
+                }
+            }
+            
             if viewModel.isEditing {
                 CancelButton(viewModel: viewModel)
             }
@@ -57,8 +71,8 @@ struct SearchBarOverlay: View {
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 12)
                 .padding(.trailing, 12)
-
-            if !viewModel.searchText.isEmpty {
+            
+            if viewModel.isEditing && !viewModel.searchText.isEmpty {
                 ClearTextButton(viewModel: viewModel)
             }
         }
@@ -114,11 +128,39 @@ struct SearchResults: View {
 
 struct SearchResultsList: View {
     @ObservedObject var viewModel: SearchViewModel
-
+    @State private var navigateToDetail = false
+    
     var body: some View {
-        LazyVStack(alignment: .leading) {
-            ForEach(sampleData.filter({ "\($0.title)".contains(viewModel.searchText) || viewModel.searchText.isEmpty }), id: \.id) { item in
-                SearchResultRow(item: item, viewModel: viewModel)
+        VStack {
+            LazyVStack(alignment: .leading) {
+                ForEach(sampleData.filter({ item in
+                    viewModel.searchText.isEmpty ||
+                    item.title.lowercased().contains(viewModel.searchText.lowercased())
+                }).prefix(3), id: \.id) { item in
+                    SearchResultRow(item: item, viewModel: viewModel)
+                }
+            }
+            
+            if sampleData.filter({ item in
+                item.title.lowercased().contains(viewModel.searchText.lowercased())
+            }).count > 3 {
+                Button(action: {
+                    viewModel.performSearch()
+                    self.navigateToDetail = true
+                    
+                }) {
+                    Text("결과 모두 보기")
+                        .font(.Bold16)
+                        .foregroundColor(Color.blue400)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                }
+                .navigationDestination(isPresented: $navigateToDetail) {
+                    SearchDetailView(viewModel: viewModel)
+                }
+                .background(.clear)
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
             }
         }
     }
@@ -150,6 +192,45 @@ struct SearchResultRow: View {
         .shadow(color: .gray, radius: 0, x: 0, y: 0)
 
         Divider().background(Color.gray200)
+    }
+}
+
+struct RecentSearchesView: View {
+    @ObservedObject var viewModel: SearchViewModel
+    
+    var body: some View {
+        if !viewModel.recentSearches.isEmpty {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("최근 검색어")
+                        .font(.Bold18)
+                        .foregroundColor(.blue300)
+                        .padding()
+                    ForEach(viewModel.recentSearches.reversed(), id: \.self) { search in
+                        HStack {
+                            Text(search)
+                                .foregroundColor(.gray500)
+                                .onTapGesture {
+                                    viewModel.searchText = search
+                                    viewModel.isEditing = true
+                                    viewModel.performSearch()
+                                }
+                            Spacer()
+                            Button(action: {
+                                viewModel.removeRecentSearch(search)
+                            }) {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.gray500)
+                            }
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, -10)
+                        .padding(.bottom, 12)
+                    }
+                }
+                .padding(.horizontal, 8)
+            }
+        }
     }
 }
 
