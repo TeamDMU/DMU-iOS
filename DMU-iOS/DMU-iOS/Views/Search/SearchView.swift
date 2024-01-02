@@ -133,12 +133,17 @@ struct SearchResultsList: View {
     var body: some View {
         VStack {
             LazyVStack(alignment: .leading) {
-                ForEach(sampleData.filter({ "\($0.title)".contains(viewModel.searchText) || viewModel.searchText.isEmpty }).prefix(3), id: \.id) { item in
+                ForEach(sampleData.filter({ item in
+                    viewModel.searchText.isEmpty ||
+                    item.title.lowercased().contains(viewModel.searchText.lowercased())
+                }).prefix(3), id: \.id) { item in
                     SearchResultRow(item: item, viewModel: viewModel)
                 }
             }
             
-            if sampleData.filter({ "\($0.title)".contains(viewModel.searchText) }).count > 3 {
+            if sampleData.filter({ item in
+                item.title.lowercased().contains(viewModel.searchText.lowercased())
+            }).count > 3 {
                 Button(action: {
                     viewModel.performSearch()
                     self.navigateToDetail = true
@@ -201,7 +206,7 @@ struct RecentSearchesView: View {
                         .font(.Bold18)
                         .foregroundColor(.blue300)
                         .padding()
-                    ForEach(viewModel.recentSearches, id: \.self) { search in
+                    ForEach(viewModel.recentSearches.reversed(), id: \.self) { search in
                         HStack {
                             Text(search)
                                 .foregroundColor(.gray500)

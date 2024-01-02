@@ -68,7 +68,6 @@ class SearchViewModel: ObservableObject {
     func performSearch() {
         if !searchText.isEmpty {
             addRecentSearch(searchText)
-            
         }
     }
     
