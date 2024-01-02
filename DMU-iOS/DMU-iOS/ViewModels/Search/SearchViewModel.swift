@@ -10,6 +10,7 @@ import Foundation
 class SearchViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var isEditing = false
+    @Published var isNavigating: Bool = false
     
     func clearText() {
         self.searchText = ""

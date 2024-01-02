@@ -35,6 +35,7 @@
 		F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */; };
 		F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */; };
 		F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D426232B3F076A008EBCC7 /* HomeView.swift */; };
+		F9EE2FDB2B439E2200DBC97A /* SearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE2FDA2B439E2200DBC97A /* SearchDetailView.swift */; };
 		F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42402B3C24E300307BA7 /* CustomButton.swift */; };
 		F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */; };
 		F9EE42482B3C302600307BA7 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42472B3C302600307BA7 /* Department.swift */; };
@@ -71,6 +72,7 @@
 		F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F9D426232B3F076A008EBCC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F9EE2FDA2B439E2200DBC97A /* SearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailView.swift; sourceTree = "<group>"; };
 		F9EE42402B3C24E300307BA7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-One.swift"; sourceTree = "<group>"; };
 		F9EE42472B3C302600307BA7 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				F9AF3C502B416E3A001779E3 /* SearchView.swift */,
+				F9EE2FDA2B439E2200DBC97A /* SearchDetailView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */,
 				F9AF3C512B416E3A001779E3 /* SearchView.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
+				F9EE2FDB2B439E2200DBC97A /* SearchDetailView.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,

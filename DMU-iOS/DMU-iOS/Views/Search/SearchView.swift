@@ -11,9 +11,11 @@ struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
-        VStack {
-            SearchBar(viewModel: viewModel)
-            SearchResults(viewModel: viewModel)
+        NavigationStack {
+            VStack {
+                SearchBar(viewModel: viewModel)
+                SearchResults(viewModel: viewModel)
+            }
         }
     }
 }
@@ -114,11 +116,31 @@ struct SearchResults: View {
 
 struct SearchResultsList: View {
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
-        LazyVStack(alignment: .leading) {
-            ForEach(sampleData.filter({ "\($0.title)".contains(viewModel.searchText) || viewModel.searchText.isEmpty }), id: \.id) { item in
-                SearchResultRow(item: item, viewModel: viewModel)
+        VStack {
+            LazyVStack(alignment: .leading) {
+                ForEach(sampleData.filter({ "\($0.title)".contains(viewModel.searchText) || viewModel.searchText.isEmpty }).prefix(3), id: \.id) { item in
+                    SearchResultRow(item: item, viewModel: viewModel)
+                }
+            }
+            
+            if sampleData.filter({ "\($0.title)".contains(viewModel.searchText) }).count > 3 {
+                Button(action: {
+                    viewModel.isNavigating = true
+                }) {
+                    Text("결과 모두 보기")
+                        .font(.Bold16)
+                        .foregroundColor(Color.blue400)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                }
+                .navigationDestination(isPresented: $viewModel.isNavigating) {
+                    SearchDetailView(viewModel: viewModel)
+                }
+                .background(.clear)
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
             }
         }
     }
