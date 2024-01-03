@@ -14,6 +14,8 @@
 		F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760632B3AE1CB00C09F29 /* ContentView.swift */; };
 		F96760662B3AE1CC00C09F29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760652B3AE1CC00C09F29 /* Assets.xcassets */; };
 		F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */; };
+		F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B982B44EF50007208B2 /* Schedule.swift */; };
+		F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */; };
 		F9AF3C512B416E3A001779E3 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C502B416E3A001779E3 /* SearchView.swift */; };
 		F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C532B416E5D001779E3 /* ScheduleView.swift */; };
 		F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C562B416EE2001779E3 /* MealView.swift */; };
@@ -50,6 +52,8 @@
 		F96760632B3AE1CB00C09F29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F96760652B3AE1CC00C09F29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F99C6B982B44EF50007208B2 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		F9AF3C502B416E3A001779E3 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F9AF3C532B416E5D001779E3 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		F9AF3C562B416EE2001779E3 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F99C6B972B44EF2B007208B2 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				F99C6B982B44EF50007208B2 /* Schedule.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		F99C6B9A2B44EF9B007208B2 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		F9AF3C4F2B416E1A001779E3 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +204,7 @@
 			children = (
 				F9AF3C652B418DCD001779E3 /* Home */,
 				F9BB5B682B42D30F002EDB68 /* Search */,
+				F99C6B9A2B44EF9B007208B2 /* Schedule */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -285,6 +306,7 @@
 			children = (
 				F9EE42472B3C302600307BA7 /* Department.swift */,
 				F9AF3C612B418180001779E3 /* Home */,
+				F99C6B972B44EF2B007208B2 /* Schedule */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,7 +391,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9AF3C602B4170B2001779E3 /* TabBarView.swift in Sources */,
+				F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */,
 				F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */,
+				F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */,
 				F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */,
 				F9AF3C632B418190001779E3 /* Notice.swift in Sources */,
 				F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */,
