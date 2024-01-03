@@ -14,11 +14,14 @@ struct SearchDetailView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(sampleData.filter({ "\($0.title)".contains(viewModel.searchText) || viewModel.searchText.isEmpty }), id: \.id) { item in
+                ForEach(sampleData.filter({ item in
+                    item.title.range(of: viewModel.searchText, options: .caseInsensitive) != nil || viewModel.searchText.isEmpty
+                }), id: \.id) { item in
                     SearchResultRow(item: item, viewModel: viewModel)
                 }
             }
         }
+        .padding(.top, 10)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 HStack(spacing: 0) {

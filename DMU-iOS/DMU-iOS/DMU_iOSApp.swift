@@ -11,10 +11,16 @@ import SwiftUI
 struct DMU_iOSApp: App {
     
     init() {
-        let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-        UITabBar.appearance().standardAppearance = appearance
+        let appearanceTabBar = UITabBarAppearance()
+        appearanceTabBar.configureWithOpaqueBackground()
+        appearanceTabBar.backgroundColor = .white
+        UITabBar.appearance().standardAppearance = appearanceTabBar
+        
+        let appearanceNavigationBar = UINavigationBarAppearance()
+        appearanceNavigationBar.configureWithOpaqueBackground()
+        appearanceNavigationBar.backgroundColor = .white
+        appearanceNavigationBar.shadowColor = nil
+        UINavigationBar.appearance().standardAppearance = appearanceNavigationBar
     }
     
     var body: some Scene {
