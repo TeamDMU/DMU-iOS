@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AcademicSchedule: Identifiable {
+struct Schedule: Identifiable {
     let id = UUID()
     let date: Date
     let detail: String
