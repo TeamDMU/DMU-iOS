@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MealView: View {
-    @ObservedObject var viewModel: MealViewModel
+    @StateObject var viewModel: MealViewModel
     
     init(viewModel: MealViewModel = MealViewModel()) {
-        self.viewModel = viewModel
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
