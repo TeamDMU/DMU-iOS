@@ -8,86 +8,64 @@
 import SwiftUI
 
 struct MealView: View {
-    @ObservedObject var viewModel: MealViewModel = MealViewModel()
+    @ObservedObject var viewModel: MealViewModel
     
-    let today = Date()
-    let calendar = Calendar.current
+    init(viewModel: MealViewModel = MealViewModel()) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
-            Text("금주의 식단")
-                .font(.SemiBold20)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .foregroundColor(.gray500)
-                .padding(.horizontal, 20)
-            
-            ScrollView {
-                VStack(alignment: .center, spacing: 0) {
-                    ForEach(viewModel.weeklyMenu.filter { isDateInThisWeek($0.date) }) { menu in
-                        VStack(alignment: .center, spacing: 0) {
-                            HStack {
-                                Spacer(minLength: 20)
-                                Text(formatDate(menu.date))
-                                    .font(.SemiBold16)
-                                    .padding(.vertical, 10)
-                                    .padding(.horizontal, 20)
-                                    .background(.blue100)
-                                    .foregroundColor(.gray500)
-                                    .cornerRadius(30)
-                                Spacer(minLength: 20)
-                            }
-                            
-                            Text(menu.details.joined(separator: ", "))
-                                .font(.SemiBold16)
-                                .foregroundColor(.gray500)
-                                .padding(.top, 8)
-                                .padding(.bottom, 20)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        }
+            headerView
+            menuListView
+        }
+        .onAppear(perform: viewModel.loadSampleData)
+    }
+    
+    private var headerView: some View {
+        Text("금주의 식단")
+            .font(.SemiBold20) // 이 폰트가 시스템에 포함되어 있거나, 앱에 추가되어 있다고 가정합니다.
+            .padding()
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.gray500) // 이 색상이 앱의 Color Assets에 정의되어 있다고 가정합니다.
+            .padding(.horizontal, 20)
+    }
+    
+    private var menuListView: some View {
+        ScrollView {
+            VStack(alignment: .center, spacing: 0) {
+                ForEach(viewModel.thisWeeksMenu) { menu in
+                    MenuDateView(date: viewModel.formatDate(menu.date))
                         .padding(.horizontal, 20)
-                        .background(Color.clear)
-                    }
+                    
+                    Text(menu.details.joined(separator: ", "))
+                        .font(.SemiBold16)
+                        .foregroundColor(.gray500)
+                        .padding(.vertical, 14)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
-        .onAppear {
-            viewModel.loadSampleData()
-        }
-    }
-
-    func formatDate(_ dateString: String) -> String {
-            let dateFormatterGet = DateFormatter()
-            dateFormatterGet.dateFormat = "yyyy.MM.dd"
-            
-            let dateFormatterPrint = DateFormatter()
-            dateFormatterPrint.dateFormat = "yyyy년 MM월 dd일"
-            
-            if let date = dateFormatterGet.date(from: dateString) {
-                return dateFormatterPrint.string(from: date)
-            } else {
-                return dateString
-            }
-        }
-    
-    func isDateInThisWeek(_ dateString: String) -> Bool {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        
-        guard let date = dateFormatter.date(from: dateString) else {
-            return false
-        }
-        
-        guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)),
-              let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
-            return false
-        }
-        
-        return date >= startOfWeek && date <= endOfWeek
     }
 }
 
-
+struct MenuDateView: View {
+    var date: String
+    
+    var body: some View {
+        HStack {
+            Spacer(minLength: 20)
+            Text(date)
+                .font(.SemiBold16)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 20)
+                .background(.blue100)
+                .foregroundColor(.gray500)
+                .cornerRadius(30)
+            Spacer(minLength: 20)
+        }
+    }
+}
 #Preview {
     MealView()
 }
