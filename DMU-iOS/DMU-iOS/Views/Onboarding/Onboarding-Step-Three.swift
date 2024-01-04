@@ -29,7 +29,7 @@ struct Onboarding_Step_Three: View {
             isFirstLanching.toggle()
         }, isEnabled: true)
         .fullScreenCover(isPresented: $isMainViewActive){
-            HomeView()
+            TabBarView(viewModel: TabBarViewModel())
         }
 
     }
