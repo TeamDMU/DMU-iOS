@@ -37,15 +37,17 @@ class ScheduleViewModel: ObservableObject {
         DateComponents(calendar: calendar, year: year, month: month, day: day).date ?? Date()
     }
     
-    private func fetchSchedulesForCurrentMonth() -> [Schedule] {
-        let allSchedules = [
-            Schedule(date: makeDate(year: 2024, month: 1, day: 10), detail: "신입생 오리엔테이션 및 어쩌구 저쩌구"),
-            Schedule(date: makeDate(year: 2024, month: 1, day: 11), detail: "졸업식"),
-            Schedule(date: makeDate(year: 2024, month: 2, day: 14), detail: "중간고사 시작"),
-            Schedule(date: makeDate(year: 2024, month: 3, day: 21), detail: "스프링 브레이크")
+    private func fetchSchedulesForCurrentMonth() -> [Schedule] {                let allSchedules = [
+            Schedule(startDate: makeDate(year: 2024, month: 1, day: 10), endDate: makeDate(year: 2024, month: 1, day: 11), detail: "신입생 오리엔테이션"),
+            Schedule(startDate: makeDate(year: 2024, month: 1, day: 11), endDate: makeDate(year: 2024, month: 1, day: 11), detail: "졸업식"),
+            Schedule(startDate: makeDate(year: 2024, month: 2, day: 14), endDate: makeDate(year: 2024, month: 2, day: 20), detail: "중간고사 시작"),
+            Schedule(startDate: makeDate(year: 2024, month: 3, day: 21), endDate: makeDate(year: 2024, month: 3, day: 21), detail: "스프링 브레이크")
         ]
         
-        return allSchedules.filter { calendar.isDate($0.date, equalTo: currentDate, toGranularity: .month) }
+        return allSchedules.filter {
+            calendar.isDate($0.startDate, equalTo: currentDate, toGranularity: .month) ||
+            calendar.isDate($0.endDate, equalTo: currentDate, toGranularity: .month)
+        }
     }
     
     private func formatDateToYearMonth(_ date: Date) -> String {

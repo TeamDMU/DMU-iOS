@@ -61,7 +61,7 @@ struct ScheduleView: View {
     private func scheduleRow(for schedule: Schedule) -> some View {
         VStack {
             HStack {
-                Text(schedule.dateDisplay)
+                Text(schedule.scheduleDisplay)
                     .font(.SemiBold14)
                     .foregroundColor(.gray500)
                 Spacer()
