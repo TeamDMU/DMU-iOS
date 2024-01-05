@@ -14,6 +14,8 @@ struct Onboarding_Step_One: View {
     @State private var isTextInList = false
     @State private var isStepTwoViewActive = false
     
+    @EnvironmentObject var userSettings: UserSettings
+    
     @Binding var isFirstLanching: Bool
     
     var body: some View {
@@ -29,6 +31,7 @@ struct Onboarding_Step_One: View {
                 CustomButton(title: "다음", action: {
                     print("버튼 클릭!")
                     if Department.list.contains(searchText) {
+                        userSettings.selectedDepartment = searchText
                         self.isStepTwoViewActive = true
                     }
                 }, isEnabled: Department.list.contains(searchText))
@@ -157,4 +160,5 @@ struct DepartmentSearchView: View {
 
 #Preview {
     Onboarding_Step_One(isFirstLanching: .constant(true))
+        .environmentObject(UserSettings())
 }

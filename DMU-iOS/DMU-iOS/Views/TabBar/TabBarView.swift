@@ -69,7 +69,7 @@ struct TabBarView: View {
                 }
                 .tag(Tab.meal)
             
-            SettingView()
+            SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
                 .tabItem {
                     Image(systemName: "gearshape")
                         .resizable()
