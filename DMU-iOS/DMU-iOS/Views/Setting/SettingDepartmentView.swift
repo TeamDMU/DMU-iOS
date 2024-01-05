@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct SettingDepartmentView: View {
+    @ObservedObject var viewModel: SettingViewModel
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    SettingDepartmentView()
+    SettingDepartmentView(viewModel: SettingViewModel(userSettings: UserSettings()))
 }

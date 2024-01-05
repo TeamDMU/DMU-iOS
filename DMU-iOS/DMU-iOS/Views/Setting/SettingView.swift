@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isUniversityNoticeOn: Bool = false
-    @State private var isDepartmentNoticeOn: Bool = false
-    @State private var isNavigatingToDepartment: Bool = false
     
-    @EnvironmentObject var userSettings: UserSettings
+    @StateObject var viewModel: SettingViewModel
     
     var body: some View {
         NavigationStack {
@@ -28,7 +25,7 @@ struct SettingView: View {
                     .foregroundColor(.blue300)
                     .padding(.horizontal, 20)
                 
-                Toggle(isOn: $isUniversityNoticeOn) {
+                Toggle(isOn: $viewModel.isUniversityNoticeOn) {
                     Text("알림 설정")
                         .font(.Medium18)
                         .foregroundColor(.gray500)
@@ -43,7 +40,7 @@ struct SettingView: View {
                     .foregroundColor(.blue300)
                     .padding(.horizontal, 20)
                 
-                Toggle(isOn: $isDepartmentNoticeOn) {
+                Toggle(isOn: $viewModel.isDepartmentNoticeOn) {
                     Text("알림 설정")
                         .font(.Medium18)
                         .foregroundColor(.gray500)
@@ -58,11 +55,9 @@ struct SettingView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        isNavigatingToDepartment = true
-                    }) {
+                    Button(action: viewModel.navigateToDepartment) {
                         HStack {
-                            Text(userSettings.selectedDepartment)
+                            Text(viewModel.userSettings.selectedDepartment)
                                 .font(.Medium14)
                                 .foregroundColor(.gray400)
                             Image(systemName: "chevron.right")
@@ -79,9 +74,7 @@ struct SettingView: View {
                     .foregroundColor(.blue300)
                     .padding(.horizontal, 20)
                 
-                Button(action: {
-                    
-                }) {
+                Button(action: {}) {
                     Text("문의하기")
                         .font(.Medium18)
                         .foregroundColor(.gray500)
@@ -103,14 +96,13 @@ struct SettingView: View {
                 
                 Spacer()
             }
-            .navigationDestination(isPresented: $isNavigatingToDepartment) {
-                SettingDepartmentView()
+            .navigationDestination(isPresented: $viewModel.isNavigatingToDepartment) {
+                SettingDepartmentView(viewModel: viewModel)
             }
         }
     }
 }
 
 #Preview {
-    SettingView()
-        .environmentObject(UserSettings())
+    SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
 }

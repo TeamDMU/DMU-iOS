@@ -11,6 +11,7 @@
 		F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */; };
 		F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */; };
 		F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914AD812B47C85400706D48 /* SettingDepartmentView.swift */; };
+		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
 		F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */; };
 		F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760632B3AE1CB00C09F29 /* ContentView.swift */; };
@@ -52,6 +53,7 @@
 		F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-Two.swift"; sourceTree = "<group>"; };
 		F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyword.swift; sourceTree = "<group>"; };
 		F914AD812B47C85400706D48 /* SettingDepartmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDepartmentView.swift; sourceTree = "<group>"; };
+		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DMU-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMU_iOSApp.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F93BC5D22B47CB7D00F52108 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		F96760552B3AE1CB00C09F29 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +225,7 @@
 				F9BB5B682B42D30F002EDB68 /* Search */,
 				F99C6B9A2B44EF9B007208B2 /* Schedule */,
 				F9DBEA882B464EA7004B64D6 /* Meal */,
+				F93BC5D22B47CB7D00F52108 /* Setting */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -433,6 +444,7 @@
 				F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */,
 				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
 				F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */,
+				F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */,
 				F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */,
 				F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */,
 				F9AF3C512B416E3A001779E3 /* SearchView.swift in Sources */,
