@@ -26,6 +26,7 @@ struct DMU_iOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(UserSettings())
         }
     }
 }
