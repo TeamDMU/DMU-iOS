@@ -11,7 +11,7 @@ struct SettingDepartmentView: View {
     @ObservedObject var viewModel: SettingViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var selectedDepartment: String? = nil
+    @State private var settingDepartment: String? = nil
     
     var body: some View {
         VStack {
@@ -22,15 +22,15 @@ struct SettingDepartmentView: View {
                             .font(.Medium18)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40, alignment: .center)
                             .padding([.top, .bottom], 8)
-                            .background(self.selectedDepartment == department ? Color.Blue300 : Color.white)
-                            .foregroundColor(self.selectedDepartment == department ? Color.white : Color.Gray400)
+                            .background(self.settingDepartment == department ? Color.Blue300 : Color.white)
+                            .foregroundColor(self.settingDepartment == department ? Color.white : Color.Gray400)
                             .onTapGesture {
-                                self.selectedDepartment = self.selectedDepartment == department ? nil : department
+                                self.settingDepartment = self.settingDepartment == department ? nil : department
                             }
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(self.selectedDepartment == department ? .clear : Color.Gray200, lineWidth: 1)
+                                    .stroke(self.settingDepartment == department ? .clear : Color.Gray200, lineWidth: 1)
                             )
                     }
                 }
@@ -45,14 +45,18 @@ struct SettingDepartmentView: View {
                 Image(systemName: "chevron.backward")
                     .foregroundColor(Color.Gray500)
             }, trailing: Button(action: {
-                
+                // 학과명 저장
+                guard let settingDepartment = self.settingDepartment else {
+                    return
+                }
+                self.viewModel.userSettings.selectedDepartment = settingDepartment
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("완료")
                     .font(.Medium16)
-                    .foregroundColor(self.selectedDepartment != nil ? Color.Blue300 : Color.Gray500)
+                    .foregroundColor(self.settingDepartment != nil ? Color.Blue300 : Color.Gray500)
             }
-            .disabled(self.selectedDepartment == nil))
+                .disabled(self.settingDepartment == nil))
         }
     }
 }
