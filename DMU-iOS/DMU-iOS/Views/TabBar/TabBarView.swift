@@ -21,6 +21,8 @@ struct TabBarView: View {
     
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
+            
+            // MARK: 공지사항 화면
             HomeView()
                 .tabItem {
                     Image(systemName: "house")
@@ -32,7 +34,12 @@ struct TabBarView: View {
                         .foregroundColor(.gray400)
                 }
                 .tag(Tab.home)
+                .environmentObject(UserSettings())
+                .onAppear {
+                    
+                }
             
+            // MARK: 검색 화면
             SearchView(viewModel: SearchViewModel())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
@@ -45,6 +52,7 @@ struct TabBarView: View {
                 }
                 .tag(Tab.search)
             
+            // MARK: 일정 화면
             ScheduleView()
                 .tabItem {
                     Image(systemName: "calendar")
@@ -57,6 +65,7 @@ struct TabBarView: View {
                 }
                 .tag(Tab.schedule)
             
+            // MARK: 식단 화면
             MealView()
                 .tabItem {
                     Image(systemName: "fork.knife")
@@ -69,6 +78,7 @@ struct TabBarView: View {
                 }
                 .tag(Tab.meal)
             
+            // MARK: 설정 화면
             SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
                 .tabItem {
                     Image(systemName: "gearshape")
