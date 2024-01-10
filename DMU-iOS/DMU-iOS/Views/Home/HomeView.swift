@@ -11,21 +11,26 @@ struct HomeView: View {
     
     @State private var selectedTab = "대학공지"
     
-    @ObservedObject var viewModel = NoticeViewModel()
+    @ObservedObject var viewModel = NoticeViewModel(userSettings: UserSettings())
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
-        VStack {
-            TopBarView()
-            
-            TabSelectionView(selectedTab: $viewModel.selectedTab)
-            
-            NoticeListView(notices: viewModel.filteredNotices(), viewModel: viewModel)
+        NavigationStack {
+            VStack {
+                TopBarView()
+                
+                TabSelectionView(selectedTab: $viewModel.selectedTab)
+                
+                NoticeListView(notices: viewModel.filteredNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+            }
+            .onReceive(userSettings.$selectedDepartment) { _ in
+                viewModel.objectWillChange.send()
+            }
         }
-        .background(Color.white.ignoresSafeArea())
-        
     }
 }
 
+// MARK: - 상단바(로고 및 알림 버튼)
 struct TopBarView: View {
     var body: some View {
         HStack {
@@ -51,6 +56,7 @@ struct BellButton: View {
     }
 }
 
+// MARK: - 대학공지, 학부공지 탭
 struct TabSelectionView: View {
     @Binding var selectedTab: String
     
@@ -82,6 +88,7 @@ struct TabButton: View {
     }
 }
 
+// MARK: - 공지사항 리스트뷰
 struct NoticeListView: View {
     let notices: [Notice]
     let viewModel: NoticeViewModel
@@ -90,7 +97,9 @@ struct NoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
-                    NoticeView(notice: notice, viewModel: viewModel)
+                    NavigationLink(destination: HomeDetailView(detailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
+                        NoticeView(notice: notice, viewModel: viewModel)
+                    }
                     Divider().background(Color.gray200)
                 }
             }
@@ -107,14 +116,17 @@ struct NoticeView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(notice.title)
+            Text(notice.noticeTitle)
                 .font(.Medium16)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.leading) // 여러 줄 정렬
+            
             HStack {
-                Text(viewModel.formatDate(notice.date))
+                Text(viewModel.formatDate(notice.noticeDate))
                     .font(.Regular12)
                     .foregroundColor(.gray400)
-                Text(notice.staffName)
+                
+                Text(notice.noticeStaffName)
                     .font(.Regular12)
                     .foregroundColor(.gray400)
                     .padding(.leading, 12)
@@ -130,4 +142,5 @@ struct NoticeView: View {
 
 #Preview {
     HomeView()
+            .environmentObject(UserSettings())
 }

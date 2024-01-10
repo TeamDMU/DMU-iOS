@@ -15,7 +15,7 @@ struct SearchDetailView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(sampleData.filter({ item in
-                    item.title.range(of: viewModel.searchText, options: .caseInsensitive) != nil || viewModel.searchText.isEmpty
+                    item.noticeTitle.range(of: viewModel.searchText, options: .caseInsensitive) != nil || viewModel.searchText.isEmpty
                 }), id: \.id) { item in
                     SearchResultRow(item: item, viewModel: viewModel)
                 }
