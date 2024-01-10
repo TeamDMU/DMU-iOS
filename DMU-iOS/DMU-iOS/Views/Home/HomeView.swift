@@ -15,15 +15,17 @@ struct HomeView: View {
     @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
-        VStack {
-            TopBarView()
-            
-            TabSelectionView(selectedTab: $viewModel.selectedTab)
-            
-            NoticeListView(notices: viewModel.filteredNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
-        }
-        .onReceive(userSettings.$selectedDepartment) { _ in
-            viewModel.objectWillChange.send()
+        NavigationStack {
+            VStack {
+                TopBarView()
+                
+                TabSelectionView(selectedTab: $viewModel.selectedTab)
+                
+                NoticeListView(notices: viewModel.filteredNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+            }
+            .onReceive(userSettings.$selectedDepartment) { _ in
+                viewModel.objectWillChange.send()
+            }
         }
     }
 }
@@ -95,7 +97,9 @@ struct NoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
-                    NoticeView(notice: notice, viewModel: viewModel)
+                    NavigationLink(destination: HomeDetailView(notice: notice)){
+                        NoticeView(notice: notice, viewModel: viewModel)
+                    }
                     Divider().background(Color.gray200)
                 }
             }
@@ -115,10 +119,13 @@ struct NoticeView: View {
             Text(notice.noticeTitle)
                 .font(.Medium16)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.leading) // 여러 줄 정렬
+            
             HStack {
                 Text(viewModel.formatDate(notice.noticeDate))
                     .font(.Regular12)
                     .foregroundColor(.gray400)
+                
                 Text(notice.noticeStaffName)
                     .font(.Regular12)
                     .foregroundColor(.gray400)
