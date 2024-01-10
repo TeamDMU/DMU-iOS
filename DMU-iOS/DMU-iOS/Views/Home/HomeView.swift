@@ -97,7 +97,7 @@ struct NoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
-                    NavigationLink(destination: HomeDetailView(notice: notice)){
+                    NavigationLink(destination: HomeDetailView(detailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
                         NoticeView(notice: notice, viewModel: viewModel)
                     }
                     Divider().background(Color.gray200)
