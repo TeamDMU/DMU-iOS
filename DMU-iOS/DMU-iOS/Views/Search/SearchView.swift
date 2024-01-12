@@ -169,28 +169,33 @@ struct SearchResultsList: View {
 struct SearchResultRow: View {
     var item: Notice
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(item.noticeTitle)
-                .font(.Medium16)
-                .foregroundColor(.black)
-            HStack {
-                Text("\(viewModel.formatDate(item.noticeDate))")
-                    .font(.Regular12)
-                    .foregroundColor(.gray400)
-
-                Text(item.noticeStaffName)
-                    .font(.Regular12)
-                    .foregroundColor(.gray400)
+        NavigationLink(destination: HomeDetailView(detailNotice: item, homeDetailViewNavigationBarTitle: item.noticeType, viewModel: NoticeViewModel(userSettings: UserSettings()))) {
+            VStack(alignment: .leading) {
+                HStack{
+                    Text(item.noticeTitle)
+                        .font(.Medium16)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                HStack {
+                    Text("\(viewModel.formatDate(item.noticeDate))")
+                        .font(.Regular12)
+                        .foregroundColor(.gray400)
+                    
+                    Text(item.noticeStaffName)
+                        .font(.Regular12)
+                        .foregroundColor(.gray400)
+                }
+                .padding(.top, 1)
             }
-            .padding(.top, 1)
+            .padding(16)
+            .background(Color.white)
+            .cornerRadius(0)
+            .shadow(color: .gray, radius: 0, x: 0, y: 0)
         }
-        .padding(16)
-        .background(Color.white)
-        .cornerRadius(0)
-        .shadow(color: .gray, radius: 0, x: 0, y: 0)
-
         Divider().background(Color.gray200)
     }
 }

@@ -116,11 +116,14 @@ struct NoticeView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(notice.noticeTitle)
-                .font(.Medium16)
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading) // 여러 줄 정렬
-            
+            HStack {
+                Text(notice.noticeTitle)
+                    .font(.Medium16)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading) // 여러 줄 정렬
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+                
             HStack {
                 Text(viewModel.formatDate(notice.noticeDate))
                     .font(.Regular12)
