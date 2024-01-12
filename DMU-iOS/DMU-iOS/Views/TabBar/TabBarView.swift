@@ -20,79 +20,81 @@ struct TabBarView: View {
     @ObservedObject var viewModel: TabBarViewModel
     
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
-            
-            // MARK: 공지사항 화면
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.gray400)
-                    Text("공지")
-                        .font(.Medium12)
-                        .foregroundColor(.gray400)
-                }
-                .tag(Tab.home)
-                .environmentObject(UserSettings())
-                .onAppear {
-                    
-                }
-            
-            // MARK: 검색 화면
-            SearchView(viewModel: SearchViewModel())
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.gray400)
-                    Text("검색")
-                        .font(.Medium12)
-                        .foregroundColor(.gray400)
-                }
-                .tag(Tab.search)
-            
-            // MARK: 일정 화면
-            ScheduleView()
-                .tabItem {
-                    Image(systemName: "calendar")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.gray400)
-                    Text("일정")
-                        .font(.Medium12)
-                        .foregroundColor(.gray400)
-                }
-                .tag(Tab.schedule)
-            
-            // MARK: 식단 화면
-            MealView()
-                .tabItem {
-                    Image(systemName: "fork.knife")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.gray400)
-                    Text("식단")
-                        .font(.Medium12)
-                        .foregroundColor(.gray400)
-                }
-                .tag(Tab.meal)
-            
-            // MARK: 설정 화면
-            SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
-                .tabItem {
-                    Image(systemName: "gearshape")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.gray400)
-                    Text("설정")
-                        .font(.Medium12)
-                        .foregroundColor(.gray400)
-                }
-                .tag(Tab.settings)
+        NavigationStack {
+            TabView(selection: $viewModel.selectedTab) {
+                
+                // MARK: 공지사항 화면
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray400)
+                        Text("공지")
+                            .font(.Medium12)
+                            .foregroundColor(.gray400)
+                    }
+                    .tag(Tab.home)
+                    .environmentObject(UserSettings())
+                    .onAppear {
+                        
+                    }
+                
+                // MARK: 검색 화면
+                SearchView(viewModel: SearchViewModel())
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray400)
+                        Text("검색")
+                            .font(.Medium12)
+                            .foregroundColor(.gray400)
+                    }
+                    .tag(Tab.search)
+                
+                // MARK: 일정 화면
+                ScheduleView()
+                    .tabItem {
+                        Image(systemName: "calendar")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray400)
+                        Text("일정")
+                            .font(.Medium12)
+                            .foregroundColor(.gray400)
+                    }
+                    .tag(Tab.schedule)
+                
+                // MARK: 식단 화면
+                MealView()
+                    .tabItem {
+                        Image(systemName: "fork.knife")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray400)
+                        Text("식단")
+                            .font(.Medium12)
+                            .foregroundColor(.gray400)
+                    }
+                    .tag(Tab.meal)
+                
+                // MARK: 설정 화면
+                SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
+                    .tabItem {
+                        Image(systemName: "gearshape")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray400)
+                        Text("설정")
+                            .font(.Medium12)
+                            .foregroundColor(.gray400)
+                    }
+                    .tag(Tab.settings)
+            }
+            .accentColor(.blue300)
+            .ignoresSafeArea(edges: .all)
         }
-        .accentColor(.blue300)
-        .ignoresSafeArea(edges: .all)
     }
 }
 

@@ -26,6 +26,7 @@ struct SearchView: View {
     }
 }
 
+// MARK: - 검색바 기능 구현
 struct SearchBar: View {
     @ObservedObject var viewModel: SearchViewModel
 
@@ -114,6 +115,7 @@ struct ClearTextButton: View {
     }
 }
 
+// MARK: - 검색 결과 리스트 뷰
 struct SearchResults: View {
     @ObservedObject var viewModel: SearchViewModel
 
@@ -169,32 +171,38 @@ struct SearchResultsList: View {
 struct SearchResultRow: View {
     var item: Notice
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(item.noticeTitle)
-                .font(.Medium16)
-                .foregroundColor(.black)
-            HStack {
-                Text("\(viewModel.formatDate(item.noticeDate))")
-                    .font(.Regular12)
-                    .foregroundColor(.gray400)
-
-                Text(item.noticeStaffName)
-                    .font(.Regular12)
-                    .foregroundColor(.gray400)
+        NavigationLink(destination: HomeDetailView(detailNotice: item, homeDetailViewNavigationBarTitle: item.noticeType, viewModel: NoticeViewModel(userSettings: UserSettings()))) {
+            VStack(alignment: .leading) {
+                HStack{
+                    Text(item.noticeTitle)
+                        .font(.Medium16)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                HStack {
+                    Text("\(viewModel.formatDate(item.noticeDate))")
+                        .font(.Regular12)
+                        .foregroundColor(.gray400)
+                    
+                    Text(item.noticeStaffName)
+                        .font(.Regular12)
+                        .foregroundColor(.gray400)
+                }
+                .padding(.top, 1)
             }
-            .padding(.top, 1)
+            .padding(16)
+            .background(Color.white)
+            .cornerRadius(0)
+            .shadow(color: .gray, radius: 0, x: 0, y: 0)
         }
-        .padding(16)
-        .background(Color.white)
-        .cornerRadius(0)
-        .shadow(color: .gray, radius: 0, x: 0, y: 0)
-
         Divider().background(Color.gray200)
     }
 }
 
+// MARK: - 최근 검색어 내역 리스트 뷰
 struct RecentSearchesView: View {
     @ObservedObject var viewModel: SearchViewModel
     
@@ -234,6 +242,7 @@ struct RecentSearchesView: View {
     }
 }
 
+// MARK: - 키보드 숨기기
 extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
