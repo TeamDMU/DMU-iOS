@@ -26,6 +26,7 @@ struct SearchView: View {
     }
 }
 
+// MARK: - 검색바 기능 구현
 struct SearchBar: View {
     @ObservedObject var viewModel: SearchViewModel
 
@@ -114,6 +115,7 @@ struct ClearTextButton: View {
     }
 }
 
+// MARK: - 검색 결과 리스트 뷰
 struct SearchResults: View {
     @ObservedObject var viewModel: SearchViewModel
 
@@ -200,6 +202,7 @@ struct SearchResultRow: View {
     }
 }
 
+// MARK: - 최근 검색어 내역 리스트 뷰
 struct RecentSearchesView: View {
     @ObservedObject var viewModel: SearchViewModel
     
@@ -239,6 +242,7 @@ struct RecentSearchesView: View {
     }
 }
 
+// MARK: - 키보드 숨기기
 extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
