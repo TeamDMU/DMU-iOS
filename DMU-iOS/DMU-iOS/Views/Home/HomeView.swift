@@ -17,7 +17,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                TopBarView()
+                TopBarView(viewModel: viewModel)
                 
                 TabSelectionView(selectedTab: $viewModel.selectedTab)
                 
@@ -26,12 +26,17 @@ struct HomeView: View {
             .onReceive(userSettings.$selectedDepartment) { _ in
                 viewModel.objectWillChange.send()
             }
+            .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
+                NotificationView()
+            }
         }
     }
 }
 
 // MARK: - 상단바(로고 및 알림 버튼)
 struct TopBarView: View {
+    let viewModel: NoticeViewModel
+    
     var body: some View {
         HStack {
             Image("logo")
@@ -39,14 +44,16 @@ struct TopBarView: View {
                 .frame(width: 75, height: 34)
                 .padding(.leading)
             Spacer()
-            BellButton()
+            BellButton(viewModel: viewModel)
         }
     }
 }
 
 struct BellButton: View {
+    let viewModel: NoticeViewModel
+    
     var body: some View {
-        Button(action: {}) {
+        Button(action: viewModel.navigateToNotification) {
             Image(systemName: "bell")
                 .resizable()
                 .frame(width: 20, height: 22)

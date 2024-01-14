@@ -44,4 +44,12 @@ class NoticeViewModel: ObservableObject {
         }
         return notices
     }
+    
+    // MARK: -키워드 알림창 화면으로 이동
+    
+    @Published var isNavigationToNotification: Bool = false
+    
+    func navigateToNotification() {
+        isNavigationToNotification = true
+    }
 }
