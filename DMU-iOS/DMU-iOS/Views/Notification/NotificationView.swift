@@ -11,6 +11,8 @@ struct NotificationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var viewModel = NotificationViewModel()
     
+    @State var showingKeywordEditView = false
+    
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -21,8 +23,15 @@ struct NotificationView: View {
             }
             .padding(20)
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle("키워드 알림함")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: homeBackButton, trailing: keywordEditButton)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("키워드 알림함")
+                        .font(.SemiBold20)
+                        .foregroundColor(Color.Gray500)
+                }
+            }
         }
     }
     
@@ -38,10 +47,14 @@ struct NotificationView: View {
     private var keywordEditButton: some View {
         Button(action: {
             viewModel.editKeywords()
+            self.showingKeywordEditView.toggle()
         }) {
-            Text("완료")
+            Text("편집")
                 .font(.Medium16)
                 .foregroundColor(Color.gray500)
+        }
+        .fullScreenCover(isPresented: $showingKeywordEditView) {
+            NotificationKeywordEditView(showingKeywordEditView: $showingKeywordEditView)
         }
     }
 }

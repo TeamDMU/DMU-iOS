@@ -11,6 +11,7 @@
 		F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */; };
 		F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */; };
 		F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914AD812B47C85400706D48 /* SettingDepartmentView.swift */; };
+		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
 		F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */; };
@@ -56,6 +57,7 @@
 		F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-Two.swift"; sourceTree = "<group>"; };
 		F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyword.swift; sourceTree = "<group>"; };
 		F914AD812B47C85400706D48 /* SettingDepartmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDepartmentView.swift; sourceTree = "<group>"; };
+		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */,
+				F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
+				F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,
 				F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */,
 				F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */,
