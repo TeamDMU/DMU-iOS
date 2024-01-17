@@ -125,10 +125,10 @@ struct DepartmentSearchView: View {
                 
                 TextField("소속 학과를 검색해주세요.", text: $searchText)
                     .foregroundColor(isTextInList ? Color.blue300 : Color.gray300)
-                    .onChange(of: searchText) {
+                    .onChange(of: searchText, perform: { value in
                         self.isListVisible = !searchText.isEmpty && !(Department.list.contains(searchText))
                         self.isTextInList = Department.list.contains(searchText)
-                    }
+                    })
                 if !searchText.isEmpty {
                     Button(action: {
                         self.searchText = ""
