@@ -28,8 +28,8 @@ struct DetailNoticeScrollView: View {
     
     let detailNotice: Notice
     let homeDetailViewNavigationBarTitle: String
-    let viewModel: NoticeViewModel
     let presentationMode: Binding<PresentationMode>
+    let viewModel: NoticeViewModel
     
     var body: some View {
         ScrollView {
