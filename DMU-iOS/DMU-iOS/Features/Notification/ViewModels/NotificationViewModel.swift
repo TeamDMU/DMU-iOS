@@ -8,6 +8,7 @@
 import Foundation
 
 class NotificationViewModel: ObservableObject {
+    
     @Published var notices: [Notice] = sampleData
     
     func dismiss() {

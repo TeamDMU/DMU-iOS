@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var selectedTab = "대학공지"
     
     @ObservedObject var viewModel = NoticeViewModel(userSettings: UserSettings())
+    
     @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
@@ -35,6 +36,7 @@ struct HomeView: View {
 
 // MARK: - 상단바(로고 및 알림 버튼)
 struct TopBarView: View {
+    
     let viewModel: NoticeViewModel
     
     var body: some View {
@@ -50,6 +52,7 @@ struct TopBarView: View {
 }
 
 struct BellButton: View {
+    
     let viewModel: NoticeViewModel
     
     var body: some View {
@@ -65,6 +68,7 @@ struct BellButton: View {
 
 // MARK: - 대학공지, 학부공지 탭
 struct TabSelectionView: View {
+    
     @Binding var selectedTab: String
     
     var body: some View {
@@ -76,7 +80,9 @@ struct TabSelectionView: View {
 }
 
 struct TabButton: View {
+    
     let title: String
+    
     @Binding var selectedTab: String
     
     var body: some View {
@@ -97,6 +103,7 @@ struct TabButton: View {
 
 // MARK: - 공지사항 리스트뷰
 struct NoticeListView: View {
+    
     let notices: [Notice]
     let viewModel: NoticeViewModel
     
@@ -107,6 +114,7 @@ struct NoticeListView: View {
                     NavigationLink(destination: HomeDetailView(detailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
                         NoticeView(notice: notice, viewModel: viewModel)
                     }
+                    
                     Divider().background(Color.gray200)
                 }
             }
@@ -118,6 +126,7 @@ struct NoticeListView: View {
 }
 
 struct NoticeView: View {
+    
     let notice: Notice
     var viewModel: NoticeViewModel
     

@@ -26,6 +26,7 @@ struct Onboarding_Step_One: View {
                 ProgressBarView1()
                 
                 DepartmentSearchView(searchText: $searchText, isListVisible: $isListVisible, isTextInList: $isTextInList)
+                
                 Spacer()
                 
                 CustomButton(title: "다음", action: {
@@ -44,6 +45,7 @@ struct Onboarding_Step_One: View {
 }
 
 struct OnboardingTitleView1: View {
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
@@ -51,10 +53,12 @@ struct OnboardingTitleView1: View {
                     Text("소속학과")
                         .font(.Bold32)
                         .foregroundColor(.blue300)
+                    
                     Text("를 선택하면,")
                         .font(.Bold32)
                         .foregroundColor(.gray500)
                 }
+                
                 Text("해당 학과의 공지만 바로 알려줘요.")
                     .font(.Bold24)
                     .foregroundColor(.gray500)
@@ -66,6 +70,7 @@ struct OnboardingTitleView1: View {
 }
 
 struct ProgressBarView1: View {
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack {
@@ -74,11 +79,13 @@ struct ProgressBarView1: View {
                     .foregroundColor(.blue300)
                 
                 Spacer()
+                
                 Circle()
                     .frame(width: 12, height: 12)
                     .foregroundColor(.gray300)
                 
                 Spacer()
+                
                 Circle()
                     .frame(width: 12, height: 12)
                     .foregroundColor(.gray300)
@@ -91,6 +98,7 @@ struct ProgressBarView1: View {
                     .padding(.top, 10)
                     .foregroundColor(.blue300)
                     .font(.Bold16)
+                
                 Spacer()
             }
             .padding(.leading, 49)
@@ -101,6 +109,7 @@ struct ProgressBarView1: View {
 }
 
 struct DepartmentSearchView: View {
+    
     @Binding var searchText: String
     @Binding var isListVisible: Bool
     @Binding var isTextInList: Bool
@@ -109,6 +118,7 @@ struct DepartmentSearchView: View {
         VStack(spacing: 10) {
             HStack {
                 Spacer()
+                
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(Department.list.firstIndex(of: searchText) != nil ? Color.blue300 : Color.gray300)
                     .frame(width: 30, height: 30)

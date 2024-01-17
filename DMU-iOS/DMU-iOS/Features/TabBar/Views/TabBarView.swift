@@ -8,10 +8,12 @@
 import SwiftUI
 
 class TabBarViewModel: ObservableObject {
+    
     @Published var selectedTab: Tab = .home
 }
 
 enum Tab: String {
+    
     case home, search, schedule, meal, settings
 }
 
@@ -30,6 +32,7 @@ struct TabBarView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(.gray400)
+                        
                         Text("공지")
                             .font(.Medium12)
                             .foregroundColor(.gray400)
@@ -47,6 +50,7 @@ struct TabBarView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(.gray400)
+                        
                         Text("검색")
                             .font(.Medium12)
                             .foregroundColor(.gray400)
@@ -60,6 +64,7 @@ struct TabBarView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(.gray400)
+                        
                         Text("일정")
                             .font(.Medium12)
                             .foregroundColor(.gray400)
@@ -73,6 +78,7 @@ struct TabBarView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(.gray400)
+                        
                         Text("식단")
                             .font(.Medium12)
                             .foregroundColor(.gray400)
@@ -86,6 +92,7 @@ struct TabBarView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(.gray400)
+                        
                         Text("설정")
                             .font(.Medium12)
                             .foregroundColor(.gray400)

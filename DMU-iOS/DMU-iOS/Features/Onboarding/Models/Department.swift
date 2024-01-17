@@ -24,5 +24,4 @@ struct Department {
         "Architecture", "Interior Architecture Design", "Visual Design", "AR-VR Content Design", "Business Administration",
         "Tax Accounting", "Distribution Marketing", "Hotel Tourism", "Business Information", "Big Data Management"
     ]
-
 }

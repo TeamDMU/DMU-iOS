@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomButton: View {
+    
     let title: String
     let action: () -> Void
     var isEnabled: Bool

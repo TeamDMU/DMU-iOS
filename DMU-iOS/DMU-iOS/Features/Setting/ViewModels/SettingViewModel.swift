@@ -8,10 +8,10 @@
 import Foundation
 
 class SettingViewModel: ObservableObject {
+    
     @Published var isUniversityNoticeOn: Bool = false
     @Published var isDepartmentNoticeOn: Bool = false
     @Published var isNavigatingToDepartment: Bool = false
-    
     @Published var settingDepartment: String? = nil
     
     var userSettings: UserSettings

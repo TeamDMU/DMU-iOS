@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 import UserNotifications
 
 struct ContentView: View {
@@ -27,6 +28,7 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation {
                                 showSplashView = false
+                                
                                 if isFirstLaunching {
                                     showOnboardingView = true
                                 }

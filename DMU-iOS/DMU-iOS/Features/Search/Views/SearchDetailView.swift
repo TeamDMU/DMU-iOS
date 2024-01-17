@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SearchDetailView: View {
+    
     @ObservedObject var viewModel: SearchViewModel
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        
         NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading) {

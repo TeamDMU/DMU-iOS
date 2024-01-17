@@ -12,15 +12,19 @@ struct DMU_iOSApp: App {
     
     init() {
         let appearanceTabBar = UITabBarAppearance()
+        
         appearanceTabBar.configureWithOpaqueBackground()
         appearanceTabBar.backgroundColor = .white
+        
         UITabBar.appearance().standardAppearance = appearanceTabBar
         
         let appearanceNavigationBar = UINavigationBarAppearance()
+        
         appearanceNavigationBar.configureWithOpaqueBackground()
         appearanceNavigationBar.titleTextAttributes = [.foregroundColor: UIColor.gray500]
         appearanceNavigationBar.backgroundColor = .white
         appearanceNavigationBar.shadowColor = nil
+        
         UINavigationBar.appearance().standardAppearance = appearanceNavigationBar
     }
     

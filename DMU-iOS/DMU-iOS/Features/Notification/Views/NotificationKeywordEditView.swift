@@ -11,6 +11,7 @@ struct NotificationKeywordEditView: View {
     
     @State private var selectedKeywords = [String: [String]]()
     @State private var showKeywordBalloon = true
+    
     @Binding var showingKeywordEditView: Bool
     
     var body: some View {
@@ -83,6 +84,7 @@ struct NotificationKeywordEditTopBarView: View {
 
 // MARK: -NotificationKeywordEditView 키워드 말풍선
 struct BalloonView: View {
+    
     var body: some View {
         VStack {
             Text("키워드를 설정하고 키워드 알림을 받아보세요!")
@@ -107,6 +109,7 @@ struct BalloonView: View {
 
 // MARK: -NotificationKeywordEditView 말풍선 밑에 화살표 설정
 struct Triangle: Shape {
+    
     func path(in rect: CGRect) -> Path {
         var path = Path()
         

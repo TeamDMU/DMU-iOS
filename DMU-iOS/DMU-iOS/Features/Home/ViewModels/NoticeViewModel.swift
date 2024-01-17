@@ -20,7 +20,6 @@ class NoticeViewModel: ObservableObject {
     }
     
     // MARK: -공지사항 날짜 데이터 포맷
-    
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
@@ -39,6 +38,7 @@ class NoticeViewModel: ObservableObject {
         } else if selectedTab == "학부공지" {
             return notices.filter { notice in
                 guard let department = department, !department.isEmpty else { return false }
+                
                 return notice.noticeType == "학부공지" && notice.noticeDepartment == department
             }
         }

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct NotificationView: View {
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @StateObject private var viewModel = NotificationViewModel()
     
     @State var showingKeywordEditView = false
@@ -61,6 +63,7 @@ struct NotificationView: View {
 
 // MARK: - 알림 리스트뷰
 struct NotificationListView: View {
+    
     var notice: Notice
     
     var body: some View {

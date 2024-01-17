@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MealView: View {
+    
     @StateObject var viewModel: MealViewModel
     
     init(viewModel: MealViewModel = MealViewModel()) {
@@ -17,6 +18,7 @@ struct MealView: View {
     var body: some View {
         VStack {
             headerView
+            
             menuListView
         }
         .onAppear(perform: viewModel.loadSampleData)
@@ -50,11 +52,13 @@ struct MealView: View {
 }
 
 struct MenuDateView: View {
+    
     var date: String
     
     var body: some View {
         HStack {
             Spacer(minLength: 20)
+            
             Text(date)
                 .font(.SemiBold16)
                 .padding(.vertical, 10)
@@ -62,6 +66,7 @@ struct MenuDateView: View {
                 .background(.blue100)
                 .foregroundColor(.gray500)
                 .cornerRadius(30)
+            
             Spacer(minLength: 20)
         }
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension Color {
+    
     static let Gray100 = Color("Gray100")
     static let Gray200 = Color("Gray200")
     static let Gray300 = Color("Gray300")

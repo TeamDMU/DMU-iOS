@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct SettingDepartmentView: View {
+    
     @ObservedObject var viewModel: SettingViewModel
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var settingDepartment: String? = nil
     
     var body: some View {
         departmentList()
-        .navigationBarBackButtonHidden(true)
-        .navigationBarTitle("학과 설정", displayMode: .inline)
-        .navigationBarItems(leading: backButton, trailing: saveButton)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("학과 설정", displayMode: .inline)
+            .navigationBarItems(leading: backButton, trailing: saveButton)
     }
     
     @ViewBuilder

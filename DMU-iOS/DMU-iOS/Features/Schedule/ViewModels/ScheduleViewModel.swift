@@ -8,6 +8,7 @@
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
+    
     @Published var currentDate = Date()
     @Published var schedules: [Schedule] = []
     
@@ -23,7 +24,9 @@ class ScheduleViewModel: ObservableObject {
     
     func changeMonth(by increment: Int) {
         guard let newDate = calendar.date(byAdding: .month, value: increment, to: currentDate) else { return }
+        
         currentDate = newDate
+        
         refreshData()
     }
     
@@ -53,6 +56,7 @@ class ScheduleViewModel: ObservableObject {
     private func formatDateToYearMonth(_ date: Date) -> String {
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
+        
         return "\(year)년 \(month)월"
     }
 }

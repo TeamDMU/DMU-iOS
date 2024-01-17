@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ScheduleView: View {
+    
     @ObservedObject var viewModel = ScheduleViewModel()
     
     var body: some View {
         VStack {
             scheduleTitle
+            
             monthNavigation
+            
             schedulesList
         }
         .onAppear(perform: viewModel.refreshData)
@@ -30,9 +33,13 @@ struct ScheduleView: View {
     private var monthNavigation: some View {
         HStack {
             monthChangeButton(direction: -1, systemName: "chevron.left")
+            
             Spacer().frame(minWidth: 100)
+            
             Text(viewModel.currentYearMonth).font(.SemiBold16)
+            
             Spacer().frame(minWidth: 100)
+            
             monthChangeButton(direction: 1, systemName: "chevron.right")
         }
         .padding(.horizontal, 20)
@@ -64,7 +71,9 @@ struct ScheduleView: View {
                 Text(schedule.scheduleDisplay)
                     .font(.SemiBold14)
                     .foregroundColor(.gray500)
+                
                 Spacer()
+                
                 Text(schedule.detail)
                     .font(.SemiBold14)
                     .foregroundColor(.gray500)

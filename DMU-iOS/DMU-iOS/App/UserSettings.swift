@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 class UserSettings: ObservableObject {
+    
     @Published var selectedDepartment: String {
         didSet {
             UserDefaults.standard.set(selectedDepartment, forKey: "SelectedDepartment")

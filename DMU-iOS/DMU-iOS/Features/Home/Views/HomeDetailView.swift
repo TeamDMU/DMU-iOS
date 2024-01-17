@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: -메인 HomeDetailView
 struct HomeDetailView: View {
+    
     let detailNotice: Notice
     let homeDetailViewNavigationBarTitle: String
     let viewModel: NoticeViewModel
@@ -24,6 +25,7 @@ struct HomeDetailView: View {
 
 // MARK: -공지사항 디테일 뷰 스크롤 화면
 struct DetailNoticeScrollView: View {
+    
     let detailNotice: Notice
     let homeDetailViewNavigationBarTitle: String
     let viewModel: NoticeViewModel
@@ -33,9 +35,13 @@ struct DetailNoticeScrollView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 NoticeKeywordAndButtonStack(detailNotice: detailNotice)
+                
                 NoticeTitleText(detailNotice: detailNotice)
+                
                 NoticeStaffNameAndDateStack(detailNotice: detailNotice, viewModel: viewModel)
+                
                 NoticeDetail(detailNotice: detailNotice)
+                
                 NoticeFileAttachment()
             }
             .padding(20)
@@ -48,6 +54,7 @@ struct DetailNoticeScrollView: View {
 
 // MARK: -키워드 뷰, 공유하기 버튼
 struct NoticeKeywordAndButtonStack: View {
+    
     let detailNotice: Notice
     
     var body: some View {
@@ -73,6 +80,7 @@ struct NoticeKeywordAndButtonStack: View {
 
 // MARK: -공지사항 제목 텍스트
 struct NoticeTitleText: View {
+    
     let detailNotice: Notice
     
     var body: some View {
@@ -85,6 +93,7 @@ struct NoticeTitleText: View {
 
 // MARK: -공지사항 직원명, 날짜
 struct NoticeStaffNameAndDateStack: View {
+    
     let detailNotice: Notice
     let viewModel: NoticeViewModel
     
@@ -113,6 +122,7 @@ struct NoticeStaffNameAndDateStack: View {
 
 // MARK: -공지사항 디테일 뷰
 struct NoticeDetail: View {
+    
     let detailNotice: Notice
     
     var body: some View {
@@ -129,11 +139,13 @@ struct NoticeDetail: View {
 
 // MARK: -공지사항 첨부파일
 struct NoticeFileAttachment: View {
+    
     var body: some View {
         HStack {
             Text("첨부파일")
                 .font(.Medium16)
                 .foregroundColor(Color.Blue400)
+            
             Image(systemName: "folder.circle")
                 .resizable()
                 .frame(width: 24, height: 24)
@@ -151,6 +163,7 @@ struct NoticeFileAttachment: View {
 
 // MARK: -뒤로 가기 버튼
 struct BackButton: View {
+    
     let presentationMode: Binding<PresentationMode>
     
     var body: some View {

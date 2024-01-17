@@ -8,6 +8,7 @@
 import Foundation
 
 struct Menu: Identifiable {
+    
     var id = UUID()
     var date: String
     var details: [String]

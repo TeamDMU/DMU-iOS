@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomKeyword: View {
+    
     let titles = ["수업", "학적", "장학금", "취업", "기타"]
     let contents = [
         ["시험", "수강", "특강", "계절학기"],
@@ -27,6 +28,7 @@ struct CustomKeyword: View {
                         Text(titles[index])
                             .font(.Medium20)
                             .foregroundColor(Color.gray600)
+                        
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 88), spacing: 0, alignment: .leading)], spacing: 16) {
                             ForEach(contents[index], id: \.self) { content in
                                 SelectableButton(content: content, isSelected: Binding(get: {
@@ -43,6 +45,7 @@ struct CustomKeyword: View {
                                 }), action: {})
                             }
                         }
+                        
                         Divider()
                             .padding(.top, 10)
                     }

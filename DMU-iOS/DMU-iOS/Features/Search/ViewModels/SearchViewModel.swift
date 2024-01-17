@@ -8,6 +8,7 @@
 import Foundation
 
 class SearchViewModel: ObservableObject {
+    
     @Published var searchText = ""
     @Published var isEditing = false
     @Published var isNavigating: Bool = false
@@ -19,12 +20,15 @@ class SearchViewModel: ObservableObject {
     
     func clearText() {
         self.searchText = ""
+        
         onSearchTextChange() // 검색어를 지웠을 때도 최근 검색어를 다시 불러옵니다.
     }
     
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
+        
         formatter.dateFormat = "yyyy.MM.dd"
+        
         return formatter.string(from: date)
     }
     
@@ -52,6 +56,7 @@ class SearchViewModel: ObservableObject {
     // 최근 검색어를 삭제하는 메서드
     func removeRecentSearch(_ search: String) {
         self.recentSearches.removeAll { $0 == search }
+        
         saveRecentSearches()
     }
     
@@ -81,6 +86,7 @@ class SearchViewModel: ObservableObject {
         searchText = ""
         isEditing = false
         isNavigating = false
+        
         loadRecentSearches() // 최근 검색어를 다시 불러옵니다.
     }
 }

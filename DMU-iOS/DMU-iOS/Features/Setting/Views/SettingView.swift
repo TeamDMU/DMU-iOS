@@ -85,7 +85,9 @@ struct SettingView: View {
                     Text("앱 버전")
                         .font(.Medium18)
                         .foregroundColor(.gray500)
+                    
                     Spacer()
+                    
                     Text("1.0.0")
                         .font(.Medium14)
                         .foregroundColor(.gray400)

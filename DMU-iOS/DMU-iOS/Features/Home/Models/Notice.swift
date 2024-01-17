@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: -추후 api 통신 연결할 때 수정할 예정
 struct Notice: Identifiable {
+    
     var id = UUID()
     var noticeTitle: String
     var noticeDate: Date

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Onboarding_Step_Three: View {
+    
     @State private var isOn = false
     @State private var isMainViewActive = false
         
@@ -36,6 +37,7 @@ struct Onboarding_Step_Three: View {
 }
 
 struct OnboardingTitleView3: View {
+    
     var body: some View {
         VStack {
             HStack {
@@ -44,6 +46,7 @@ struct OnboardingTitleView3: View {
                         Text("키워드 알림 설정")
                             .font(.Bold32)
                             .foregroundColor(.blue300)
+                        
                         Text("으로")
                             .font(.Bold32)
                             .foregroundColor(.gray500)
@@ -61,6 +64,7 @@ struct OnboardingTitleView3: View {
 }
 
 struct ProgressBarView3: View {
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack {
@@ -69,11 +73,13 @@ struct ProgressBarView3: View {
                     .foregroundColor(.gray300)
                 
                 Spacer()
+                
                 Circle()
                     .frame(width: 12, height: 12)
                     .foregroundColor(.gray300)
                 
                 Spacer()
+                
                 Circle()
                     .frame(width: 12, height: 12)
                     .foregroundColor(.blue300)
@@ -83,6 +89,7 @@ struct ProgressBarView3: View {
             
             HStack {
                 Spacer()
+                
                 Text("알림 설정")
                     .padding(.top, 10)
                     .foregroundColor(.blue300)
@@ -96,6 +103,7 @@ struct ProgressBarView3: View {
 }
 
 struct NotificationSettingsView: View {
+    
     @Binding var isOn : Bool
     
     var body: some View {

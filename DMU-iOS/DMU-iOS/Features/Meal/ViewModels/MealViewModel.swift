@@ -48,6 +48,7 @@ class MealViewModel: ObservableObject {
               let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
             return false
         }
+        
         return date >= startOfWeek && date <= endOfWeek
     }
     
@@ -64,6 +65,7 @@ class MealViewModel: ObservableObject {
             if let date = dateFormatterGet.date(from: menu.date) {
                 return isDateInThisWeek(date)
             }
+            
             return false
         }
     }

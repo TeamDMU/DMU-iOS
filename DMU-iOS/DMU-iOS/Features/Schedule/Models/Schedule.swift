@@ -16,14 +16,18 @@ struct Schedule: Identifiable {
     // 날짜를 원하는 문자열 형식으로 변환하는 함수
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd" 
+        
+        formatter.dateFormat = "MM.dd"
+        
         return formatter.string(from: date)
     }
     
     // 요일을 반환하는 함수
     private func formatDay(_ date: Date) -> String {
         let formatter = DateFormatter()
+        
         formatter.dateFormat = "E" // 요일
+        
         return formatter.string(from: date)
     }
     

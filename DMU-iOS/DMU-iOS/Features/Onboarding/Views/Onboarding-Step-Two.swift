@@ -24,7 +24,8 @@ struct Onboarding_Step_Two: View {
             CustomKeyword(selectedKeywords: $selectedKeywords)
             
             Spacer()
-            CustomButton(title: "다음", action: { 
+            
+            CustomButton(title: "다음", action: {
                 print("버튼 클릭!")
                 if !selectedKeywords.isEmpty {
                     self.isStepThreeViewActive = true
@@ -40,6 +41,7 @@ struct Onboarding_Step_Two: View {
 }
 
 struct OnboardingTitleView2: View {
+    
     var body: some View {
         VStack {
             HStack {
@@ -48,6 +50,7 @@ struct OnboardingTitleView2: View {
                         Text("키워드")
                             .font(.Bold32)
                             .foregroundColor(.blue300)
+                        
                         Text("를 설정하면,")
                             .font(.Bold32)
                             .foregroundColor(.gray500)
@@ -65,6 +68,7 @@ struct OnboardingTitleView2: View {
 
 
 struct ProgressBarView2: View {
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack {
@@ -73,11 +77,13 @@ struct ProgressBarView2: View {
                     .foregroundColor(.gray300)
                 
                 Spacer()
+                
                 Circle()
                     .frame(width: 12, height: 12)
                     .foregroundColor(.blue300)
                 
                 Spacer()
+                
                 Circle()
                     .frame(width: 12, height: 12)
                     .foregroundColor(.gray300)

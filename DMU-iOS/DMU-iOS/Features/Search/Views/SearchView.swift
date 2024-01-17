@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct SearchView: View {
+    
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
         NavigationStack {
             VStack {
                 SearchBar(viewModel: viewModel)
+                
                 if !viewModel.recentSearches.isEmpty && viewModel.searchText.isEmpty {
                     RecentSearchesView(viewModel: viewModel)
                 }
+                
                 SearchResults(viewModel: viewModel)
             }
             .navigationDestination(isPresented: $viewModel.isNavigating) {
@@ -28,6 +31,7 @@ struct SearchView: View {
 
 // MARK: - 검색바 기능 구현
 struct SearchBar: View {
+    
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
@@ -63,6 +67,7 @@ struct SearchBar: View {
 }
 
 struct SearchBarOverlay: View {
+    
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
@@ -81,6 +86,7 @@ struct SearchBarOverlay: View {
 }
 
 struct CancelButton: View {
+    
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
@@ -102,6 +108,7 @@ struct CancelButton: View {
 }
 
 struct ClearTextButton: View {
+    
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
@@ -117,6 +124,7 @@ struct ClearTextButton: View {
 
 // MARK: - 검색 결과 리스트 뷰
 struct SearchResults: View {
+    
     @ObservedObject var viewModel: SearchViewModel
 
     var body: some View {
@@ -129,7 +137,9 @@ struct SearchResults: View {
 }
 
 struct SearchResultsList: View {
+    
     @ObservedObject var viewModel: SearchViewModel
+    
     @State private var navigateToDetail = false
     
     var body: some View {
@@ -169,7 +179,9 @@ struct SearchResultsList: View {
 }
 
 struct SearchResultRow: View {
+    
     var item: Notice
+    
     @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
@@ -198,12 +210,14 @@ struct SearchResultRow: View {
             .cornerRadius(0)
             .shadow(color: .gray, radius: 0, x: 0, y: 0)
         }
+        
         Divider().background(Color.gray200)
     }
 }
 
 // MARK: - 최근 검색어 내역 리스트 뷰
 struct RecentSearchesView: View {
+    
     @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
@@ -214,6 +228,7 @@ struct RecentSearchesView: View {
                         .font(.Bold18)
                         .foregroundColor(.blue300)
                         .padding()
+                    
                     ForEach(viewModel.recentSearches.reversed(), id: \.self) { search in
                         HStack {
                             Text(search)
@@ -223,7 +238,9 @@ struct RecentSearchesView: View {
                                     viewModel.isEditing = true
                                     viewModel.performSearch()
                                 }
+                            
                             Spacer()
+                            
                             Button(action: {
                                 viewModel.removeRecentSearch(search)
                             }) {
