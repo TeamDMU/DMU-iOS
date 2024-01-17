@@ -5,7 +5,6 @@
 //  Created by 이예빈 on 12/26/23.
 //
 
-import Foundation
 import SwiftUI
 
 extension Font {

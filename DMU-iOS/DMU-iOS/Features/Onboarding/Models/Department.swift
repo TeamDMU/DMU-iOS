@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Department {
     
      static let departmentlist = [

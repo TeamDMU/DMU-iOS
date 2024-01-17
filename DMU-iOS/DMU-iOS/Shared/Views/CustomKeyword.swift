@@ -1,3 +1,10 @@
+//
+//  CustomKeyword.swift
+//  DMU-iOS
+//
+//  Created by 이예빈 on 12/27/23.
+//
+
 import SwiftUI
 
 struct CustomKeyword: View {
