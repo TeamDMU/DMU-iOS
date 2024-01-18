@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -33,7 +33,7 @@ struct SearchView: View {
 struct SearchBar: View {
     
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
         HStack {
             TextField("검색어를 입력하세요.", text: $viewModel.searchText, onCommit: {
@@ -69,7 +69,7 @@ struct SearchBar: View {
 struct SearchBarOverlay: View {
     
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
@@ -88,7 +88,7 @@ struct SearchBarOverlay: View {
 struct CancelButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
         Button(action: {
             viewModel.clearText()
@@ -110,7 +110,7 @@ struct CancelButton: View {
 struct ClearTextButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
         Button(action: {
             viewModel.clearText()
@@ -126,7 +126,7 @@ struct ClearTextButton: View {
 struct SearchResults: View {
     
     @ObservedObject var viewModel: SearchViewModel
-
+    
     var body: some View {
         ScrollView {
             if !viewModel.searchText.isEmpty {

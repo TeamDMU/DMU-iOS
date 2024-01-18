@@ -12,7 +12,7 @@ struct CustomButton: View {
     let title: String
     let action: () -> Void
     var isEnabled: Bool
-
+    
     var body: some View {
         Button(action: action) {
             Text(title)

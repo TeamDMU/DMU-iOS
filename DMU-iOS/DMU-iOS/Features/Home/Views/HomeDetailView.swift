@@ -18,7 +18,7 @@ struct HomeDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            DetailNoticeScrollView(detailNotice: detailNotice, homeDetailViewNavigationBarTitle: homeDetailViewNavigationBarTitle, viewModel: viewModel, presentationMode: presentationMode)
+            DetailNoticeScrollView(detailNotice: detailNotice, homeDetailViewNavigationBarTitle: homeDetailViewNavigationBarTitle, presentationMode: presentationMode, viewModel: viewModel)
         }
     }
 }

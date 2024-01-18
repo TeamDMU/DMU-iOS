@@ -139,7 +139,7 @@ struct NoticeView: View {
                     .multilineTextAlignment(.leading) // 여러 줄 정렬
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-                
+            
             HStack {
                 Text(viewModel.formatDate(notice.noticeDate))
                     .font(.Regular12)
@@ -161,5 +161,5 @@ struct NoticeView: View {
 
 #Preview {
     HomeView()
-            .environmentObject(UserSettings())
+        .environmentObject(UserSettings())
 }

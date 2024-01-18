@@ -61,7 +61,7 @@ struct SelectableButton: View {
     let content: String
     @Binding var isSelected: Bool
     let action: () -> Void
-
+    
     var body: some View {
         Button(action: {
             action()

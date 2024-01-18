@@ -11,7 +11,7 @@ struct Onboarding_Step_Three: View {
     
     @State private var isOn = false
     @State private var isMainViewActive = false
-        
+    
     @Binding var isFirstLanching: Bool
     
     var body: some View {
@@ -32,7 +32,7 @@ struct Onboarding_Step_Three: View {
         .fullScreenCover(isPresented: $isMainViewActive){
             TabBarView(viewModel: TabBarViewModel())
         }
-
+        
     }
 }
 
