@@ -13,7 +13,7 @@ struct NotificationView: View {
     
     @StateObject private var viewModel = NotificationViewModel()
     
-    @State var showingKeywordEditView = false
+    @State var isNavigatingToKeywordEditView = false
     
     var body: some View {
         ScrollView {
@@ -49,14 +49,14 @@ struct NotificationView: View {
     private var NotificationKeywordEditButton: some View {
         Button(action: {
             viewModel.editKeywords()
-            self.showingKeywordEditView.toggle()
+            self.isNavigatingToKeywordEditView.toggle()
         }) {
             Text("편집")
                 .font(.Medium16)
                 .foregroundColor(Color.Gray500)
         }
-        .fullScreenCover(isPresented: $showingKeywordEditView) {
-            NotificationKeywordEditView(showingKeywordEditView: $showingKeywordEditView)
+        .fullScreenCover(isPresented: $isNavigatingToKeywordEditView) {
+            NotificationKeywordEditView(isNavigatingToKeywordEditView: $isNavigatingToKeywordEditView)
         }
     }
 }

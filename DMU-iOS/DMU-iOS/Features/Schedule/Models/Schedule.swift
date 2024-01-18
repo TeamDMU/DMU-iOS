@@ -32,13 +32,13 @@ struct Schedule: Identifiable {
     }
     
     // 시작과 종료 날짜가 같은지 확인하는 함수
-    private var isOneDayEvent: Bool {
+    private var isEqualDayEvent: Bool {
         Calendar.current.isDate(startDate, inSameDayAs: endDate)
     }
     
     // 일정을 보여주는 문자열
     var scheduleDisplay: String {
-        if isOneDayEvent {
+        if isEqualDayEvent {
             // 시작일과 종료일이 같다면 시작일만 표시
             return "\(formatDate(startDate))(\(formatDay(startDate)))"
         } else {

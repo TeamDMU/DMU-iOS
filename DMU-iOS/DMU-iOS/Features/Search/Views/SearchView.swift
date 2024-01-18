@@ -140,7 +140,7 @@ struct SearchResultsListView: View {
     
     @ObservedObject var viewModel: SearchViewModel
     
-    @State private var navigateToDetail = false
+    @State private var navigateToSearchDetail = false
     
     var body: some View {
         VStack {
@@ -158,7 +158,7 @@ struct SearchResultsListView: View {
             }).count > 3 {
                 Button(action: {
                     viewModel.performSearch()
-                    self.navigateToDetail = true
+                    self.navigateToSearchDetail = true
                     
                 }) {
                     Text("결과 모두 보기")
@@ -167,7 +167,7 @@ struct SearchResultsListView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                 }
-                .navigationDestination(isPresented: $navigateToDetail) {
+                .navigationDestination(isPresented: $navigateToSearchDetail) {
                     SearchDetailView(viewModel: viewModel)
                 }
                 .background(.clear)
@@ -185,7 +185,7 @@ struct SearchResultSingleView: View {
     @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
-        NavigationLink(destination: HomeDetailView(detailNotice: item, homeDetailViewNavigationBarTitle: item.noticeType, viewModel: NoticeViewModel(userSettings: UserSettings()))) {
+        NavigationLink(destination: HomeDetailView(homeDetailNotice: item, homeDetailViewNavigationBarTitle: item.noticeType, viewModel: NoticeViewModel(userSettings: UserSettings()))) {
             VStack(alignment: .leading) {
                 HStack{
                     Text(item.noticeTitle)

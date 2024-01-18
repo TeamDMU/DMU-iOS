@@ -12,11 +12,11 @@ struct NotificationKeywordEditView: View {
     @State private var selectedKeywords = [String: [String]]()
     @State private var showKeywordBalloon = true
     
-    @Binding var showingKeywordEditView: Bool
+    @Binding var isNavigatingToKeywordEditView: Bool
     
     var body: some View {
         VStack {
-            NotificationKeywordEditTopBarView(showingKeywordEditView: $showingKeywordEditView)
+            NotificationKeywordEditTopBarView(isNavigatingToKeywordEditView: $isNavigatingToKeywordEditView)
             
             ZStack(alignment: .bottom) {
                 // 키워드 리스트
@@ -41,7 +41,7 @@ struct NotificationKeywordEditView: View {
             CustomButton(
                 title: "완료",
                 action: {
-                    showingKeywordEditView = false
+                    isNavigatingToKeywordEditView = false
                 },
                 isEnabled: true
             )
@@ -53,12 +53,12 @@ struct NotificationKeywordEditView: View {
 // MARK: -NotificationKeywordEditView 상단바 설정
 struct NotificationKeywordEditTopBarView: View {
     
-    @Binding var showingKeywordEditView: Bool
+    @Binding var isNavigatingToKeywordEditView: Bool
     
     var body: some View {
         HStack {
             Button(action: {
-                showingKeywordEditView = false
+                isNavigatingToKeywordEditView = false
             }) {
                 Image(systemName: "xmark")
                     .foregroundColor(Color.black)
@@ -123,5 +123,5 @@ struct Triangle: Shape {
 }
 
 #Preview {
-    NotificationKeywordEditView(showingKeywordEditView: .constant(true))
+    NotificationKeywordEditView(isNavigatingToKeywordEditView: .constant(true))
 }

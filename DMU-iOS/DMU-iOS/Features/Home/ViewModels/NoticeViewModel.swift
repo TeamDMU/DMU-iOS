@@ -29,12 +29,12 @@ class NoticeViewModel: ObservableObject {
     }
     
     // MARK: -대학공지, 학부공지 별 탭 필터링
-    func filteredNotices() -> [Notice] {
+    func filterNotices() -> [Notice] {
         return notices.filter { $0.noticeType == selectedTab }
     }
     
     // MARK: -학부공지 학과별 리스트 필터링
-    func filteredNotices(department: String?) -> [Notice] {
+    func filterNotices(department: String?) -> [Notice] {
         if selectedTab == "대학공지" {
             return notices.filter { $0.noticeType == "대학공지" }
         } else if selectedTab == "학부공지" {

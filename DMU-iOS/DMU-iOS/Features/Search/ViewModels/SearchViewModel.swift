@@ -14,10 +14,6 @@ class SearchViewModel: ObservableObject {
     @Published var isNavigating: Bool = false
     @Published var recentSearches: [String] = []
     
-    init() {
-        loadRecentSearches() // ViewModel이 초기화 될 때, UserDefaults에서 최근 검색어 불러오기
-    }
-    
     func clearText() {
         self.searchText = ""
         
@@ -30,6 +26,11 @@ class SearchViewModel: ObservableObject {
         formatter.dateFormat = "yyyy.MM.dd"
         
         return formatter.string(from: date)
+    }
+    
+    // ViewModel이 초기화 될 때, UserDefaults에서 최근 검색어 불러오기
+    init() {
+        loadRecentSearches()
     }
     
     // UserDefaults에서 최근 검색어를 불러오는 메서드

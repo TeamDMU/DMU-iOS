@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Onboarding_Step_Three: View {
     
-    @State private var isOn = false
+    @State private var isNotificationOn = false
     @State private var isMainViewActive = false
     
     @Binding var isFirstLanching: Bool
@@ -20,7 +20,7 @@ struct Onboarding_Step_Three: View {
         
         OnboardingStepThreeProgressBarView()
         
-        OnboardingStepThreeSetNotificationView(isOn: $isOn)
+        OnboardingStepThreeSetNotificationView(isOn: $isNotificationOn)
         
         Spacer()
         

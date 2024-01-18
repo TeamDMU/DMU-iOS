@@ -22,7 +22,7 @@ struct HomeView: View {
                 
                 HomeSelectNoticeTabView(selectedTab: $viewModel.selectedTab)
                 
-                HomeNoticeListView(notices: viewModel.filteredNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
             }
             .onReceive(userSettings.$selectedDepartment) { _ in
                 viewModel.objectWillChange.send()
@@ -111,7 +111,7 @@ struct HomeNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
-                    NavigationLink(destination: HomeDetailView(detailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
+                    NavigationLink(destination: HomeDetailView(homeDetailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
                         HomeNoticeSingleView(notice: notice, viewModel: viewModel)
                     }
                     
