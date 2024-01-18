@@ -26,7 +26,6 @@ struct Onboarding_Step_Two: View {
             Spacer()
             
             CustomButton(title: "다음", action: {
-                print("버튼 클릭!")
                 if !selectedKeywords.isEmpty {
                     self.isStepThreeViewActive = true
                 }
@@ -49,15 +48,15 @@ struct OnboardingTitleView2: View {
                     HStack(spacing: 0){
                         Text("키워드")
                             .font(.Bold32)
-                            .foregroundColor(.blue300)
+                            .foregroundColor(Color.Blue300)
                         
                         Text("를 설정하면,")
                             .font(.Bold32)
-                            .foregroundColor(.gray500)
+                            .foregroundColor(Color.Gray500)
                     }
                     Text("해당 키워드의 공지를 볼 수 있어요.")
                         .font(.Bold24)
-                        .foregroundColor(.gray500)
+                        .foregroundColor(Color.Gray500)
                 }
             }
             .padding(.leading, -20)
@@ -74,27 +73,27 @@ struct ProgressBarView2: View {
             HStack {
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.gray300)
+                    .foregroundColor(Color.Gray300)
                 
                 Spacer()
                 
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.blue300)
+                    .foregroundColor(Color.Blue300)
                 
                 Spacer()
                 
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.gray300)
+                    .foregroundColor(Color.Gray300)
             }
             .frame(width: 240, height: 2)
-            .background(.gray300)
+            .background(Color.Gray300)
             
             HStack {
                 Text("키워드 설정")
                     .padding(.top, 10)
-                    .foregroundColor(.blue300)
+                    .foregroundColor(Color.Blue300)
                     .font(.Bold16)
             }
             

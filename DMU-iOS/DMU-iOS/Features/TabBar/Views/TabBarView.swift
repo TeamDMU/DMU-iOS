@@ -31,11 +31,11 @@ struct TabBarView: View {
                         Image(systemName: "house")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                         
                         Text("공지")
                             .font(.Medium12)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                     }
                     .tag(Tab.home)
                     .environmentObject(UserSettings())
@@ -49,11 +49,11 @@ struct TabBarView: View {
                         Image(systemName: "magnifyingglass")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                         
                         Text("검색")
                             .font(.Medium12)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                     }
                     .tag(Tab.search)
                 
@@ -63,11 +63,11 @@ struct TabBarView: View {
                         Image(systemName: "calendar")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                         
                         Text("일정")
                             .font(.Medium12)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                     }
                     .tag(Tab.schedule)
                 
@@ -77,11 +77,11 @@ struct TabBarView: View {
                         Image(systemName: "fork.knife")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                         
                         Text("식단")
                             .font(.Medium12)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                     }
                     .tag(Tab.meal)
                 
@@ -91,15 +91,15 @@ struct TabBarView: View {
                         Image(systemName: "gearshape")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                         
                         Text("설정")
                             .font(.Medium12)
-                            .foregroundColor(.gray400)
+                            .foregroundColor(Color.Gray400)
                     }
                     .tag(Tab.settings)
             }
-            .accentColor(.blue300)
+            .accentColor(Color.Blue300)
             .ignoresSafeArea(edges: .all)
         }
     }

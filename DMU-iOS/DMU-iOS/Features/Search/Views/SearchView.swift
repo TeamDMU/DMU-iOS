@@ -46,8 +46,8 @@ struct SearchBar: View {
             .padding(12)
             .padding(.horizontal, 28)
             .font(.Medium16)
-            .foregroundColor(Color.blue300)
-            .background(Color.blue100)
+            .foregroundColor(Color.Blue300)
+            .background(Color.Blue100)
             .cornerRadius(8)
             .overlay(
                 SearchBarOverlay(viewModel: viewModel)
@@ -73,7 +73,7 @@ struct SearchBarOverlay: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.blue300)
+                .foregroundColor(Color.Blue300)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 12)
                 .padding(.trailing, 12)
@@ -101,7 +101,7 @@ struct CancelButton: View {
                 .padding(.trailing, 20)
                 .padding(.leading, -10)
                 .font(.Medium16)
-                .foregroundColor(Color.blue300)
+                .foregroundColor(Color.Blue300)
                 .transition(.move(edge: .trailing))
         }
     }
@@ -116,7 +116,7 @@ struct ClearTextButton: View {
             viewModel.clearText()
         }) {
             Image(systemName: "multiply.circle.fill")
-                .foregroundColor(.gray400)
+                .foregroundColor(Color.Gray400)
                 .padding(.trailing, 12)
         }
     }
@@ -163,7 +163,7 @@ struct SearchResultsList: View {
                 }) {
                     Text("결과 모두 보기")
                         .font(.Bold16)
-                        .foregroundColor(Color.blue400)
+                        .foregroundColor(Color.Blue400)
                         .frame(maxWidth: .infinity)
                         .padding()
                 }
@@ -190,18 +190,18 @@ struct SearchResultRow: View {
                 HStack{
                     Text(item.noticeTitle)
                         .font(.Medium16)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 HStack {
                     Text("\(viewModel.formatDate(item.noticeDate))")
                         .font(.Regular12)
-                        .foregroundColor(.gray400)
+                        .foregroundColor(Color.Gray400)
                     
                     Text(item.noticeStaffName)
                         .font(.Regular12)
-                        .foregroundColor(.gray400)
+                        .foregroundColor(Color.Gray400)
                 }
                 .padding(.top, 1)
             }
@@ -211,7 +211,7 @@ struct SearchResultRow: View {
             .shadow(color: .gray, radius: 0, x: 0, y: 0)
         }
         
-        Divider().background(Color.gray200)
+        Divider().background(Color.Gray200)
     }
 }
 
@@ -226,13 +226,13 @@ struct RecentSearchesView: View {
                 VStack(alignment: .leading) {
                     Text("최근 검색어")
                         .font(.Bold18)
-                        .foregroundColor(.blue300)
+                        .foregroundColor(Color.Blue300)
                         .padding()
                     
                     ForEach(viewModel.recentSearches.reversed(), id: \.self) { search in
                         HStack {
                             Text(search)
-                                .foregroundColor(.gray500)
+                                .foregroundColor(Color.Gray500)
                                 .onTapGesture {
                                     viewModel.searchText = search
                                     viewModel.isEditing = true
@@ -245,7 +245,7 @@ struct RecentSearchesView: View {
                                 viewModel.removeRecentSearch(search)
                             }) {
                                 Image(systemName: "xmark")
-                                    .foregroundColor(.gray500)
+                                    .foregroundColor(Color.Gray500)
                             }
                         }
                         .padding(.horizontal)

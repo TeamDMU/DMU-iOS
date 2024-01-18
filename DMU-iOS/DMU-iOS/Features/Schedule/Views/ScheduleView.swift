@@ -27,7 +27,7 @@ struct ScheduleView: View {
             .font(.SemiBold20)
             .padding()
             .frame(maxWidth: .infinity)
-            .foregroundColor(.black)
+            .foregroundColor(Color.black)
     }
     
     private var monthNavigation: some View {
@@ -50,7 +50,7 @@ struct ScheduleView: View {
             viewModel.changeMonth(by: direction)
         }) {
             Image(systemName: systemName)
-                .foregroundColor(.blue300)
+                .foregroundColor(Color.blue300)
                 .frame(width: 30, height: 30)
         }
     }
@@ -70,13 +70,13 @@ struct ScheduleView: View {
             HStack {
                 Text(schedule.scheduleDisplay)
                     .font(.SemiBold14)
-                    .foregroundColor(.gray500)
+                    .foregroundColor(Color.Gray500)
                 
                 Spacer()
                 
                 Text(schedule.detail)
                     .font(.SemiBold14)
-                    .foregroundColor(.gray500)
+                    .foregroundColor(Color.Gray500)
                     .multilineTextAlignment(.center)
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)

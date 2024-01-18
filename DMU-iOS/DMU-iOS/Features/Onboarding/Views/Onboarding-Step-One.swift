@@ -30,7 +30,6 @@ struct Onboarding_Step_One: View {
                 Spacer()
                 
                 CustomButton(title: "다음", action: {
-                    print("버튼 클릭!")
                     if Department.list.contains(searchText) {
                         userSettings.selectedDepartment = searchText
                         self.isStepTwoViewActive = true
@@ -52,16 +51,16 @@ struct OnboardingTitleView1: View {
                 HStack(spacing: 0){
                     Text("소속학과")
                         .font(.Bold32)
-                        .foregroundColor(.blue300)
+                        .foregroundColor(Color.Blue300)
                     
                     Text("를 선택하면,")
                         .font(.Bold32)
-                        .foregroundColor(.gray500)
+                        .foregroundColor(Color.Gray500)
                 }
                 
                 Text("해당 학과의 공지만 바로 알려줘요.")
                     .font(.Bold24)
-                    .foregroundColor(.gray500)
+                    .foregroundColor(Color.Gray500)
             }
             .padding(.top, 60)
         }
@@ -76,27 +75,27 @@ struct ProgressBarView1: View {
             HStack {
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.blue300)
+                    .foregroundColor(Color.Blue300)
                 
                 Spacer()
                 
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.gray300)
+                    .foregroundColor(Color.Gray300)
                 
                 Spacer()
                 
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.gray300)
+                    .foregroundColor(Color.Gray300)
             }
             .frame(width: 240, height: 2)
-            .background(.gray300)
+            .background(Color.Gray300)
             
             HStack {
                 Text("학과 선택")
                     .padding(.top, 10)
-                    .foregroundColor(.blue300)
+                    .foregroundColor(Color.Blue300)
                     .font(.Bold16)
                 
                 Spacer()
@@ -120,11 +119,11 @@ struct DepartmentSearchView: View {
                 Spacer()
                 
                 Image(systemName: "magnifyingglass")
-                    .foregroundColor(Department.list.firstIndex(of: searchText) != nil ? Color.blue300 : Color.gray300)
+                    .foregroundColor(Department.list.firstIndex(of: searchText) != nil ? Color.Blue300 : Color.Gray300)
                     .frame(width: 30, height: 30)
                 
                 TextField("소속 학과를 검색해주세요.", text: $searchText)
-                    .foregroundColor(isTextInList ? Color.blue300 : Color.gray300)
+                    .foregroundColor(isTextInList ? Color.Blue300 : Color.Gray300)
                     .onChange(of: searchText, perform: { value in
                         self.isListVisible = !searchText.isEmpty && !(Department.list.contains(searchText))
                         self.isTextInList = Department.list.contains(searchText)
@@ -134,7 +133,7 @@ struct DepartmentSearchView: View {
                         self.searchText = ""
                     }) {
                         Image(systemName: "multiply.circle.fill")
-                            .foregroundColor(.gray300)
+                            .foregroundColor(Color.Gray300)
                             .frame(width: 30, height: 30)
                     }
                     .padding(.trailing, 16)
@@ -143,7 +142,7 @@ struct DepartmentSearchView: View {
             .frame(height: 52)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Department.list.firstIndex(of: searchText) != nil ? Color.blue300 : Color.gray300, lineWidth: 2)
+                    .stroke(Department.list.firstIndex(of: searchText) != nil ? Color.Blue300 : Color.Gray300, lineWidth: 2)
             )
             .padding(.horizontal, 20)
             

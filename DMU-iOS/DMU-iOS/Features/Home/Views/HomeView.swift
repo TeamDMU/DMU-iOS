@@ -60,7 +60,7 @@ struct BellButton: View {
             Image(systemName: "bell")
                 .resizable()
                 .frame(width: 20, height: 22)
-                .foregroundColor(.blue300)
+                .foregroundColor(Color.Blue300)
                 .padding(.trailing)
         }
     }
@@ -91,11 +91,11 @@ struct TabButton: View {
         }) {
             Text(title)
                 .font(.Bold16)
-                .foregroundColor(selectedTab == title ? .blue300 : .gray400)
+                .foregroundColor(selectedTab == title ? Color.Blue300 : Color.Gray400)
                 .frame(width: 196.5, height: 44)
                 .background(Color.white)
                 .overlay(
-                    selectedTab == title ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(.blue300) : nil
+                    selectedTab == title ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(Color.Blue300) : nil
                 )
         }.buttonStyle(PlainButtonStyle())
     }
@@ -115,7 +115,7 @@ struct NoticeListView: View {
                         NoticeView(notice: notice, viewModel: viewModel)
                     }
                     
-                    Divider().background(Color.gray200)
+                    Divider().background(Color.Gray200)
                 }
             }
         }
@@ -135,7 +135,7 @@ struct NoticeView: View {
             HStack {
                 Text(notice.noticeTitle)
                     .font(.Medium16)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading) // 여러 줄 정렬
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -143,11 +143,11 @@ struct NoticeView: View {
             HStack {
                 Text(viewModel.formatDate(notice.noticeDate))
                     .font(.Regular12)
-                    .foregroundColor(.gray400)
+                    .foregroundColor(Color.Gray400)
                 
                 Text(notice.noticeStaffName)
                     .font(.Regular12)
-                    .foregroundColor(.gray400)
+                    .foregroundColor(Color.Gray400)
                     .padding(.leading, 12)
             }
             .padding(.top, 1)
@@ -155,7 +155,7 @@ struct NoticeView: View {
         .padding(16)
         .background(Color.white)
         .cornerRadius(0)
-        .shadow(color: .gray, radius: 0, x: 0, y: 0)
+        .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
     }
 }
 

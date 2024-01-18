@@ -25,7 +25,6 @@ struct Onboarding_Step_Three: View {
         Spacer()
         
         CustomButton(title: "알림 설정 및 시작하기", action: {
-            print("버튼 클릭!")
             self.isMainViewActive = true
             isFirstLanching.toggle()
         }, isEnabled: true)
@@ -45,15 +44,15 @@ struct OnboardingTitleView3: View {
                     HStack(spacing: 0){
                         Text("키워드 알림 설정")
                             .font(.Bold32)
-                            .foregroundColor(.blue300)
+                            .foregroundColor(Color.Blue300)
                         
                         Text("으로")
                             .font(.Bold32)
-                            .foregroundColor(.gray500)
+                            .foregroundColor(Color.Gray500)
                     }
                     Text("중요한 공지사항을 놓치지 마세요!")
                         .font(.Bold24)
-                        .foregroundColor(.gray500)
+                        .foregroundColor(Color.Gray500)
                 }
             }
             .padding(.leading, -20)
@@ -70,29 +69,29 @@ struct ProgressBarView3: View {
             HStack {
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.gray300)
+                    .foregroundColor(Color.Gray300)
                 
                 Spacer()
                 
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.gray300)
+                    .foregroundColor(Color.Gray300)
                 
                 Spacer()
                 
                 Circle()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(.blue300)
+                    .foregroundColor(Color.Blue300)
             }
             .frame(width: 240, height: 2)
-            .background(.gray300)
+            .background(Color.Gray300)
             
             HStack {
                 Spacer()
                 
                 Text("알림 설정")
                     .padding(.top, 10)
-                    .foregroundColor(.blue300)
+                    .foregroundColor(Color.Blue300)
                     .font(.Bold16)
             }
             .padding(.trailing, 49)
@@ -113,12 +112,12 @@ struct NotificationSettingsView: View {
                     Image(systemName: "bell.fill")
                         .resizable()
                         .frame(width: 24, height: 24)
-                        .foregroundColor(isOn ? .blue300 : .gray400)
+                        .foregroundColor(isOn ? Color.Blue300 : Color.Gray400)
                         .padding(.trailing, 16)
                     
                     Text("키워드 알림 설정")
                         .font(.SemiBold20)
-                        .foregroundColor(isOn ? .blue300 : .gray400)
+                        .foregroundColor(isOn ? Color.Blue300 : Color.Gray400)
                     
                     Spacer()
                     
@@ -126,7 +125,7 @@ struct NotificationSettingsView: View {
                         Text("")
                     }
                     .labelsHidden()
-                    .toggleStyle(SwitchToggleStyle(tint: .blue300))
+                    .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
                 }
                 .frame(width: 240, height: 31)
             }
@@ -134,8 +133,8 @@ struct NotificationSettingsView: View {
             .frame(width: 320, height: 80)
             .background(Color.white)
             .cornerRadius(15)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue300, lineWidth: 2))
-            .shadow(color: Color.blue300.opacity(0.3), radius: 30, x: 0, y: 1)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.Blue300, lineWidth: 2))
+            .shadow(color: Color.Blue300.opacity(0.3), radius: 30, x: 0, y: 1)
         }
         .padding(.top, 96)
     }

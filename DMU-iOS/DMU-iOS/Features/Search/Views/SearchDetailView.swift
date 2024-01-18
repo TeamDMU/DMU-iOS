@@ -34,7 +34,7 @@ struct SearchDetailView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.backward")
-                        .foregroundColor(Color.blue300)
+                        .foregroundColor(Color.Blue300)
                 }
                 .padding(.leading, 20)
                 
@@ -44,14 +44,14 @@ struct SearchDetailView: View {
                         .padding(12)
                         .padding(.leading, 40)
                         .font(.Medium16)
-                        .foregroundColor(Color.blue300)
-                        .background(Color.blue100)
+                        .foregroundColor(Color.Blue300)
+                        .background(Color.Blue100)
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                         .overlay(
                             HStack {
                                 Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.blue300)
+                                    .foregroundColor(Color.Blue300)
                                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                     .padding(.leading, 36)
                                     .padding(.trailing, 36)

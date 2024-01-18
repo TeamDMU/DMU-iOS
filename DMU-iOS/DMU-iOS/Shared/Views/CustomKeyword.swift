@@ -23,23 +23,23 @@ struct CustomKeyword: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(0..<titles.count) { index in
+                ForEach(Array(titles.enumerated()), id: \.element) { index, title in
                     VStack(alignment: .leading, spacing: 16) {
-                        Text(titles[index])
+                        Text(title)
                             .font(.Medium20)
-                            .foregroundColor(Color.gray600)
+                            .foregroundColor(Color.Gray600)
                         
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 88), spacing: 0, alignment: .leading)], spacing: 16) {
                             ForEach(contents[index], id: \.self) { content in
                                 SelectableButton(content: content, isSelected: Binding(get: {
-                                    self.selectedKeywords[titles[index], default: []].contains(content)
+                                    self.selectedKeywords[title, default: []].contains(content)
                                 }, set: { newValue in
                                     if newValue {
-                                        self.selectedKeywords[titles[index], default: []].append(content)
+                                        self.selectedKeywords[title, default: []].append(content)
                                     } else {
-                                        self.selectedKeywords[titles[index]]?.removeAll { $0 == content }
-                                        if self.selectedKeywords[titles[index]]?.isEmpty == true {
-                                            self.selectedKeywords[titles[index]] = nil
+                                        self.selectedKeywords[title]?.removeAll { $0 == content }
+                                        if self.selectedKeywords[title]?.isEmpty == true {
+                                            self.selectedKeywords[title] = nil
                                         }
                                     }
                                 }), action: {})
@@ -69,13 +69,13 @@ struct SelectableButton: View {
         }) {
             Text(content)
                 .font(.SemiBold16)
-                .foregroundColor(isSelected ? Color.white : Color.gray400)
+                .foregroundColor(isSelected ? Color.white : Color.Gray400)
                 .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
-                .background(isSelected ? Color.blue300 : Color.white)
+                .background(isSelected ? Color.Blue300 : Color.white)
                 .cornerRadius(5)
                 .overlay(
                     RoundedRectangle(cornerRadius: 5)
-                        .stroke(isSelected ? Color.blue300 : Color.gray400, lineWidth: 1)
+                        .stroke(isSelected ? Color.Blue300 : Color.Gray400, lineWidth: 1)
                 )
         }
         .buttonStyle(PlainButtonStyle())

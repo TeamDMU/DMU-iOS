@@ -26,10 +26,10 @@ struct MealView: View {
     
     private var headerView: some View {
         Text("금주의 식단")
-            .font(.SemiBold20) // 이 폰트가 시스템에 포함되어 있거나, 앱에 추가되어 있다고 가정합니다.
+            .font(.SemiBold20)
             .padding()
             .frame(maxWidth: .infinity)
-            .foregroundColor(.gray500) // 이 색상이 앱의 Color Assets에 정의되어 있다고 가정합니다.
+            .foregroundColor(Color.Gray500)
             .padding(.horizontal, 20)
     }
     
@@ -42,7 +42,7 @@ struct MealView: View {
                     
                     Text(menu.details.joined(separator: ", "))
                         .font(.SemiBold16)
-                        .foregroundColor(.gray500)
+                        .foregroundColor(Color.Gray500)
                         .padding(.vertical, 14)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -63,8 +63,8 @@ struct MenuDateView: View {
                 .font(.SemiBold16)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 20)
-                .background(.blue100)
-                .foregroundColor(.gray500)
+                .background(Color.Blue100)
+                .foregroundColor(Color.Gray500)
                 .cornerRadius(30)
             
             Spacer(minLength: 20)

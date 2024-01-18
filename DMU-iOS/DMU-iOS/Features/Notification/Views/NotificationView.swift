@@ -42,7 +42,7 @@ struct NotificationView: View {
             self.presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "chevron.backward")
-                .foregroundColor(Color.gray500)
+                .foregroundColor(Color.Gray500)
         }
     }
     
@@ -53,7 +53,7 @@ struct NotificationView: View {
         }) {
             Text("편집")
                 .font(.Medium16)
-                .foregroundColor(Color.gray500)
+                .foregroundColor(Color.Gray500)
         }
         .fullScreenCover(isPresented: $showingKeywordEditView) {
             NotificationKeywordEditView(showingKeywordEditView: $showingKeywordEditView)
@@ -71,20 +71,20 @@ struct NotificationListView: View {
             VStack(alignment: .leading) {
                 Text(notice.noticeTitle)
                     .font(.Medium16)
-                    .foregroundColor(Color.gray500)
+                    .foregroundColor(Color.Gray500)
                     .fixedSize(horizontal: false, vertical: true)
                 
                 HStack {
                     Text(notice.noticeType)
                         .font(.SemiBold12)
-                        .foregroundColor(Color.gray400)
+                        .foregroundColor(Color.Gray400)
                     
                     Divider()
-                        .background(Color.gray300)
+                        .background(Color.Gray300)
                     
                     Text(notice.noticeKeyword)
                         .font(.SemiBold12)
-                        .foregroundColor(Color.gray400)
+                        .foregroundColor(Color.Gray400)
                 }
                 .padding(.top, 0)
             }
@@ -92,13 +92,13 @@ struct NotificationListView: View {
             Spacer()
             
             Image(systemName: "chevron.right")
-                .foregroundColor(Color.gray400)
+                .foregroundColor(Color.Gray400)
                 .frame(width: 24, height: 24)
         }
         .padding(20)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray300, lineWidth: 1)
+                .stroke(Color.Gray300, lineWidth: 1)
         )
     }
 }
