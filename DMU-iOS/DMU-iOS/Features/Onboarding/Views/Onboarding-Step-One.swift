@@ -21,11 +21,11 @@ struct Onboarding_Step_One: View {
     var body: some View {
         NavigationStack {
             VStack {
-                OnboardingTitleView1()
+                OnboardingStepOneTitleView()
                 
-                ProgressBarView1()
+                OnboardingStepOneProgressBarView()
                 
-                DepartmentSearchView(searchText: $searchText, isListVisible: $isListVisible, isTextInList: $isTextInList)
+                OnboardingStepOneSearchDepartmentView(searchText: $searchText, isListVisible: $isListVisible, isTextInList: $isTextInList)
                 
                 Spacer()
                 
@@ -43,7 +43,7 @@ struct Onboarding_Step_One: View {
     }
 }
 
-struct OnboardingTitleView1: View {
+struct OnboardingStepOneTitleView: View {
     
     var body: some View {
         HStack {
@@ -68,7 +68,7 @@ struct OnboardingTitleView1: View {
     }
 }
 
-struct ProgressBarView1: View {
+struct OnboardingStepOneProgressBarView: View {
     
     var body: some View {
         VStack(alignment: .center) {
@@ -107,7 +107,7 @@ struct ProgressBarView1: View {
     }
 }
 
-struct DepartmentSearchView: View {
+struct OnboardingStepOneSearchDepartmentView: View {
     
     @Binding var searchText: String
     @Binding var isListVisible: Bool

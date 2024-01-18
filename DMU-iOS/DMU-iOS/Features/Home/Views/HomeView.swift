@@ -18,11 +18,11 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                TopBarView(viewModel: viewModel)
+                HomeTopBarView(viewModel: viewModel)
                 
-                TabSelectionView(selectedTab: $viewModel.selectedTab)
+                HomeSelectNoticeTabView(selectedTab: $viewModel.selectedTab)
                 
-                NoticeListView(notices: viewModel.filteredNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                HomeNoticeListView(notices: viewModel.filteredNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
             }
             .onReceive(userSettings.$selectedDepartment) { _ in
                 viewModel.objectWillChange.send()
@@ -35,7 +35,7 @@ struct HomeView: View {
 }
 
 // MARK: - 상단바(로고 및 알림 버튼)
-struct TopBarView: View {
+struct HomeTopBarView: View {
     
     let viewModel: NoticeViewModel
     
@@ -46,12 +46,12 @@ struct TopBarView: View {
                 .frame(width: 75, height: 34)
                 .padding(.leading)
             Spacer()
-            BellButton(viewModel: viewModel)
+            HomeBellButton(viewModel: viewModel)
         }
     }
 }
 
-struct BellButton: View {
+struct HomeBellButton: View {
     
     let viewModel: NoticeViewModel
     
@@ -67,19 +67,19 @@ struct BellButton: View {
 }
 
 // MARK: - 대학공지, 학부공지 탭
-struct TabSelectionView: View {
+struct HomeSelectNoticeTabView: View {
     
     @Binding var selectedTab: String
     
     var body: some View {
         HStack {
-            TabButton(title: "대학공지", selectedTab: $selectedTab)
-            TabButton(title: "학부공지", selectedTab: $selectedTab)
+            HomeSelectNoticeTabButton(title: "대학공지", selectedTab: $selectedTab)
+            HomeSelectNoticeTabButton(title: "학부공지", selectedTab: $selectedTab)
         }
     }
 }
 
-struct TabButton: View {
+struct HomeSelectNoticeTabButton: View {
     
     let title: String
     
@@ -102,7 +102,7 @@ struct TabButton: View {
 }
 
 // MARK: - 공지사항 리스트뷰
-struct NoticeListView: View {
+struct HomeNoticeListView: View {
     
     let notices: [Notice]
     let viewModel: NoticeViewModel
@@ -112,7 +112,7 @@ struct NoticeListView: View {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
                     NavigationLink(destination: HomeDetailView(detailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
-                        NoticeView(notice: notice, viewModel: viewModel)
+                        HomeNoticeSingleView(notice: notice, viewModel: viewModel)
                     }
                     
                     Divider().background(Color.Gray200)
@@ -125,7 +125,7 @@ struct NoticeListView: View {
     }
 }
 
-struct NoticeView: View {
+struct HomeNoticeSingleView: View {
     
     let notice: Notice
     var viewModel: NoticeViewModel

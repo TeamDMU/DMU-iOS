@@ -16,11 +16,11 @@ struct Onboarding_Step_Three: View {
     
     var body: some View {
         
-        OnboardingTitleView3()
+        OnboardingStepThreeTitleView()
         
-        ProgressBarView3()
+        OnboardingStepThreeProgressBarView()
         
-        NotificationSettingsView(isOn: $isOn)
+        OnboardingStepThreeSetNotificationView(isOn: $isOn)
         
         Spacer()
         
@@ -35,7 +35,7 @@ struct Onboarding_Step_Three: View {
     }
 }
 
-struct OnboardingTitleView3: View {
+struct OnboardingStepThreeTitleView: View {
     
     var body: some View {
         VStack {
@@ -62,7 +62,7 @@ struct OnboardingTitleView3: View {
     }
 }
 
-struct ProgressBarView3: View {
+struct OnboardingStepThreeProgressBarView: View {
     
     var body: some View {
         VStack(alignment: .center) {
@@ -101,7 +101,7 @@ struct ProgressBarView3: View {
     }
 }
 
-struct NotificationSettingsView: View {
+struct OnboardingStepThreeSetNotificationView: View {
     
     @Binding var isOn : Bool
     

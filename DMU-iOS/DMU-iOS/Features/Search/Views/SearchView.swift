@@ -14,10 +14,10 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                SearchBar(viewModel: viewModel)
+                SearchBarView(viewModel: viewModel)
                 
                 if !viewModel.recentSearches.isEmpty && viewModel.searchText.isEmpty {
-                    RecentSearchesView(viewModel: viewModel)
+                    RecentSearchesListView(viewModel: viewModel)
                 }
                 
                 SearchResults(viewModel: viewModel)
@@ -30,7 +30,7 @@ struct SearchView: View {
 }
 
 // MARK: - 검색바 기능 구현
-struct SearchBar: View {
+struct SearchBarView: View {
     
     @ObservedObject var viewModel: SearchViewModel
     
@@ -60,7 +60,7 @@ struct SearchBar: View {
             }
             
             if viewModel.isEditing {
-                CancelButton(viewModel: viewModel)
+                SearchCancelButton(viewModel: viewModel)
             }
         }
     }
@@ -79,13 +79,13 @@ struct SearchBarOverlay: View {
                 .padding(.trailing, 12)
             
             if viewModel.isEditing && !viewModel.searchText.isEmpty {
-                ClearTextButton(viewModel: viewModel)
+                SearchClearTextButton(viewModel: viewModel)
             }
         }
     }
 }
 
-struct CancelButton: View {
+struct SearchCancelButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
     
@@ -107,7 +107,7 @@ struct CancelButton: View {
     }
 }
 
-struct ClearTextButton: View {
+struct SearchClearTextButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
     
@@ -130,13 +130,13 @@ struct SearchResults: View {
     var body: some View {
         ScrollView {
             if !viewModel.searchText.isEmpty {
-                SearchResultsList(viewModel: viewModel)
+                SearchResultsListView(viewModel: viewModel)
             }
         }
     }
 }
 
-struct SearchResultsList: View {
+struct SearchResultsListView: View {
     
     @ObservedObject var viewModel: SearchViewModel
     
@@ -149,7 +149,7 @@ struct SearchResultsList: View {
                     viewModel.searchText.isEmpty ||
                     item.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
                 }).prefix(3), id: \.id) { item in
-                    SearchResultRow(item: item, viewModel: viewModel)
+                    SearchResultSingleView(item: item, viewModel: viewModel)
                 }
             }
             
@@ -178,7 +178,7 @@ struct SearchResultsList: View {
     }
 }
 
-struct SearchResultRow: View {
+struct SearchResultSingleView: View {
     
     var item: Notice
     
@@ -216,7 +216,7 @@ struct SearchResultRow: View {
 }
 
 // MARK: - 최근 검색어 내역 리스트 뷰
-struct RecentSearchesView: View {
+struct RecentSearchesListView: View {
     
     @ObservedObject var viewModel: SearchViewModel
     

@@ -26,7 +26,7 @@ struct NotificationView: View {
             .padding(20)
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: homeBackButton, trailing: keywordEditButton)
+            .navigationBarItems(leading: NotificationBackButton, trailing: NotificationKeywordEditButton)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("키워드 알림함")
@@ -37,7 +37,7 @@ struct NotificationView: View {
         }
     }
     
-    private var homeBackButton: some View {
+    private var NotificationBackButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
@@ -46,7 +46,7 @@ struct NotificationView: View {
         }
     }
     
-    private var keywordEditButton: some View {
+    private var NotificationKeywordEditButton: some View {
         Button(action: {
             viewModel.editKeywords()
             self.showingKeywordEditView.toggle()

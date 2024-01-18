@@ -13,16 +13,16 @@ struct ScheduleView: View {
     
     var body: some View {
         VStack {
-            scheduleTitle
+            ScheduleTitle
             
-            monthNavigation
+            ScheduleMonthNavigationBarView
             
-            schedulesList
+            SchedulesListView
         }
         .onAppear(perform: viewModel.refreshData)
     }
     
-    private var scheduleTitle: some View {
+    private var ScheduleTitle: some View {
         Text("학사일정")
             .font(.SemiBold20)
             .padding()
@@ -30,7 +30,7 @@ struct ScheduleView: View {
             .foregroundColor(Color.black)
     }
     
-    private var monthNavigation: some View {
+    private var ScheduleMonthNavigationBarView: some View {
         HStack {
             monthChangeButton(direction: -1, systemName: "chevron.left")
             
@@ -55,17 +55,17 @@ struct ScheduleView: View {
         }
     }
     
-    private var schedulesList: some View {
+    private var SchedulesListView: some View {
         ScrollView {
             VStack(spacing: 0) {
                 ForEach(viewModel.schedules) { schedule in
-                    scheduleRow(for: schedule)
+                    ScheduleSingleView(for: schedule)
                 }
             }
         }
     }
     
-    private func scheduleRow(for schedule: Schedule) -> some View {
+    private func ScheduleSingleView(for schedule: Schedule) -> some View {
         VStack {
             HStack {
                 Text(schedule.scheduleDisplay)

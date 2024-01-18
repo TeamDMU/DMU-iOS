@@ -18,13 +18,13 @@ struct HomeDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            DetailNoticeScrollView(detailNotice: detailNotice, homeDetailViewNavigationBarTitle: homeDetailViewNavigationBarTitle, presentationMode: presentationMode, viewModel: viewModel)
+            HomeDetailNoticeScrollView(detailNotice: detailNotice, homeDetailViewNavigationBarTitle: homeDetailViewNavigationBarTitle, presentationMode: presentationMode, viewModel: viewModel)
         }
     }
 }
 
 // MARK: -공지사항 디테일 뷰 스크롤 화면
-struct DetailNoticeScrollView: View {
+struct HomeDetailNoticeScrollView: View {
     
     let detailNotice: Notice
     let homeDetailViewNavigationBarTitle: String
@@ -34,26 +34,26 @@ struct DetailNoticeScrollView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                NoticeKeywordAndButtonStack(detailNotice: detailNotice)
+                HomeDetailNoticeKeywordAndButtonBar(detailNotice: detailNotice)
                 
-                NoticeTitleText(detailNotice: detailNotice)
+                HomeDetailNoticeTitle(detailNotice: detailNotice)
                 
-                NoticeStaffNameAndDateStack(detailNotice: detailNotice, viewModel: viewModel)
+                HomeDetailNoticeStaffNameAndDateBar(detailNotice: detailNotice, viewModel: viewModel)
                 
-                NoticeDetail(detailNotice: detailNotice)
+                HomeDetailNoticeContentDetail(detailNotice: detailNotice)
                 
-                NoticeFileAttachment()
+                HomeDetailNoticeFileAttachment()
             }
             .padding(20)
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle(homeDetailViewNavigationBarTitle, displayMode: .inline)
-            .navigationBarItems(leading: BackButton(presentationMode: presentationMode))
+            .navigationBarItems(leading: HomeDetailBackButton(presentationMode: presentationMode))
         }
     }
 }
 
 // MARK: -키워드 뷰, 공유하기 버튼
-struct NoticeKeywordAndButtonStack: View {
+struct HomeDetailNoticeKeywordAndButtonBar: View {
     
     let detailNotice: Notice
     
@@ -79,7 +79,7 @@ struct NoticeKeywordAndButtonStack: View {
 }
 
 // MARK: -공지사항 제목 텍스트
-struct NoticeTitleText: View {
+struct HomeDetailNoticeTitle: View {
     
     let detailNotice: Notice
     
@@ -92,7 +92,7 @@ struct NoticeTitleText: View {
 }
 
 // MARK: -공지사항 직원명, 날짜
-struct NoticeStaffNameAndDateStack: View {
+struct HomeDetailNoticeStaffNameAndDateBar: View {
     
     let detailNotice: Notice
     let viewModel: NoticeViewModel
@@ -121,7 +121,7 @@ struct NoticeStaffNameAndDateStack: View {
 }
 
 // MARK: -공지사항 디테일 뷰
-struct NoticeDetail: View {
+struct HomeDetailNoticeContentDetail: View {
     
     let detailNotice: Notice
     
@@ -138,7 +138,7 @@ struct NoticeDetail: View {
 }
 
 // MARK: -공지사항 첨부파일
-struct NoticeFileAttachment: View {
+struct HomeDetailNoticeFileAttachment: View {
     
     var body: some View {
         HStack {
@@ -162,7 +162,7 @@ struct NoticeFileAttachment: View {
 }
 
 // MARK: -뒤로 가기 버튼
-struct BackButton: View {
+struct HomeDetailBackButton: View {
     
     let presentationMode: Binding<PresentationMode>
     

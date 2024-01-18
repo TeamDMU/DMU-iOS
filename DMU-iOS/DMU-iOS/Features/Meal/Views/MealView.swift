@@ -17,14 +17,14 @@ struct MealView: View {
     
     var body: some View {
         VStack {
-            headerView
+            MealTitle
             
-            menuListView
+            MenuListView
         }
         .onAppear(perform: viewModel.loadSampleData)
     }
     
-    private var headerView: some View {
+    private var MealTitle: some View {
         Text("금주의 식단")
             .font(.SemiBold20)
             .padding()
@@ -33,7 +33,7 @@ struct MealView: View {
             .padding(.horizontal, 20)
     }
     
-    private var menuListView: some View {
+    private var MenuListView: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 0) {
                 ForEach(viewModel.thisWeeksMenu) { menu in

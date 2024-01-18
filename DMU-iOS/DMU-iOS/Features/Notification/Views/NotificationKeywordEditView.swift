@@ -23,7 +23,7 @@ struct NotificationKeywordEditView: View {
                 CustomKeyword(selectedKeywords: $selectedKeywords)
                 
                 if showKeywordBalloon {
-                    BalloonView()
+                    NotificationKeywordEditBalloonView()
                         .transition(.opacity)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -83,7 +83,7 @@ struct NotificationKeywordEditTopBarView: View {
 }
 
 // MARK: -NotificationKeywordEditView 키워드 말풍선
-struct BalloonView: View {
+struct NotificationKeywordEditBalloonView: View {
     
     var body: some View {
         VStack {

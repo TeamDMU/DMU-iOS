@@ -16,14 +16,14 @@ struct SettingDepartmentView: View {
     @State private var settingDepartment: String? = nil
     
     var body: some View {
-        departmentList()
+        departmentListView()
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle("학과 설정", displayMode: .inline)
-            .navigationBarItems(leading: backButton, trailing: saveButton)
+            .navigationBarItems(leading: SettingDepartmentBackButton, trailing: SettingDepartmentSaveButton)
     }
     
     @ViewBuilder
-    var backButton: some View {
+    var SettingDepartmentBackButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
@@ -33,7 +33,7 @@ struct SettingDepartmentView: View {
     }
     
     @ViewBuilder
-    var saveButton: some View {
+    var SettingDepartmentSaveButton: some View {
         Button(action: {
             viewModel.saveDepartment()
             self.presentationMode.wrappedValue.dismiss()
@@ -46,11 +46,11 @@ struct SettingDepartmentView: View {
     }
     
     @ViewBuilder
-    func departmentList() -> some View {
+    func departmentListView() -> some View {
         ScrollView {
             LazyVStack {
                 ForEach(Department.departmentlist, id: \.self) { department in
-                    departmentRow(for: department)
+                    departmentSingleView(for: department)
                 }
             }
             .padding(20)
@@ -59,7 +59,7 @@ struct SettingDepartmentView: View {
     }
     
     @ViewBuilder
-    func departmentRow(for department: String) -> some View {
+    func departmentSingleView(for department: String) -> some View {
         Text(department)
             .font(.Medium18)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40, alignment: .center)

@@ -17,9 +17,9 @@ struct Onboarding_Step_Two: View {
     var body: some View {
         
         VStack {
-            OnboardingTitleView2()
+            OnboardingStepTwoTitleView()
             
-            ProgressBarView2()
+            OnboardingStepTwoProgressBarView()
             
             CustomKeyword(selectedKeywords: $selectedKeywords)
             
@@ -39,7 +39,7 @@ struct Onboarding_Step_Two: View {
     }
 }
 
-struct OnboardingTitleView2: View {
+struct OnboardingStepTwoTitleView: View {
     
     var body: some View {
         VStack {
@@ -66,7 +66,7 @@ struct OnboardingTitleView2: View {
 }
 
 
-struct ProgressBarView2: View {
+struct OnboardingStepTwoProgressBarView: View {
     
     var body: some View {
         VStack(alignment: .center) {

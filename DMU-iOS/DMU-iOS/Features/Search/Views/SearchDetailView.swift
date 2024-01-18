@@ -20,7 +20,7 @@ struct SearchDetailView: View {
                     ForEach(sampleData.filter({ item in
                         item.noticeTitle.range(of: viewModel.searchText, options: .caseInsensitive) != nil || viewModel.searchText.isEmpty
                     }), id: \.id) { item in
-                        SearchResultRow(item: item, viewModel: viewModel)
+                        SearchResultSingleView(item: item, viewModel: viewModel)
                     }
                 }
             }

@@ -9,12 +9,12 @@ import SwiftUI
 
 class TabBarViewModel: ObservableObject {
     
-    @Published var selectedTab: Tab = .home
+    @Published var selectedTab: Tab = .Home
 }
 
 enum Tab: String {
     
-    case home, search, schedule, meal, settings
+    case Home, Search, Schedule, Meal, Settings
 }
 
 struct TabBarView: View {
@@ -37,7 +37,7 @@ struct TabBarView: View {
                             .font(.Medium12)
                             .foregroundColor(Color.Gray400)
                     }
-                    .tag(Tab.home)
+                    .tag(Tab.Home)
                     .environmentObject(UserSettings())
                     .onAppear {
                         
@@ -55,7 +55,7 @@ struct TabBarView: View {
                             .font(.Medium12)
                             .foregroundColor(Color.Gray400)
                     }
-                    .tag(Tab.search)
+                    .tag(Tab.Search)
                 
                 // MARK: 일정 화면
                 ScheduleView()
@@ -69,7 +69,7 @@ struct TabBarView: View {
                             .font(.Medium12)
                             .foregroundColor(Color.Gray400)
                     }
-                    .tag(Tab.schedule)
+                    .tag(Tab.Schedule)
                 
                 // MARK: 식단 화면
                 MealView()
@@ -83,7 +83,7 @@ struct TabBarView: View {
                             .font(.Medium12)
                             .foregroundColor(Color.Gray400)
                     }
-                    .tag(Tab.meal)
+                    .tag(Tab.Meal)
                 
                 // MARK: 설정 화면
                 SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
@@ -97,7 +97,7 @@ struct TabBarView: View {
                             .font(.Medium12)
                             .foregroundColor(Color.Gray400)
                     }
-                    .tag(Tab.settings)
+                    .tag(Tab.Settings)
             }
             .accentColor(Color.Blue300)
             .ignoresSafeArea(edges: .all)
