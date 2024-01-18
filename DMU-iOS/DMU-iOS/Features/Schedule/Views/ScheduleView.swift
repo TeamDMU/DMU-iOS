@@ -22,6 +22,7 @@ struct ScheduleView: View {
         .onAppear(perform: viewModel.refreshData)
     }
     
+    // MARK: 학사일정 화면 타이틀 뷰
     private var ScheduleTitle: some View {
         Text("학사일정")
             .font(.SemiBold20)
@@ -30,6 +31,7 @@ struct ScheduleView: View {
             .foregroundColor(Color.black)
     }
     
+    // MARK: 학사일정 화면 네비게이션바 뷰
     private var ScheduleMonthNavigationBarView: some View {
         HStack {
             monthChangeButton(direction: -1, systemName: "chevron.left")
@@ -45,6 +47,7 @@ struct ScheduleView: View {
         .padding(.horizontal, 20)
     }
     
+    // MARK: 학사일정 화면 월 이동 버튼
     private func monthChangeButton(direction: Int, systemName: String) -> some View {
         Button(action: {
             viewModel.changeMonth(by: direction)
@@ -55,6 +58,7 @@ struct ScheduleView: View {
         }
     }
     
+    // MARK: 학사일정 화면 일정 리스트 뷰
     private var SchedulesListView: some View {
         ScrollView {
             VStack(spacing: 0) {

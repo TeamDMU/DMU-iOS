@@ -24,6 +24,7 @@ struct MealView: View {
         .onAppear(perform: viewModel.loadSampleData)
     }
     
+    // MARK: 금주의 식단 화면 타이틀 뷰
     private var MealTitle: some View {
         Text("금주의 식단")
             .font(.SemiBold20)
@@ -33,6 +34,7 @@ struct MealView: View {
             .padding(.horizontal, 20)
     }
     
+    // MARK: 금주의 식단 메뉴 리스트 뷰
     private var MenuListView: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 0) {

@@ -19,7 +19,7 @@ class NoticeViewModel: ObservableObject {
         self.userSettings = userSettings
     }
     
-    // MARK: -공지사항 날짜 데이터 포맷
+    // MARK: -공지사항 화면 날짜 데이터 포맷
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         
@@ -48,7 +48,7 @@ class NoticeViewModel: ObservableObject {
         return notices
     }
     
-    // MARK: -키워드 알림창 화면으로 이동
+    // MARK: -공지사항 화면 키워드 알림창 화면으로 이동
     
     @Published var isNavigationToNotification: Bool = false
     

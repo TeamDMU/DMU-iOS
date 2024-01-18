@@ -17,9 +17,10 @@ class SearchViewModel: ObservableObject {
     func clearText() {
         self.searchText = ""
         
-        onSearchTextChange() // 검색어를 지웠을 때도 최근 검색어를 다시 불러옵니다.
+        onSearchTextChange()
     }
     
+    // MARK: 검색 화면 날짜 데이터 포맷
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         
@@ -28,24 +29,24 @@ class SearchViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
-    // ViewModel이 초기화 될 때, UserDefaults에서 최근 검색어 불러오기
+    // MARK: ViewModel이 초기화 될 때, UserDefaults에서 최근 검색어 불러오기
     init() {
         loadRecentSearches()
     }
     
-    // UserDefaults에서 최근 검색어를 불러오는 메서드
+    // MARK: UserDefaults에서 최근 검색어 데이터 불러오는 메서드
     func loadRecentSearches() {
         if let searches = UserDefaults.standard.array(forKey: "recentSearches") as? [String] {
             self.recentSearches = searches
         }
     }
     
-    // UserDefaults에 최근 검색어를 저장하는 메서드
+    // MARK: UserDefaults에 최근 검색어 데이터를 저장하는 메서드
     private func saveRecentSearches() {
         UserDefaults.standard.set(self.recentSearches, forKey: "recentSearches")
     }
     
-    // 최근 검색어를 추가하는 메서드
+    // MARK: 최근 검색어를 추가하는 메서드
     func addRecentSearch(_ search: String) {
         if !search.isEmpty && !self.recentSearches.contains(search) {
             self.recentSearches.append(search)
@@ -54,14 +55,14 @@ class SearchViewModel: ObservableObject {
         }
     }
     
-    // 최근 검색어를 삭제하는 메서드
+    // MARK: 최근 검색어를 삭제하는 메서드
     func removeRecentSearch(_ search: String) {
         self.recentSearches.removeAll { $0 == search }
         
         saveRecentSearches()
     }
     
-    // 검색어가 변경될 때 호출되는 메서드
+    // MARK: 검색어가 변경될 때 호출되는 메서드
     func onSearchTextChange() {
         if searchText.isEmpty {
             loadRecentSearches()
@@ -70,25 +71,25 @@ class SearchViewModel: ObservableObject {
         }
     }
     
-    // 검색을 수행할 때 호출되는 메서드
+    // MARK: 검색을 수행할 때 호출되는 메서드
     func performSearch() {
         if !searchText.isEmpty {
             addRecentSearch(searchText)
         }
     }
     
-    // 모든 결과 보기 버튼을 눌렀을 때 검색 수행
+    // MARK: 모든 결과 보기 버튼을 눌렀을 때 검색 수행
     func showAllResults() {
         performSearch()
     }
     
-    // 검색 뷰로 돌아왔을 때 호출될 초기화 메서드
+    // MARK: 검색 뷰로 돌아왔을 때 호출될 초기화 메서드
     func resetSearchState() {
         searchText = ""
         isEditing = false
         isNavigating = false
         
-        loadRecentSearches() // 최근 검색어를 다시 불러옵니다.
+        loadRecentSearches()
     }
 }
 

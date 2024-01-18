@@ -15,6 +15,7 @@ struct SearchDetailView: View {
     
     var body: some View {
         NavigationStack {
+            // MARK: 모든 검색 결과 리스트 뷰
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(sampleData.filter({ item in
@@ -28,8 +29,8 @@ struct SearchDetailView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
                                     HStack(spacing: 0) {
+                // MARK: 검색 디테일 화면 뒤로 가기 버튼
                 Button(action: {
-                    // 뒤로가기 버튼 누르면 검색 화면 초기화
                     viewModel.resetSearchState()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {

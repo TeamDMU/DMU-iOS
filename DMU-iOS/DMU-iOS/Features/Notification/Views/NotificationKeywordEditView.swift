@@ -37,7 +37,7 @@ struct NotificationKeywordEditView: View {
             
             Spacer()
             
-            // 키워드 설정 완료 버튼
+            // MARK: 키워드 설정 완료 버튼
             CustomButton(
                 title: "완료",
                 action: {
@@ -50,7 +50,7 @@ struct NotificationKeywordEditView: View {
     }
 }
 
-// MARK: -NotificationKeywordEditView 상단바 설정
+// MARK: -키워드 설정 화면 상단바 뷰
 struct NotificationKeywordEditTopBarView: View {
     
     @Binding var isNavigatingToKeywordEditView: Bool
@@ -82,7 +82,7 @@ struct NotificationKeywordEditTopBarView: View {
     }
 }
 
-// MARK: -NotificationKeywordEditView 키워드 말풍선
+// MARK: -키워드 설정 화면 키워드 말풍선(5초 유지)
 struct NotificationKeywordEditBalloonView: View {
     
     var body: some View {
@@ -107,7 +107,7 @@ struct NotificationKeywordEditBalloonView: View {
     }
 }
 
-// MARK: -NotificationKeywordEditView 말풍선 밑에 화살표 설정
+// MARK: -키워드 설정 화면 말풍선 밑에 화살표 설정
 struct Triangle: Shape {
     
     func path(in rect: CGRect) -> Path {

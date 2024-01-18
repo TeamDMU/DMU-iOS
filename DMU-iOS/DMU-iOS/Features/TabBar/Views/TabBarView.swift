@@ -7,16 +7,19 @@
 
 import SwiftUI
 
+// MARK: - 탭바 ViewModel
 class TabBarViewModel: ObservableObject {
     
     @Published var selectedTab: Tab = .Home
 }
 
+// MARK: - 탭 목록
 enum Tab: String {
     
     case Home, Search, Schedule, Meal, Settings
 }
 
+// MARK: - 메인화면 탭바 뷰
 struct TabBarView: View {
     
     @ObservedObject var viewModel: TabBarViewModel

@@ -35,6 +35,7 @@ struct Onboarding_Step_Three: View {
     }
 }
 
+// MARK: - 온보딩 화면 3단계 타이틀 뷰
 struct OnboardingStepThreeTitleView: View {
     
     var body: some View {
@@ -62,6 +63,7 @@ struct OnboardingStepThreeTitleView: View {
     }
 }
 
+// MARK: - 온보딩 화면 3단계 프로그레스바
 struct OnboardingStepThreeProgressBarView: View {
     
     var body: some View {
@@ -101,6 +103,7 @@ struct OnboardingStepThreeProgressBarView: View {
     }
 }
 
+// MARK: - 온보딩 화면 3단계 알림 설정 토글 뷰
 struct OnboardingStepThreeSetNotificationView: View {
     
     @Binding var isOn : Bool

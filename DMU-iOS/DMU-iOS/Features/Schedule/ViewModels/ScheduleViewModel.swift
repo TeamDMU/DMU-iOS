@@ -14,14 +14,17 @@ class ScheduleViewModel: ObservableObject {
     
     private let calendar = Calendar.current
     
+    // MARK: 학사일정 데이터 초기화
     init() {
         refreshData()
     }
     
+    // MARK: 학사일정 데이터 주입
     func refreshData() {
         schedules = fetchSchedulesForCurrentMonth()
     }
     
+    // MARK: 학사일정 월 이동
     func changeMonth(by increment: Int) {
         guard let newDate = calendar.date(byAdding: .month, value: increment, to: currentDate) else { return }
         
@@ -30,6 +33,7 @@ class ScheduleViewModel: ObservableObject {
         refreshData()
     }
     
+    // MARK: 현재 년월
     var currentYearMonth: String {
         formatDateToYearMonth(currentDate)
     }

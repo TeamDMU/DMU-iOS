@@ -34,7 +34,7 @@ struct HomeView: View {
     }
 }
 
-// MARK: - 상단바(로고 및 알림 버튼)
+// MARK: - 공지사항 화면 상단바(로고 및 알림 버튼)
 struct HomeTopBarView: View {
     
     let viewModel: NoticeViewModel
@@ -66,7 +66,7 @@ struct HomeBellButton: View {
     }
 }
 
-// MARK: - 대학공지, 학부공지 탭
+// MARK: - 공지사항 화면 대학공지, 학부공지 탭
 struct HomeSelectNoticeTabView: View {
     
     @Binding var selectedTab: String
@@ -101,7 +101,7 @@ struct HomeSelectNoticeTabButton: View {
     }
 }
 
-// MARK: - 공지사항 리스트뷰
+// MARK: - 공지사항 화면 공지사항 리스트뷰
 struct HomeNoticeListView: View {
     
     let notices: [Notice]

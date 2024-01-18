@@ -37,6 +37,7 @@ struct NotificationView: View {
         }
     }
     
+    // MARK: 알림함 화면 뒤로가기 버튼
     private var NotificationBackButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -46,6 +47,7 @@ struct NotificationView: View {
         }
     }
     
+    // MARK: 알림함 화면 키워드 편집 버튼
     private var NotificationKeywordEditButton: some View {
         Button(action: {
             viewModel.editKeywords()
@@ -61,7 +63,7 @@ struct NotificationView: View {
     }
 }
 
-// MARK: - 알림 리스트뷰
+// MARK: - 알림 내역 리스트뷰
 struct NotificationListView: View {
     
     var notice: Notice

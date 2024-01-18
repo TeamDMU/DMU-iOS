@@ -22,6 +22,7 @@ struct SettingDepartmentView: View {
             .navigationBarItems(leading: SettingDepartmentBackButton, trailing: SettingDepartmentSaveButton)
     }
     
+    //MARK: 학과 설정 화면 뒤로가기 버튼
     @ViewBuilder
     var SettingDepartmentBackButton: some View {
         Button(action: {
@@ -32,6 +33,7 @@ struct SettingDepartmentView: View {
         }
     }
     
+    //MARK: 학과 설정 화면 학과 저장 버튼
     @ViewBuilder
     var SettingDepartmentSaveButton: some View {
         Button(action: {
@@ -45,6 +47,7 @@ struct SettingDepartmentView: View {
         .disabled(viewModel.settingDepartment == nil)
     }
     
+    //MARK: 학과 설정 화면 학과 리스트 뷰
     @ViewBuilder
     func departmentListView() -> some View {
         ScrollView {

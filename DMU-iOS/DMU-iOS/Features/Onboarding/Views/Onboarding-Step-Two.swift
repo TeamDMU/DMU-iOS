@@ -39,6 +39,7 @@ struct Onboarding_Step_Two: View {
     }
 }
 
+// MARK: - 온보딩 화면 2단계 타이틀 뷰
 struct OnboardingStepTwoTitleView: View {
     
     var body: some View {
@@ -65,7 +66,7 @@ struct OnboardingStepTwoTitleView: View {
     }
 }
 
-
+// MARK: - 온보딩 화면 2단계 프로그레스바
 struct OnboardingStepTwoProgressBarView: View {
     
     var body: some View {

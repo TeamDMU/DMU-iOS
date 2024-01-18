@@ -29,7 +29,7 @@ struct SearchView: View {
     }
 }
 
-// MARK: - 검색바 기능 구현
+// MARK: - 검색 화면 검색바 뷰
 struct SearchBarView: View {
     
     @ObservedObject var viewModel: SearchViewModel
@@ -85,6 +85,7 @@ struct SearchBarOverlay: View {
     }
 }
 
+// MARK: 검색창 텍스트 삭제 및 키워드 내리는 버튼
 struct SearchCancelButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
@@ -107,6 +108,7 @@ struct SearchCancelButton: View {
     }
 }
 
+// MARK: 검색바 뷰 내부 텍스트 삭제 버튼
 struct SearchClearTextButton: View {
     
     @ObservedObject var viewModel: SearchViewModel

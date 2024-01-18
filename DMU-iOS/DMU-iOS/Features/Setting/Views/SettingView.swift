@@ -98,7 +98,7 @@ struct SettingView: View {
                 
                 Spacer()
             }
-            .navigationDestination(isPresented: $viewModel.isNavigatingToDepartment) {
+            .navigationDestination(isPresented: $viewModel.isNavigatingToSettingDepartmentView) {
                 SettingDepartmentView(viewModel: viewModel)
             }
         }

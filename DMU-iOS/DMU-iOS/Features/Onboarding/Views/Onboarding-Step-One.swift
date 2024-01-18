@@ -43,6 +43,7 @@ struct Onboarding_Step_One: View {
     }
 }
 
+// MARK: - 온보딩 화면 1단계 타이틀 뷰
 struct OnboardingStepOneTitleView: View {
     
     var body: some View {
@@ -68,6 +69,7 @@ struct OnboardingStepOneTitleView: View {
     }
 }
 
+// MARK: - 온보딩 화면 1단계 프로그레스바
 struct OnboardingStepOneProgressBarView: View {
     
     var body: some View {
@@ -107,6 +109,7 @@ struct OnboardingStepOneProgressBarView: View {
     }
 }
 
+// MARK: - 온보딩 화면 1단계 소속 학과 검색 뷰
 struct OnboardingStepOneSearchDepartmentView: View {
     
     @Binding var searchText: String

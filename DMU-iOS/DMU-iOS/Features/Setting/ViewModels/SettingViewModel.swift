@@ -20,10 +20,12 @@ class SettingViewModel: ObservableObject {
         self.userSettings = userSettings
     }
     
+    //MARK: 학과 설정 화면으로 네비게이션 이동
     func navigateToDepartment() {
         isNavigatingToSettingDepartmentView = true
     }
     
+    //MARK: 학과 선택
     func selectDepartment(_ department: String) {
         if settingDepartment == department {
             settingDepartment = nil
@@ -32,6 +34,7 @@ class SettingViewModel: ObservableObject {
         }
     }
     
+    //MARK: 선택 학과 저장
     func saveDepartment() {
         guard let department = settingDepartment else {
             return
