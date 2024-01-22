@@ -10,6 +10,10 @@
 		F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901F2642B3EA51A002F6E3C /* Onboarding-Step-Three.swift */; };
 		F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */; };
 		F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */; };
+		F911890E2B5DF82200492AB1 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F911890D2B5DF82200492AB1 /* CombineMoya */; };
+		F91189102B5DF82200492AB1 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F911890F2B5DF82200492AB1 /* Moya */; };
+		F91189122B5DF82200492AB1 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F91189112B5DF82200492AB1 /* ReactiveMoya */; };
+		F91189142B5DF82200492AB1 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F91189132B5DF82200492AB1 /* RxMoya */; };
 		F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914AD812B47C85400706D48 /* SettingDepartmentView.swift */; };
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
@@ -105,6 +109,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F91189102B5DF82200492AB1 /* Moya in Frameworks */,
+				F911890E2B5DF82200492AB1 /* CombineMoya in Frameworks */,
+				F91189142B5DF82200492AB1 /* RxMoya in Frameworks */,
+				F91189122B5DF82200492AB1 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +490,12 @@
 			dependencies = (
 			);
 			name = "DMU-iOS";
+			packageProductDependencies = (
+				F911890D2B5DF82200492AB1 /* CombineMoya */,
+				F911890F2B5DF82200492AB1 /* Moya */,
+				F91189112B5DF82200492AB1 /* ReactiveMoya */,
+				F91189132B5DF82200492AB1 /* RxMoya */,
+			);
 			productName = "DMU-iOS";
 			productReference = F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -510,6 +524,9 @@
 				Base,
 			);
 			mainGroup = F96760552B3AE1CB00C09F29;
+			packageReferences = (
+				F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = F967605F2B3AE1CB00C09F29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -796,6 +813,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F911890D2B5DF82200492AB1 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		F911890F2B5DF82200492AB1 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		F91189112B5DF82200492AB1 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		F91189132B5DF82200492AB1 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F96760562B3AE1CB00C09F29 /* Project object */;
 }
