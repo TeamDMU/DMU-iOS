@@ -407,8 +407,16 @@
 		F9AEF1D32B63465F004C6A62 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F9AEF1D42B63467F004C6A62 /* Foundation */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F9AEF1D42B63467F004C6A62 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		F9AF3C4F2B416E1A001779E3 /* Search */ = {
