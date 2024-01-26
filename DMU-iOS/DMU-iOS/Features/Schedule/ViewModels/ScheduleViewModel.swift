@@ -13,6 +13,13 @@ class ScheduleViewModel: ObservableObject {
     @Published var schedules: [Schedule] = []
     
     private let calendar = Calendar.current
+    private let scheduleService = ScheduleService()
+    
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd(E)"
+        return formatter
+    }()
     
     // MARK: 학사일정 데이터 초기화
     init() {
@@ -21,7 +28,18 @@ class ScheduleViewModel: ObservableObject {
     
     // MARK: 학사일정 데이터 주입
     func refreshData() {
-        schedules = fetchSchedulesForCurrentMonth()
+        let year = calendar.component(.year, from: currentDate)
+        let month = calendar.component(.month, from: currentDate)
+        scheduleService.getSchedules(year: year, month: month) { [weak self] result in
+            switch result {
+            case .success(let schedules):
+                DispatchQueue.main.async {
+                    self?.schedules = schedules.filter { $0.year == year && $0.month == month }
+                }
+            case .failure(let error):
+                print("Failed to get schedules: \(error)")
+            }
+        }
     }
     
     // MARK: 학사일정 월 이동
@@ -39,25 +57,6 @@ class ScheduleViewModel: ObservableObject {
     }
     
     // MARK: - Helper Methods
-    
-    private func makeDate(year: Int, month: Int, day: Int) -> Date {
-        DateComponents(calendar: calendar, year: year, month: month, day: day).date ?? Date()
-    }
-    
-    private func fetchSchedulesForCurrentMonth() -> [Schedule] {
-        let allSchedules = [
-            Schedule(startDate: makeDate(year: 2024, month: 1, day: 10), endDate: makeDate(year: 2024, month: 1, day: 11), detail: "신입생 오리엔테이션"),
-            Schedule(startDate: makeDate(year: 2024, month: 1, day: 11), endDate: makeDate(year: 2024, month: 1, day: 11), detail: "졸업식"),
-            Schedule(startDate: makeDate(year: 2024, month: 2, day: 14), endDate: makeDate(year: 2024, month: 2, day: 20), detail: "중간고사 시작"),
-            Schedule(startDate: makeDate(year: 2024, month: 3, day: 21), endDate: makeDate(year: 2024, month: 3, day: 21), detail: "스프링 브레이크")
-        ]
-        
-        return allSchedules.filter {
-            calendar.isDate($0.startDate, equalTo: currentDate, toGranularity: .month) ||
-            calendar.isDate($0.endDate, equalTo: currentDate, toGranularity: .month)
-        }
-    }
-    
     private func formatDateToYearMonth(_ date: Date) -> String {
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
