@@ -9,6 +9,10 @@
 
 *.xcconfig
 
+# plist 파일
+
+*.plist
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,xcode
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,swiftpackagemanager,xcode
