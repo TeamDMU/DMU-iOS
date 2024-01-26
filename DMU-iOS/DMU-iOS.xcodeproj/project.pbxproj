@@ -387,6 +387,7 @@
 			children = (
 				F952652A2B576441003BC8DA /* App */,
 				F952652B2B576454003BC8DA /* Features */,
+				F9AEF1D32B63465F004C6A62 /* Network */,
 				F95265442B576666003BC8DA /* Shared */,
 				F95265462B5766B7003BC8DA /* Resources */,
 				F9B77F262B3AF91C00A6E2D1 /* Info.plist */,
@@ -401,6 +402,13 @@
 				F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9AEF1D32B63465F004C6A62 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F9AF3C4F2B416E1A001779E3 /* Search */ = {
