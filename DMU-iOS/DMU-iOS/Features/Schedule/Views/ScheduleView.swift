@@ -19,7 +19,7 @@ struct ScheduleView: View {
             
             SchedulesListView
         }
-        .onAppear(perform: viewModel.refreshData)
+        //.onAppear(perform: viewModel.refreshData)
     }
     
     // MARK: 학사일정 화면 타이틀 뷰

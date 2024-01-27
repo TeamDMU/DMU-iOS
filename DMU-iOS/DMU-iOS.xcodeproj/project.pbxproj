@@ -15,6 +15,12 @@
 		F91189122B5DF82200492AB1 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F91189112B5DF82200492AB1 /* ReactiveMoya */; };
 		F91189142B5DF82200492AB1 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F91189132B5DF82200492AB1 /* RxMoya */; };
 		F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914AD812B47C85400706D48 /* SettingDepartmentView.swift */; };
+		F92993552B63DA7D009DC2B6 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92993542B63DA7D009DC2B6 /* Secrets.plist */; };
+		F92993572B63DD5E009DC2B6 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92993562B63DD5E009DC2B6 /* APIConstants.swift */; };
+		F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92993582B63E3F4009DC2B6 /* Networking.swift */; };
+		F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935A2B63E4D9009DC2B6 /* APIService.swift */; };
+		F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935D2B63E59F009DC2B6 /* ScheduleService.swift */; };
+		F92993602B63E854009DC2B6 /* ScheduleResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935F2B63E854009DC2B6 /* ScheduleResult.swift */; };
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
@@ -27,6 +33,7 @@
 		F99531342B4E6DC100FE2991 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99531332B4E6DC100FE2991 /* HomeDetailView.swift */; };
 		F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B982B44EF50007208B2 /* Schedule.swift */; };
 		F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */; };
+		F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */; };
 		F9AF3C512B416E3A001779E3 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C502B416E3A001779E3 /* SearchView.swift */; };
 		F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C532B416E5D001779E3 /* ScheduleView.swift */; };
 		F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C562B416EE2001779E3 /* MealView.swift */; };
@@ -61,6 +68,12 @@
 		F90D26482B3D9C0100C864C4 /* Onboarding-Step-Two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-Two.swift"; sourceTree = "<group>"; };
 		F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyword.swift; sourceTree = "<group>"; };
 		F914AD812B47C85400706D48 /* SettingDepartmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDepartmentView.swift; sourceTree = "<group>"; };
+		F92993542B63DA7D009DC2B6 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		F92993562B63DD5E009DC2B6 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		F92993582B63E3F4009DC2B6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		F929935A2B63E4D9009DC2B6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F929935D2B63E59F009DC2B6 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
+		F929935F2B63E854009DC2B6 /* ScheduleResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResult.swift; sourceTree = "<group>"; };
 		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -74,6 +87,7 @@
 		F99531332B4E6DC100FE2991 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		F99C6B982B44EF50007208B2 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		F9AF3C502B416E3A001779E3 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F9AF3C532B416E5D001779E3 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		F9AF3C562B416EE2001779E3 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
@@ -119,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F929935C2B63E58E009DC2B6 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				F929935D2B63E59F009DC2B6 /* ScheduleService.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		F952652A2B576441003BC8DA /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				F99C6B982B44EF50007208B2 /* Schedule.swift */,
+				F929935F2B63E854009DC2B6 /* ScheduleResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,9 +410,11 @@
 			children = (
 				F952652A2B576441003BC8DA /* App */,
 				F952652B2B576454003BC8DA /* Features */,
+				F9AEF1D32B63465F004C6A62 /* Network */,
 				F95265442B576666003BC8DA /* Shared */,
 				F95265462B5766B7003BC8DA /* Resources */,
 				F9B77F262B3AF91C00A6E2D1 /* Info.plist */,
+				F92993542B63DA7D009DC2B6 /* Secrets.plist */,
 				F96760672B3AE1CC00C09F29 /* Preview Content */,
 			);
 			path = "DMU-iOS";
@@ -401,6 +426,26 @@
 				F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9AEF1D32B63465F004C6A62 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEF1D42B63467F004C6A62 /* Foundation */,
+				F929935C2B63E58E009DC2B6 /* Schedule */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F9AEF1D42B63467F004C6A62 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */,
+				F92993562B63DD5E009DC2B6 /* APIConstants.swift */,
+				F929935A2B63E4D9009DC2B6 /* APIService.swift */,
+				F92993582B63E3F4009DC2B6 /* Networking.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		F9AF3C4F2B416E1A001779E3 /* Search */ = {
@@ -545,6 +590,7 @@
 				F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */,
 				F9B77F362B3AF9D900A6E2D1 /* Pretendard-ExtraBold.otf in Resources */,
 				F9B77F372B3AF9D900A6E2D1 /* Pretendard-Light.otf in Resources */,
+				F92993552B63DA7D009DC2B6 /* Secrets.plist in Resources */,
 				F9B77F302B3AF9D900A6E2D1 /* Pretendard-Bold.otf in Resources */,
 				F9B77F352B3AF9D900A6E2D1 /* Pretendard-Thin.otf in Resources */,
 				F9B77F312B3AF9D900A6E2D1 /* Pretendard-ExtraLight.otf in Resources */,
@@ -564,9 +610,12 @@
 			files = (
 				F9AF3C602B4170B2001779E3 /* TabBarView.swift in Sources */,
 				F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */,
+				F92993572B63DD5E009DC2B6 /* APIConstants.swift in Sources */,
 				F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */,
 				F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */,
+				F92993602B63E854009DC2B6 /* ScheduleResult.swift in Sources */,
 				F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */,
+				F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */,
 				F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */,
 				F9AF3C632B418190001779E3 /* Notice.swift in Sources */,
 				F9DBEA8A2B464EC5004B64D6 /* MealViewModel.swift in Sources */,
@@ -576,6 +625,7 @@
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
 				F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */,
 				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
+				F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */,
 				F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */,
 				F99531342B4E6DC100FE2991 /* HomeDetailView.swift in Sources */,
 				F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */,
@@ -589,10 +639,12 @@
 				F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
+				F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */,
 				F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,
 				F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */,
 				F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */,
+				F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */,
 				F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
