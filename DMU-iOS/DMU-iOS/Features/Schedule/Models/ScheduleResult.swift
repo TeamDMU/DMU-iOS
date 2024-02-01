@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct ScheduleResult: Decodable {
-    let schedules: [YearSchedule]
-}
-
 struct YearSchedule: Decodable {
     let year: Int
     let yearSchedule: [MonthSchedule]
@@ -26,17 +22,15 @@ struct ScheduleEntry: Decodable {
     let content: String
 }
 
-extension ScheduleResult {
+extension YearSchedule {
     func toSchedules() -> [Schedule] {
-        return schedules.flatMap { yearSchedule in
-            yearSchedule.yearSchedule.flatMap { monthSchedule in
-                monthSchedule.scheduleEntries.map { scheduleEntry in
-                    Schedule(year: yearSchedule.year,
-                             month: monthSchedule.month,
-                             startDate: scheduleEntry.date.first ?? "",
-                             endDate: scheduleEntry.date.last ?? "",
-                             detail: scheduleEntry.content)
-                }
+        return yearSchedule.flatMap { monthSchedule in
+            monthSchedule.scheduleEntries.map { scheduleEntry in
+                Schedule(year: year,
+                         month: monthSchedule.month,
+                         startDate: scheduleEntry.date.first ?? "",
+                         endDate: scheduleEntry.date.last ?? "",
+                         detail: scheduleEntry.content)
             }
         }
     }

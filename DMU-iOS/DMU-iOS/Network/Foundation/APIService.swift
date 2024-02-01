@@ -24,7 +24,7 @@ extension APIService: TargetType {
     var path: String {
         switch self {
         case .getSchedules:
-            return APIConstants.schedulesEndpoint
+            return APIConstants.scheduleEndpoint
         }
     }
     
