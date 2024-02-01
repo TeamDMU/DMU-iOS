@@ -15,8 +15,10 @@ struct DMU_iOSApp: App {
         let appearanceTabBar = UITabBarAppearance()
         
         appearanceTabBar.configureWithOpaqueBackground()
-        appearanceTabBar.backgroundColor = .white
+        appearanceTabBar.backgroundColor = UIColor.white
         
+        UITabBar.appearance().barTintColor = UIColor.white
+        UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().standardAppearance = appearanceTabBar
         
         //MARK: 네비게이션바 투명도, 그림자 제거
