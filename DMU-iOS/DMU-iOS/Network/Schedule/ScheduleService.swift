@@ -17,8 +17,8 @@ class ScheduleService: Networking {
             switch result {
             case .success(let response):
                 do {
-                    let scheduleResult = try JSONDecoder().decode(ScheduleResult.self, from: response.data)
-                    let schedules = scheduleResult.toSchedules()
+                    let scheduleResult = try JSONDecoder().decode([YearSchedule].self, from: response.data)
+                    let schedules = scheduleResult.flatMap { $0.toSchedules() }
                     print("Received schedules")
                     completion(.success(schedules))
                 } catch let error {

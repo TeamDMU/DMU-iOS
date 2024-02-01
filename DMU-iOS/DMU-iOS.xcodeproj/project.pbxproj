@@ -20,7 +20,6 @@
 		F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92993582B63E3F4009DC2B6 /* Networking.swift */; };
 		F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935A2B63E4D9009DC2B6 /* APIService.swift */; };
 		F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935D2B63E59F009DC2B6 /* ScheduleService.swift */; };
-		F92993602B63E854009DC2B6 /* ScheduleResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935F2B63E854009DC2B6 /* ScheduleResult.swift */; };
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
@@ -30,6 +29,8 @@
 		F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760632B3AE1CB00C09F29 /* ContentView.swift */; };
 		F96760662B3AE1CC00C09F29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760652B3AE1CC00C09F29 /* Assets.xcassets */; };
 		F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */; };
+		F9682B582B6B31A3004A2EFE /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B572B6B31A3004A2EFE /* ScheduleDTO.swift */; };
+		F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */; };
 		F99531342B4E6DC100FE2991 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99531332B4E6DC100FE2991 /* HomeDetailView.swift */; };
 		F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B982B44EF50007208B2 /* Schedule.swift */; };
 		F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */; };
@@ -73,7 +74,6 @@
 		F92993582B63E3F4009DC2B6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F929935A2B63E4D9009DC2B6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F929935D2B63E59F009DC2B6 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
-		F929935F2B63E854009DC2B6 /* ScheduleResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResult.swift; sourceTree = "<group>"; };
 		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -84,6 +84,8 @@
 		F96760632B3AE1CB00C09F29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F96760652B3AE1CC00C09F29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F9682B572B6B31A3004A2EFE /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 		F99531332B4E6DC100FE2991 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		F99C6B982B44EF50007208B2 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -290,7 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				F99C6B982B44EF50007208B2 /* Schedule.swift */,
-				F929935F2B63E854009DC2B6 /* ScheduleResult.swift */,
+				F9682B572B6B31A3004A2EFE /* ScheduleDTO.swift */,
+				F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -613,7 +616,6 @@
 				F92993572B63DD5E009DC2B6 /* APIConstants.swift in Sources */,
 				F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */,
 				F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */,
-				F92993602B63E854009DC2B6 /* ScheduleResult.swift in Sources */,
 				F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */,
 				F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */,
 				F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */,
@@ -624,6 +626,7 @@
 				F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
 				F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */,
+				F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */,
 				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
 				F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */,
 				F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */,
@@ -639,6 +642,7 @@
 				F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
+				F9682B582B6B31A3004A2EFE /* ScheduleDTO.swift in Sources */,
 				F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */,
 				F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,

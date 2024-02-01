@@ -1,28 +1,28 @@
 //
-//  ScheduleResult.swift
+//  ScheduleDTO.swift
 //  DMU-iOS
 //
-//  Created by 이예빈 on 1/26/24.
+//  Created by 이예빈 on 2/1/24.
 //
 
 import Foundation
 
-struct YearSchedule: Decodable {
+struct YearScheduleDTO: Decodable {
     let year: Int
-    let yearSchedule: [MonthSchedule]
+    let yearSchedule: [MonthScheduleDTO]
 }
 
-struct MonthSchedule: Decodable {
+struct MonthScheduleDTO: Decodable {
     let month: Int
-    let scheduleEntries: [ScheduleEntry]
+    let scheduleEntries: [ScheduleEntryDTO]
 }
 
-struct ScheduleEntry: Decodable {
+struct ScheduleEntryDTO: Decodable {
     let date: [String]
     let content: String
 }
 
-extension YearSchedule {
+extension YearScheduleDTO {
     func toSchedules() -> [Schedule] {
         return yearSchedule.flatMap { monthSchedule in
             monthSchedule.scheduleEntries.map { scheduleEntry in
