@@ -9,18 +9,25 @@ import Foundation
 
 // API에 필요한 상수 정의
 struct APIConstants {
+    
+    // API 기본 URL, 실패 시 Fallback URL
     static var baseURL: String {
         return Bundle.main.readSecret(key: "baseURL") ?? "Fallback URL"
     }
     
-    static let schedulesEndpoint = "scheduler"
+    // 학사일정 API 엔드포인트
+    static let scheduleEndpoint = "scheduler"
     
+    // HTTP 필드 이름
     static let contentType = "Content-Type"
+    
+    // HTTP 필드값
     static let applicationJSON = "application/json"
     static let multipartFormData = "multipart/form"
 }
 
 extension APIConstants {
+    // 토큰이 없는 경우 사용하는 HTTP 헤더
     static var noTokenHeader: Dictionary<String, String> {
         [contentType: applicationJSON]
     }
