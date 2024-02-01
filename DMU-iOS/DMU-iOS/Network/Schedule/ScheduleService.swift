@@ -7,28 +7,10 @@
 
 import Foundation
 
-import Moya
-
-class ScheduleService: Networking {
-    let provider = MoyaProvider<APIService>()
+class ScheduleService {
+    private let repository = ScheduleRepository()
 
     func getSchedules(year: Int, month: Int, completion: @escaping (Result<[Schedule], Error>) -> Void) {
-        request(.getSchedules(year: year, month: month)) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let scheduleResult = try JSONDecoder().decode([YearSchedule].self, from: response.data)
-                    let schedules = scheduleResult.flatMap { $0.toSchedules() }
-                    print("Received schedules")
-                    completion(.success(schedules))
-                } catch let error {
-                    print("Decoding failed with error: \(error)")
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                print("Network request failed with error: \(error)")
-                completion(.failure(error))
-            }
-        }
+        repository.getSchedules(year: year, month: month, completion: completion)
     }
 }
