@@ -32,9 +32,9 @@ class ScheduleViewModel: ObservableObject {
         let month = calendar.component(.month, from: currentDate)
         scheduleService.getSchedules(year: year, month: month) { [weak self] result in
             switch result {
-            case .success(let schedules):
+            case .success(let yearSchedule):
                 DispatchQueue.main.async {
-                    self?.schedules = schedules.filter { $0.year == year && $0.month == month }
+                    self?.schedules = yearSchedule.filter { $0.year == year && $0.month == month }
                 }
             case .failure(let error):
                 print("Failed to get schedules: \(error)")
