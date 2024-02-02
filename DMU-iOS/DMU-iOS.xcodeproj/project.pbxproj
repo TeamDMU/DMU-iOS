@@ -24,6 +24,7 @@
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
 		F95114552B6C7DA4009BDC98 /* MenuDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95114542B6C7DA4009BDC98 /* MenuDTO.swift */; };
+		F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951145B2B6C8138009BDC98 /* MenuRepository.swift */; };
 		F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */; };
 		F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */; };
 		F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */; };
@@ -79,6 +80,7 @@
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F95114542B6C7DA4009BDC98 /* MenuDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDTO.swift; sourceTree = "<group>"; };
+		F951145B2B6C8138009BDC98 /* MenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRepository.swift; sourceTree = "<group>"; };
 		F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DMU-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,30 @@
 				F929935D2B63E59F009DC2B6 /* ScheduleService.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		F95114562B6C7EC5009BDC98 /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Meal;
+			sourceTree = "<group>";
+		};
+		F95114592B6C8105009BDC98 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				F9DBEA862B464C49004B64D6 /* Menu.swift */,
+				F95114542B6C7DA4009BDC98 /* MenuDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		F951145A2B6C8122009BDC98 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F951145B2B6C8138009BDC98 /* MenuRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		F952652A2B576441003BC8DA /* App */ = {
@@ -318,8 +344,8 @@
 		F952653E2B5765D6003BC8DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F9DBEA862B464C49004B64D6 /* Menu.swift */,
-				F95114542B6C7DA4009BDC98 /* MenuDTO.swift */,
+				F95114592B6C8105009BDC98 /* DTO */,
+				F951145A2B6C8122009BDC98 /* Repository */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -455,6 +481,7 @@
 			children = (
 				F9AEF1D42B63467F004C6A62 /* Foundation */,
 				F929935C2B63E58E009DC2B6 /* Schedule */,
+				F95114562B6C7EC5009BDC98 /* Meal */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -670,6 +697,7 @@
 				F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */,
 				F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */,
 				F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */,
+				F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
