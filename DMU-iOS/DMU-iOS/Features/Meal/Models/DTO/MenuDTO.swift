@@ -13,7 +13,7 @@ struct MenuDTO: Decodable {
 }
 
 extension MenuDTO {
-    func toMenus() -> Menu {
+    func toMenu() -> Menu {
         return Menu(date: date, details: menus)
     }
 }
