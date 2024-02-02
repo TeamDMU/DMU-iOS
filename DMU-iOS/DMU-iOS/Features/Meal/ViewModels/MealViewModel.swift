@@ -15,25 +15,26 @@ class MealViewModel: ObservableObject {
     private let dateFormatterGet = DateFormatter()
     private let dateFormatterPrint = DateFormatter()
     
+    private let menuService = MenuService()
+    
     init() {
         dateFormatterGet.dateFormat = "yyyy.MM.dd"
         dateFormatterPrint.dateFormat = "yyyy년 MM월 dd일"
+        loadData()
     }
     
-    // MARK: 예시 데이터를 불러오는 함수
-    func loadSampleData() {
-        let sampleData = [
-            Menu(date: "2024.01.02", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.03", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.04", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.05", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.08", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.09", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.10", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-            Menu(date: "2024.01.11", details: ["백미밥", "아귀콩나물찜", "동그랑땡전", "청포묵김무침", "배추김치", "소고기미역국"]),
-        ]
-        weeklyMenu = sampleData
-    }
+    func loadData() {
+            menuService.getMenus { [weak self] result in
+                switch result {
+                case .success(let menus):
+                    DispatchQueue.main.async {
+                        self?.weeklyMenu = menus
+                    }
+                case .failure(let error):
+                    print("Failed to get menus: \(error)")
+                }
+            }
+        }
     
     // MARK: 금주의 식단 화면 날짜 데이터 포맷
     func formatDate(_ dateString: String) -> String {

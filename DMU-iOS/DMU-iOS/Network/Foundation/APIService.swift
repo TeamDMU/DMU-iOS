@@ -11,6 +11,7 @@ import Moya
 
 enum APIService {
     case getSchedules(year: Int, month: Int)
+    case getMenus
 }
 
 extension APIService: TargetType {
@@ -25,12 +26,14 @@ extension APIService: TargetType {
         switch self {
         case .getSchedules:
             return APIConstants.scheduleEndpoint
+        case .getMenus:
+            return APIConstants.menuEndpoint
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getSchedules:
+        case .getSchedules, .getMenus:
             return .get
         }
     }
@@ -41,7 +44,7 @@ extension APIService: TargetType {
     
     var task: Task {
         switch self {
-        case .getSchedules:
+        case .getSchedules, .getMenus:
             return .requestPlain
         }
     }

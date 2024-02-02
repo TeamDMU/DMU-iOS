@@ -21,7 +21,7 @@ struct MealView: View {
             
             MenuListView
         }
-        .onAppear(perform: viewModel.loadSampleData)
+        .onAppear(perform: viewModel.loadData)
     }
     
     // MARK: 금주의 식단 화면 타이틀 뷰
@@ -45,8 +45,10 @@ struct MealView: View {
                     Text(menu.details.joined(separator: ", "))
                         .font(.SemiBold16)
                         .foregroundColor(Color.Gray500)
+                        .multilineTextAlignment(.center)
                         .padding(.vertical, 14)
                         .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.bottom, 20)
                 }
             }
         }

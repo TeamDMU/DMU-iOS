@@ -18,6 +18,9 @@ struct APIConstants {
     // 학사일정 API 엔드포인트
     static let scheduleEndpoint = "scheduler"
     
+    // 식단표 API 엔드포인트
+    static let menuEndpoint = "diet"
+    
     // HTTP 필드 이름
     static let contentType = "Content-Type"
     
