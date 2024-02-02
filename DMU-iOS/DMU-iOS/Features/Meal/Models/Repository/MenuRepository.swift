@@ -18,7 +18,7 @@ class MenuRepository {
             case .success(let response):
                 do {
                     let menuDTOs = try JSONDecoder().decode([MenuDTO].self, from: response.data)
-                    let menus = menuDTOs.flatMap { $0.toMenus() }
+                    let menus = menuDTOs.compactMap { $0.toMenus() }
                     completion(.success(menus))
                 } catch {
                     completion(.failure(error))
