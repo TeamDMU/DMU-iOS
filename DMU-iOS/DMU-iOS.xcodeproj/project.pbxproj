@@ -23,6 +23,7 @@
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
+		F95114552B6C7DA4009BDC98 /* MenuDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95114542B6C7DA4009BDC98 /* MenuDTO.swift */; };
 		F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */; };
 		F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */; };
 		F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */; };
@@ -77,6 +78,7 @@
 		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		F95114542B6C7DA4009BDC98 /* MenuDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDTO.swift; sourceTree = "<group>"; };
 		F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DMU-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				F9DBEA862B464C49004B64D6 /* Menu.swift */,
+				F95114542B6C7DA4009BDC98 /* MenuDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */,
 				F92993572B63DD5E009DC2B6 /* APIConstants.swift in Sources */,
 				F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */,
+				F95114552B6C7DA4009BDC98 /* MenuDTO.swift in Sources */,
 				F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */,
 				F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */,
 				F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */,
