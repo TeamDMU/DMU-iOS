@@ -18,41 +18,9 @@ struct HomeView: View {
             VStack {
                 HomeTopBarView(viewModel: viewModel)
                 
-                HStack {
-                    VStack {
-                        Text("대학 공지")
-                            .font(.Bold16)
-                            .foregroundColor(viewModel.selectedTab == "대학 공지" ? Color.Blue300 : Color.Gray400)
-                            .onTapGesture {
-                                viewModel.selectedTab = "대학 공지"
-                            }
-                        Rectangle()
-                            .frame(height: 2)
-                            .foregroundColor(viewModel.selectedTab == "대학 공지" ? Color.Blue300 : Color.clear)
-                    }
-                    VStack {
-                        Text("학과 공지")
-                            .font(.Bold16)
-                            .foregroundColor(viewModel.selectedTab == "학과 공지" ? Color.Blue300 : Color.Gray400)
-                            .onTapGesture {
-                                viewModel.selectedTab = "학과 공지"
-                            }
-                        Rectangle()
-                            .frame(height: 2)
-                            .foregroundColor(viewModel.selectedTab == "학과 공지" ? Color.Blue300 : Color.clear)
-                    }
-                }
-                .padding(.top, 13)
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
+                NoticeTabBarView(viewModel: viewModel)
                 
-                TabView(selection: $viewModel.selectedTab) {
-                    HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
-                        .tag("대학 공지")
-                    HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
-                        .tag("학과 공지")
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                NoticeTabSwipeView(viewModel: viewModel, userSettings: _userSettings)
             }
             .onReceive(userSettings.$selectedDepartment) { _ in
                 viewModel.objectWillChange.send()
@@ -96,6 +64,60 @@ struct HomeBellButton: View {
     }
 }
 
+// MARK: - 공지사항 화면 상단탭바(대학 공지, 학과 공지)
+struct NoticeTabBarView: View {
+    
+    @ObservedObject var viewModel: NoticeViewModel
+    
+    var body: some View {
+        HStack {
+            NoticeTabBarItem(title: "대학 공지", viewModel: viewModel)
+            NoticeTabBarItem(title: "학과 공지", viewModel: viewModel)
+        }
+        .padding(.top, 13)
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+    }
+}
+
+struct NoticeTabBarItem: View {
+    
+    var title: String
+    
+    @ObservedObject var viewModel: NoticeViewModel
+    
+    var body: some View {
+        VStack {
+            Text(title)
+                .font(.Bold16)
+                .foregroundColor(viewModel.selectedTab == title ? Color.Blue300 : Color.Gray400)
+                .onTapGesture {
+                    viewModel.selectedTab = title
+                }
+            Rectangle()
+                .frame(height: 2)
+                .foregroundColor(viewModel.selectedTab == title ? Color.Blue300 : Color.clear)
+        }
+    }
+}
+
+struct NoticeTabSwipeView: View {
+    
+    @ObservedObject var viewModel: NoticeViewModel
+    
+    @EnvironmentObject var userSettings: UserSettings
+    
+    var body: some View {
+        TabView(selection: $viewModel.selectedTab) {
+            HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                .tag("대학 공지")
+            HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                .tag("학과 공지")
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+}
+
 // MARK: - 공지사항 화면 공지사항 리스트뷰
 struct HomeNoticeListView: View {
     
@@ -106,7 +128,7 @@ struct HomeNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
-                    NavigationLink(destination: HomeDetailView(homeDetailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
+                    NavigationLink(destination: HomeDetailView(homeDetailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: viewModel)){
                         HomeNoticeSingleView(notice: notice, viewModel: viewModel)
                     }
                     
