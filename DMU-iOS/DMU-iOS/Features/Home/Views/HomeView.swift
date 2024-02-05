@@ -9,8 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var selectedTab = "대학 공지"
-    
     @ObservedObject var viewModel = NoticeViewModel(userSettings: UserSettings())
     
     @EnvironmentObject var userSettings: UserSettings
@@ -20,9 +18,41 @@ struct HomeView: View {
             VStack {
                 HomeTopBarView(viewModel: viewModel)
                 
-                HomeSelectNoticeTabView(selectedTab: $viewModel.selectedTab)
+                HStack {
+                    VStack {
+                        Text("대학 공지")
+                            .font(.Bold16)
+                            .foregroundColor(viewModel.selectedTab == "대학 공지" ? Color.Blue300 : Color.Gray400)
+                            .onTapGesture {
+                                viewModel.selectedTab = "대학 공지"
+                            }
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundColor(viewModel.selectedTab == "대학 공지" ? Color.Blue300 : Color.clear)
+                    }
+                    VStack {
+                        Text("학과 공지")
+                            .font(.Bold16)
+                            .foregroundColor(viewModel.selectedTab == "학과 공지" ? Color.Blue300 : Color.Gray400)
+                            .onTapGesture {
+                                viewModel.selectedTab = "학과 공지"
+                            }
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundColor(viewModel.selectedTab == "학과 공지" ? Color.Blue300 : Color.clear)
+                    }
+                }
+                .padding(.top, 13)
+                .frame(maxWidth: .infinity)
+                .background(Color.white)
                 
-                HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                TabView(selection: $viewModel.selectedTab) {
+                    HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                        .tag("대학 공지")
+                    HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                        .tag("학과 공지")
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
             .onReceive(userSettings.$selectedDepartment) { _ in
                 viewModel.objectWillChange.send()
@@ -63,41 +93,6 @@ struct HomeBellButton: View {
                 .foregroundColor(Color.Blue300)
                 .padding(.trailing)
         }
-    }
-}
-
-// MARK: - 공지사항 화면 대학공지, 학부공지 탭
-struct HomeSelectNoticeTabView: View {
-    
-    @Binding var selectedTab: String
-    
-    var body: some View {
-        HStack {
-            HomeSelectNoticeTabButton(title: "대학 공지", selectedTab: $selectedTab)
-            HomeSelectNoticeTabButton(title: "학과 공지", selectedTab: $selectedTab)
-        }
-    }
-}
-
-struct HomeSelectNoticeTabButton: View {
-    
-    let title: String
-    
-    @Binding var selectedTab: String
-    
-    var body: some View {
-        Button(action: {
-            selectedTab = title
-        }) {
-            Text(title)
-                .font(.Bold16)
-                .foregroundColor(selectedTab == title ? Color.Blue300 : Color.Gray400)
-                .frame(width: 196.5, height: 44)
-                .background(Color.white)
-                .overlay(
-                    selectedTab == title ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(Color.Blue300) : nil
-                )
-        }.buttonStyle(PlainButtonStyle())
     }
 }
 
