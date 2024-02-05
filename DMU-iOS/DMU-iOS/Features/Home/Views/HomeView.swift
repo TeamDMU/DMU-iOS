@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var selectedTab = "대학공지"
+    @State private var selectedTab = "대학 공지"
     
     @ObservedObject var viewModel = NoticeViewModel(userSettings: UserSettings())
     
@@ -73,8 +73,8 @@ struct HomeSelectNoticeTabView: View {
     
     var body: some View {
         HStack {
-            HomeSelectNoticeTabButton(title: "대학공지", selectedTab: $selectedTab)
-            HomeSelectNoticeTabButton(title: "학부공지", selectedTab: $selectedTab)
+            HomeSelectNoticeTabButton(title: "대학 공지", selectedTab: $selectedTab)
+            HomeSelectNoticeTabButton(title: "학과 공지", selectedTab: $selectedTab)
         }
     }
 }

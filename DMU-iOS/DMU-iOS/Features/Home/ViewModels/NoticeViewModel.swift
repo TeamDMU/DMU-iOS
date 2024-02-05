@@ -9,7 +9,7 @@ import Foundation
 
 class NoticeViewModel: ObservableObject {
     
-    @Published var selectedTab: String = "대학공지"
+    @Published var selectedTab: String = "대학 공지"
     @Published var notices: [Notice] = sampleData
     
     // MARK: -학과별 필터링을 위한 UserSetting 초기화
@@ -35,13 +35,13 @@ class NoticeViewModel: ObservableObject {
     
     // MARK: -학부공지 학과별 리스트 필터링
     func filterNotices(department: String?) -> [Notice] {
-        if selectedTab == "대학공지" {
-            return notices.filter { $0.noticeType == "대학공지" }
-        } else if selectedTab == "학부공지" {
+        if selectedTab == "대학 공지" {
+            return notices.filter { $0.noticeType == "대학 공지" }
+        } else if selectedTab == "학과 공지" {
             return notices.filter { notice in
                 guard let department = department, !department.isEmpty else { return false }
                 
-                return notice.noticeType == "학부공지" && notice.noticeDepartment == department
+                return notice.noticeType == "학과 공지" && notice.noticeDepartment == department
             }
         }
         
