@@ -9,8 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var selectedTab = "대학공지"
-    
     @ObservedObject var viewModel = NoticeViewModel(userSettings: UserSettings())
     
     @EnvironmentObject var userSettings: UserSettings
@@ -20,9 +18,9 @@ struct HomeView: View {
             VStack {
                 HomeTopBarView(viewModel: viewModel)
                 
-                HomeSelectNoticeTabView(selectedTab: $viewModel.selectedTab)
+                NoticeTabBarView(viewModel: viewModel)
                 
-                HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                NoticeTabSwipeView(viewModel: viewModel, userSettings: _userSettings)
             }
             .onReceive(userSettings.$selectedDepartment) { _ in
                 viewModel.objectWillChange.send()
@@ -66,38 +64,57 @@ struct HomeBellButton: View {
     }
 }
 
-// MARK: - 공지사항 화면 대학공지, 학부공지 탭
-struct HomeSelectNoticeTabView: View {
+// MARK: - 공지사항 화면 상단탭바(대학 공지, 학과 공지)
+struct NoticeTabBarView: View {
     
-    @Binding var selectedTab: String
+    @ObservedObject var viewModel: NoticeViewModel
     
     var body: some View {
         HStack {
-            HomeSelectNoticeTabButton(title: "대학공지", selectedTab: $selectedTab)
-            HomeSelectNoticeTabButton(title: "학부공지", selectedTab: $selectedTab)
+            NoticeTabBarItem(title: "대학 공지", viewModel: viewModel)
+            NoticeTabBarItem(title: "학과 공지", viewModel: viewModel)
+        }
+        .padding(.top, 13)
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+    }
+}
+
+struct NoticeTabBarItem: View {
+    
+    var title: String
+    
+    @ObservedObject var viewModel: NoticeViewModel
+    
+    var body: some View {
+        VStack {
+            Text(title)
+                .font(.Bold16)
+                .foregroundColor(viewModel.selectedTab == title ? Color.Blue300 : Color.Gray400)
+                .onTapGesture {
+                    viewModel.selectedTab = title
+                }
+            Rectangle()
+                .frame(height: 2)
+                .foregroundColor(viewModel.selectedTab == title ? Color.Blue300 : Color.clear)
         }
     }
 }
 
-struct HomeSelectNoticeTabButton: View {
+struct NoticeTabSwipeView: View {
     
-    let title: String
+    @ObservedObject var viewModel: NoticeViewModel
     
-    @Binding var selectedTab: String
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
-        Button(action: {
-            selectedTab = title
-        }) {
-            Text(title)
-                .font(.Bold16)
-                .foregroundColor(selectedTab == title ? Color.Blue300 : Color.Gray400)
-                .frame(width: 196.5, height: 44)
-                .background(Color.white)
-                .overlay(
-                    selectedTab == title ? Rectangle().frame(height: 2).padding(.top, 42).foregroundColor(Color.Blue300) : nil
-                )
-        }.buttonStyle(PlainButtonStyle())
+        TabView(selection: $viewModel.selectedTab) {
+            HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                .tag("대학 공지")
+            HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+                .tag("학과 공지")
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
 }
 
@@ -111,7 +128,7 @@ struct HomeNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(notices) { notice in
-                    NavigationLink(destination: HomeDetailView(homeDetailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: NoticeViewModel(userSettings: UserSettings()))){
+                    NavigationLink(destination: HomeDetailView(homeDetailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: viewModel)){
                         HomeNoticeSingleView(notice: notice, viewModel: viewModel)
                     }
                     
