@@ -33,6 +33,13 @@ struct SettingView: View {
                 .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
                 .padding(.horizontal, 20)
                 
+                Button(action: {}) {
+                    Text("키워드 설정")
+                        .font(.Medium18)
+                        .foregroundColor(Color.Gray500)
+                }
+                .padding(.horizontal, 20)
+                
                 Divider()
                 
                 Text("학과 공지")
