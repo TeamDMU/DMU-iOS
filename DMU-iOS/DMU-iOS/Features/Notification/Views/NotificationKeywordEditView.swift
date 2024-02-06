@@ -26,7 +26,7 @@ struct NotificationKeywordEditView: View {
                     NotificationKeywordEditBalloonView()
                         .transition(.opacity)
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                 withAnimation {
                                     showKeywordBalloon = false
                                 }
