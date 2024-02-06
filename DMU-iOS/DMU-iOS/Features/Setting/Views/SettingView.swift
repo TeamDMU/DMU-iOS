@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     
     @StateObject var viewModel: SettingViewModel
+    @State var isNavigatingSettingToKeywordEditView = false
     
     var body: some View {
         NavigationStack {
@@ -33,12 +34,17 @@ struct SettingView: View {
                 .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
                 .padding(.horizontal, 20)
                 
-                Button(action: {}) {
+                Button(action: {
+                    self.isNavigatingSettingToKeywordEditView.toggle()
+                }) {
                     Text("키워드 설정")
                         .font(.Medium18)
                         .foregroundColor(Color.Gray500)
                 }
                 .padding(.horizontal, 20)
+                .fullScreenCover(isPresented: $isNavigatingSettingToKeywordEditView) {
+                    NotificationKeywordEditView(isNavigatingToKeywordEditView: $isNavigatingSettingToKeywordEditView)
+                }
                 
                 Divider()
                 
