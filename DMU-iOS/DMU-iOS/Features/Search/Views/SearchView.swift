@@ -85,7 +85,7 @@ struct SearchBarOverlay: View {
     }
 }
 
-// MARK: 검색창 텍스트 삭제 및 키워드 내리는 버튼
+// MARK: - 검색창 텍스트 삭제 및 키워드 내리는 버튼
 struct SearchCancelButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
@@ -108,7 +108,7 @@ struct SearchCancelButton: View {
     }
 }
 
-// MARK: 검색바 뷰 내부 텍스트 삭제 버튼
+// MARK: - 검색바 뷰 내부 텍스트 삭제 버튼
 struct SearchClearTextButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
@@ -187,31 +187,29 @@ struct SearchResultSingleView: View {
     @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
-        NavigationLink(destination: HomeDetailView(homeDetailNotice: item, homeDetailViewNavigationBarTitle: item.noticeType, viewModel: NoticeViewModel(userSettings: UserSettings()))) {
-            VStack(alignment: .leading) {
-                HStack{
-                    Text(item.noticeTitle)
-                        .font(.Medium16)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                HStack {
-                    Text("\(viewModel.formatDate(item.noticeDate))")
-                        .font(.Regular12)
-                        .foregroundColor(Color.Gray400)
-                    
-                    Text(item.noticeStaffName)
-                        .font(.Regular12)
-                        .foregroundColor(Color.Gray400)
-                }
-                .padding(.top, 1)
+        VStack(alignment: .leading) {
+            HStack{
+                Text(item.noticeTitle)
+                    .font(.Medium16)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(16)
-            .background(Color.white)
-            .cornerRadius(0)
-            .shadow(color: .gray, radius: 0, x: 0, y: 0)
+            HStack {
+                Text("\(viewModel.formatDate(item.noticeDate))")
+                    .font(.Regular12)
+                    .foregroundColor(Color.Gray400)
+                
+                Text(item.noticeStaffName)
+                    .font(.Regular12)
+                    .foregroundColor(Color.Gray400)
+            }
+            .padding(.top, 1)
         }
+        .padding(16)
+        .background(Color.white)
+        .cornerRadius(0)
+        .shadow(color: .gray, radius: 0, x: 0, y: 0)
         
         Divider().background(Color.Gray200)
     }
