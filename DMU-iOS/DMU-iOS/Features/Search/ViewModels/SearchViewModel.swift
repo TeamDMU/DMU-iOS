@@ -13,6 +13,8 @@ class SearchViewModel: ObservableObject {
     @Published var isEditing = false
     @Published var isNavigating: Bool = false
     @Published var recentSearches: [String] = []
+    @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
+    @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
     
     func clearText() {
         self.searchText = ""

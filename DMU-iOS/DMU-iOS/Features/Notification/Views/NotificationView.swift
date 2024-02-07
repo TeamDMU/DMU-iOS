@@ -66,7 +66,7 @@ struct NotificationView: View {
 // MARK: - 알림 내역 리스트뷰
 struct NotificationListView: View {
     
-    var notice: Notice
+    var notice: NoticeNotification
     
     var body: some View {
         HStack {
@@ -84,7 +84,7 @@ struct NotificationListView: View {
                     Divider()
                         .background(Color.Gray300)
                     
-                    Text(notice.noticeKeyword)
+                    Text(notice.noticeKeyword ?? "")
                         .font(.SemiBold12)
                         .foregroundColor(Color.Gray400)
                 }

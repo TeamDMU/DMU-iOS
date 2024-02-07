@@ -34,7 +34,6 @@
 		F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */; };
 		F9682B582B6B31A3004A2EFE /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B572B6B31A3004A2EFE /* ScheduleDTO.swift */; };
 		F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */; };
-		F99531342B4E6DC100FE2991 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99531332B4E6DC100FE2991 /* HomeDetailView.swift */; };
 		F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B982B44EF50007208B2 /* Schedule.swift */; };
 		F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */; };
 		F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */; };
@@ -58,10 +57,11 @@
 		F9B77F3B2B3AFDBC00A6E2D1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */; };
 		F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */; };
 		F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */; };
+		F9BCAA862B73CCA500E717BF /* NoticeNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BCAA852B73CCA500E717BF /* NoticeNotification.swift */; };
+		F9BCAA892B73D38100E717BF /* NoticeWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BCAA882B73D38100E717BF /* NoticeWebView.swift */; };
 		F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D426232B3F076A008EBCC7 /* HomeView.swift */; };
 		F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DBEA862B464C49004B64D6 /* Menu.swift */; };
 		F9DBEA8A2B464EC5004B64D6 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DBEA892B464EC5004B64D6 /* MealViewModel.swift */; };
-		F9EE2FDB2B439E2200DBC97A /* SearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE2FDA2B439E2200DBC97A /* SearchDetailView.swift */; };
 		F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42402B3C24E300307BA7 /* CustomButton.swift */; };
 		F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */; };
 		F9EE42482B3C302600307BA7 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42472B3C302600307BA7 /* Department.swift */; };
@@ -92,7 +92,6 @@
 		F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F9682B572B6B31A3004A2EFE /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
 		F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
-		F99531332B4E6DC100FE2991 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		F99C6B982B44EF50007208B2 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -117,10 +116,11 @@
 		F9B77F3A2B3AFDBC00A6E2D1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F9B77F3C2B3B035700A6E2D1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		F9BB5B692B42D320002EDB68 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		F9BCAA852B73CCA500E717BF /* NoticeNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeNotification.swift; sourceTree = "<group>"; };
+		F9BCAA882B73D38100E717BF /* NoticeWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeWebView.swift; sourceTree = "<group>"; };
 		F9D426232B3F076A008EBCC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F9DBEA862B464C49004B64D6 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		F9DBEA892B464EC5004B64D6 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
-		F9EE2FDA2B439E2200DBC97A /* SearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailView.swift; sourceTree = "<group>"; };
 		F9EE42402B3C24E300307BA7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-One.swift"; sourceTree = "<group>"; };
 		F9EE42472B3C302600307BA7 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				F9D426232B3F076A008EBCC7 /* HomeView.swift */,
-				F99531332B4E6DC100FE2991 /* HomeDetailView.swift */,
+				F9BCAA882B73D38100E717BF /* NoticeWebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,7 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				F9AF3C502B416E3A001779E3 /* SearchView.swift */,
-				F9EE2FDA2B439E2200DBC97A /* SearchDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -417,6 +416,7 @@
 		F95E007B2B539DF800CAAFE2 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				F9BCAA842B73CC5A00E717BF /* Models */,
 				F95265402B57660F003BC8DA /* Views */,
 				F952653F2B576604003BC8DA /* ViewModels */,
 			);
@@ -563,6 +563,14 @@
 			path = colors;
 			sourceTree = "<group>";
 		};
+		F9BCAA842B73CC5A00E717BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9BCAA852B73CCA500E717BF /* NoticeNotification.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F9EE42422B3C26FF00307BA7 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,10 +676,12 @@
 				F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */,
 				F90D26492B3D9C0100C864C4 /* Onboarding-Step-Two.swift in Sources */,
 				F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */,
+				F9BCAA862B73CCA500E717BF /* NoticeNotification.swift in Sources */,
 				F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */,
 				F9AF3C632B418190001779E3 /* Notice.swift in Sources */,
 				F9DBEA8A2B464EC5004B64D6 /* MealViewModel.swift in Sources */,
 				F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */,
+				F9BCAA892B73D38100E717BF /* NoticeWebView.swift in Sources */,
 				F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */,
 				F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
@@ -680,7 +690,6 @@
 				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
 				F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */,
 				F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */,
-				F99531342B4E6DC100FE2991 /* HomeDetailView.swift in Sources */,
 				F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */,
 				F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */,
 				F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */,
@@ -689,7 +698,6 @@
 				F951145E2B6C8214009BDC98 /* MenuService.swift in Sources */,
 				F93F51242B47A31800654F6D /* UserSettings.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
-				F9EE2FDB2B439E2200DBC97A /* SearchDetailView.swift in Sources */,
 				F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,

@@ -22,9 +22,6 @@ struct SearchView: View {
                 
                 SearchResults(viewModel: viewModel)
             }
-            .navigationDestination(isPresented: $viewModel.isNavigating) {
-                SearchDetailView(viewModel: viewModel)
-            }
         }
     }
 }
@@ -85,7 +82,7 @@ struct SearchBarOverlay: View {
     }
 }
 
-// MARK: 검색창 텍스트 삭제 및 키워드 내리는 버튼
+// MARK: - 검색창 텍스트 삭제 및 키워드 내리는 버튼
 struct SearchCancelButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
@@ -108,7 +105,7 @@ struct SearchCancelButton: View {
     }
 }
 
-// MARK: 검색바 뷰 내부 텍스트 삭제 버튼
+// MARK: - 검색바 뷰 내부 텍스트 삭제 버튼
 struct SearchClearTextButton: View {
     
     @ObservedObject var viewModel: SearchViewModel
@@ -146,14 +143,26 @@ struct SearchResultsListView: View {
     
     var body: some View {
         VStack {
+            let universityNotices = viewModel.universityNotices.filter { notice in
+                viewModel.searchText.isEmpty ||
+                notice.notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
+            }
+
+            let departmentNotices = viewModel.departmentNotices.filter { notice in
+                viewModel.searchText.isEmpty ||
+                notice.notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
+            }
+
             LazyVStack(alignment: .leading) {
-                ForEach(sampleData.filter({ item in
-                    viewModel.searchText.isEmpty ||
-                    item.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
-                }).prefix(3), id: \.id) { item in
-                    SearchResultSingleView(item: item, viewModel: viewModel)
+                ForEach(universityNotices, id: \.id) { notice in
+                    SearchResultSingleView(universityNotice: notice, viewModel: viewModel)
+                }
+
+                ForEach(departmentNotices, id: \.id) { notice in
+                    SearchResultSingleView(departmentNotice: notice, viewModel: viewModel)
                 }
             }
+
             
             if sampleData.filter({ item in
                 item.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
@@ -169,9 +178,6 @@ struct SearchResultsListView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                 }
-                .navigationDestination(isPresented: $navigateToSearchDetail) {
-                    SearchDetailView(viewModel: viewModel)
-                }
                 .background(.clear)
                 .cornerRadius(8)
                 .padding(.horizontal, 20)
@@ -182,39 +188,49 @@ struct SearchResultsListView: View {
 
 struct SearchResultSingleView: View {
     
-    var item: Notice
+    var universityNotice: UniversityNotice?
+    var departmentNotice: DepartmentNotice?
     
     @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
-        NavigationLink(destination: HomeDetailView(homeDetailNotice: item, homeDetailViewNavigationBarTitle: item.noticeType, viewModel: NoticeViewModel(userSettings: UserSettings()))) {
-            VStack(alignment: .leading) {
-                HStack{
-                    Text(item.noticeTitle)
-                        .font(.Medium16)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                HStack {
-                    Text("\(viewModel.formatDate(item.noticeDate))")
-                        .font(.Regular12)
-                        .foregroundColor(Color.Gray400)
-                    
-                    Text(item.noticeStaffName)
-                        .font(.Regular12)
-                        .foregroundColor(Color.Gray400)
-                }
-                .padding(.top, 1)
+        VStack(alignment: .leading) {
+            HStack{
+                Text(notice.noticeTitle)
+                    .font(.Medium16)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(16)
-            .background(Color.white)
-            .cornerRadius(0)
-            .shadow(color: .gray, radius: 0, x: 0, y: 0)
+            HStack {
+                Text("\(viewModel.formatDate(notice.noticeDate))")
+                    .font(.Regular12)
+                    .foregroundColor(Color.Gray400)
+                
+                Text(notice.noticeStaffName)
+                    .font(.Regular12)
+                    .foregroundColor(Color.Gray400)
+            }
+            .padding(.top, 1)
         }
+        .padding(16)
+        .background(Color.white)
+        .cornerRadius(0)
+        .shadow(color: .gray, radius: 0, x: 0, y: 0)
         
         Divider().background(Color.Gray200)
     }
+    
+    private var notice: Notice {
+        if let universityNotice = universityNotice {
+            return universityNotice.notice
+        } else if let departmentNotice = departmentNotice {
+            return departmentNotice.notice
+        } else {
+            fatalError("Fatal Error.")
+        }
+    }
+
 }
 
 // MARK: - 최근 검색어 내역 리스트 뷰

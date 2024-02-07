@@ -109,29 +109,28 @@ struct NoticeTabSwipeView: View {
     
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
-            HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+            HomeUniversityNoticeListView(universityNotices: viewModel.filterUniversityNotices(), viewModel: viewModel)
                 .tag("대학 공지")
-            HomeNoticeListView(notices: viewModel.filterNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+            HomeDepartmentNoticeListView(departmentNotices: viewModel.filterDepartmentNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
                 .tag("학과 공지")
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
 }
 
-// MARK: - 공지사항 화면 공지사항 리스트뷰
-struct HomeNoticeListView: View {
+// MARK: - 대학 공지 화면 공지사항 리스트뷰
+struct HomeUniversityNoticeListView: View {
     
-    let notices: [Notice]
+    let universityNotices: [UniversityNotice]
     let viewModel: NoticeViewModel
     
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(notices) { notice in
-                    NavigationLink(destination: HomeDetailView(homeDetailNotice: notice, homeDetailViewNavigationBarTitle: viewModel.selectedTab, viewModel: viewModel)){
-                        HomeNoticeSingleView(notice: notice, viewModel: viewModel)
+                ForEach(universityNotices) { notice in
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
+                        HomeUniversityNoticeSingleView(universityNotices: notice, viewModel: viewModel)
                     }
-                    
                     Divider().background(Color.Gray200)
                 }
             }
@@ -142,15 +141,15 @@ struct HomeNoticeListView: View {
     }
 }
 
-struct HomeNoticeSingleView: View {
+struct HomeUniversityNoticeSingleView: View {
     
-    let notice: Notice
+    let universityNotices: UniversityNotice
     var viewModel: NoticeViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(notice.noticeTitle)
+                Text(universityNotices.notice.noticeTitle)
                     .font(.Medium16)
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading) // 여러 줄 정렬
@@ -158,11 +157,68 @@ struct HomeNoticeSingleView: View {
             }
             
             HStack {
-                Text(viewModel.formatDate(notice.noticeDate))
+                Text(viewModel.formatDate(universityNotices.notice.noticeDate))
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                 
-                Text(notice.noticeStaffName)
+                Text(universityNotices.notice.noticeStaffName)
+                    .font(.Regular12)
+                    .foregroundColor(Color.Gray400)
+                    .padding(.leading, 12)
+            }
+            .padding(.top, 1)
+        }
+        .padding(16)
+        .background(Color.white)
+        .cornerRadius(0)
+        .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
+    }
+}
+
+// MARK: - 학과 공지 화면 공지사항 리스트뷰
+struct HomeDepartmentNoticeListView: View {
+    
+    let departmentNotices: [DepartmentNotice]
+    var viewModel: NoticeViewModel
+    
+    var body: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading) {
+                ForEach(departmentNotices) { notice in
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
+                        HomeDepartmentNoticeSingleView(departmentNotices: notice, viewModel: viewModel)
+                    }
+                    Divider().background(Color.Gray200)
+                }
+            }
+        }
+        .padding(.horizontal, 0)
+        .background(Color.white)
+        
+    }
+}
+
+struct HomeDepartmentNoticeSingleView: View {
+    
+    let departmentNotices: DepartmentNotice
+    var viewModel: NoticeViewModel
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(departmentNotices.notice.noticeTitle)
+                    .font(.Medium16)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading) // 여러 줄 정렬
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+            HStack {
+                Text(viewModel.formatDate(departmentNotices.notice.noticeDate))
+                    .font(.Regular12)
+                    .foregroundColor(Color.Gray400)
+                
+                Text(departmentNotices.notice.noticeStaffName)
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                     .padding(.leading, 12)

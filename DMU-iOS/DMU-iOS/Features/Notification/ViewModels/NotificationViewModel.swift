@@ -9,7 +9,7 @@ import Foundation
 
 class NotificationViewModel: ObservableObject {
     
-    @Published var notices: [Notice] = sampleData
+    @Published var notices = sampleData
     
     func dismiss() {
         // 알림 뷰 닫기 처리

@@ -10,7 +10,10 @@ import Foundation
 class NoticeViewModel: ObservableObject {
     
     @Published var selectedTab: String = "대학 공지"
-    @Published var notices: [Notice] = sampleData
+    @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
+    @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
+    @Published var isShowingWebView = false
+    
     
     // MARK: -학과별 필터링을 위한 UserSetting 초기화
     private var userSettings: UserSettings
@@ -28,24 +31,18 @@ class NoticeViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
-    // MARK: -대학공지, 학부공지 별 탭 필터링
-    func filterNotices() -> [Notice] {
-        return notices.filter { $0.noticeType == selectedTab }
+    // MARK: -대학공지 필터링
+    func filterUniversityNotices() -> [UniversityNotice] {
+        return universityNotices
     }
     
     // MARK: -학부공지 학과별 리스트 필터링
-    func filterNotices(department: String?) -> [Notice] {
-        if selectedTab == "대학 공지" {
-            return notices.filter { $0.noticeType == "대학 공지" }
-        } else if selectedTab == "학과 공지" {
-            return notices.filter { notice in
-                guard let department = department, !department.isEmpty else { return false }
-                
-                return notice.noticeType == "학과 공지" && notice.noticeDepartment == department
-            }
+    func filterDepartmentNotices(department: String?) -> [DepartmentNotice] {
+        return departmentNotices.filter { notice in
+            guard let department = department, !department.isEmpty else { return false }
+            
+            return notice.noticeDepartment == department
         }
-        
-        return notices
     }
     
     // MARK: -공지사항 화면 키워드 알림창 화면으로 이동
