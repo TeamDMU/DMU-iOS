@@ -128,8 +128,9 @@ struct HomeUniversityNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(universityNotices) { notice in
-                    HomeUniversityNoticeSingleView(universityNotices: notice, viewModel: viewModel)
-                    
+                    NavigationLink(destination: NoticeWebView(url: URL(string: notice.notice.noticeURL)!)){
+                        HomeUniversityNoticeSingleView(universityNotices: notice, viewModel: viewModel)
+                    }
                     Divider().background(Color.Gray200)
                 }
             }
@@ -184,8 +185,9 @@ struct HomeDepartmentNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(departmentNotices) { notice in
-                    HomeDepartmentNoticeSingleView(departmentNotices: notice, viewModel: viewModel)
-                    
+                    NavigationLink(destination: NoticeWebView(url: URL(string: notice.notice.noticeURL)!)){
+                        HomeDepartmentNoticeSingleView(departmentNotices: notice, viewModel: viewModel)
+                    }
                     Divider().background(Color.Gray200)
                 }
             }
