@@ -12,6 +12,7 @@ class NoticeViewModel: ObservableObject {
     @Published var selectedTab: String = "대학 공지"
     @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
     @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
+    @Published var isShowingWebView = false
     
     
     // MARK: -학과별 필터링을 위한 UserSetting 초기화
