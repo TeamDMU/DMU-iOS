@@ -155,32 +155,16 @@ struct SearchResultsListView: View {
 
             LazyVStack(alignment: .leading) {
                 ForEach(universityNotices, id: \.id) { notice in
-                    SearchResultSingleView(universityNotice: notice, viewModel: viewModel)
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
+                        SearchResultSingleView(universityNotice: notice, viewModel: viewModel)
+                    }
                 }
 
                 ForEach(departmentNotices, id: \.id) { notice in
-                    SearchResultSingleView(departmentNotice: notice, viewModel: viewModel)
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
+                        SearchResultSingleView(departmentNotice: notice, viewModel: viewModel)
+                    }
                 }
-            }
-
-            
-            if sampleData.filter({ item in
-                item.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
-            }).count > 3 {
-                Button(action: {
-                    viewModel.performSearch()
-                    self.navigateToSearchDetail = true
-                    
-                }) {
-                    Text("결과 모두 보기")
-                        .font(.Bold16)
-                        .foregroundColor(Color.Blue400)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                }
-                .background(.clear)
-                .cornerRadius(8)
-                .padding(.horizontal, 20)
             }
         }
     }
