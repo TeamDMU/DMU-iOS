@@ -79,20 +79,6 @@ class SearchViewModel: ObservableObject {
             addRecentSearch(searchText)
         }
     }
-    
-    // MARK: 모든 결과 보기 버튼을 눌렀을 때 검색 수행
-    func showAllResults() {
-        performSearch()
-    }
-    
-    // MARK: 검색 뷰로 돌아왔을 때 호출될 초기화 메서드
-    func resetSearchState() {
-        searchText = ""
-        isEditing = false
-        isNavigating = false
-        
-        loadRecentSearches()
-    }
 }
 
 
