@@ -16,10 +16,6 @@ struct SearchView: View {
             VStack {
                 SearchBarView(viewModel: viewModel)
                 
-                if !viewModel.recentSearches.isEmpty && viewModel.searchText.isEmpty {
-                    RecentSearchesListView(viewModel: viewModel)
-                }
-                
                 SearchResults(viewModel: viewModel)
             }
         }
@@ -29,14 +25,14 @@ struct SearchView: View {
 // MARK: - 검색 화면 검색바 뷰
 struct SearchBarView: View {
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     var body: some View {
         HStack {
             TextField("검색어를 입력하세요.", text: $viewModel.searchText, onCommit: {
                 viewModel.performSearch()
                 withAnimation {
-                    viewModel.isEditing = false
+                    viewModel.endSearchEditing()
                     hideKeyboard()
                 }
             })
@@ -52,7 +48,7 @@ struct SearchBarView: View {
             .padding(.horizontal, 20)
             .onTapGesture {
                 withAnimation {
-                    viewModel.isEditing = true
+                    viewModel.startSearchEditing()
                 }
             }
             
@@ -65,7 +61,7 @@ struct SearchBarView: View {
 
 struct SearchBarOverlay: View {
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     var body: some View {
         HStack {
@@ -82,10 +78,10 @@ struct SearchBarOverlay: View {
     }
 }
 
-// MARK: - 검색창 텍스트 삭제 및 키워드 내리는 버튼
+// MARK: - 검색창 텍스트 삭제 및 키보드 내리는 버튼
 struct SearchCancelButton: View {
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     var body: some View {
         Button(action: {
@@ -108,7 +104,7 @@ struct SearchCancelButton: View {
 // MARK: - 검색바 뷰 내부 텍스트 삭제 버튼
 struct SearchClearTextButton: View {
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     var body: some View {
         Button(action: {
@@ -124,11 +120,11 @@ struct SearchClearTextButton: View {
 // MARK: - 검색 결과 리스트 뷰
 struct SearchResults: View {
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     var body: some View {
         ScrollView {
-            if !viewModel.searchText.isEmpty {
+            if viewModel.shouldShowResults {
                 SearchResultsListView(viewModel: viewModel)
             }
         }
@@ -137,32 +133,22 @@ struct SearchResults: View {
 
 struct SearchResultsListView: View {
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     @State private var navigateToSearchDetail = false
     
     var body: some View {
         VStack {
-            let universityNotices = viewModel.universityNotices.filter { notice in
-                viewModel.searchText.isEmpty ||
-                notice.notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
-            }
-
-            let departmentNotices = viewModel.departmentNotices.filter { notice in
-                viewModel.searchText.isEmpty ||
-                notice.notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
-            }
-
             LazyVStack(alignment: .leading) {
-                ForEach(universityNotices, id: \.id) { notice in
+                ForEach(viewModel.filteredUniversityNotices, id: \.id) { notice in
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
-                        SearchResultSingleView(universityNotice: notice, viewModel: viewModel)
+                        SearchResultSingleView(notice: notice.notice, viewModel: viewModel)
                     }
                 }
-
-                ForEach(departmentNotices, id: \.id) { notice in
+                
+                ForEach(viewModel.filteredDepartmentNotices, id: \.id) { notice in
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
-                        SearchResultSingleView(departmentNotice: notice, viewModel: viewModel)
+                        SearchResultSingleView(notice: notice.notice, viewModel: viewModel)
                     }
                 }
             }
@@ -172,10 +158,9 @@ struct SearchResultsListView: View {
 
 struct SearchResultSingleView: View {
     
-    var universityNotice: UniversityNotice?
-    var departmentNotice: DepartmentNotice?
+    var notice: Notice
     
-    @ObservedObject var viewModel: SearchViewModel
+    @StateObject var viewModel: SearchViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -203,61 +188,6 @@ struct SearchResultSingleView: View {
         .shadow(color: .gray, radius: 0, x: 0, y: 0)
         
         Divider().background(Color.Gray200)
-    }
-    
-    private var notice: Notice {
-        if let universityNotice = universityNotice {
-            return universityNotice.notice
-        } else if let departmentNotice = departmentNotice {
-            return departmentNotice.notice
-        } else {
-            fatalError("Fatal Error.")
-        }
-    }
-
-}
-
-// MARK: - 최근 검색어 내역 리스트 뷰
-struct RecentSearchesListView: View {
-    
-    @ObservedObject var viewModel: SearchViewModel
-    
-    var body: some View {
-        if !viewModel.recentSearches.isEmpty {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Text("최근 검색어")
-                        .font(.Bold18)
-                        .foregroundColor(Color.Blue300)
-                        .padding()
-                    
-                    ForEach(viewModel.recentSearches.reversed(), id: \.self) { search in
-                        HStack {
-                            Text(search)
-                                .foregroundColor(Color.Gray500)
-                                .onTapGesture {
-                                    viewModel.searchText = search
-                                    viewModel.isEditing = true
-                                    viewModel.performSearch()
-                                }
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                viewModel.removeRecentSearch(search)
-                            }) {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(Color.Gray500)
-                            }
-                        }
-                        .padding(.horizontal)
-                        .padding(.top, -10)
-                        .padding(.bottom, 12)
-                    }
-                }
-                .padding(.horizontal, 8)
-            }
-        }
     }
 }
 
