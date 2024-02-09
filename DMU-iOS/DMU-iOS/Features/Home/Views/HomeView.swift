@@ -118,9 +118,8 @@ struct NoticeTabSwipeView: View {
     }
 }
 
-// MARK: - 대학 공지 화면 공지사항 리스트뷰
+// MARK: - 대학, 학과 공지사항 리스트뷰
 struct HomeUniversityNoticeListView: View {
-    
     let universityNotices: [UniversityNotice]
     let viewModel: NoticeViewModel
     
@@ -128,8 +127,8 @@ struct HomeUniversityNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(universityNotices) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
-                        HomeUniversityNoticeSingleView(universityNotices: notice, viewModel: viewModel)
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
+                        NoticeSingleView(notices: notice)
                     }
                     Divider().background(Color.Gray200)
                 }
@@ -137,47 +136,10 @@ struct HomeUniversityNoticeListView: View {
         }
         .padding(.horizontal, 0)
         .background(Color.white)
-        
     }
 }
 
-struct HomeUniversityNoticeSingleView: View {
-    
-    let universityNotices: UniversityNotice
-    var viewModel: NoticeViewModel
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(universityNotices.notice.noticeTitle)
-                    .font(.Medium16)
-                    .foregroundColor(Color.black)
-                    .multilineTextAlignment(.leading) // 여러 줄 정렬
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            
-            HStack {
-                Text(viewModel.formatDate(universityNotices.notice.noticeDate))
-                    .font(.Regular12)
-                    .foregroundColor(Color.Gray400)
-                
-                Text(universityNotices.notice.noticeStaffName)
-                    .font(.Regular12)
-                    .foregroundColor(Color.Gray400)
-                    .padding(.leading, 12)
-            }
-            .padding(.top, 1)
-        }
-        .padding(16)
-        .background(Color.white)
-        .cornerRadius(0)
-        .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
-    }
-}
-
-// MARK: - 학과 공지 화면 공지사항 리스트뷰
 struct HomeDepartmentNoticeListView: View {
-    
     let departmentNotices: [DepartmentNotice]
     var viewModel: NoticeViewModel
     
@@ -185,8 +147,8 @@ struct HomeDepartmentNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(departmentNotices) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
-                        HomeDepartmentNoticeSingleView(departmentNotices: notice, viewModel: viewModel)
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
+                        NoticeSingleView(notices: notice)
                     }
                     Divider().background(Color.Gray200)
                 }
@@ -194,19 +156,17 @@ struct HomeDepartmentNoticeListView: View {
         }
         .padding(.horizontal, 0)
         .background(Color.white)
-        
     }
 }
 
-struct HomeDepartmentNoticeSingleView: View {
-    
-    let departmentNotices: DepartmentNotice
-    var viewModel: NoticeViewModel
-    
+
+struct NoticeSingleView: View {
+    let notices: any NoticeProtocol
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(departmentNotices.notice.noticeTitle)
+                Text(notices.noticeTitle)
                     .font(.Medium16)
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading) // 여러 줄 정렬
@@ -214,11 +174,11 @@ struct HomeDepartmentNoticeSingleView: View {
             }
             
             HStack {
-                Text(viewModel.formatDate(departmentNotices.notice.noticeDate))
+                Text(notices.noticeDate.formatDate)
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                 
-                Text(departmentNotices.notice.noticeStaffName)
+                Text(notices.noticeStaffName)
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                     .padding(.leading, 12)
@@ -231,6 +191,7 @@ struct HomeDepartmentNoticeSingleView: View {
         .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
     }
 }
+
 
 #Preview {
     HomeView()

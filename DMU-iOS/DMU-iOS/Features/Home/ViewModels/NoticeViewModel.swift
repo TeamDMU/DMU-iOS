@@ -22,15 +22,6 @@ class NoticeViewModel: ObservableObject {
         self.userSettings = userSettings
     }
     
-    // MARK: -공지사항 화면 날짜 데이터 포맷
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy.MM.dd"
-        
-        return formatter.string(from: date)
-    }
-    
     // MARK: -학부공지 학과별 리스트 필터링
     func filterDepartmentNotices(department: String?) -> [DepartmentNotice] {
         return departmentNotices.filter { notice in

@@ -145,12 +145,12 @@ struct SearchResultsListView: View {
         VStack {
             let universityNotices = viewModel.universityNotices.filter { notice in
                 viewModel.searchText.isEmpty ||
-                notice.notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
+                notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
             }
 
             let departmentNotices = viewModel.departmentNotices.filter { notice in
                 viewModel.searchText.isEmpty ||
-                notice.notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
+                notice.noticeTitle.lowercased().contains(viewModel.searchText.lowercased())
             }
 
             LazyVStack(alignment: .leading) {
@@ -221,11 +221,11 @@ struct SearchResultSingleView: View {
         Divider().background(Color.Gray200)
     }
     
-    private var notice: Notice {
+    private var notice: any NoticeProtocol {
         if let universityNotice = universityNotice {
-            return universityNotice.notice
+            return universityNotice
         } else if let departmentNotice = departmentNotice {
-            return departmentNotice.notice
+            return departmentNotice
         } else {
             fatalError("Fatal Error.")
         }
