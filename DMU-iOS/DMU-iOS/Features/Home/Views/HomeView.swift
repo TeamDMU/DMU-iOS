@@ -71,8 +71,8 @@ struct NoticeTabBarView: View {
     
     var body: some View {
         HStack {
-            NoticeTabBarItem(title: "대학 공지", viewModel: viewModel)
-            NoticeTabBarItem(title: "학과 공지", viewModel: viewModel)
+            NoticeTabBarItem(title: .university, viewModel: viewModel)
+            NoticeTabBarItem(title: .department, viewModel: viewModel)
         }
         .padding(.top, 13)
         .frame(maxWidth: .infinity)
@@ -82,13 +82,13 @@ struct NoticeTabBarView: View {
 
 struct NoticeTabBarItem: View {
     
-    var title: String
+    var title: NoticeTab
     
     @ObservedObject var viewModel: NoticeViewModel
     
     var body: some View {
         VStack {
-            Text(title)
+            Text(title.rawValue)
                 .font(.Bold16)
                 .foregroundColor(viewModel.selectedTab == title ? Color.Blue300 : Color.Gray400)
                 .onTapGesture {
@@ -110,9 +110,9 @@ struct NoticeTabSwipeView: View {
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
             HomeUniversityNoticeListView(universityNotices: viewModel.universityNotices, viewModel: viewModel)
-                .tag("대학 공지")
+                .tag(NoticeTab.university)
             HomeDepartmentNoticeListView(departmentNotices: viewModel.filterDepartmentNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
-                .tag("학과 공지")
+                .tag(NoticeTab.department)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }

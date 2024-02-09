@@ -7,9 +7,14 @@
 
 import Foundation
 
+enum NoticeTab: String {
+    case university = "대학 공지"
+    case department = "학과 공지"
+}
+
 class NoticeViewModel: ObservableObject {
     
-    @Published var selectedTab: String = "대학 공지"
+    @Published var selectedTab: NoticeTab = .university
     @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
     @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
     @Published var isShowingWebView = false
