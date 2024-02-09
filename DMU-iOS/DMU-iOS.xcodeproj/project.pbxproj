@@ -66,6 +66,7 @@
 		F9EE42412B3C24E300307BA7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42402B3C24E300307BA7 /* CustomButton.swift */; };
 		F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */; };
 		F9EE42482B3C302600307BA7 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42472B3C302600307BA7 /* Department.swift */; };
+		F9F85E6C2B75C6A1005EFAE2 /* DateFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F85E6B2B75C6A1005EFAE2 /* DateFormatExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		F9EE42402B3C24E300307BA7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F9EE42442B3C276D00307BA7 /* Onboarding-Step-One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding-Step-One.swift"; sourceTree = "<group>"; };
 		F9EE42472B3C302600307BA7 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		F9F85E6B2B75C6A1005EFAE2 /* DateFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +393,7 @@
 		F95265442B576666003BC8DA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F9F85E6A2B75C68D005EFAE2 /* Extension */,
 				F95265452B57668B003BC8DA /* Views */,
 			);
 			path = Shared;
@@ -582,6 +585,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		F9F85E6A2B75C68D005EFAE2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F9F85E6B2B75C6A1005EFAE2 /* DateFormatExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -707,6 +718,7 @@
 				F9B77F222B3AF5A900A6E2D1 /* Color.swift in Sources */,
 				F9682B582B6B31A3004A2EFE /* ScheduleDTO.swift in Sources */,
 				F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */,
+				F9F85E6C2B75C6A1005EFAE2 /* DateFormatExtension.swift in Sources */,
 				F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,
 				F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */,

@@ -7,9 +7,14 @@
 
 import Foundation
 
+enum NoticeTab: String {
+    case university = "대학 공지"
+    case department = "학과 공지"
+}
+
 class NoticeViewModel: ObservableObject {
     
-    @Published var selectedTab: String = "대학 공지"
+    @Published var selectedTab: NoticeTab = .university
     @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
     @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
     @Published var isShowingWebView = false
@@ -20,20 +25,6 @@ class NoticeViewModel: ObservableObject {
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
-    }
-    
-    // MARK: -공지사항 화면 날짜 데이터 포맷
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy.MM.dd"
-        
-        return formatter.string(from: date)
-    }
-    
-    // MARK: -대학공지 필터링
-    func filterUniversityNotices() -> [UniversityNotice] {
-        return universityNotices
     }
     
     // MARK: -학부공지 학과별 리스트 필터링
