@@ -21,17 +21,6 @@ class SearchViewModel: ObservableObject {
     @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
     @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
     
-    
-    
-    // MARK: 검색 화면 날짜 데이터 포맷
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy.MM.dd"
-        
-        return formatter.string(from: date)
-    }
-    
     // MARK: 검색 필드 편집을 시작하는 메서드
     func startSearchEditing() {
         isEditing = true
@@ -68,14 +57,14 @@ class SearchViewModel: ObservableObject {
     var filteredUniversityNotices: [UniversityNotice] {
         return universityNotices.filter { notice in
             searchedText.isEmpty ||
-            notice.notice.noticeTitle.lowercased().contains(searchedText.lowercased())
+            notice.noticeTitle.lowercased().contains(searchedText.lowercased())
         }
     }
     
     var filteredDepartmentNotices: [DepartmentNotice] {
         return departmentNotices.filter { notice in
             searchedText.isEmpty ||
-            notice.notice.noticeTitle.lowercased().contains(searchedText.lowercased())
+            notice.noticeTitle.lowercased().contains(searchedText.lowercased())
         }
     }
 }
