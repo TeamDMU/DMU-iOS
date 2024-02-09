@@ -68,14 +68,14 @@ class SearchViewModel: ObservableObject {
     var filteredUniversityNotices: [UniversityNotice] {
         return universityNotices.filter { notice in
             searchedText.isEmpty ||
-            notice.notice.noticeTitle.lowercased().contains(searchedText.lowercased())
+            notice.noticeTitle.lowercased().contains(searchedText.lowercased())
         }
     }
     
     var filteredDepartmentNotices: [DepartmentNotice] {
         return departmentNotices.filter { notice in
             searchedText.isEmpty ||
-            notice.notice.noticeTitle.lowercased().contains(searchedText.lowercased())
+            notice.noticeTitle.lowercased().contains(searchedText.lowercased())
         }
     }
 }

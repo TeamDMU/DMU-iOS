@@ -144,22 +144,22 @@ struct SearchResults: View {
 struct SearchResultsListView: View {
     
     @StateObject var viewModel: SearchViewModel
-    
-    @State private var navigateToSearchDetail = false
-    
+        
     var body: some View {
         VStack {
             LazyVStack(alignment: .leading) {
                 ForEach(viewModel.filteredUniversityNotices, id: \.id) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
-                        SearchResultSingleView(notice: notice.notice, viewModel: viewModel)
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
+                        SearchResultSingleView(notice: notice)
                     }
+                    Divider().background(Color.Gray200)
                 }
                 
                 ForEach(viewModel.filteredDepartmentNotices, id: \.id) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.notice.noticeURL)){
-                        SearchResultSingleView(notice: notice.notice, viewModel: viewModel)
+                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
+                        SearchResultSingleView(notice: notice)
                     }
+                    Divider().background(Color.Gray200)
                 }
             }
         }
@@ -168,9 +168,7 @@ struct SearchResultsListView: View {
 
 struct SearchResultSingleView: View {
     
-    var notice: Notice
-    
-    @StateObject var viewModel: SearchViewModel
+    var notice: any NoticeProtocol
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -182,7 +180,7 @@ struct SearchResultSingleView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             HStack {
-                Text("\(viewModel.formatDate(notice.noticeDate))")
+                Text(notice.noticeDate.formatDate)
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                 
@@ -196,8 +194,6 @@ struct SearchResultSingleView: View {
         .background(Color.white)
         .cornerRadius(0)
         .shadow(color: .gray, radius: 0, x: 0, y: 0)
-        
-        Divider().background(Color.Gray200)
     }
 }
 
