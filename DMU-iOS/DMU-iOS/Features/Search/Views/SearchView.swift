@@ -18,6 +18,9 @@ struct SearchView: View {
                 
                 SearchResults(viewModel: viewModel)
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
@@ -29,13 +32,20 @@ struct SearchBarView: View {
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력하세요.", text: $viewModel.searchText, onCommit: {
-                viewModel.performSearch()
-                withAnimation {
-                    viewModel.endSearchEditing()
-                    hideKeyboard()
-                }
-            })
+            CustomTextField(
+                text: $viewModel.searchText,
+                isFirstResponder: viewModel.isEditing,
+                placeholder: "검색어를 2글자 이상 입력하세요.",
+                onCommit: {
+                    viewModel.performSearch()
+                    withAnimation {
+                        viewModel.endSearchEditing()
+                        hideKeyboard()
+                    }
+                }, 
+                textColor: UIColor.blue300
+            )
+            .frame(height: 24)
             .padding(12)
             .padding(.horizontal, 28)
             .font(.Medium16)
@@ -86,10 +96,10 @@ struct SearchCancelButton: View {
     var body: some View {
         Button(action: {
             viewModel.clearText()
-            hideKeyboard()
             withAnimation {
                 viewModel.isEditing = false
             }
+            hideKeyboard()
         }) {
             Text("취소")
                 .padding(.trailing, 20)

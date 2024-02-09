@@ -16,10 +16,8 @@ class SearchViewModel: ObservableObject {
             }
         }
     }
-    
     @Published var searchedText = ""
     @Published var isEditing = false
-    @Published var isNavigating: Bool = false
     @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
     @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
     
@@ -52,7 +50,13 @@ class SearchViewModel: ObservableObject {
     // MARK: 검색 기능 수행 시 호출하는 메서드
     func performSearch() {
         if !searchText.isEmpty {
-            self.searchedText = self.searchText
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    self.searchedText = self.searchText
+                }
+            }
         }
     }
     
