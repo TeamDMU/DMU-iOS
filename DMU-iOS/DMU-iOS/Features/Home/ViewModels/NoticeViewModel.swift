@@ -31,11 +31,6 @@ class NoticeViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
-    // MARK: -대학공지 필터링
-    func filterUniversityNotices() -> [UniversityNotice] {
-        return universityNotices
-    }
-    
     // MARK: -학부공지 학과별 리스트 필터링
     func filterDepartmentNotices(department: String?) -> [DepartmentNotice] {
         return departmentNotices.filter { notice in

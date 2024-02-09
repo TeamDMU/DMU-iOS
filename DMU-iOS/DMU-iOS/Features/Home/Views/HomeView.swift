@@ -109,7 +109,7 @@ struct NoticeTabSwipeView: View {
     
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
-            HomeUniversityNoticeListView(universityNotices: viewModel.filterUniversityNotices(), viewModel: viewModel)
+            HomeUniversityNoticeListView(universityNotices: viewModel.universityNotices, viewModel: viewModel)
                 .tag("대학 공지")
             HomeDepartmentNoticeListView(departmentNotices: viewModel.filterDepartmentNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
                 .tag("학과 공지")
