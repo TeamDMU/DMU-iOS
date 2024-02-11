@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - 한식
 struct Menu: Identifiable {
     
     var id = UUID()
