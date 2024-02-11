@@ -75,7 +75,7 @@ struct TabBarView: View {
                     .tag(Tab.Schedule)
                 
                 // MARK: 식단 화면
-                MealView()
+                MealView(viewModel: MealViewModel())
                     .tabItem {
                         Image(systemName: "fork.knife")
                             .resizable()
