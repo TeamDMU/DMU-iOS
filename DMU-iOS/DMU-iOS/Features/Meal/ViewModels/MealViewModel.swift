@@ -11,34 +11,39 @@ class MealViewModel: ObservableObject {
     
     @Published var menus = sampleMenu
     
-    // MARK: 첫 번째 요일(월요일) 날짜 변환 -> 월요일을 주의 첫 번째 날로 설정
+    private var calendar: Calendar = {
+        var cal = Calendar(identifier: .gregorian)
+        cal.firstWeekday = 2 // 월요일을 주의 첫번째 날로 설정
+        return cal
+    }()
+    
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    // MARK: 첫 번째 요일(월요일) 날짜 변환
     func startOfWeek(date: Date) -> Date {
+        let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date)
+        let startOfWeek = calendar.date(from: components)!
         
-        var calendar = Calendar(identifier: .gregorian)
-        
-        calendar.firstWeekday = 2
-        
-        return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date))!
+        return startOfWeek
     }
     
     // MARK: 현재 날짜가 주말(토요일 또는 일요일)인지 여부 반환
     func isWeekend(_ date: Date) -> Bool {
-        
-        let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: date)
+        let isWeekend = (weekday == 7 || weekday == 1)
         
-        return weekday == 7 || weekday == 1
+        return isWeekend
     }
     
     // MARK: 주어진 날짜에 해당하는 메뉴를 반환
     func getMenuForDate(for date: Date) -> Menu? {
+        let dateString = dateFormatter.string(from: date)
+        let menuForDate = menus.first(where: { $0.date == dateString })
         
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        let dateString = formatter.string(from: date)
-        
-        return menus.first(where: { $0.date == dateString })
+        return menuForDate
     }
 }

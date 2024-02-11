@@ -103,29 +103,33 @@ struct RestaurantInfomationView: View {
     
     var body: some View {
         HStack(alignment: .center){
-            HStack {
-                Image(systemName: "map")
-                    .foregroundColor(Color.Gray400)
-                Text("8호관 3층")
-                    .font(.Medium14)
-                    .foregroundColor(Color.Gray400)
-            }
-            .padding(.trailing, 20)
-            
-            HStack {
-                Image(systemName: "clock")
-                    .foregroundColor(Color.Gray400)
-                Text("11:30 - 14:00, 16:30 - 18:00")
-                    .font(.Medium14)
-                    .foregroundColor(Color.Gray400)
-            }
+            InfomationSingleView(imageName: "map", text: "8호관 3층")
+            InfomationSingleView(imageName: "clock", text: "11:30 - 14:00, 16:30 - 18:00")
         }
         .padding(.top, 20)
     }
 }
 
+struct InfomationSingleView: View {
+    
+    var imageName: String
+    var text: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: imageName)
+                .foregroundColor(Color.Gray400)
+            Text(text)
+                .font(.Medium14)
+                .foregroundColor(Color.Gray400)
+        }
+        .padding(.trailing, 20)
+    }
+}
+
 // MARK: - 금주의 식단(한식, 일품) 메뉴 뷰
 struct WeeklyMenuView: View {
+    
     var selectedDate: Date
     var viewModel: MealViewModel
     
@@ -158,56 +162,48 @@ struct WeeklyMenuDetailView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    VStack(alignment: .leading) {
-                        Text("🍚 한식")
-                            .font(.Bold20)
-                            .foregroundColor(Color.Gray500)
-                        
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 75), alignment: .leading)]) {
-                            ForEach(menu.details, id: \.self) { detail in
-                                Text(detail)
-                                    .font(.Medium16)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 6)
-                                    .background(Color.Blue100)
-                                    .foregroundColor(Color.Gray600)
-                                    .cornerRadius(20)
-                                    .lineLimit(1)
-                            }
-                        }
-                    }
-                    .padding(16)
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .frame(width: geometry.size.width - 40)
-                    .shadow(color: Color.Blue300.opacity(0.2), radius: 8, x: 0, y: 0)
-                                  
+                    MenuDetailSingleView(category: "🍚 한식", details: menu.details, width: geometry.size.width, cellWidth: 75)
                     Spacer(minLength: 20)
-                    
-                    VStack(alignment: .leading) {
-                        Text("🍛 일품")
-                            .font(.Bold20)
-                            .foregroundColor(Color.Gray500)
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 200), alignment: .leading)]) {
-                            Text("😂 등록된 메뉴가 없어요.")
-                                .font(.Medium16)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(Color.Blue100)
-                                .foregroundColor(Color.Gray600)
-                                .cornerRadius(20)
-                        }
-                    }
-                    .padding(16)
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .frame(width: geometry.size.width - 40)
-                    .shadow(color: Color.Blue300.opacity(0.2), radius: 15, x: 0, y: 0)
+                    MenuDetailSingleView(category: "🍛 일품", details: [], width: geometry.size.width, cellWidth: 200)
                 }
                 .padding(.top, 30)
                 .padding(.horizontal, 20)
             }
         }
+    }
+}
+
+struct MenuDetailSingleView: View {
+    
+    var category: String
+    var details: [String]
+    var width: CGFloat
+    var cellWidth: CGFloat
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(category)
+                .font(.Bold20)
+                .foregroundColor(Color.Gray500)
+            
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: cellWidth), alignment: .leading)]) {
+                ForEach(details.isEmpty ? ["😂 등록된 메뉴가 없어요."] : details, id: \.self) { detail in
+                    Text(detail)
+                        .font(.Medium16)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.Blue100)
+                        .foregroundColor(Color.Gray600)
+                        .cornerRadius(20)
+                        .lineLimit(1)
+                }
+            }
+        }
+        .padding(16)
+        .background(Color.white)
+        .cornerRadius(15)
+        .frame(width: width - 40)
+        .shadow(color: Color.Blue300.opacity(0.2), radius: 15, x: 0, y: 0)
     }
 }
 
