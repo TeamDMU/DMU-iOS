@@ -9,7 +9,9 @@ import Foundation
 
 class MealViewModel: ObservableObject {
     
-    @Published var menus = sampleMenu
+    @Published var weeklyMenu: [Menu] = []
+    
+    private let menuService = MenuService()
     
     private var calendar: Calendar = {
         var cal = Calendar(identifier: .gregorian)
@@ -22,6 +24,20 @@ class MealViewModel: ObservableObject {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
+    
+    // MARK: 금주의 식단 데이터 통신
+    func loadData() {
+        menuService.getMenus { [weak self] result in
+            switch result {
+            case .success(let menus):
+                DispatchQueue.main.async {
+                    self?.weeklyMenu = menus
+                }
+            case .failure(let error):
+                print("Failed to get menus: \(error)")
+            }
+        }
+    }
     
     // MARK: 첫 번째 요일(월요일) 날짜 변환
     func startOfWeek(date: Date) -> Date {
@@ -42,7 +58,7 @@ class MealViewModel: ObservableObject {
     // MARK: 주어진 날짜에 해당하는 메뉴를 반환
     func getMenuForDate(for date: Date) -> Menu? {
         let dateString = dateFormatter.string(from: date)
-        let menuForDate = menus.first(where: { $0.date == dateString })
+        let menuForDate = weeklyMenu.first(where: { $0.date == dateString })
         
         return menuForDate
     }

@@ -14,17 +14,18 @@ struct MealView: View {
     @State private var selectedDate = Date()
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             MealTitleView()
             
             WeeklyCalendarView(selectedDate: $selectedDate, startDate: viewModel.startOfWeek(date: Date()))
             
             RestaurantInfomationView()
             
-            WeeklyMenuView(selectedDate: selectedDate, viewModel: viewModel)
+            WeeklyMenuView(viewModel: viewModel, selectedDate: selectedDate)
             
             Spacer()
         }
+        .onAppear(perform: viewModel.loadData)
     }
 }
 
@@ -91,7 +92,7 @@ struct WeeklyCalendarSingleDateView: View {
                 .foregroundColor(Color.Gray500)
                 .lineLimit(1)
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 18)
         .onTapGesture {
             self.selectedDate = self.date
         }
@@ -102,8 +103,9 @@ struct WeeklyCalendarSingleDateView: View {
 struct RestaurantInfomationView: View {
     
     var body: some View {
-        HStack(alignment: .center){
+        HStack(alignment: .center) {
             InfomationSingleView(imageName: "map", text: "8호관 3층")
+                .padding(.trailing, 20)
             InfomationSingleView(imageName: "clock", text: "11:30 - 14:00, 16:30 - 18:00")
         }
         .padding(.top, 20)
@@ -123,15 +125,15 @@ struct InfomationSingleView: View {
                 .font(.Medium14)
                 .foregroundColor(Color.Gray400)
         }
-        .padding(.trailing, 20)
     }
 }
 
 // MARK: - 금주의 식단(한식, 일품) 메뉴 뷰
 struct WeeklyMenuView: View {
     
+    @ObservedObject var viewModel: MealViewModel
+    
     var selectedDate: Date
-    var viewModel: MealViewModel
     
     var body: some View {
 
@@ -148,21 +150,25 @@ struct WeeklyMenuView: View {
             }
             .padding(.top, 20)
         }
-        else if let menu = viewModel.getMenuForDate(for: selectedDate) {
-            WeeklyMenuDetailView(menu: menu)
+        else if viewModel.getMenuForDate(for: selectedDate) != nil {
+            WeeklyMenuDetailView(viewModel: viewModel, selectedDate: selectedDate)
         }
     }
 }
 
 struct WeeklyMenuDetailView: View {
     
-    var menu: Menu
+    @ObservedObject var viewModel: MealViewModel
+    
+    var selectedDate: Date
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    MenuDetailSingleView(category: "🍚 한식", details: menu.details, width: geometry.size.width, cellWidth: 75)
+                    if let menu = viewModel.getMenuForDate(for: selectedDate) {
+                        MenuDetailSingleView(category: "🍚 한식", details: menu.details, width: geometry.size.width, cellWidth: 75)
+                    }
                     Spacer(minLength: 20)
                     MenuDetailSingleView(category: "🍛 일품", details: [], width: geometry.size.width, cellWidth: 200)
                 }
