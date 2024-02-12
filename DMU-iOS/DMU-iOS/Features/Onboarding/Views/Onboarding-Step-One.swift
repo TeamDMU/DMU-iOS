@@ -35,6 +35,7 @@ struct Onboarding_Step_One: View {
                         self.isStepTwoViewActive = true
                     }
                 }, isEnabled: Department.list.contains(searchText))
+                .padding(.bottom, 20)
                 .navigationDestination(isPresented: $isStepTwoViewActive) {
                     Onboarding_Step_Two(isFirstLanching: $isFirstLanching)
                 }

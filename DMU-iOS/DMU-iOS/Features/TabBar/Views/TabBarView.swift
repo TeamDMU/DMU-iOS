@@ -104,6 +104,8 @@ struct TabBarView: View {
             }
             .accentColor(Color.Blue300)
             .ignoresSafeArea(edges: .all)
+            
+            Spacer()
         }
     }
 }
