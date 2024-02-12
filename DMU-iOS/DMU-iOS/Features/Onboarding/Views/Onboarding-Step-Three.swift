@@ -28,10 +28,10 @@ struct Onboarding_Step_Three: View {
             self.isMainViewActive = true
             isFirstLanching.toggle()
         }, isEnabled: true)
+        .padding(.bottom, 20)
         .fullScreenCover(isPresented: $isMainViewActive){
             TabBarView(viewModel: TabBarViewModel())
         }
-        
     }
 }
 

@@ -46,6 +46,7 @@ struct NotificationKeywordEditView: View {
                 isEnabled: true
             )
             
+            Spacer()
         }
     }
 }
