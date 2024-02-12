@@ -92,7 +92,7 @@ struct WeeklyCalendarSingleDateView: View {
                 .foregroundColor(Color.Gray500)
                 .lineLimit(1)
         }
-        .padding(.horizontal, 18)
+        .padding(.horizontal, 16)
         .onTapGesture {
             self.selectedDate = self.date
         }
