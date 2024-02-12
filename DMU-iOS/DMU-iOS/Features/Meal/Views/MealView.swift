@@ -167,10 +167,10 @@ struct WeeklyMenuDetailView: View {
             ScrollView {
                 VStack {
                     if let menu = viewModel.getMenuForDate(for: selectedDate) {
-                        MenuDetailSingleView(category: "🍚 한식", details: menu.details, width: geometry.size.width, cellWidth: 75)
+                        MenuDetailSingleView(category: "🍚 한식", details: menu.details, width: geometry.size.width)
                     }
                     Spacer(minLength: 20)
-                    MenuDetailSingleView(category: "🍛 일품", details: [], width: geometry.size.width, cellWidth: 200)
+                    MenuDetailSingleView(category: "🍛 일품", details: [], width: geometry.size.width)
                 }
                 .padding(.top, 30)
                 .padding(.horizontal, 20)
@@ -184,7 +184,6 @@ struct MenuDetailSingleView: View {
     var category: String
     var details: [String]
     var width: CGFloat
-    var cellWidth: CGFloat
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -192,7 +191,7 @@ struct MenuDetailSingleView: View {
                 .font(.Bold20)
                 .foregroundColor(Color.Gray500)
             
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: cellWidth), alignment: .leading)]) {
+            LazyVGrid(columns: [GridItem(.flexible(), alignment: .center)]) {
                 ForEach(details.isEmpty ? ["😂 등록된 메뉴가 없어요."] : details, id: \.self) { detail in
                     Text(detail)
                         .font(.Medium16)
