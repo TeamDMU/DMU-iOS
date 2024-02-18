@@ -29,7 +29,7 @@ struct CustomKeyword: View {
                             .font(.Medium20)
                             .foregroundColor(Color.Gray600)
                         
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 88), spacing: 0, alignment: .leading)], spacing: 16) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 90), spacing: 0, alignment: .leading)], spacing: 16) {
                             ForEach(contents[index], id: \.self) { content in
                                 SelectableButton(content: content, isSelected: Binding(get: {
                                     self.selectedKeywords[title, default: []].contains(content)
@@ -70,6 +70,7 @@ struct SelectableButton: View {
             Text(content)
                 .font(.SemiBold16)
                 .foregroundColor(isSelected ? Color.white : Color.Gray400)
+                .frame(width: 70, alignment: .center)
                 .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
                 .background(isSelected ? Color.Blue300 : Color.white)
                 .cornerRadius(5)
@@ -79,5 +80,16 @@ struct SelectableButton: View {
                 )
         }
         .buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct CustomKeyword_Previews: PreviewProvider {
+    @State static var selectedKeywords: [String: [String]] = [
+        "수업" : ["시험"],
+        "학적" : ["복학"]
+    ]
+
+    static var previews: some View {
+        CustomKeyword(selectedKeywords: $selectedKeywords)
     }
 }
