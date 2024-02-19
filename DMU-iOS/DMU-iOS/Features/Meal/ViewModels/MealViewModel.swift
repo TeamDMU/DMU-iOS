@@ -26,7 +26,7 @@ class MealViewModel: ObservableObject {
     }()
     
     // MARK: 금주의 식단 데이터 통신
-    func loadData() {
+    func loadMenuData() {
         menuService.getMenus { [weak self] result in
             switch result {
             case .success(let menus):
