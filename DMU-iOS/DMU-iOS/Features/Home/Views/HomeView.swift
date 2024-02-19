@@ -41,7 +41,7 @@ struct HomeTopBarView: View {
         HStack {
             Image("logo")
                 .resizable()
-                .frame(width: 75, height: 34)
+                .frame(width: 128, height: 33)
                 .padding(.leading)
             Spacer()
             HomeBellButton(viewModel: viewModel)
