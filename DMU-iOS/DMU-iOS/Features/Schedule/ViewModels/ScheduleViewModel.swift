@@ -23,11 +23,11 @@ class ScheduleViewModel: ObservableObject {
     
     // MARK: 학사일정 데이터 초기화
     init() {
-        refreshData()
+        loadScheduleData()
     }
     
     // MARK: 학사일정 데이터 주입
-    func refreshData() {
+    func loadScheduleData() {
         let year = calendar.component(.year, from: currentDate)
         let month = calendar.component(.month, from: currentDate)
         scheduleService.getSchedules(year: year, month: month) { [weak self] result in
@@ -48,7 +48,7 @@ class ScheduleViewModel: ObservableObject {
         
         currentDate = newDate
         
-        refreshData()
+        loadScheduleData()
     }
     
     // MARK: 현재 년월

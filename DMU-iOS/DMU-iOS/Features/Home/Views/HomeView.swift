@@ -29,6 +29,7 @@ struct HomeView: View {
                 NotificationView()
             }
         }
+        .onAppear(perform: viewModel.loadUniversityNoticeData)
     }
 }
 
@@ -174,7 +175,7 @@ struct NoticeSingleView: View {
             }
             
             HStack {
-                Text(notices.noticeDate.formatDate)
+                Text(notices.noticeDate.formattedString)
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                 

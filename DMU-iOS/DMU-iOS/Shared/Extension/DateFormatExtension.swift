@@ -7,10 +7,20 @@
 
 import Foundation
 
-extension Date {
-    var formatDate: String {
+extension DateFormatter {
+    static let customFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: self)
+        return formatter
+    }()
+}
+
+extension Date {
+    var formattedString: String {
+        return DateFormatter.customFormat.string(from: self)
+    }
+
+    static func dateFromFormattedString(_ dateString: String) -> Date? {
+        return DateFormatter.customFormat.date(from: dateString)
     }
 }

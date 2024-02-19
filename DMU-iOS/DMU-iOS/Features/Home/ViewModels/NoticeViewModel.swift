@@ -15,7 +15,7 @@ enum NoticeTab: String {
 class NoticeViewModel: ObservableObject {
     
     @Published var selectedTab: NoticeTab = .university
-    @Published var universityNotices: [UniversityNotice] = sampleUniversityNotices
+    @Published var universityNotices: [UniversityNotice] = []
     @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
     @Published var isShowingWebView = false
     
@@ -25,6 +25,23 @@ class NoticeViewModel: ObservableObject {
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
+    }
+    
+    // MARK: - 대학공지 데이터 통신
+    private let universitynoticeService = UniversityNoticeService()
+    
+    func loadUniversityNoticeData() {
+        universitynoticeService.getUniversityNotices{ result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let notices):
+                    self.universityNotices = notices
+                    print(notices)
+                case .failure(let error):
+                    print("Failed to get university notices: \(error)")
+                }
+            }
+        }
     }
     
     // MARK: -학부공지 학과별 리스트 필터링
