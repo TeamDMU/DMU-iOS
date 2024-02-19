@@ -36,6 +36,7 @@
 		F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */; };
 		F99A62FB2B83479B00EDB985 /* UniversityNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */; };
 		F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */; };
+		F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */; };
 		F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B982B44EF50007208B2 /* Schedule.swift */; };
 		F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */; };
 		F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */; };
@@ -98,6 +99,7 @@
 		F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 		F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeService.swift; sourceTree = "<group>"; };
 		F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeDTO.swift; sourceTree = "<group>"; };
+		F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeRepository.swift; sourceTree = "<group>"; };
 		F99C6B982B44EF50007208B2 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 		F99A62FC2B8347EF00EDB985 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */,
 				F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */,
 				F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */,
+				F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */,
 				F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */,
 				F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */,
 			);
