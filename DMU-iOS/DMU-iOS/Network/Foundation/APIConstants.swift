@@ -21,6 +21,9 @@ struct APIConstants {
     // 식단표 API 엔드포인트
     static let menuEndpoint = "diet"
     
+    // 대학공지 API 엔드포인트
+    static let universityNoticeEndpoint = "universityNotice"
+    
     // HTTP 필드 이름
     static let contentType = "Content-Type"
     
