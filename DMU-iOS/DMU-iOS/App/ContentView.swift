@@ -25,7 +25,7 @@ struct ContentView: View {
             if showSplashView {
                 SplashView()
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             withAnimation {
                                 showSplashView = false
                                 

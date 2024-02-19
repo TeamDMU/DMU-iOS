@@ -11,10 +11,12 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
-            Color.Blue300
+            Color.white
             
             VStack {
                 Image("icon")
+                    .resizable()
+                    .frame(width: 100, height: 112)
                 
             }
         }
