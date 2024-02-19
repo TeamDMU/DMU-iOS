@@ -22,7 +22,6 @@ struct UniversityNotice: NoticeProtocol {
     var noticeDate: Date
     var noticeStaffName : String
     var noticeURL : String
-    var noticeKeyword: String
 }
 
 struct DepartmentNotice: NoticeProtocol {
@@ -36,7 +35,7 @@ struct DepartmentNotice: NoticeProtocol {
 
 // MARK: - 공지사항 더미데이터
 let sampleUniversityNotices = [
-    UniversityNotice(noticeTitle: "2023학년도 전기 학위수여식 안내", noticeDate: Date(), noticeStaffName: "선윤진", noticeURL: "https://www.dongyang.ac.kr/bbs/dongyang/7/123827/artclView.do?layout=unknown", noticeKeyword: "학위수여식")
+    UniversityNotice(noticeTitle: "2023학년도 전기 학위수여식 안내", noticeDate: Date(), noticeStaffName: "선윤진", noticeURL: "https://www.dongyang.ac.kr/bbs/dongyang/7/123827/artclView.do?layout=unknown")
 ]
 
 let sampleDepartmentNotices = [

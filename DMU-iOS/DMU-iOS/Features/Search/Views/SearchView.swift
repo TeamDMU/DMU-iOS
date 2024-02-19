@@ -180,7 +180,7 @@ struct SearchResultSingleView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             HStack {
-                Text(notice.noticeDate.formatDate)
+                Text(notice.noticeDate.formattedString)
                     .font(.Regular12)
                     .foregroundColor(Color.Gray400)
                 
