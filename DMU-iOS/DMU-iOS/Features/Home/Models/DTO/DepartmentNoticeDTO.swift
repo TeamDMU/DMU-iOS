@@ -13,3 +13,11 @@ struct DepartmentNoticeDTO: Decodable {
     let author: String
     let url: String
 }
+
+extension DepartmentNoticeDTO {
+    func toDepartmentNotice(department: String) -> DepartmentNotice {
+        let date = Date.dateFromFormattedString(date) ?? Date()
+        
+        return DepartmentNotice(noticeTitle: title, noticeDate: date, noticeStaffName: author, noticeURL: url, noticeDepartment: department)
+    }
+}

@@ -16,6 +16,8 @@
 		F91189142B5DF82200492AB1 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F91189132B5DF82200492AB1 /* RxMoya */; };
 		F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914AD812B47C85400706D48 /* SettingDepartmentView.swift */; };
 		F92116172B90621000A5507A /* DepartmentNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92116162B90621000A5507A /* DepartmentNoticeDTO.swift */; };
+		F92116192B90627100A5507A /* DepartmentNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92116182B90627100A5507A /* DepartmentNoticeRepository.swift */; };
+		F921161B2B90642300A5507A /* DepartmentNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F921161A2B90642300A5507A /* DepartmentNoticeService.swift */; };
 		F92993552B63DA7D009DC2B6 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92993542B63DA7D009DC2B6 /* Secrets.plist */; };
 		F92993572B63DD5E009DC2B6 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92993562B63DD5E009DC2B6 /* APIConstants.swift */; };
 		F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92993582B63E3F4009DC2B6 /* Networking.swift */; };
@@ -79,6 +81,8 @@
 		F90D264A2B3DA00600C864C4 /* CustomKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyword.swift; sourceTree = "<group>"; };
 		F914AD812B47C85400706D48 /* SettingDepartmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDepartmentView.swift; sourceTree = "<group>"; };
 		F92116162B90621000A5507A /* DepartmentNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentNoticeDTO.swift; sourceTree = "<group>"; };
+		F92116182B90627100A5507A /* DepartmentNoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentNoticeRepository.swift; sourceTree = "<group>"; };
+		F921161A2B90642300A5507A /* DepartmentNoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentNoticeService.swift; sourceTree = "<group>"; };
 		F92993542B63DA7D009DC2B6 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		F92993562B63DD5E009DC2B6 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		F92993582B63E3F4009DC2B6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -498,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */,
+				F921161A2B90642300A5507A /* DepartmentNoticeService.swift */,
 			);
 			path = Notice;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */,
+				F92116182B90627100A5507A /* DepartmentNoticeRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -765,7 +771,9 @@
 				F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */,
 				F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */,
 				F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */,
+				F92116192B90627100A5507A /* DepartmentNoticeRepository.swift in Sources */,
 				F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */,
+				F921161B2B90642300A5507A /* DepartmentNoticeService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
