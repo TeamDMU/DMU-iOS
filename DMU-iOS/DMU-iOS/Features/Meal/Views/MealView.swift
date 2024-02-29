@@ -25,7 +25,6 @@ struct MealView: View {
             
             Spacer()
         }
-        .onAppear(perform: viewModel.loadMenuData)
     }
 }
 

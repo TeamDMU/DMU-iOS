@@ -25,6 +25,11 @@ class MealViewModel: ObservableObject {
         return formatter
     }()
     
+    // MARK: 금주의 식단 데이터 초기화
+    init() {
+        loadMenuData()
+    }
+    
     // MARK: 금주의 식단 데이터 통신
     func loadMenuData() {
         menuService.getMenus { [weak self] result in

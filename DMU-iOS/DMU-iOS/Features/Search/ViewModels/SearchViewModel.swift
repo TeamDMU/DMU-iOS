@@ -19,7 +19,7 @@ class SearchViewModel: ObservableObject {
     @Published var searchedText = ""
     @Published var isEditing = false
     @Published var universityNotices: [UniversityNotice] = []
-    @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
+    @Published var departmentNotices: [DepartmentNotice] = []
     
     // MARK: 검색 필드 편집을 시작하는 메서드
     func startSearchEditing() {

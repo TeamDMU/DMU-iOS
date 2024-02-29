@@ -16,7 +16,7 @@ class NoticeViewModel: ObservableObject {
     
     @Published var selectedTab: NoticeTab = .university
     @Published var universityNotices: [UniversityNotice] = []
-    @Published var departmentNotices: [DepartmentNotice] = sampleDepartmentNotices
+    @Published var departmentNotices: [DepartmentNotice] = []
     @Published var isShowingWebView = false
     
     
@@ -25,6 +25,8 @@ class NoticeViewModel: ObservableObject {
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
+        loadUniversityNoticeData()
+        loadDepartmentNoticeData(department: userSettings.selectedDepartment)
     }
     
     // MARK: - 대학공지 데이터 통신
@@ -39,6 +41,23 @@ class NoticeViewModel: ObservableObject {
                     print(notices)
                 case .failure(let error):
                     print("Failed to get university notices: \(error)")
+                }
+            }
+        }
+    }
+    
+    // MARK: - 학부공지 데이터 통신
+    private let departmentNoticeService = DepartmentNoticeService()
+    
+    func loadDepartmentNoticeData(department: String) {
+        departmentNoticeService.getDepartmentNotices(department: department) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let notices):
+                    self.departmentNotices = notices
+                    print(notices)
+                case .failure(let error):
+                    print("Failed to get department notices: \(error.localizedDescription)")
                 }
             }
         }

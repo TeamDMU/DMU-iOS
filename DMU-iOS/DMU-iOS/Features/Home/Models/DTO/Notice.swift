@@ -32,11 +32,3 @@ struct DepartmentNotice: NoticeProtocol {
     var noticeURL : String
     var noticeDepartment: String
 }
-
-// MARK: - 공지사항 더미데이터
-
-let sampleDepartmentNotices = [
-    DepartmentNotice(noticeTitle: "[컴소] 2024-1 컴퓨터소프트웨어공학과 타학과 수강신청 안내", noticeDate: Date(), noticeStaffName: "오준영", noticeURL: "https://www.dongyang.ac.kr/combBbs/dmu_23222/14/123828/view.do?layout=unknown", noticeDepartment: "컴퓨터소프트웨어공학과"),
-    DepartmentNotice(noticeTitle: "[컴소] 2024-1 컴퓨터소프트웨어공학과 타학과 수강신청 안내2", noticeDate: Date(), noticeStaffName: "오준영", noticeURL: "https://www.dongyang.ac.kr/combBbs/dmu_23222/14/123828/view.do?layout=unknown", noticeDepartment: "컴퓨터소프트웨어공학과"),
-    DepartmentNotice(noticeTitle: "[컴소] 2024-1 컴퓨터소프트웨어공학과 타학과 수강신청 안내3", noticeDate: Date(), noticeStaffName: "오준영", noticeURL: "https://www.dongyang.ac.kr/combBbs/dmu_23222/14/123828/view.do?layout=unknown", noticeDepartment: "컴퓨터소프트웨어공학과"),
-]
