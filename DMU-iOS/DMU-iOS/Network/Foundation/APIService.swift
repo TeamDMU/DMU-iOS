@@ -32,8 +32,8 @@ extension APIService: TargetType {
             return APIConstants.menuEndpoint
         case .getUniversityNotices:
             return APIConstants.universityNoticeEndpoint
-        case .getDepartmentNotices:
-            return APIConstants.departmentNoticeEndpoint
+        case .getDepartmentNotices(let department):
+            return "\(APIConstants.departmentNoticeEndpoint)/\(department)"
         }
     }
     
