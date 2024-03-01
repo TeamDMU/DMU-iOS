@@ -19,7 +19,7 @@ struct APIConstants {
     static let scheduleEndpoint = "schedule"
     
     // 식단표 API 엔드포인트
-    static let menuEndpoint = "diet"
+    static let menuEndpoint = "cafeteria"
     
     // 대학공지 API 엔드포인트
     static let universityNoticeEndpoint = "universityNotice"
