@@ -29,6 +29,8 @@
 		F95114552B6C7DA4009BDC98 /* MenuDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95114542B6C7DA4009BDC98 /* MenuDTO.swift */; };
 		F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951145B2B6C8138009BDC98 /* MenuRepository.swift */; };
 		F951145E2B6C8214009BDC98 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951145D2B6C8214009BDC98 /* MenuService.swift */; };
+		F95DC1322B91B6CD001D3419 /* SearchNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DC1312B91B6CD001D3419 /* SearchNoticeService.swift */; };
+		F95DC1342B91B835001D3419 /* SearchNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DC1332B91B835001D3419 /* SearchNoticeDTO.swift */; };
 		F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */; };
 		F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */; };
 		F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */; };
@@ -94,6 +96,8 @@
 		F95114542B6C7DA4009BDC98 /* MenuDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDTO.swift; sourceTree = "<group>"; };
 		F951145B2B6C8138009BDC98 /* MenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRepository.swift; sourceTree = "<group>"; };
 		F951145D2B6C8214009BDC98 /* MenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
+		F95DC1312B91B6CD001D3419 /* SearchNoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoticeService.swift; sourceTree = "<group>"; };
+		F95DC1332B91B835001D3419 /* SearchNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoticeDTO.swift; sourceTree = "<group>"; };
 		F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DMU-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -451,6 +455,7 @@
 		F95DC12F2B91B5B6001D3419 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				F95DC1332B91B835001D3419 /* SearchNoticeDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 		F95DC1302B91B5C1001D3419 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F95DC1312B91B6CD001D3419 /* SearchNoticeService.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -767,6 +773,7 @@
 				F9BCAA862B73CCA500E717BF /* NoticeNotification.swift in Sources */,
 				F914AD822B47C85400706D48 /* SettingDepartmentView.swift in Sources */,
 				F9AF3C632B418190001779E3 /* Notice.swift in Sources */,
+				F95DC1342B91B835001D3419 /* SearchNoticeDTO.swift in Sources */,
 				F9DBEA8A2B464EC5004B64D6 /* MealViewModel.swift in Sources */,
 				F90D264B2B3DA00600C864C4 /* CustomKeyword.swift in Sources */,
 				F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */,
@@ -787,6 +794,7 @@
 				F9EE42452B3C276D00307BA7 /* Onboarding-Step-One.swift in Sources */,
 				F9B77F3D2B3B035700A6E2D1 /* SplashView.swift in Sources */,
 				F9AF3C512B416E3A001779E3 /* SearchView.swift in Sources */,
+				F95DC1322B91B6CD001D3419 /* SearchNoticeService.swift in Sources */,
 				F951145E2B6C8214009BDC98 /* MenuService.swift in Sources */,
 				F93F51242B47A31800654F6D /* UserSettings.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
