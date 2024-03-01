@@ -32,6 +32,7 @@
 		F95DC1322B91B6CD001D3419 /* SearchNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DC1312B91B6CD001D3419 /* SearchNoticeService.swift */; };
 		F95DC1342B91B835001D3419 /* SearchNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DC1332B91B835001D3419 /* SearchNoticeDTO.swift */; };
 		F95DC1372B91BE55001D3419 /* SearchNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DC1362B91BE55001D3419 /* SearchNotice.swift */; };
+		F95DC1392B91E005001D3419 /* SearchNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DC1382B91E005001D3419 /* SearchNoticeRepository.swift */; };
 		F95E007D2B539E4A00CAAFE2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */; };
 		F95E00802B53DE9100CAAFE2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */; };
 		F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96760612B3AE1CB00C09F29 /* DMU_iOSApp.swift */; };
@@ -100,6 +101,7 @@
 		F95DC1312B91B6CD001D3419 /* SearchNoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoticeService.swift; sourceTree = "<group>"; };
 		F95DC1332B91B835001D3419 /* SearchNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoticeDTO.swift; sourceTree = "<group>"; };
 		F95DC1362B91BE55001D3419 /* SearchNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNotice.swift; sourceTree = "<group>"; };
+		F95DC1382B91E005001D3419 /* SearchNoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNoticeRepository.swift; sourceTree = "<group>"; };
 		F95E007C2B539E4A00CAAFE2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		F95E007F2B53DE9100CAAFE2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DMU-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -450,6 +452,7 @@
 		F95DC12E2B91B5B1001D3419 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				F95DC1382B91E005001D3419 /* SearchNoticeRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				F92116172B90621000A5507A /* DepartmentNoticeDTO.swift in Sources */,
 				F9E4E3762B75F58600E276CC /* CustomTextField.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
+				F95DC1392B91E005001D3419 /* SearchNoticeRepository.swift in Sources */,
 				F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */,
 				F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */,
 				F901F2652B3EA51A002F6E3C /* Onboarding-Step-Three.swift in Sources */,
