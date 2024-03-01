@@ -28,7 +28,7 @@ struct APIConstants {
     static let departmentNoticeEndpoint = "departmentNotice"
     
     // 공지 검색 API 엔드포인트
-    static let searchEndpoint = "notice"
+    static let searchNoticeEndpoint = "notice"
     
     // HTTP 필드 이름
     static let contentType = "Content-Type"

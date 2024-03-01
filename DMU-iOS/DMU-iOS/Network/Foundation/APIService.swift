@@ -14,6 +14,7 @@ enum APIService {
     case getMenus
     case getUniversityNotices
     case getDepartmentNotices(department: String)
+    case getSearchNotices(searchWord: String)
 }
 
 extension APIService: TargetType {
@@ -34,12 +35,14 @@ extension APIService: TargetType {
             return APIConstants.universityNoticeEndpoint
         case .getDepartmentNotices(let department):
             return "\(APIConstants.departmentNoticeEndpoint)/\(department)"
+        case .getSearchNotices(let searchWord):
+            return "\(APIConstants.searchNoticeEndpoint)/\(searchWord)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getSchedules, .getMenus, .getUniversityNotices, .getDepartmentNotices:
+        case .getSchedules, .getMenus, .getUniversityNotices, .getDepartmentNotices, .getSearchNotices:
             return .get
         }
     }
@@ -50,7 +53,7 @@ extension APIService: TargetType {
     
     var task: Task {
         switch self {
-        case .getSchedules, .getMenus, .getUniversityNotices, .getDepartmentNotices:
+        case .getSchedules, .getMenus, .getUniversityNotices, .getDepartmentNotices, .getSearchNotices:
             return .requestPlain
         }
     }

@@ -432,6 +432,36 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F95DC12D2B91B5A8001D3419 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F95DC12F2B91B5B6001D3419 /* DTO */,
+				F95DC12E2B91B5B1001D3419 /* Repository */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F95DC12E2B91B5B1001D3419 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F95DC12F2B91B5B6001D3419 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		F95DC1302B91B5C1001D3419 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		F95E007B2B539DF800CAAFE2 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +561,7 @@
 			children = (
 				F9AEF1D42B63467F004C6A62 /* Foundation */,
 				F99A62F92B83478400EDB985 /* Notice */,
+				F95DC1302B91B5C1001D3419 /* Search */,
 				F929935C2B63E58E009DC2B6 /* Schedule */,
 				F95114562B6C7EC5009BDC98 /* Meal */,
 			);
@@ -551,6 +582,7 @@
 		F9AF3C4F2B416E1A001779E3 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F95DC12D2B91B5A8001D3419 /* Models */,
 				F95265372B576562003BC8DA /* Views */,
 				F95265382B57656A003BC8DA /* ViewModels */,
 			);
