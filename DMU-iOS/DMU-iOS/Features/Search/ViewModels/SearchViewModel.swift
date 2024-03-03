@@ -18,8 +18,7 @@ class SearchViewModel: ObservableObject {
     }
     @Published var searchedText = ""
     @Published var isEditing = false
-    @Published var universityNotices: [UniversityNotice] = []
-    @Published var departmentNotices: [DepartmentNotice] = []
+    @Published var searchNotices: [SearchNotice] = []
     
     // MARK: 검색 필드 편집을 시작하는 메서드
     func startSearchEditing() {
@@ -36,35 +35,46 @@ class SearchViewModel: ObservableObject {
         self.searchText = ""
     }
     
-    // MARK: 검색 기능 수행 시 호출하는 메서드
+    // MARK: 검색 기능, 로딩, 페이지네이션 메서드
+    @Published var isLoading = false
+    @Published var shouldShowResults = false
+    
+    private let searchNoticeService = SearchNoticeService()
+    private let userSettings = UserSettings()
+    private var currentPage = 1
+    private let itemsPerPage = 20
+    
     func performSearch() {
         if !searchText.isEmpty {
+            self.searchedText = self.searchText
+            loadSearchNoticeData()
+            shouldShowResults = true
+        }
+    }
+    
+    private func loadSearchNoticeData() {
+        if !isLoading {
+            self.isLoading = true
+            
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let self = self else { return }
                 
                 DispatchQueue.main.async {
-                    self.searchedText = self.searchText
+                    let department = self.userSettings.selectedDepartment
+                    
+                    self.searchNoticeService.getSearchNotices(searchWord: self.searchedText, department: department, page: self.currentPage, size: self.itemsPerPage) { result in
+                        switch result {
+                        case .success(let notices):
+                            self.searchNotices.append(contentsOf: notices)
+                            self.currentPage += 1
+                        case .failure(let error):
+                            print(error)
+                        }
+                        
+                        self.isLoading = false
+                    }
                 }
             }
-        }
-    }
-    
-    var shouldShowResults: Bool {
-        return !searchedText.isEmpty
-    }
-    
-    // MARK: 검색 필터링
-    var filteredUniversityNotices: [UniversityNotice] {
-        return universityNotices.filter { notice in
-            searchedText.isEmpty ||
-            notice.noticeTitle.lowercased().contains(searchedText.lowercased())
-        }
-    }
-    
-    var filteredDepartmentNotices: [DepartmentNotice] {
-        return departmentNotices.filter { notice in
-            searchedText.isEmpty ||
-            notice.noticeTitle.lowercased().contains(searchedText.lowercased())
         }
     }
 }
