@@ -16,7 +16,17 @@ struct SearchView: View {
             VStack {
                 SearchBarView(viewModel: viewModel)
                 
-                SearchResults(viewModel: viewModel)
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                }
+                
+                if viewModel.shouldShowResults {
+                    ScrollView {
+                        SearchResultsListView(viewModel: viewModel)
+                    }
+                }
+                
+                Spacer()
             }
             .onTapGesture {
                 hideKeyboard()
@@ -28,7 +38,7 @@ struct SearchView: View {
 // MARK: - 검색 화면 검색바 뷰
 struct SearchBarView: View {
     
-    @StateObject var viewModel: SearchViewModel
+    @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
         HStack {
@@ -38,6 +48,7 @@ struct SearchBarView: View {
                 placeholder: "검색어를 2글자 이상 입력하세요.",
                 onCommit: {
                     viewModel.performSearch()
+                    
                     withAnimation {
                         viewModel.endSearchEditing()
                         hideKeyboard()
@@ -45,22 +56,7 @@ struct SearchBarView: View {
                 }, 
                 textColor: UIColor.blue300
             )
-            .frame(height: 24)
-            .padding(12)
-            .padding(.horizontal, 28)
-            .font(.Medium16)
-            .foregroundColor(Color.Blue300)
-            .background(Color.Blue100)
-            .cornerRadius(8)
-            .overlay(
-                SearchBarOverlay(viewModel: viewModel)
-            )
-            .padding(.horizontal, 20)
-            .onTapGesture {
-                withAnimation {
-                    viewModel.startSearchEditing()
-                }
-            }
+            .modifier(SearchBarModifier(viewModel: viewModel))
             
             if viewModel.isEditing {
                 SearchCancelButton(viewModel: viewModel)
@@ -71,7 +67,7 @@ struct SearchBarView: View {
 
 struct SearchBarOverlay: View {
     
-    @StateObject var viewModel: SearchViewModel
+    @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
         HStack {
@@ -88,10 +84,36 @@ struct SearchBarOverlay: View {
     }
 }
 
+// MARK: - 검색바 뷰 수정자
+struct SearchBarModifier: ViewModifier {
+    
+    @ObservedObject var viewModel: SearchViewModel
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(height: 24)
+            .padding(12)
+            .padding(.horizontal, 28)
+            .font(.Medium16)
+            .foregroundColor(Color.Blue300)
+            .background(Color.Blue100)
+            .cornerRadius(8)
+            .overlay(
+                SearchBarOverlay(viewModel: viewModel)
+            )
+            .padding(.horizontal, 20)
+            .onTapGesture {
+                withAnimation {
+                    viewModel.startSearchEditing()
+                }
+            }
+    }
+}
+
 // MARK: - 검색창 텍스트 삭제 및 키보드 내리는 버튼
 struct SearchCancelButton: View {
     
-    @StateObject var viewModel: SearchViewModel
+    @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
         Button(action: {
@@ -114,7 +136,7 @@ struct SearchCancelButton: View {
 // MARK: - 검색바 뷰 내부 텍스트 삭제 버튼
 struct SearchClearTextButton: View {
     
-    @StateObject var viewModel: SearchViewModel
+    @ObservedObject var viewModel: SearchViewModel
     
     var body: some View {
         Button(action: {
@@ -128,34 +150,14 @@ struct SearchClearTextButton: View {
 }
 
 // MARK: - 검색 결과 리스트 뷰
-struct SearchResults: View {
-    
-    @StateObject var viewModel: SearchViewModel
-    
-    var body: some View {
-        ScrollView {
-            if viewModel.shouldShowResults {
-                SearchResultsListView(viewModel: viewModel)
-            }
-        }
-    }
-}
-
 struct SearchResultsListView: View {
     
-    @StateObject var viewModel: SearchViewModel
+    @ObservedObject var viewModel: SearchViewModel
         
     var body: some View {
         VStack {
             LazyVStack(alignment: .leading) {
-                ForEach(viewModel.filteredUniversityNotices, id: \.id) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
-                        SearchResultSingleView(notice: notice)
-                    }
-                    Divider().background(Color.Gray200)
-                }
-                
-                ForEach(viewModel.filteredDepartmentNotices, id: \.id) { notice in
+                ForEach(viewModel.searchNotices, id: \.id) { notice in
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
                         SearchResultSingleView(notice: notice)
                     }
@@ -168,7 +170,7 @@ struct SearchResultsListView: View {
 
 struct SearchResultSingleView: View {
     
-    var notice: any NoticeProtocol
+    var notice: SearchNotice
     
     var body: some View {
         VStack(alignment: .leading) {

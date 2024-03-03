@@ -47,6 +47,8 @@ class SearchViewModel: ObservableObject {
     func performSearch() {
         if !searchText.isEmpty {
             self.searchedText = self.searchText
+            self.currentPage = 1
+            self.searchNotices = []
             loadSearchNoticeData()
             shouldShowResults = true
         }
