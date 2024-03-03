@@ -12,8 +12,8 @@ import Moya
 class SearchNoticeRepository {
     let provider = MoyaProvider<APIService>()
     
-    func getSearchNotices(searchWord: String, completion: @escaping (Result<[SearchNotice], Error>) -> Void) {
-        provider.request(.getSearchNotices(searchWord: searchWord)) { result in
+    func getSearchNotices(searchWord: String, page: Int = 1, size: Int = 20, completion: @escaping (Result<[SearchNotice], Error>) -> Void) {
+        provider.request(.getSearchNotices(searchWord: searchWord, page: page, size: size)) { result in
             switch result {
             case .success(let response):
                 do {
