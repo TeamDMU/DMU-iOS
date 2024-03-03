@@ -14,7 +14,7 @@ enum APIService {
     case getMenus
     case getUniversityNotices
     case getDepartmentNotices(department: String)
-    case getSearchNotices(searchWord: String, page: Int, size: Int)
+    case getSearchNotices(searchWord: String, department: String, page: Int, size: Int)
 }
 
 extension APIService: TargetType {
@@ -35,7 +35,7 @@ extension APIService: TargetType {
             return APIConstants.universityNoticeEndpoint
         case .getDepartmentNotices(let department):
             return "\(APIConstants.departmentNoticeEndpoint)/\(department)"
-        case .getSearchNotices(let searchWord, _, _):
+        case .getSearchNotices(let searchWord, _, _, _):
             return "\(APIConstants.searchNoticeEndpoint)/\(searchWord)"
         }
     }
@@ -55,8 +55,8 @@ extension APIService: TargetType {
         switch self {
         case .getSchedules, .getMenus, .getUniversityNotices, .getDepartmentNotices:
             return .requestPlain
-        case .getSearchNotices(_, let page, let size):
-                    return .requestParameters(parameters: ["page": page, "size": size], encoding: URLEncoding.queryString)
+        case .getSearchNotices(_, let department, let page, let size):
+            return .requestParameters(parameters: ["department": department, "page": page, "size": size], encoding: URLEncoding.queryString)
         }
     }
     

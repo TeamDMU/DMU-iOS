@@ -10,7 +10,7 @@ import Foundation
 class SearchNoticeService {
     private let repository = SearchNoticeRepository()
 
-    func getSearchNotices(searchWord: String, page: Int = 1, size: Int = 20,completion: @escaping (Result<[SearchNotice], Error>) -> Void) {
-        repository.getSearchNotices(searchWord: searchWord, page: page, size: size, completion: completion)
+    func getSearchNotices(searchWord: String, department: String, page: Int, size: Int, completion: @escaping (Result<[SearchNotice], Error>) -> Void) {
+        repository.getSearchNotices(searchWord: searchWord, department: department, page: page, size: size, completion: completion)
     }
 }
