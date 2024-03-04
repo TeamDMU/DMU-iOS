@@ -42,7 +42,7 @@ class SearchViewModel: ObservableObject {
     private let searchNoticeService = SearchNoticeService()
     private let userSettings = UserSettings()
     private var currentPage = 1
-    private let itemsPerPage = 20
+    private let itemsPerPage = 10
     
     func performSearch() {
         if !searchText.isEmpty {
@@ -55,28 +55,32 @@ class SearchViewModel: ObservableObject {
     }
     
     private func loadSearchNoticeData() {
-        if !isLoading {
-            self.isLoading = true
+        self.isLoading = true
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
             
-            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                guard let self = self else { return }
+            DispatchQueue.main.async {
+                let department = self.userSettings.selectedDepartment
                 
-                DispatchQueue.main.async {
-                    let department = self.userSettings.selectedDepartment
-                    
-                    self.searchNoticeService.getSearchNotices(searchWord: self.searchedText, department: department, page: self.currentPage, size: self.itemsPerPage) { result in
-                        switch result {
-                        case .success(let notices):
-                            self.searchNotices.append(contentsOf: notices)
-                            self.currentPage += 1
-                        case .failure(let error):
-                            print(error)
-                        }
-                        
-                        self.isLoading = false
+                self.searchNoticeService.getSearchNotices(searchWord: self.searchedText, department: department, page: self.currentPage, size: self.itemsPerPage) { result in
+                    switch result {
+                    case .success(let notices):
+                        self.searchNotices.append(contentsOf: notices)
+                    case .failure(let error):
+                        print(error)
                     }
+                    
+                    self.isLoading = false
                 }
             }
+        }
+    }
+    
+    func loadMoreData() {
+        if !isLoading {
+            currentPage += 1
+            loadSearchNoticeData()
         }
     }
 }

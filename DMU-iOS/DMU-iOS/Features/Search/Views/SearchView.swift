@@ -13,23 +13,27 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                SearchBarView(viewModel: viewModel)
+            ZStack {
+                VStack {
+                    SearchBarView(viewModel: viewModel)
+                    
+                    if viewModel.shouldShowResults {
+                        ScrollView {
+                            SearchResultsListView(viewModel: viewModel)
+                        }
+                    }
+                    
+                    Spacer()
+                }
+                .onTapGesture {
+                    hideKeyboard()
+                }
                 
                 if viewModel.isLoading {
-                    ProgressView("Loading...")
+                    ProgressView()
+                        .scaleEffect(1)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
                 }
-                
-                if viewModel.shouldShowResults {
-                    ScrollView {
-                        SearchResultsListView(viewModel: viewModel)
-                    }
-                }
-                
-                Spacer()
-            }
-            .onTapGesture {
-                hideKeyboard()
             }
         }
     }
@@ -111,6 +115,12 @@ struct SearchResultsListView: View {
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
                         SearchResultSingleView(notice: notice)
                     }
+                    .onAppear {
+                        if viewModel.searchNotices.isLastItem(notice) {
+                            viewModel.loadMoreData()
+                        }
+                    }
+                    
                     Divider().background(Color.Gray200)
                 }
             }
@@ -146,6 +156,15 @@ struct SearchResultSingleView: View {
         .background(Color.white)
         .cornerRadius(0)
         .shadow(color: .gray, radius: 0, x: 0, y: 0)
+    }
+}
+
+extension Array where Element == SearchNotice {
+    func isLastItem(_ item: SearchNotice) -> Bool {
+        guard let lastItem = self.last else {
+            return false
+        }
+        return lastItem.id == item.id
     }
 }
 

@@ -109,7 +109,3 @@ struct TabBarView: View {
         }
     }
 }
-
-#Preview {
-    TabBarView(viewModel: TabBarViewModel())
-}
