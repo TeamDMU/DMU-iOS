@@ -23,7 +23,7 @@ struct Schedule: Identifiable {
         if isEqualDayEvent {
             return "\(startDate)"
         } else {
-            return "\(startDate) ~ \(endDate)"
+            return "\(startDate) \n~ \(endDate)"
         }
     }
 }
