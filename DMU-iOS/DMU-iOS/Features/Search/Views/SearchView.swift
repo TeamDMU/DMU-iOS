@@ -42,112 +42,62 @@ struct SearchBarView: View {
     
     var body: some View {
         HStack {
-            CustomTextField(
-                text: $viewModel.searchText,
-                isFirstResponder: viewModel.isEditing,
-                placeholder: "검색어를 2글자 이상 입력하세요.",
-                onCommit: {
-                    viewModel.performSearch()
-                    
-                    withAnimation {
-                        viewModel.endSearchEditing()
-                        hideKeyboard()
-                    }
-                }, 
-                textColor: UIColor.blue300
-            )
-            .modifier(SearchBarModifier(viewModel: viewModel))
-            
-            if viewModel.isEditing {
-                SearchCancelButton(viewModel: viewModel)
-            }
-        }
-    }
-}
-
-struct SearchBarOverlay: View {
-    
-    @ObservedObject var viewModel: SearchViewModel
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(Color.Blue300)
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 12)
-                .padding(.trailing, 12)
-            
-            if viewModel.isEditing && !viewModel.searchText.isEmpty {
-                SearchClearTextButton(viewModel: viewModel)
-            }
-        }
-    }
-}
-
-// MARK: - 검색바 뷰 수정자
-struct SearchBarModifier: ViewModifier {
-    
-    @ObservedObject var viewModel: SearchViewModel
-    
-    func body(content: Content) -> some View {
-        content
-            .frame(height: 24)
-            .padding(12)
-            .padding(.horizontal, 28)
-            .font(.Medium16)
-            .foregroundColor(Color.Blue300)
+            TextField("검색어를 2글자 이상 입력하세요.", text: $viewModel.searchText, onCommit: {
+                viewModel.performSearch()
+                withAnimation {
+                    viewModel.isEditing = false
+                    hideKeyboard()
+                }
+            })
+            .padding(EdgeInsets(top: 12, leading: 40, bottom: 12, trailing: 12))
             .background(Color.Blue100)
             .cornerRadius(8)
             .overlay(
-                SearchBarOverlay(viewModel: viewModel)
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(Color.Blue300)
+                        .padding(.leading, 12)
+
+                    Spacer()
+
+                    if viewModel.isEditing && !viewModel.searchText.isEmpty {
+                        Button(action: {
+                            viewModel.clearText()
+                        }) {
+                            Image(systemName: "multiply.circle.fill")
+                                .foregroundColor(Color.Gray400)
+                        }
+                        .padding(.trailing, 12)
+                    }
+                }
             )
             .padding(.horizontal, 20)
             .onTapGesture {
                 withAnimation {
-                    viewModel.startSearchEditing()
+                    viewModel.isEditing = true
                 }
             }
-    }
-}
-
-// MARK: - 검색창 텍스트 삭제 및 키보드 내리는 버튼
-struct SearchCancelButton: View {
-    
-    @ObservedObject var viewModel: SearchViewModel
-    
-    var body: some View {
-        Button(action: {
-            viewModel.clearText()
-            withAnimation {
-                viewModel.isEditing = false
-            }
-            hideKeyboard()
-        }) {
-            Text("취소")
+            
+            if viewModel.isEditing {
+                Button(action: {
+                    viewModel.clearText()
+                    withAnimation {
+                        viewModel.isEditing = false
+                    }
+                    hideKeyboard()
+                }) {
+                    Text("취소")
+                        .font(.Medium16)
+                        .foregroundColor(Color.Blue300)
+                        .transition(.move(edge: .trailing))
+                }
                 .padding(.trailing, 20)
                 .padding(.leading, -10)
-                .font(.Medium16)
-                .foregroundColor(Color.Blue300)
-                .transition(.move(edge: .trailing))
+            }
         }
     }
 }
 
-// MARK: - 검색바 뷰 내부 텍스트 삭제 버튼
-struct SearchClearTextButton: View {
-    
-    @ObservedObject var viewModel: SearchViewModel
-    
-    var body: some View {
-        Button(action: {
-            viewModel.clearText()
-        }) {
-            Image(systemName: "multiply.circle.fill")
-                .foregroundColor(Color.Gray400)
-                .padding(.trailing, 12)
-        }
-    }
-}
 
 // MARK: - 검색 결과 리스트 뷰
 struct SearchResultsListView: View {
