@@ -44,17 +44,17 @@ class SearchViewModel: ObservableObject {
     private var currentPage = 1
     private let itemsPerPage = 10
     
-    func performSearch() {
+    func setupSearchAndLoadFirstPage() {
         if !searchText.isEmpty {
             self.searchedText = self.searchText
             self.currentPage = 1
             self.searchNotices = []
-            loadSearchNoticeData()
+            loadNextPageOfSearchResults()
             shouldShowResults = true
         }
     }
     
-    private func loadSearchNoticeData() {
+    private func loadNextPageOfSearchResults() {
         self.isLoading = true
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -77,10 +77,10 @@ class SearchViewModel: ObservableObject {
         }
     }
     
-    func loadMoreData() {
+    func loadNextPageIfNotLoading() {
         if !isLoading {
             currentPage += 1
-            loadSearchNoticeData()
+            loadNextPageOfSearchResults()
         }
     }
 }

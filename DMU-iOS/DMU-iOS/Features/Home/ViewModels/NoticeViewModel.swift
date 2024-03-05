@@ -25,48 +25,71 @@ class NoticeViewModel: ObservableObject {
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
-        loadUniversityNoticeData()
-        loadDepartmentNoticeData(department: userSettings.selectedDepartment)
+        resetAndLoadFirstPageOfUniversityNotices()
+        resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
     }
     
     // MARK: - 대학공지 데이터 통신
-    private let universitynoticeService = UniversityNoticeService()
+    @Published var isUniversityNoticeLoading = false
+    private var universityNoticeCurrentPage = 1
+    private let universityNoticeItemsPerPage = 10
+    private let universityNoticeService = UniversityNoticeService()
     
-    func loadUniversityNoticeData() {
-        universitynoticeService.getUniversityNotices{ result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let notices):
-                    self.universityNotices = notices
-                    print(notices)
-                case .failure(let error):
-                    print("Failed to get university notices: \(error)")
-                }
-            }
-        }
+    func resetAndLoadFirstPageOfUniversityNotices() {
+        self.universityNoticeCurrentPage = 1
+        self.universityNotices = []
+        loadNextPageOfUniversityNotices()
     }
     
-    // MARK: - 학부공지 데이터 통신
-    private let departmentNoticeService = DepartmentNoticeService()
-    
-    @Published var isLoading = false
-    private var currentPage = 1
-    private let itemsPerPage = 10
-
-    func loadDepartmentNoticeData(department: String) {
-        self.currentPage = 1
-        self.departmentNotices = []
-        loadMoreDepartmentNotices(department: department)
-    }
-
-    func loadMoreDepartmentNotices(department: String) {
-        self.isLoading = true
+    private func loadNextPageOfUniversityNotices() {
+        self.isUniversityNoticeLoading = true
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
-                self.departmentNoticeService.getDepartmentNotices(department: department, page: self.currentPage, size: self.itemsPerPage) { result in
+                self.universityNoticeService.getUniversityNotices(page: self.universityNoticeCurrentPage, size: self.universityNoticeItemsPerPage) { result in
+                    switch result {
+                    case .success(let notices):
+                        self.universityNotices.append(contentsOf: notices)
+                    case .failure(let error):
+                        print("Failed to get university notices: \(error)")
+                    }
+                    
+                    self.isUniversityNoticeLoading = false
+                }
+            }
+        }
+    }
+    
+    func loadNextPageOfUniversityNoticesIfNotLoading() {
+        if !isUniversityNoticeLoading {
+            universityNoticeCurrentPage += 1
+            loadNextPageOfUniversityNotices()
+        }
+    }
+    
+    // MARK: - 학부공지 데이터 통신
+    @Published var isDepartmentNoticeLoading = false
+    private var departmentNoticeCurrentPage = 1
+    private let departmentNoticeItemsPerPage = 10
+    
+    private let departmentNoticeService = DepartmentNoticeService()
+    
+    func resetAndLoadFirstPageOfDepartmentNotices(department: String) {
+        self.departmentNoticeCurrentPage = 1
+        self.departmentNotices = []
+        loadNextPageOfDepartmentNotices(department: department)
+    }
+    
+    func loadNextPageOfDepartmentNotices(department: String) {
+        self.isDepartmentNoticeLoading = true
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.departmentNoticeService.getDepartmentNotices(department: department, page: self.departmentNoticeCurrentPage, size: self.departmentNoticeItemsPerPage) { result in
                     switch result {
                     case .success(let notices):
                         self.departmentNotices.append(contentsOf: notices)
@@ -74,16 +97,16 @@ class NoticeViewModel: ObservableObject {
                         print("Failed to get department notices: \(error.localizedDescription)")
                     }
                     
-                    self.isLoading = false
+                    self.isDepartmentNoticeLoading = false
                 }
             }
         }
     }
-
-    func loadMoreData() {
-        if !isLoading {
-            currentPage += 1
-            loadMoreDepartmentNotices(department: userSettings.selectedDepartment)
+    
+    func loadNextPageIfNotLoading() {
+        if !isDepartmentNoticeLoading {
+            departmentNoticeCurrentPage += 1
+            loadNextPageOfDepartmentNotices(department: userSettings.selectedDepartment)
         }
     }
     
