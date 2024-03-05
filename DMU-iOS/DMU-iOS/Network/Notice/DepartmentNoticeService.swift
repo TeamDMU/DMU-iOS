@@ -10,7 +10,7 @@ import Foundation
 class DepartmentNoticeService {
     private let repository = DepartmentNoticeRepository()
     
-    func getDepartmentNotices(department: String, page: Int, size: Int, completion: @escaping (Result<[DepartmentNotice], Error>) -> Void) {
-        repository.getDepartmentNotices(department: department, page: page, size: size, completion: completion)
+    func getDepartmentNotices(department: String, completion: @escaping (Result<[DepartmentNotice], Error>) -> Void) {
+        repository.getDepartmentNotices(department: department, completion: completion)
     }
 }

@@ -12,8 +12,8 @@ import Moya
 class DepartmentNoticeRepository {
     let provider = MoyaProvider<APIService>()
     
-    func getDepartmentNotices(department: String, page: Int, size: Int, completion: @escaping (Result<[DepartmentNotice], Error>) -> Void) {
-        provider.request(.getDepartmentNotices(department: department, page: page, size: size)) { result in
+    func getDepartmentNotices(department: String, completion: @escaping (Result<[DepartmentNotice], Error>) -> Void) {
+        provider.request(.getDepartmentNotices(department: department)) { result in
             switch result {
             case .success(let response):
                 do {

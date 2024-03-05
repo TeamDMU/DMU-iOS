@@ -33,7 +33,7 @@ extension APIService: TargetType {
             return APIConstants.menuEndpoint
         case .getUniversityNotices(_, _) :
             return APIConstants.universityNoticeEndpoint
-        case .getDepartmentNotices(let department, _, _):
+        case .getDepartmentNotices(let department):
             return "\(APIConstants.departmentNoticeEndpoint)/\(department)"
         case .getSearchNotices(let searchWord, _, _, _):
             return "\(APIConstants.searchNoticeEndpoint)/\(searchWord)"
