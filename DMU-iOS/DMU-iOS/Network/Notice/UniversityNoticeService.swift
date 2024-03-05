@@ -10,7 +10,7 @@ import Foundation
 class UniversityNoticeService {
     private let repository = UniversityNoticeRepository()
 
-    func getUniversityNotices(page: Int, size: Int, completion: @escaping (Result<[UniversityNotice], Error>) -> Void) {
-        repository.getUniversityNotices(page: page, size: size, completion: completion)
+    func getUniversityNotices(completion: @escaping (Result<[UniversityNotice], Error>) -> Void) {
+        repository.getUniversityNotices(completion: completion)
     }
 }
