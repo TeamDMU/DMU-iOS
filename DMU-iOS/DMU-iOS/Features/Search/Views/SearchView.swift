@@ -13,27 +13,25 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                VStack {
-                    SearchBarView(viewModel: viewModel)
-                    
-                    if viewModel.shouldShowResults {
-                        ScrollView {
-                            SearchResultsListView(viewModel: viewModel)
-                        }
+            VStack {
+                SearchBarView(viewModel: viewModel)
+                
+                if viewModel.shouldShowResults {
+                    ScrollView {
+                        SearchResultsListView(viewModel: viewModel)
                     }
-                    
-                    Spacer()
-                }
-                .onTapGesture {
-                    hideKeyboard()
                 }
                 
-                if viewModel.isLoading {
-                    ProgressView()
-                        .scaleEffect(1)
-                        .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
-                }
+                Spacer()
+            }
+            .onTapGesture {
+                hideKeyboard()
+            }
+            
+            if viewModel.isLoading {
+                ProgressView()
+                    .scaleEffect(1)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
             }
         }
     }
@@ -47,7 +45,7 @@ struct SearchBarView: View {
     var body: some View {
         HStack {
             TextField("검색어를 2글자 이상 입력하세요.", text: $viewModel.searchText, onCommit: {
-                viewModel.performSearch()
+                viewModel.setupSearchAndLoadFirstPage()
                 withAnimation {
                     viewModel.isEditing = false
                     hideKeyboard()
@@ -119,7 +117,7 @@ struct SearchResultsListView: View {
                     }
                     .onAppear {
                         if viewModel.searchNotices.isLastItem(notice) {
-                            viewModel.loadMoreData()
+                            viewModel.loadNextPageIfNotLoading()
                         }
                     }
                     
