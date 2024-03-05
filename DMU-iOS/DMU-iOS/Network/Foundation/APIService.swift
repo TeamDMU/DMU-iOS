@@ -12,7 +12,7 @@ import Moya
 enum APIService {
     case getSchedules(year: Int, month: Int)
     case getMenus
-    case getUniversityNotices
+    case getUniversityNotices(page: Int, size: Int)
     case getDepartmentNotices(department: String, page: Int, size: Int)
     case getSearchNotices(searchWord: String, department: String, page: Int, size: Int)
 }
@@ -31,7 +31,7 @@ extension APIService: TargetType {
             return APIConstants.scheduleEndpoint
         case .getMenus:
             return APIConstants.menuEndpoint
-        case .getUniversityNotices:
+        case .getUniversityNotices(_, _):
             return APIConstants.universityNoticeEndpoint
         case .getDepartmentNotices(let department, _, _):
             return "\(APIConstants.departmentNoticeEndpoint)/\(department)"
@@ -53,8 +53,10 @@ extension APIService: TargetType {
     
     var task: Task {
         switch self {
-        case .getSchedules, .getMenus, .getUniversityNotices :
+        case .getSchedules, .getMenus :
             return .requestPlain
+        case .getUniversityNotices(let page, let size) :
+            return .requestParameters(parameters: ["page": page, "size": size], encoding: URLEncoding.queryString)
         case .getDepartmentNotices(_, let page, let size) :
             return .requestParameters(parameters: ["page": page, "size": size], encoding: URLEncoding.queryString)
         case .getSearchNotices(_, let department, let page, let size):
