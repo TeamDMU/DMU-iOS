@@ -25,33 +25,56 @@ class NoticeViewModel: ObservableObject {
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
-        loadUniversityNoticeData()
+        resetAndLoadFirstPageOfUniversityNotices()
         resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
     }
     
     // MARK: - 대학공지 데이터 통신
-    private let universitynoticeService = UniversityNoticeService()
+    @Published var isUniversityNoticeLoading = false
+    private var universityNoticeCurrentPage = 1
+    private let universityNoticeItemsPerPage = 10
+    private let universityNoticeService = UniversityNoticeService()
     
-    func loadUniversityNoticeData() {
-        universitynoticeService.getUniversityNotices{ result in
+    func resetAndLoadFirstPageOfUniversityNotices() {
+        self.universityNoticeCurrentPage = 1
+        self.universityNotices = []
+        loadNextPageOfUniversityNotices()
+    }
+    
+    private func loadNextPageOfUniversityNotices() {
+        self.isUniversityNoticeLoading = true
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
             DispatchQueue.main.async {
-                switch result {
-                case .success(let notices):
-                    self.universityNotices = notices
-                    print(notices)
-                case .failure(let error):
-                    print("Failed to get university notices: \(error)")
+                self.universityNoticeService.getUniversityNotices(page: self.universityNoticeCurrentPage, size: self.universityNoticeItemsPerPage) { result in
+                    switch result {
+                    case .success(let notices):
+                        self.universityNotices.append(contentsOf: notices)
+                    case .failure(let error):
+                        print("Failed to get university notices: \(error)")
+                    }
+                    
+                    self.isUniversityNoticeLoading = false
                 }
             }
         }
     }
     
-    // MARK: - 학부공지 데이터 통신
-    private let departmentNoticeService = DepartmentNoticeService()
+    func loadNextPageOfUniversityNoticesIfNotLoading() {
+        if !isUniversityNoticeLoading {
+            universityNoticeCurrentPage += 1
+            loadNextPageOfUniversityNotices()
+        }
+    }
     
+    // MARK: - 학부공지 데이터 통신
     @Published var isDepartmentNoticeLoading = false
     private var departmentNoticeCurrentPage = 1
     private let departmentNoticeItemsPerPage = 10
+    private let departmentNoticeService = DepartmentNoticeService()
+    
     
     func resetAndLoadFirstPageOfDepartmentNotices(department: String) {
         self.departmentNoticeCurrentPage = 1
