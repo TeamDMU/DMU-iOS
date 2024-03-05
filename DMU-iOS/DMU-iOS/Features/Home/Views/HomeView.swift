@@ -28,6 +28,12 @@ struct HomeView: View {
             .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
                 NotificationView()
             }
+            
+            if viewModel.isLoading {
+                ProgressView()
+                    .scaleEffect(1)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
+            }
         }
     }
 }
@@ -150,6 +156,11 @@ struct HomeDepartmentNoticeListView: View {
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
                         NoticeSingleView(notices: notice)
                     }
+                    .onAppear {
+                        if self.departmentNotices.isLastItem(notice) {
+                            self.viewModel.loadMoreData()
+                        }
+                    }
                     Divider().background(Color.Gray200)
                 }
             }
@@ -192,6 +203,14 @@ struct NoticeSingleView: View {
     }
 }
 
+extension Array where Element == DepartmentNotice {
+    func isLastItem(_ item: DepartmentNotice) -> Bool {
+        guard let lastItem = self.last else {
+            return false
+        }
+        return lastItem == item
+    }
+}
 
 #Preview {
     HomeView()
