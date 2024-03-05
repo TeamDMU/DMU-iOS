@@ -29,7 +29,7 @@ struct HomeView: View {
                 NotificationView()
             }
             
-            if viewModel.isLoading {
+            if viewModel.isDepartmentNoticeLoading {
                 ProgressView()
                     .scaleEffect(1)
                     .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
@@ -158,7 +158,7 @@ struct HomeDepartmentNoticeListView: View {
                     }
                     .onAppear {
                         if self.departmentNotices.isLastItem(notice) {
-                            self.viewModel.loadMoreData()
+                            self.viewModel.loadNextPageIfNotLoading()
                         }
                     }
                     Divider().background(Color.Gray200)

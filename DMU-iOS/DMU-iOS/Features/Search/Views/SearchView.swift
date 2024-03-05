@@ -45,7 +45,7 @@ struct SearchBarView: View {
     var body: some View {
         HStack {
             TextField("검색어를 2글자 이상 입력하세요.", text: $viewModel.searchText, onCommit: {
-                viewModel.performSearch()
+                viewModel.setupSearchAndLoadFirstPage()
                 withAnimation {
                     viewModel.isEditing = false
                     hideKeyboard()
@@ -117,7 +117,7 @@ struct SearchResultsListView: View {
                     }
                     .onAppear {
                         if viewModel.searchNotices.isLastItem(notice) {
-                            viewModel.loadMoreData()
+                            viewModel.loadNextPageIfNotLoading()
                         }
                     }
                     
