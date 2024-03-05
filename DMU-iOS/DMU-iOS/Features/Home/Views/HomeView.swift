@@ -28,6 +28,12 @@ struct HomeView: View {
             .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
                 NotificationView()
             }
+            
+            if viewModel.isDepartmentNoticeLoading || viewModel.isUniversityNoticeLoading {
+                ProgressView()
+                    .scaleEffect(1)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
+            }
         }
     }
 }
@@ -111,7 +117,7 @@ struct NoticeTabSwipeView: View {
         TabView(selection: $viewModel.selectedTab) {
             HomeUniversityNoticeListView(universityNotices: viewModel.universityNotices, viewModel: viewModel)
                 .tag(NoticeTab.university)
-            HomeDepartmentNoticeListView(departmentNotices: viewModel.filterDepartmentNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+            HomeDepartmentNoticeListView(departmentNotices: viewModel.departmentNotices, viewModel: viewModel)
                 .tag(NoticeTab.department)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -129,6 +135,11 @@ struct HomeUniversityNoticeListView: View {
                 ForEach(universityNotices) { notice in
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
                         NoticeSingleView(notices: notice)
+                    }
+                    .onAppear {
+                        if self.universityNotices.isLastItem(notice) {
+                            self.viewModel.loadNextPageOfUniversityNoticesIfNotLoading()
+                        }
                     }
                     Divider().background(Color.Gray200)
                 }
@@ -149,6 +160,11 @@ struct HomeDepartmentNoticeListView: View {
                 ForEach(departmentNotices) { notice in
                     NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
                         NoticeSingleView(notices: notice)
+                    }
+                    .onAppear {
+                        if self.departmentNotices.isLastItem(notice) {
+                            self.viewModel.loadNextPageIfNotLoading()
+                        }
                     }
                     Divider().background(Color.Gray200)
                 }
@@ -192,6 +208,15 @@ struct NoticeSingleView: View {
     }
 }
 
+extension Array where Element: Identifiable {
+    func isLastItem(_ item: Element) -> Bool {
+        guard let lastItem = self.last else {
+            return false
+        }
+        
+        return lastItem.id == item.id
+    }
+}
 
 #Preview {
     HomeView()

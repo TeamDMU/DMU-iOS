@@ -24,11 +24,15 @@ struct UniversityNotice: NoticeProtocol {
     var noticeURL : String
 }
 
-struct DepartmentNotice: NoticeProtocol {
+struct DepartmentNotice: NoticeProtocol, Equatable {
     var id = UUID()
     var noticeTitle: String
     var noticeDate: Date
     var noticeStaffName : String
     var noticeURL : String
     var noticeDepartment: String
+    
+    static func ==(lhs: DepartmentNotice, rhs: DepartmentNotice) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
