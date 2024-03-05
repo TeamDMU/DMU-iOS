@@ -49,17 +49,41 @@ class NoticeViewModel: ObservableObject {
     // MARK: - 학부공지 데이터 통신
     private let departmentNoticeService = DepartmentNoticeService()
     
+    @Published var isLoading = false
+    private var currentPage = 1
+    private let itemsPerPage = 10
+    
     func loadDepartmentNoticeData(department: String) {
-        departmentNoticeService.getDepartmentNotices(department: department) { result in
+        self.currentPage = 1
+        self.departmentNotices = []
+        loadMoreDepartmentNotices(department: department)
+    }
+    
+    func loadMoreDepartmentNotices(department: String) {
+        self.isLoading = true
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
             DispatchQueue.main.async {
-                switch result {
-                case .success(let notices):
-                    self.departmentNotices = notices
-                    print(notices)
-                case .failure(let error):
-                    print("Failed to get department notices: \(error.localizedDescription)")
+                self.departmentNoticeService.getDepartmentNotices(department: department, page: self.currentPage, size: self.itemsPerPage) { result in
+                    switch result {
+                    case .success(let notices):
+                        self.departmentNotices.append(contentsOf: notices)
+                    case .failure(let error):
+                        print("Failed to get department notices: \(error.localizedDescription)")
+                    }
+                    
+                    self.isLoading = false
                 }
             }
+        }
+    }
+    
+    func loadMoreData() {
+        if !isLoading {
+            currentPage += 1
+            loadMoreDepartmentNotices(department: userSettings.selectedDepartment)
         }
     }
     
