@@ -117,7 +117,7 @@ struct NoticeTabSwipeView: View {
         TabView(selection: $viewModel.selectedTab) {
             HomeUniversityNoticeListView(universityNotices: viewModel.universityNotices, viewModel: viewModel)
                 .tag(NoticeTab.university)
-            HomeDepartmentNoticeListView(departmentNotices: viewModel.filterDepartmentNotices(department: userSettings.selectedDepartment), viewModel: viewModel)
+            HomeDepartmentNoticeListView(departmentNotices: viewModel.departmentNotices, viewModel: viewModel)
                 .tag(NoticeTab.department)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
