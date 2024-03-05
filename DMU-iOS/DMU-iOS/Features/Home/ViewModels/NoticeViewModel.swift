@@ -110,15 +110,6 @@ class NoticeViewModel: ObservableObject {
         }
     }
     
-    // MARK: -학부공지 학과별 리스트 필터링
-    func filterDepartmentNotices(department: String?) -> [DepartmentNotice] {
-        return departmentNotices.filter { notice in
-            guard let department = department, !department.isEmpty else { return false }
-            
-            return notice.noticeDepartment == department
-        }
-    }
-    
     // MARK: -공지사항 화면 키워드 알림창 화면으로 이동
     
     @Published var isNavigationToNotification: Bool = false
