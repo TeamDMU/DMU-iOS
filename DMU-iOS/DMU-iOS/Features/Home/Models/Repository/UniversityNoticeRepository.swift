@@ -12,8 +12,8 @@ import Moya
 class UniversityNoticeRepository {
     let provider = MoyaProvider<APIService>()
     
-    func getUniversityNotices(page: Int, size: Int, completion: @escaping (Result<[UniversityNotice], Error>) -> Void) {
-        provider.request(.getUniversityNotices(page: page, size: size)) { result in
+    func getUniversityNotices(completion: @escaping (Result<[UniversityNotice], Error>) -> Void) {
+        provider.request(.getUniversityNotices) { result in
             switch result {
             case .success(let response):
                 do {
