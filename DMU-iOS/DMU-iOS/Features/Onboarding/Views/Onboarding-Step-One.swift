@@ -30,11 +30,11 @@ struct Onboarding_Step_One: View {
                 Spacer()
                 
                 CustomButton(title: "다음", action: {
-                    if Department.list.contains(searchText) {
+                    if Department.departmentlist.contains(searchText) {
                         userSettings.selectedDepartment = searchText
                         self.isStepTwoViewActive = true
                     }
-                }, isEnabled: Department.list.contains(searchText))
+                }, isEnabled: Department.departmentlist.contains(searchText))
                 .padding(.bottom, 20)
                 .navigationDestination(isPresented: $isStepTwoViewActive) {
                     Onboarding_Step_Two(isFirstLanching: $isFirstLanching)
@@ -123,14 +123,14 @@ struct OnboardingStepOneSearchDepartmentView: View {
                 Spacer()
                 
                 Image(systemName: "magnifyingglass")
-                    .foregroundColor(Department.list.firstIndex(of: searchText) != nil ? Color.Blue300 : Color.Gray300)
+                    .foregroundColor(Department.departmentlist.firstIndex(of: searchText) != nil ? Color.Blue300 : Color.Gray300)
                     .frame(width: 30, height: 30)
                 
                 TextField("소속 학과를 검색해주세요.", text: $searchText)
                     .foregroundColor(isTextInList ? Color.Blue300 : Color.Gray300)
                     .onChange(of: searchText, perform: { value in
-                        self.isListVisible = !searchText.isEmpty && !(Department.list.contains(searchText))
-                        self.isTextInList = Department.list.contains(searchText)
+                        self.isListVisible = !searchText.isEmpty && !(Department.departmentlist.contains(searchText))
+                        self.isTextInList = Department.departmentlist.contains(searchText)
                     })
                 if !searchText.isEmpty {
                     Button(action: {
@@ -146,20 +146,20 @@ struct OnboardingStepOneSearchDepartmentView: View {
             .frame(height: 52)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Department.list.firstIndex(of: searchText) != nil ? Color.Blue300 : Color.Gray300, lineWidth: 2)
+                    .stroke(Department.departmentlist.firstIndex(of: searchText) != nil ? Color.Blue300 : Color.Gray300, lineWidth: 2)
             )
             .padding(.horizontal, 20)
             
             if isListVisible {
                 List {
-                    ForEach(Department.list.filter({ "\($0)".contains(searchText) }), id: \.self) { department in
+                    ForEach(Department.departmentlist.filter({ "\($0)".contains(searchText) }), id: \.self) { department in
                         Text(department).onTapGesture {
                             self.searchText = department
                             self.isListVisible = false
                         }
                         .foregroundColor(.gray300)
                     }
-                    .listRowBackground(Color.white)
+                    .listRowBackground(Color.clear)
                 }
                 .listStyle(PlainListStyle())
                 .padding(.horizontal, 20)

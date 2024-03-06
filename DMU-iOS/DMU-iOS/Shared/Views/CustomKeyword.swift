@@ -72,7 +72,7 @@ struct SelectableButton: View {
                 .foregroundColor(isSelected ? Color.white : Color.Gray400)
                 .frame(width: 70, alignment: .center)
                 .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
-                .background(isSelected ? Color.Blue300 : Color.white)
+                .background(isSelected ? Color.Blue300 : Color.clear)
                 .cornerRadius(5)
                 .overlay(
                     RoundedRectangle(cornerRadius: 5)

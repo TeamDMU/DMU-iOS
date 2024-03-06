@@ -28,7 +28,7 @@ struct ScheduleView: View {
             .font(.SemiBold20)
             .padding()
             .frame(maxWidth: .infinity)
-            .foregroundColor(Color.black)
+            .foregroundColor(Color.Gray500)
     }
     
     // MARK: 학사일정 화면 네비게이션바 뷰
@@ -88,8 +88,9 @@ struct ScheduleView: View {
             .padding(20)
             
             Divider()
+                .background(Color.gray200)
         }
-        .background(Color.white)
+        .background(Color.clear)
     }
 }
 

@@ -82,7 +82,6 @@ struct NoticeTabBarView: View {
         }
         .padding(.top, 13)
         .frame(maxWidth: .infinity)
-        .background(Color.white)
     }
 }
 
@@ -145,8 +144,8 @@ struct HomeUniversityNoticeListView: View {
                 }
             }
         }
+        .background(Color.clear)
         .padding(.horizontal, 0)
-        .background(Color.white)
     }
 }
 
@@ -170,8 +169,8 @@ struct HomeDepartmentNoticeListView: View {
                 }
             }
         }
+        .background(Color.clear)
         .padding(.horizontal, 0)
-        .background(Color.white)
     }
 }
 
@@ -184,8 +183,8 @@ struct NoticeSingleView: View {
             HStack {
                 Text(notices.noticeTitle)
                     .font(.Medium16)
-                    .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading) // 여러 줄 정렬
+                    .foregroundColor(Color.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
@@ -202,9 +201,8 @@ struct NoticeSingleView: View {
             .padding(.top, 1)
         }
         .padding(16)
-        .background(Color.white)
         .cornerRadius(0)
-        .shadow(color: Color.gray, radius: 0, x: 0, y: 0)
+        .shadow(color: Color.gray200, radius: 0, x: 0, y: 0)
     }
 }
 
