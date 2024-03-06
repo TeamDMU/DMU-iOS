@@ -87,7 +87,7 @@ struct SettingView: View {
                     .foregroundColor(Color.Blue300)
                     .padding(.horizontal, 20)
                 
-                Button(action: {}) {
+                Link(destination: URL(string: "https://forms.gle/4GcVBswBqPh6RqAt6")!) {
                     Text("문의하기")
                         .font(.Medium18)
                         .foregroundColor(Color.Gray500)
