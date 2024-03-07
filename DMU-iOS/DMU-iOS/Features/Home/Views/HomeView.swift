@@ -52,7 +52,7 @@ struct HomeTopBarView: View {
             Spacer()
             HomeBellButton(viewModel: viewModel)
         }
-        .padding(.top, 20)
+        .padding(.top, 15)
     }
 }
 
