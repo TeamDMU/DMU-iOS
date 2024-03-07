@@ -38,7 +38,9 @@ struct ScheduleView: View {
             
             Spacer().frame(minWidth: 100)
             
-            Text(viewModel.currentYearMonth).font(.SemiBold16)
+            Text(viewModel.currentYearMonth)
+                .font(.Medium16)
+                .foregroundColor(Color.Gray500)
             
             Spacer().frame(minWidth: 100)
             
