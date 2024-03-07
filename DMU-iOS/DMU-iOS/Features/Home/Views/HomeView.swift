@@ -146,7 +146,6 @@ struct HomeUniversityNoticeListView: View {
             }
         }
         .background(Color.clear)
-        .padding(.horizontal, 0)
     }
 }
 
@@ -171,7 +170,6 @@ struct HomeDepartmentNoticeListView: View {
             }
         }
         .background(Color.clear)
-        .padding(.horizontal, 0)
     }
 }
 
@@ -201,7 +199,8 @@ struct NoticeSingleView: View {
             }
             .padding(.top, 1)
         }
-        .padding(16)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
         .cornerRadius(0)
         .shadow(color: Color.gray200, radius: 0, x: 0, y: 0)
     }
