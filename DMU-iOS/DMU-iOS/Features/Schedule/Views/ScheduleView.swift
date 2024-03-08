@@ -38,13 +38,15 @@ struct ScheduleView: View {
             
             Spacer().frame(minWidth: 100)
             
-            Text(viewModel.currentYearMonth).font(.SemiBold16)
+            Text(viewModel.currentYearMonth)
+                .font(.Medium16)
+                .foregroundColor(Color.Gray500)
             
             Spacer().frame(minWidth: 100)
             
             monthChangeButton(direction: 1, systemName: "chevron.right")
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 24)
     }
     
     // MARK: 학사일정 화면 월 이동 버튼
@@ -53,8 +55,9 @@ struct ScheduleView: View {
             viewModel.changeMonth(by: direction)
         }) {
             Image(systemName: systemName)
+                .resizable()
+                .frame(width: 12, height: 20)
                 .foregroundColor(Color.blue300)
-                .frame(width: 30, height: 30)
         }
     }
     
@@ -85,7 +88,8 @@ struct ScheduleView: View {
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(20)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
             
             Divider()
                 .background(Color.gray200)

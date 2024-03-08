@@ -158,6 +158,7 @@ struct OnboardingStepOneSearchDepartmentView: View {
                             self.isListVisible = false
                         }
                         .foregroundColor(.gray300)
+                        .listRowSeparator(.hidden)
                     }
                     .listRowBackground(Color.clear)
                 }

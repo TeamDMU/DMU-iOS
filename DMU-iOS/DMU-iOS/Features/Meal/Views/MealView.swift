@@ -75,7 +75,7 @@ struct WeeklyCalendarSingleDateView: View {
             Text("\(Calendar.current.component(.month, from: date))월")
                 .font(.Medium12)
                 .foregroundColor(Color.Gray500)
-                .padding(.bottom, 14)
+                .padding(.bottom, 10)
                 .lineLimit(1)
             Text("\(Calendar.current.component(.day, from: date))")
                 .font(.Medium16)
@@ -87,7 +87,7 @@ struct WeeklyCalendarSingleDateView: View {
                 .lineLimit(1)
             Text(weekday)
                 .font(.Medium12)
-                .padding(.top, 14)
+                .padding(.top, 10)
                 .foregroundColor(Color.Gray500)
                 .lineLimit(1)
         }
@@ -139,7 +139,7 @@ struct WeeklyMenuView: View {
         
         if viewModel.isWeekend(selectedDate){
             VStack {
-                Text("⛔️ 오늘은 식당을 운영하지 않아요.")
+                Text("⛔️ 주말은 식당을 운영하지 않아요.")
                     .font(.Medium16)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)

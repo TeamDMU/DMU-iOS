@@ -24,7 +24,7 @@ struct Onboarding_Step_Three: View {
         
         Spacer()
         
-        CustomButton(title: "알림 설정 및 시작하기", action: {
+        CustomButton(title: "시작하기", action: {
             self.isMainViewActive = true
             isFirstLanching.toggle()
         }, isEnabled: true)

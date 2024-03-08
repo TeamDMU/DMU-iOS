@@ -99,6 +99,7 @@ struct SearchBarView: View {
                 .padding(.leading, -10)
             }
         }
+        .padding(.top, 15)
     }
 }
 
@@ -151,7 +152,8 @@ struct SearchResultSingleView: View {
             }
             .padding(.top, 1)
         }
-        .padding(16)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
         .background(Color.white)
         .cornerRadius(0)
         .shadow(color: .gray, radius: 0, x: 0, y: 0)
