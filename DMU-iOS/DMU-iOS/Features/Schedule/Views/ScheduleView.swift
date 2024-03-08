@@ -88,7 +88,8 @@ struct ScheduleView: View {
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(20)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
             
             Divider()
                 .background(Color.gray200)
