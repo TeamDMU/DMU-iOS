@@ -46,7 +46,7 @@ struct ScheduleView: View {
             
             monthChangeButton(direction: 1, systemName: "chevron.right")
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 24)
     }
     
     // MARK: 학사일정 화면 월 이동 버튼
@@ -55,8 +55,9 @@ struct ScheduleView: View {
             viewModel.changeMonth(by: direction)
         }) {
             Image(systemName: systemName)
+                .resizable()
+                .frame(width: 12, height: 20)
                 .foregroundColor(Color.blue300)
-                .frame(width: 30, height: 30)
         }
     }
     
