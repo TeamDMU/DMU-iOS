@@ -41,6 +41,7 @@
 		F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96760682B3AE1CC00C09F29 /* Preview Assets.xcassets */; };
 		F9682B582B6B31A3004A2EFE /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B572B6B31A3004A2EFE /* ScheduleDTO.swift */; };
 		F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */; };
+		F97531372B9E8CD70027F197 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F97531362B9E8CD70027F197 /* Lottie */; };
 		F99A62FB2B83479B00EDB985 /* UniversityNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */; };
 		F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */; };
 		F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */; };
@@ -155,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97531372B9E8CD70027F197 /* Lottie in Frameworks */,
 				F91189102B5DF82200492AB1 /* Moya in Frameworks */,
 				F911890E2B5DF82200492AB1 /* CombineMoya in Frameworks */,
 				F91189142B5DF82200492AB1 /* RxMoya in Frameworks */,
@@ -700,6 +702,7 @@
 				F911890F2B5DF82200492AB1 /* Moya */,
 				F91189112B5DF82200492AB1 /* ReactiveMoya */,
 				F91189132B5DF82200492AB1 /* RxMoya */,
+				F97531362B9E8CD70027F197 /* Lottie */,
 			);
 			productName = "DMU-iOS";
 			productReference = F967605E2B3AE1CB00C09F29 /* DMU-iOS.app */;
@@ -731,6 +734,7 @@
 			mainGroup = F96760552B3AE1CB00C09F29;
 			packageReferences = (
 				F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */,
+				F97531352B9E8CD70027F197 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = F967605F2B3AE1CB00C09F29 /* Products */;
 			projectDirPath = "";
@@ -1051,6 +1055,14 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		F97531352B9E8CD70027F197 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1073,6 +1085,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F911890C2B5DF82200492AB1 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		F97531362B9E8CD70027F197 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F97531352B9E8CD70027F197 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
