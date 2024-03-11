@@ -23,6 +23,7 @@ struct LoadingView: UIViewRepresentable {
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = loopMode
         animationView.play()
+        animationView.backgroundBehavior = .pauseAndRestore
 
         animationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(animationView)

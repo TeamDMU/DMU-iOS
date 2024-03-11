@@ -15,24 +15,27 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                HomeTopBarView(viewModel: viewModel)
+            ZStack {
+                VStack {
+                    HomeTopBarView(viewModel: viewModel)
+                    
+                    NoticeTabBarView(viewModel: viewModel)
+                    
+                    NoticeTabSwipeView(viewModel: viewModel, userSettings: _userSettings)
+                }
+                .onReceive(userSettings.$selectedDepartment) { _ in
+                    viewModel.objectWillChange.send()
+                }
+                .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
+                    NotificationView()
+                }
                 
-                NoticeTabBarView(viewModel: viewModel)
-                
-                NoticeTabSwipeView(viewModel: viewModel, userSettings: _userSettings)
-            }
-            .onReceive(userSettings.$selectedDepartment) { _ in
-                viewModel.objectWillChange.send()
-            }
-            .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
-                NotificationView()
-            }
-            
-            if viewModel.isDepartmentNoticeLoading || viewModel.isUniversityNoticeLoading {
-                ProgressView()
-                    .scaleEffect(1)
-                    .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
+                VStack{
+                    if viewModel.isDepartmentNoticeLoading || viewModel.isUniversityNoticeLoading {
+                        LoadingView(lottieFileName: "DMforU_Loading_GIF")
+                            .frame(width: 100, height: 100)
+                    }
+                }
             }
         }
     }
