@@ -13,25 +13,28 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                SearchBarView(viewModel: viewModel)
-                
-                if viewModel.shouldShowResults {
-                    ScrollView {
-                        SearchResultsListView(viewModel: viewModel)
+            ZStack {
+                VStack {
+                    SearchBarView(viewModel: viewModel)
+                    
+                    if viewModel.shouldShowResults {
+                        ScrollView {
+                            SearchResultsListView(viewModel: viewModel)
+                        }
                     }
+                    
+                    Spacer()
+                }
+                .onTapGesture {
+                    hideKeyboard()
                 }
                 
-                Spacer()
-            }
-            .onTapGesture {
-                hideKeyboard()
-            }
-            
-            if viewModel.isLoading {
-                ProgressView()
-                    .scaleEffect(1)
-                    .progressViewStyle(CircularProgressViewStyle(tint: .gray400))
+                VStack {
+                    if viewModel.isLoading {
+                        LoadingView(lottieFileName: "DMforU_Loading_GIF")
+                            .frame(width: 100, height: 100)
+                    }
+                }
             }
         }
     }
