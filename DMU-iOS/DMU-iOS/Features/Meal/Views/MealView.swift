@@ -207,7 +207,7 @@ struct MenuDetailSingleView: View {
         .background(Color.white)
         .cornerRadius(15)
         .frame(width: width - 40)
-        .shadow(color: Color.Blue300.opacity(0.2), radius: 8, x: 0, y: 0)
+        .border(Color.Blue300, width: 2)
     }
 }
 

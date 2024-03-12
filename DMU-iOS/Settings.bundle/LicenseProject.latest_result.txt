@@ -1,0 +1,13 @@
+name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.8.1, source: https://github.com/Alamofire/Alamofire
+
+name: lottie-ios, nameSpecified: Lottie, owner: airbnb, version: 4.4.1, source: https://github.com/airbnb/lottie-ios
+
+name: Moya, nameSpecified: Moya, owner: Moya, version: 15.0.3, source: https://github.com/Moya/Moya
+
+name: ReactiveSwift, nameSpecified: ReactiveSwift, owner: ReactiveCocoa, version: 6.7.0, source: https://github.com/ReactiveCocoa/ReactiveSwift
+
+name: RxSwift, nameSpecified: RxSwift, owner: ReactiveX, version: 6.6.0, source: https://github.com/ReactiveX/RxSwift
+
+add-version-numbers: true
+
+LicensePlist Version: 3.25.1

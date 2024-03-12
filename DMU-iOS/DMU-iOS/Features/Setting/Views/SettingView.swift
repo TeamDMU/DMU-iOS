@@ -11,6 +11,7 @@ struct SettingView: View {
     
     @StateObject var viewModel: SettingViewModel
     @State var isNavigatingSettingToKeywordEditView = false
+    @Environment(\.openURL) var openURL
     
     var body: some View {
         NavigationStack {
@@ -93,6 +94,24 @@ struct SettingView: View {
                         .foregroundColor(Color.Gray500)
                 }
                 .padding(.horizontal, 20)
+                
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Text("개인정보 처리방침")
+                        .font(.Medium18)
+                        .foregroundColor(Color.Gray500)
+                        .padding(.horizontal, 20)
+                })
+                
+                Button(action: {
+                    if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                        openURL(url)
+                    }
+                }, label: {
+                    Text("오픈소스 라이선스")
+                        .font(.Medium18)
+                        .foregroundColor(Color.Gray500)
+                        .padding(.horizontal, 20)
+                })
                 
                 HStack {
                     Text("앱 버전")
