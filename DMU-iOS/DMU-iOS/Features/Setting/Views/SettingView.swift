@@ -94,6 +94,20 @@ struct SettingView: View {
                 }
                 .padding(.horizontal, 20)
                 
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Text("개인정보 처리방침")
+                        .font(.Medium18)
+                        .foregroundColor(Color.Gray500)
+                        .padding(.horizontal, 20)
+                })
+                
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Text("오픈소스 라이선스")
+                        .font(.Medium18)
+                        .foregroundColor(Color.Gray500)
+                        .padding(.horizontal, 20)
+                })
+                
                 HStack {
                     Text("앱 버전")
                         .font(.Medium18)
