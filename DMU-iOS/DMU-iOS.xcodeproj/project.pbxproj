@@ -53,6 +53,7 @@
 		F94224192BA123FE004B679E /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F94224182BA123FE004B679E /* FirebaseRemoteConfigSwift */; };
 		F942241B2BA123FE004B679E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F942241A2BA123FE004B679E /* FirebaseStorage */; };
 		F942241D2BA123FE004B679E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F942241C2BA123FE004B679E /* FirebaseStorageCombine-Community */; };
+		F94224212BA1292E004B679E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F94224202BA1292E004B679E /* GoogleService-Info.plist */; };
 		F95114552B6C7DA4009BDC98 /* MenuDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95114542B6C7DA4009BDC98 /* MenuDTO.swift */; };
 		F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951145B2B6C8138009BDC98 /* MenuRepository.swift */; };
 		F951145E2B6C8214009BDC98 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951145D2B6C8214009BDC98 /* MenuService.swift */; };
@@ -124,6 +125,7 @@
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F942241F2BA1262D004B679E /* DMU-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DMU-iOS.entitlements"; sourceTree = "<group>"; };
+		F94224202BA1292E004B679E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F95114542B6C7DA4009BDC98 /* MenuDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDTO.swift; sourceTree = "<group>"; };
 		F951145B2B6C8138009BDC98 /* MenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRepository.swift; sourceTree = "<group>"; };
 		F951145D2B6C8214009BDC98 /* MenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				F95265442B576666003BC8DA /* Shared */,
 				F95265462B5766B7003BC8DA /* Resources */,
 				F9B77F262B3AF91C00A6E2D1 /* Info.plist */,
+				F94224202BA1292E004B679E /* GoogleService-Info.plist */,
 				F92993542B63DA7D009DC2B6 /* Secrets.plist */,
 				F96760672B3AE1CC00C09F29 /* Preview Content */,
 			);
@@ -828,6 +831,7 @@
 			files = (
 				F9B77F342B3AF9D900A6E2D1 /* Pretendard-Medium.otf in Resources */,
 				F96760692B3AE1CC00C09F29 /* Preview Assets.xcassets in Resources */,
+				F94224212BA1292E004B679E /* GoogleService-Info.plist in Resources */,
 				F9B77F362B3AF9D900A6E2D1 /* Pretendard-ExtraBold.otf in Resources */,
 				F9B77F372B3AF9D900A6E2D1 /* Pretendard-Light.otf in Resources */,
 				F92993552B63DA7D009DC2B6 /* Secrets.plist in Resources */,
