@@ -26,9 +26,6 @@ struct HomeView: View {
                 .onReceive(userSettings.$selectedDepartment) { _ in
                     viewModel.objectWillChange.send()
                 }
-                .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
-                    NotificationView()
-                }
                 
                 VStack{
                     if viewModel.isDepartmentNoticeLoading || viewModel.isUniversityNoticeLoading {
@@ -53,24 +50,8 @@ struct HomeTopBarView: View {
                 .frame(width: 128, height: 33)
                 .padding(.leading)
             Spacer()
-            HomeBellButton(viewModel: viewModel)
         }
         .padding(.top, 15)
-    }
-}
-
-struct HomeBellButton: View {
-    
-    let viewModel: NoticeViewModel
-    
-    var body: some View {
-        Button(action: viewModel.navigateToNotification) {
-            Image(systemName: "bell")
-                .resizable()
-                .frame(width: 20, height: 22)
-                .foregroundColor(Color.Blue300)
-                .padding(.trailing)
-        }
     }
 }
 

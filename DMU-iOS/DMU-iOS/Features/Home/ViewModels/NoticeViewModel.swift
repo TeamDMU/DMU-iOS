@@ -109,12 +109,4 @@ class NoticeViewModel: ObservableObject {
             loadNextPageOfDepartmentNotices(department: userSettings.selectedDepartment)
         }
     }
-    
-    // MARK: -공지사항 화면 키워드 알림창 화면으로 이동
-    
-    @Published var isNavigationToNotification: Bool = false
-    
-    func navigateToNotification() {
-        isNavigationToNotification = true
-    }
 }
