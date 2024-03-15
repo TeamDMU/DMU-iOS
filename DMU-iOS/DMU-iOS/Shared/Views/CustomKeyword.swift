@@ -18,7 +18,7 @@ struct CustomKeyword: View {
         ["기숙사", "동아리", "학생회"]
     ]
     
-    @Binding var selectedKeywords: [String: [String]]
+    @Binding var selectedKeywords: [String]
     
     var body: some View {
         ScrollView {
@@ -32,15 +32,12 @@ struct CustomKeyword: View {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 90), spacing: 0, alignment: .leading)], spacing: 16) {
                             ForEach(contents[index], id: \.self) { content in
                                 SelectableButton(content: content, isSelected: Binding(get: {
-                                    self.selectedKeywords[title, default: []].contains(content)
+                                    self.selectedKeywords.contains(content)
                                 }, set: { newValue in
                                     if newValue {
-                                        self.selectedKeywords[title, default: []].append(content)
+                                        self.selectedKeywords.append(content)
                                     } else {
-                                        self.selectedKeywords[title]?.removeAll { $0 == content }
-                                        if self.selectedKeywords[title]?.isEmpty == true {
-                                            self.selectedKeywords[title] = nil
-                                        }
+                                        self.selectedKeywords.removeAll { $0 == content }
                                     }
                                 }), action: {})
                             }
@@ -84,10 +81,7 @@ struct SelectableButton: View {
 }
 
 struct CustomKeyword_Previews: PreviewProvider {
-    @State static var selectedKeywords: [String: [String]] = [
-        "수업" : ["시험"],
-        "학적" : ["복학"]
-    ]
+    @State static var selectedKeywords: [String] = ["시험", "복학"]
 
     static var previews: some View {
         CustomKeyword(selectedKeywords: $selectedKeywords)

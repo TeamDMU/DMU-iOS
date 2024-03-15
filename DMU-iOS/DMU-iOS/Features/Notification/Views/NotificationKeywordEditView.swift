@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationKeywordEditView: View {
     
-    @State private var selectedKeywords = [String: [String]]()
+    @State private var selectedKeywords: [String] = []
     @State private var showKeywordBalloon = true
     
     @Binding var isNavigatingToKeywordEditView: Bool
