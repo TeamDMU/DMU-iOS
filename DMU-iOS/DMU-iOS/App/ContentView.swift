@@ -33,7 +33,6 @@ struct ContentView: View {
                                     showOnboardingView = true
                                 }
                             }
-                            requestNotificationAuthorization()
                         }
                     }
             } else if showOnboardingView {
@@ -41,16 +40,6 @@ struct ContentView: View {
             } else {
                 TabBarView(viewModel: tabBarViewModel)
             }
-        }
-    }
-}
-
-func requestNotificationAuthorization() {
-    let center = UNUserNotificationCenter.current()
-    
-    center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-        if let error = error {
-            print("Authorization request error: \(error)")
         }
     }
 }
