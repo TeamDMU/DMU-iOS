@@ -12,6 +12,8 @@ struct NotificationKeywordEditView: View {
     @State private var selectedKeywords: [String] = []
     @State private var showKeywordBalloon = true
     
+    @ObservedObject var userSettings = UserSettings()
+    
     @Binding var isNavigatingToKeywordEditView: Bool
     
     var body: some View {
