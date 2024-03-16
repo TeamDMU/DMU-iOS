@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NotificationKeywordEditView: View {
     
-    @State private var selectedKeywords: [String] = []
     @State private var showKeywordBalloon = true
     
     @ObservedObject var userSettings = UserSettings()
@@ -22,7 +21,7 @@ struct NotificationKeywordEditView: View {
             
             ZStack(alignment: .bottom) {
                 // 키워드 리스트
-                CustomKeyword(selectedKeywords: $selectedKeywords)
+                CustomKeyword(selectedKeywords: $userSettings.selectedKeywordsContents)
                 
                 if showKeywordBalloon {
                     NotificationKeywordEditBalloonView()
@@ -43,6 +42,7 @@ struct NotificationKeywordEditView: View {
             CustomButton(
                 title: "완료",
                 action: {
+                    print("\(userSettings.selectedKeywordsContents)가 저장되었습니다.")
                     isNavigatingToKeywordEditView = false
                 },
                 isEnabled: true
