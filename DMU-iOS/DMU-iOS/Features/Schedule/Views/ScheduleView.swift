@@ -111,5 +111,5 @@ struct ScheduleView: View {
 }
 
 #Preview {
-    ScheduleView()
+    ScheduleView(viewModel: ScheduleViewModel())
 }
