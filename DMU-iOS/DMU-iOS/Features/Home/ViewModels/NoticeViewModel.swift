@@ -19,18 +19,9 @@ class NoticeViewModel: ObservableObject {
     @Published var departmentNotices: [DepartmentNotice] = []
     @Published var isShowingWebView = false
     
-    
-    // MARK: -학과별 필터링을 위한 UserSetting 초기화
-    private var userSettings: UserSettings
-    
-    init(userSettings: UserSettings) {
-        self.userSettings = userSettings
-        resetAndLoadFirstPageOfUniversityNotices()
-        resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
-    }
-    
     // MARK: - 대학공지 데이터 통신
     @Published var isUniversityNoticeLoading = false
+    
     private var universityNoticeCurrentPage = 1
     private let universityNoticeItemsPerPage = 10
     private let universityNoticeService = UniversityNoticeService()
@@ -103,18 +94,10 @@ class NoticeViewModel: ObservableObject {
         }
     }
     
-    func loadNextPageIfNotLoading() {
+    func loadNextPageIfNotLoading(department: String) {
         if !isDepartmentNoticeLoading {
             departmentNoticeCurrentPage += 1
-            loadNextPageOfDepartmentNotices(department: userSettings.selectedDepartment)
+            loadNextPageOfDepartmentNotices(department: department)
         }
-    }
-    
-    // MARK: -공지사항 화면 키워드 알림창 화면으로 이동
-    
-    @Published var isNavigationToNotification: Bool = false
-    
-    func navigateToNotification() {
-        isNavigationToNotification = true
     }
 }

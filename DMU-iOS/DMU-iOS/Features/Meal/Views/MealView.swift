@@ -14,17 +14,26 @@ struct MealView: View {
     @State private var selectedDate = Date()
     
     var body: some View {
-        VStack(alignment: .center) {
-            MealTitleView()
-            
-            WeeklyCalendarView(selectedDate: $selectedDate, startDate: viewModel.startOfWeek(date: Date()))
-            
-            RestaurantInfomationView()
-            
-            WeeklyMenuView(viewModel: viewModel, selectedDate: selectedDate)
-            
-            Spacer()
+        ZStack {
+            VStack(alignment: .center) {
+                MealTitleView()
+                
+                WeeklyCalendarView(selectedDate: $selectedDate, startDate: viewModel.startOfWeek(date: Date()))
+                
+                RestaurantInfomationView()
+                
+                WeeklyMenuView(viewModel: viewModel, selectedDate: selectedDate)
+                
+                Spacer()
+            }
+            VStack {
+                if viewModel.isMenuLoading {
+                    LoadingView(lottieFileName: "DMforU_Loading_GIF")
+                        .frame(width: 100, height: 100)
+                }
+            }
         }
+        .onAppear(perform: viewModel.loadMenuData)
     }
 }
 

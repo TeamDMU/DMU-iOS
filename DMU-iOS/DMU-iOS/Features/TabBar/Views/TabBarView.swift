@@ -29,7 +29,7 @@ struct TabBarView: View {
             TabView(selection: $viewModel.selectedTab) {
                 
                 // MARK: 공지사항 화면
-                HomeView()
+                HomeView(viewModel: NoticeViewModel(), userSettings: UserSettings())
                     .tabItem {
                         Image(systemName: "house")
                             .resizable()
@@ -61,7 +61,7 @@ struct TabBarView: View {
                     .tag(Tab.Search)
                 
                 // MARK: 일정 화면
-                ScheduleView()
+                ScheduleView(viewModel: ScheduleViewModel())
                     .tabItem {
                         Image(systemName: "calendar")
                             .resizable()

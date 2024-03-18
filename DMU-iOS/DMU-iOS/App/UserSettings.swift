@@ -16,7 +16,14 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var selectedKeywordsContents: [String] {
+        didSet {
+            UserDefaults.standard.set(selectedKeywordsContents, forKey: "selectedKeywordsContents")
+        }
+    }
+    
     init() {
         self.selectedDepartment = UserDefaults.standard.object(forKey: "SelectedDepartment") as? String ?? "학과를 선택하세요"
+        self.selectedKeywordsContents = UserDefaults.standard.object(forKey: "selectedKeywordsContents") as? [String] ?? []
     }
 }

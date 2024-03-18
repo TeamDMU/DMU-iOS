@@ -10,6 +10,7 @@ import Foundation
 class MealViewModel: ObservableObject {
     
     @Published var weeklyMenu: [Menu] = []
+    @Published var isMenuLoading = false
     
     private let menuService = MenuService()
     
@@ -25,13 +26,10 @@ class MealViewModel: ObservableObject {
         return formatter
     }()
     
-    // MARK: 금주의 식단 데이터 초기화
-    init() {
-        loadMenuData()
-    }
-    
     // MARK: 금주의 식단 데이터 통신
     func loadMenuData() {
+        self.isMenuLoading = true
+        
         menuService.getMenus { [weak self] result in
             switch result {
             case .success(let menus):
@@ -41,6 +39,7 @@ class MealViewModel: ObservableObject {
             case .failure(let error):
                 print("Failed to get menus: \(error)")
             }
+            self?.isMenuLoading = false
         }
     }
     

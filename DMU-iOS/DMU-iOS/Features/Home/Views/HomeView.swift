@@ -9,9 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var viewModel = NoticeViewModel(userSettings: UserSettings())
-    
-    @EnvironmentObject var userSettings: UserSettings
+    @ObservedObject var viewModel: NoticeViewModel
+    @ObservedObject var userSettings: UserSettings
     
     var body: some View {
         NavigationStack {
@@ -21,13 +20,7 @@ struct HomeView: View {
                     
                     NoticeTabBarView(viewModel: viewModel)
                     
-                    NoticeTabSwipeView(viewModel: viewModel, userSettings: _userSettings)
-                }
-                .onReceive(userSettings.$selectedDepartment) { _ in
-                    viewModel.objectWillChange.send()
-                }
-                .navigationDestination(isPresented: $viewModel.isNavigationToNotification){
-                    NotificationView()
+                    NoticeTabSwipeView(userSettings: userSettings, viewModel: viewModel)
                 }
                 
                 VStack{
@@ -36,6 +29,10 @@ struct HomeView: View {
                             .frame(width: 100, height: 100)
                     }
                 }
+            }
+            .onAppear {
+                viewModel.resetAndLoadFirstPageOfUniversityNotices()
+                viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
             }
         }
     }
@@ -53,24 +50,8 @@ struct HomeTopBarView: View {
                 .frame(width: 128, height: 33)
                 .padding(.leading)
             Spacer()
-            HomeBellButton(viewModel: viewModel)
         }
         .padding(.top, 15)
-    }
-}
-
-struct HomeBellButton: View {
-    
-    let viewModel: NoticeViewModel
-    
-    var body: some View {
-        Button(action: viewModel.navigateToNotification) {
-            Image(systemName: "bell")
-                .resizable()
-                .frame(width: 20, height: 22)
-                .foregroundColor(Color.Blue300)
-                .padding(.trailing)
-        }
     }
 }
 
@@ -112,15 +93,14 @@ struct NoticeTabBarItem: View {
 
 struct NoticeTabSwipeView: View {
     
+    @ObservedObject var userSettings: UserSettings
     @ObservedObject var viewModel: NoticeViewModel
-    
-    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
             HomeUniversityNoticeListView(universityNotices: viewModel.universityNotices, viewModel: viewModel)
                 .tag(NoticeTab.university)
-            HomeDepartmentNoticeListView(departmentNotices: viewModel.departmentNotices, viewModel: viewModel)
+            HomeDepartmentNoticeListView(userSettings: userSettings, departmentNotices: viewModel.departmentNotices, viewModel: viewModel)
                 .tag(NoticeTab.department)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -129,6 +109,7 @@ struct NoticeTabSwipeView: View {
 
 // MARK: - 대학, 학과 공지사항 리스트뷰
 struct HomeUniversityNoticeListView: View {
+    
     let universityNotices: [UniversityNotice]
     let viewModel: NoticeViewModel
     
@@ -153,6 +134,9 @@ struct HomeUniversityNoticeListView: View {
 }
 
 struct HomeDepartmentNoticeListView: View {
+    
+    @ObservedObject var userSettings: UserSettings
+    
     let departmentNotices: [DepartmentNotice]
     var viewModel: NoticeViewModel
     
@@ -165,7 +149,7 @@ struct HomeDepartmentNoticeListView: View {
                     }
                     .onAppear {
                         if self.departmentNotices.isLastItem(notice) {
-                            self.viewModel.loadNextPageIfNotLoading()
+                            self.viewModel.loadNextPageIfNotLoading(department: userSettings.selectedDepartment)
                         }
                     }
                     Divider().background(Color.Gray200)
@@ -221,6 +205,5 @@ extension Array where Element: Identifiable {
 
 
 #Preview {
-    HomeView()
-        .environmentObject(UserSettings())
+    HomeView(viewModel: NoticeViewModel(), userSettings: UserSettings())
 }

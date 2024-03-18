@@ -9,8 +9,10 @@ import SwiftUI
 
 struct Onboarding_Step_Two: View {
     
-    @State private var selectedKeywords = [String: [String]]()
+    @State private var selectedKeywords:[String] = []
     @State private var isStepThreeViewActive = false
+    
+    @ObservedObject var userSettings = UserSettings()
     
     @Binding var isFirstLanching: Bool
     
@@ -27,8 +29,10 @@ struct Onboarding_Step_Two: View {
             
             CustomButton(title: "다음", action: {
                 if !selectedKeywords.isEmpty {
+                    self.userSettings.selectedKeywordsContents = selectedKeywords
                     self.isStepThreeViewActive = true
                 }
+                print("\(userSettings.selectedKeywordsContents)가 저장되었습니다.")
             }, isEnabled: !selectedKeywords.isEmpty)
             .padding(.bottom, 20)
             .navigationDestination(isPresented: $isStepThreeViewActive) {

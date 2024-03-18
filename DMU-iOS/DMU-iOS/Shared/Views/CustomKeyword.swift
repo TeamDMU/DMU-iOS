@@ -13,65 +13,67 @@ struct CustomKeyword: View {
     let contents = [
         ["시험", "수강", "특강", "계절학기"],
         ["휴학", "복학", "졸업", "전과", "학기포기"],
-        ["장학", "등록"],
+        ["장학", "국가장학", "등록"],
         ["채용", "공모전", "대회", "현장실습", "봉사"],
         ["기숙사", "동아리", "학생회"]
     ]
     
-    @Binding var selectedKeywords: [String: [String]]
+    @Binding var selectedKeywords: [String]
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(Array(titles.enumerated()), id: \.element) { index, title in
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text(title)
-                            .font(.Medium20)
-                            .foregroundColor(Color.Gray600)
-                        
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 90), spacing: 0, alignment: .leading)], spacing: 16) {
-                            ForEach(contents[index], id: \.self) { content in
-                                SelectableButton(content: content, isSelected: Binding(get: {
-                                    self.selectedKeywords[title, default: []].contains(content)
-                                }, set: { newValue in
-                                    if newValue {
-                                        self.selectedKeywords[title, default: []].append(content)
-                                    } else {
-                                        self.selectedKeywords[title]?.removeAll { $0 == content }
-                                        if self.selectedKeywords[title]?.isEmpty == true {
-                                            self.selectedKeywords[title] = nil
-                                        }
-                                    }
-                                }), action: {})
-                            }
-                        }
-                        
-                        Divider()
-                            .padding(.top, 10)
-                    }
+                    KeywordSection(title: title, items: contents[index], selectedKeywords: $selectedKeywords)
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            .padding(.horizontal, 20)
         }
     }
+}
+
+struct KeywordSection: View {
+    var title: String
+    var items: [String]
+    @Binding var selectedKeywords: [String]
     
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(title)
+                .font(.Medium20)
+                .foregroundColor(Color.Gray600)
+            
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 90), spacing: 0, alignment: .leading)], spacing: 16) {
+                ForEach(items, id: \.self) { item in
+                    SelectableButton(content: item, isSelected: selectedKeywords.contains(item), action: {
+                        if selectedKeywords.contains(item) {
+                            selectedKeywords.removeAll { $0 == item }
+                        } else {
+                            selectedKeywords.append(item)
+                        }
+                    })
+                }
+            }
+            
+            Divider().padding(.top, 10)
+        }
+    }
 }
 
 struct SelectableButton: View {
     let content: String
-    @Binding var isSelected: Bool
+    var isSelected: Bool
     let action: () -> Void
     
     var body: some View {
         Button(action: {
             action()
-            self.isSelected.toggle()
         }) {
             Text(content)
                 .font(.SemiBold16)
                 .foregroundColor(isSelected ? Color.white : Color.Gray400)
-                .frame(width: 70, alignment: .center)
-                .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
+                .frame(minWidth: 70, alignment: .center)
+                .padding(.vertical, 5).padding(.horizontal, 16)
                 .background(isSelected ? Color.Blue300 : Color.clear)
                 .cornerRadius(10)
                 .overlay(
@@ -84,10 +86,7 @@ struct SelectableButton: View {
 }
 
 struct CustomKeyword_Previews: PreviewProvider {
-    @State static var selectedKeywords: [String: [String]] = [
-        "수업" : ["시험"],
-        "학적" : ["복학"]
-    ]
+    @State static var selectedKeywords: [String] = ["시험", "복학"]
 
     static var previews: some View {
         CustomKeyword(selectedKeywords: $selectedKeywords)
