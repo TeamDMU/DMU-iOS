@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ScheduleView: View {
     
-    @ObservedObject var viewModel = ScheduleViewModel()
+    @ObservedObject var viewModel: ScheduleViewModel
     
     var body: some View {
-        VStack {
-            ScheduleTitle
+        ZStack{
+            VStack {
+                ScheduleTitle
+                
+                ScheduleMonthNavigationBarView
+                
+                SchedulesListView
+            }
             
-            ScheduleMonthNavigationBarView
-            
-            SchedulesListView
+            VStack {
+                if viewModel.isScheduleLoading {
+                    LoadingView(lottieFileName: "DMforU_Loading_GIF")
+                        .frame(width: 100, height: 100)
+                }
+            }
         }
-        //.onAppear(perform: viewModel.loadScheduleData)
+        .onAppear(perform: viewModel.loadScheduleData)
     }
     
     // MARK: 학사일정 화면 타이틀 뷰
@@ -70,6 +79,9 @@ struct ScheduleView: View {
                 }
             }
         }
+        .refreshable {
+            viewModel.loadScheduleData()
+        }
     }
     
     private func ScheduleSingleView(for schedule: Schedule) -> some View {
@@ -99,5 +111,5 @@ struct ScheduleView: View {
 }
 
 #Preview {
-    ScheduleView()
+    ScheduleView(viewModel: ScheduleViewModel())
 }

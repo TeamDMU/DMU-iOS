@@ -8,9 +8,10 @@
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
-    
+        
     @Published var currentDate = Date()
     @Published var schedules: [Schedule] = []
+    @Published var isScheduleLoading = false
     
     private let calendar = Calendar.current
     private let scheduleService = ScheduleService()
@@ -21,15 +22,13 @@ class ScheduleViewModel: ObservableObject {
         return formatter
     }()
     
-    // MARK: 학사일정 데이터 초기화
-    init() {
-        loadScheduleData()
-    }
-    
     // MARK: 학사일정 데이터 주입
     func loadScheduleData() {
         let year = calendar.component(.year, from: currentDate)
         let month = calendar.component(.month, from: currentDate)
+        
+        self.isScheduleLoading = true
+        
         scheduleService.getSchedules(year: year, month: month) { [weak self] result in
             switch result {
             case .success(let yearSchedule):
@@ -39,6 +38,7 @@ class ScheduleViewModel: ObservableObject {
             case .failure(let error):
                 print("Failed to get schedules: \(error)")
             }
+            self?.isScheduleLoading = false
         }
     }
     
