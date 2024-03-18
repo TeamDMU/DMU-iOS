@@ -8,9 +8,7 @@
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
-    
-    static let shared = ScheduleViewModel()
-    
+        
     @Published var currentDate = Date()
     @Published var schedules: [Schedule] = []
     @Published var isScheduleLoading = false
