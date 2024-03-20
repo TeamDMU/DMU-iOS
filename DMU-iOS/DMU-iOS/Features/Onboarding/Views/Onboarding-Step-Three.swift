@@ -136,8 +136,8 @@ struct OnboardingStepThreeSetNotificationView: View {
             .frame(width: 320, height: 80)
             .background(Color.white)
             .cornerRadius(15)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.Blue300, lineWidth: 2))
-            .shadow(color: Color.Blue300.opacity(0.3), radius: 30, x: 0, y: 1)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(isOn ? Color.Blue300 : Color.Gray400, lineWidth: 2))
+            .shadow(color: isOn ? Color.Blue300.opacity(0.3) : Color.Gray400.opacity(0.3), radius: 30, x: 0, y: 1)
         }
         .padding(.top, 96)
     }
