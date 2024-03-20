@@ -95,6 +95,11 @@ extension AppDelegate : MessagingDelegate {
     // fcm 등록 토큰을 받았을 때
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("AppDelegate - Firebase registration token: \(String(describing: fcmToken))")
+        
+        // UserSettings에 FCM 토큰 저장
+        if let token = fcmToken {
+            UserDefaults.standard.set(token, forKey: "fcmToken")
+        }
     }
 }
 

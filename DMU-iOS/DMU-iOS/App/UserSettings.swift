@@ -22,8 +22,15 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var fcmToken: String {
+        didSet {
+            UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
+        }
+    }
+    
     init() {
         self.selectedDepartment = UserDefaults.standard.object(forKey: "SelectedDepartment") as? String ?? "학과를 선택하세요"
         self.selectedKeywordsContents = UserDefaults.standard.object(forKey: "selectedKeywordsContents") as? [String] ?? []
+        self.fcmToken = UserDefaults.standard.object(forKey: "fcmToken") as? String ?? "토큰 없음"
     }
 }
