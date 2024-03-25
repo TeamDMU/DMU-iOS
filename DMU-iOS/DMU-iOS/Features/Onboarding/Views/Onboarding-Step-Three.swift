@@ -11,6 +11,8 @@ struct Onboarding_Step_Three: View {
     
     @State private var isNotificationOn = false
     @State private var isMainViewActive = false
+        
+    @StateObject private var userSettings = UserSettings()
     
     @Binding var isFirstLanching: Bool
     
@@ -20,7 +22,7 @@ struct Onboarding_Step_Three: View {
         
         OnboardingStepThreeProgressBarView()
         
-        OnboardingStepThreeSetNotificationView(isOn: $isNotificationOn)
+        OnboardingStepThreeSetNotificationView(isOn: $isNotificationOn, userSettings: userSettings)
         
         Spacer()
         
@@ -108,6 +110,8 @@ struct OnboardingStepThreeSetNotificationView: View {
     
     @Binding var isOn : Bool
     
+    @ObservedObject var userSettings: UserSettings
+    
     @State private var showingAlert = false
     
     var body: some View {
@@ -151,6 +155,9 @@ struct OnboardingStepThreeSetNotificationView: View {
                 if newValue {
                     checkNotificationAuthorization()
                 }
+                
+                userSettings.isDepartmentNotificationOn = newValue
+                userSettings.isKeywordNotificationOn = newValue
             }
         }
         .padding(.top, 96)
