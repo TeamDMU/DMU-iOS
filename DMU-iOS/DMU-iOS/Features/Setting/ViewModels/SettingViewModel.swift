@@ -14,6 +14,7 @@ class SettingViewModel: ObservableObject {
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
+        self.settingDepartment = userSettings.selectedDepartment
     }
     
     //MARK: 학과 선택
