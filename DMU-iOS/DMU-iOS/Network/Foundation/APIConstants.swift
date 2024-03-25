@@ -30,6 +30,19 @@ struct APIConstants {
     // 공지 검색 API 엔드포인트
     static let searchNoticeEndpoint = "notice"
     
+    // MARK: 백엔드 측 엔드포인트 업데이트 시 수정 필요
+    // 키워드 알림 업데이트 API 엔드포인트
+    static let updateKeyword = "update_topic"
+
+    // 키워드 알림 삭제 API 엔드포인트
+    static let deleteKeyword = "delete_topic"
+    
+    // 학과 알림 업데이트 API 엔드포인트
+    static let updateDepartment = "update_department"
+    
+    // 학과 알림 삭제 API 엔드포인트
+    static let deleteDepartment = "delete_department"
+    
     // HTTP 필드 이름
     static let contentType = "Content-Type"
     
