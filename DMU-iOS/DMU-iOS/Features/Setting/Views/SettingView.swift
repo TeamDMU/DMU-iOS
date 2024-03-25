@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     
     @State var isNavigatingSettingToKeywordEditView = false
+    @State var isNavigationSettingToDepartmentSettingView = false
     
     @ObservedObject var viewModel: SettingViewModel
     
@@ -71,7 +72,9 @@ struct SettingView: View {
                     
                     Spacer()
                     
-                    Button(action: viewModel.navigateToDepartment) {
+                    Button(action: {
+                        self.isNavigationSettingToDepartmentSettingView.toggle()
+                    }) {
                         HStack {
                             Text(viewModel.userSettings.selectedDepartment)
                                 .font(.Medium14)
@@ -132,7 +135,7 @@ struct SettingView: View {
                 
                 Spacer()
             }
-            .navigationDestination(isPresented: $viewModel.isNavigatingToSettingDepartmentView) {
+            .navigationDestination(isPresented: $isNavigationSettingToDepartmentSettingView) {
                 SettingDepartmentView(viewModel: viewModel)
             }
         }
