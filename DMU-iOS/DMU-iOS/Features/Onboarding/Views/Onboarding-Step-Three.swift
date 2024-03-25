@@ -11,6 +11,8 @@ struct Onboarding_Step_Three: View {
     
     @State private var isNotificationOn = false
     @State private var isMainViewActive = false
+        
+    @StateObject private var userSettings = UserSettings()
     
     @Binding var isFirstLanching: Bool
     
@@ -20,7 +22,7 @@ struct Onboarding_Step_Three: View {
         
         OnboardingStepThreeProgressBarView()
         
-        OnboardingStepThreeSetNotificationView(isOn: $isNotificationOn)
+        OnboardingStepThreeSetNotificationView(isOn: $isNotificationOn, userSettings: userSettings)
         
         Spacer()
         
@@ -108,6 +110,10 @@ struct OnboardingStepThreeSetNotificationView: View {
     
     @Binding var isOn : Bool
     
+    @ObservedObject var userSettings: UserSettings
+    
+    @State private var showingAlert = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -136,10 +142,36 @@ struct OnboardingStepThreeSetNotificationView: View {
             .frame(width: 320, height: 80)
             .background(Color.white)
             .cornerRadius(15)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.Blue300, lineWidth: 2))
-            .shadow(color: Color.Blue300.opacity(0.3), radius: 30, x: 0, y: 1)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(isOn ? Color.Blue300 : Color.Gray400, lineWidth: 2))
+            .shadow(color: isOn ? Color.Blue300.opacity(0.3) : Color.Gray400.opacity(0.3), radius: 30, x: 0, y: 1)
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("기기 알림이 꺼져 있습니다."),
+                    message: Text("기기 알림(설정 > 알림 > DMforU)을 켜야 공지사항에 대한 키워드 알림을 받을 수 있습니다."),
+                    dismissButton: .default(Text("확인"))
+                )
+            }
+            .onChange(of: isOn) { newValue in
+                if newValue {
+                    checkNotificationAuthorization()
+                }
+                
+                userSettings.isDepartmentNotificationOn = newValue
+                userSettings.isKeywordNotificationOn = newValue
+            }
         }
         .padding(.top, 96)
+    }
+    
+    // MARK: 알림 권한 상태 여부 확인
+    private func checkNotificationAuthorization() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            if settings.authorizationStatus != .authorized {
+                DispatchQueue.main.async {
+                    self.showingAlert = true
+                }
+            }
+        }
     }
 }
 

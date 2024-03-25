@@ -9,8 +9,10 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @StateObject var viewModel: SettingViewModel
     @State var isNavigatingSettingToKeywordEditView = false
+    
+    @StateObject var viewModel: SettingViewModel
+    
     @Environment(\.openURL) var openURL
     
     var body: some View {
@@ -27,7 +29,7 @@ struct SettingView: View {
                     .foregroundColor(Color.Blue300)
                     .padding(.horizontal, 20)
                 
-                Toggle(isOn: $viewModel.isUniversityNoticeOn) {
+                Toggle(isOn: $viewModel.userSettings.isKeywordNotificationOn) {
                     Text("알림 설정")
                         .font(.Medium18)
                         .foregroundColor(Color.Gray500)
@@ -54,7 +56,7 @@ struct SettingView: View {
                     .foregroundColor(Color.Blue300)
                     .padding(.horizontal, 20)
                 
-                Toggle(isOn: $viewModel.isDepartmentNoticeOn) {
+                Toggle(isOn: $viewModel.userSettings.isDepartmentNotificationOn) {
                     Text("알림 설정")
                         .font(.Medium18)
                         .foregroundColor(Color.Gray500)
