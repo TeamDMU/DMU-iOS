@@ -28,6 +28,7 @@
 		F93D03042BB24D8300F6AFDE /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03032BB24D8300F6AFDE /* NotificationService.swift */; };
 		F93D030A2BB24EDD00F6AFDE /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03092BB24EDD00F6AFDE /* NotificationRepository.swift */; };
 		F93D030E2BB24F4A00F6AFDE /* NotificationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D030D2BB24F4A00F6AFDE /* NotificationResponseDTO.swift */; };
+		F93D03122BB251BF00F6AFDE /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03112BB251BF00F6AFDE /* NotificationViewModel.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
 		F94223E92BA123FE004B679E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F94223E82BA123FE004B679E /* FirebaseAnalytics */; };
 		F94223EB2BA123FE004B679E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F94223EA2BA123FE004B679E /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -129,6 +130,7 @@
 		F93D03032BB24D8300F6AFDE /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F93D03092BB24EDD00F6AFDE /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
 		F93D030D2BB24F4A00F6AFDE /* NotificationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseDTO.swift; sourceTree = "<group>"; };
+		F93D03112BB251BF00F6AFDE /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F942241F2BA1262D004B679E /* DMU-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DMU-iOS.entitlements"; sourceTree = "<group>"; };
 		F94224202BA1292E004B679E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -277,6 +279,14 @@
 				F93D030D2BB24F4A00F6AFDE /* NotificationResponseDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		F93D03102BB251AC00F6AFDE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F93D03112BB251BF00F6AFDE /* NotificationViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F95114562B6C7EC5009BDC98 /* Meal */ = {
@@ -577,6 +587,7 @@
 			children = (
 				F93D03072BB24EBE00F6AFDE /* Models */,
 				F95265402B57660F003BC8DA /* Views */,
+				F93D03102BB251AC00F6AFDE /* ViewModels */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -920,6 +931,7 @@
 				F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */,
 				F9BCAA892B73D38100E717BF /* NoticeWebView.swift in Sources */,
 				F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */,
+				F93D03122BB251BF00F6AFDE /* NotificationViewModel.swift in Sources */,
 				F93D03042BB24D8300F6AFDE /* NotificationService.swift in Sources */,
 				F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */,
 				F92116172B90621000A5507A /* DepartmentNoticeDTO.swift in Sources */,

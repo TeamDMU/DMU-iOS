@@ -214,9 +214,12 @@ struct MenuDetailSingleView: View {
         }
         .padding(16)
         .background(Color.white)
-        .cornerRadius(15)
         .frame(width: width - 40)
-        .border(Color.Blue300, width: 2)
+        .clipShape(RoundedRectangle(cornerRadius: 15))
+        .overlay(
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color.Blue300, lineWidth: 2)
+        )
     }
 }
 
