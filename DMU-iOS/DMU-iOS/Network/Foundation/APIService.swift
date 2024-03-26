@@ -15,6 +15,11 @@ enum APIService {
     case getUniversityNotices(page: Int, size: Int)
     case getDepartmentNotices(department: String, page: Int, size: Int)
     case getSearchNotices(searchWord: String, department: String, page: Int, size: Int)
+    
+    case postUpdateKeyword(tokens: [String], topic: [String])
+    case postDeleteKeyword(tokens: [String], topic: [String])
+    case postUpdateDepartment(tokens: [String], department: String)
+    case postDeleteDepartment(tokens: [String], department: String)
 }
 
 extension APIService: TargetType {
@@ -37,6 +42,14 @@ extension APIService: TargetType {
             return "\(APIConstants.departmentNoticeEndpoint)/\(department)"
         case .getSearchNotices(let searchWord, _, _, _):
             return "\(APIConstants.searchNoticeEndpoint)/\(searchWord)"
+        case .postUpdateKeyword:
+            return "\(APIConstants.updateKeywordEndpoint)"
+        case .postDeleteKeyword:
+            return "\(APIConstants.deleteKeywordEndpoint)"
+        case .postUpdateDepartment:
+            return "\(APIConstants.updateDepartmentEndpoint)"
+        case .postDeleteDepartment:
+            return "\(APIConstants.deleteDepartmentEndpoint)"
         }
     }
     
@@ -44,6 +57,8 @@ extension APIService: TargetType {
         switch self {
         case .getSchedules, .getMenus, .getUniversityNotices, .getDepartmentNotices, .getSearchNotices:
             return .get
+        case .postUpdateKeyword, .postDeleteKeyword, .postUpdateDepartment, .postDeleteDepartment:
+            return .post
         }
     }
     
@@ -61,6 +76,15 @@ extension APIService: TargetType {
             return .requestParameters(parameters: ["page": page, "size": size], encoding: URLEncoding.queryString)
         case .getSearchNotices(_, let department, let page, let size):
             return .requestParameters(parameters: ["department": department, "page": page, "size": size], encoding: URLEncoding.queryString)
+        case .postUpdateKeyword(let tokens, let topic):
+            return .requestParameters(parameters: ["tokens": tokens, "topic": topic], encoding: URLEncoding.queryString)
+        case .postDeleteKeyword(let tokens, let topic):
+            return .requestParameters(parameters: ["tokens": tokens, "topic": topic], encoding: URLEncoding.queryString)
+        case .postUpdateDepartment(let tokens, let department):
+            return .requestParameters(parameters: ["tokens": tokens, "department": department], encoding: URLEncoding.queryString)
+        case .postDeleteDepartment(let tokens, let department):
+            return .requestParameters(parameters: ["tokens": tokens, "department": department], encoding: URLEncoding.queryString)
+            
         }
     }
     
