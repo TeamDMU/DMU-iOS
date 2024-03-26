@@ -25,6 +25,7 @@
 		F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935D2B63E59F009DC2B6 /* ScheduleService.swift */; };
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
+		F93D03042BB24D8300F6AFDE /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03032BB24D8300F6AFDE /* NotificationService.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
 		F94223E92BA123FE004B679E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F94223E82BA123FE004B679E /* FirebaseAnalytics */; };
 		F94223EB2BA123FE004B679E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F94223EA2BA123FE004B679E /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -123,6 +124,7 @@
 		F929935D2B63E59F009DC2B6 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F93D03032BB24D8300F6AFDE /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F942241F2BA1262D004B679E /* DMU-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DMU-iOS.entitlements"; sourceTree = "<group>"; };
 		F94224202BA1292E004B679E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -230,6 +232,14 @@
 				F929935D2B63E59F009DC2B6 /* ScheduleService.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		F93D03052BB24D8700F6AFDE /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				F93D03032BB24D8300F6AFDE /* NotificationService.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		F95114562B6C7EC5009BDC98 /* Meal */ = {
@@ -637,6 +647,7 @@
 				F95DC1302B91B5C1001D3419 /* Search */,
 				F929935C2B63E58E009DC2B6 /* Schedule */,
 				F95114562B6C7EC5009BDC98 /* Meal */,
+				F93D03052BB24D8700F6AFDE /* Notification */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -871,6 +882,7 @@
 				F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */,
 				F9BCAA892B73D38100E717BF /* NoticeWebView.swift in Sources */,
 				F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */,
+				F93D03042BB24D8300F6AFDE /* NotificationService.swift in Sources */,
 				F9BB5B6A2B42D320002EDB68 /* SearchViewModel.swift in Sources */,
 				F92116172B90621000A5507A /* DepartmentNoticeDTO.swift in Sources */,
 				F9E4E3762B75F58600E276CC /* CustomTextField.swift in Sources */,
