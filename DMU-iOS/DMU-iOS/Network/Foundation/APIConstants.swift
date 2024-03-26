@@ -16,32 +16,32 @@ struct APIConstants {
     }
     
     // 학사일정 API 엔드포인트
-    static let scheduleEndpoint = "schedule"
+    static let scheduleEndpoint = "/api/v1/dmu/schedule"
     
     // 식단표 API 엔드포인트
-    static let menuEndpoint = "cafeteria"
+    static let menuEndpoint = "/api/v1/dmu/cafeteria"
     
     // 대학공지 API 엔드포인트
-    static let universityNoticeEndpoint = "universityNotice"
+    static let universityNoticeEndpoint = "/api/v1/dmu/universityNotice"
     
     // 학부공지 API 엔드포인트
-    static let departmentNoticeEndpoint = "departmentNotice"
+    static let departmentNoticeEndpoint = "/api/v1/dmu/departmentNotice"
     
     // 공지 검색 API 엔드포인트
-    static let searchNoticeEndpoint = "notice"
+    static let searchNoticeEndpoint = "/api/v1/dmu/notice"
     
     // MARK: 백엔드 측 엔드포인트 업데이트 시 수정 필요
     // 키워드 알림 업데이트 API 엔드포인트
-    static let updateKeyword = "update_topic"
+    static let updateKeywordEndpoint = "/token/v1/dmu/update_topic"
 
     // 키워드 알림 삭제 API 엔드포인트
-    static let deleteKeyword = "delete_topic"
+    static let deleteKeywordEndpoint = "/token/v1/dmu/delete_topic"
     
     // 학과 알림 업데이트 API 엔드포인트
-    static let updateDepartment = "update_department"
+    static let updateDepartmentEndpoint = "/token/v1/dmu/update_department"
     
     // 학과 알림 삭제 API 엔드포인트
-    static let deleteDepartment = "delete_department"
+    static let deleteDepartmentEndpoint = "/token/v1/dmu/delete_department"
     
     // HTTP 필드 이름
     static let contentType = "Content-Type"
