@@ -26,6 +26,8 @@
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93D03042BB24D8300F6AFDE /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03032BB24D8300F6AFDE /* NotificationService.swift */; };
+		F93D030A2BB24EDD00F6AFDE /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03092BB24EDD00F6AFDE /* NotificationRepository.swift */; };
+		F93D030E2BB24F4A00F6AFDE /* NotificationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D030D2BB24F4A00F6AFDE /* NotificationResponseDTO.swift */; };
 		F93F51242B47A31800654F6D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93F51232B47A31800654F6D /* UserSettings.swift */; };
 		F94223E92BA123FE004B679E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F94223E82BA123FE004B679E /* FirebaseAnalytics */; };
 		F94223EB2BA123FE004B679E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F94223EA2BA123FE004B679E /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -125,6 +127,8 @@
 		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93D03032BB24D8300F6AFDE /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F93D03092BB24EDD00F6AFDE /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
+		F93D030D2BB24F4A00F6AFDE /* NotificationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseDTO.swift; sourceTree = "<group>"; };
 		F93F51232B47A31800654F6D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F942241F2BA1262D004B679E /* DMU-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DMU-iOS.entitlements"; sourceTree = "<group>"; };
 		F94224202BA1292E004B679E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -242,6 +246,39 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		F93D03062BB24EAB00F6AFDE /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE42472B3C302600307BA7 /* Department.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		F93D03072BB24EBE00F6AFDE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F93D030B2BB24F3400F6AFDE /* DTO */,
+				F93D03082BB24EC300F6AFDE /* Repository */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F93D03082BB24EC300F6AFDE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F93D03092BB24EDD00F6AFDE /* NotificationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F93D030B2BB24F3400F6AFDE /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				F93D030D2BB24F4A00F6AFDE /* NotificationResponseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		F95114562B6C7EC5009BDC98 /* Meal */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +360,7 @@
 		F95265302B5764D9003BC8DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F9EE42472B3C302600307BA7 /* Department.swift */,
+				F93D03062BB24EAB00F6AFDE /* DTO */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -538,6 +575,7 @@
 		F95E007B2B539DF800CAAFE2 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				F93D03072BB24EBE00F6AFDE /* Models */,
 				F95265402B57660F003BC8DA /* Views */,
 			);
 			path = Notification;
@@ -887,6 +925,7 @@
 				F92116172B90621000A5507A /* DepartmentNoticeDTO.swift in Sources */,
 				F9E4E3762B75F58600E276CC /* CustomTextField.swift in Sources */,
 				F96760642B3AE1CB00C09F29 /* ContentView.swift in Sources */,
+				F93D030A2BB24EDD00F6AFDE /* NotificationRepository.swift in Sources */,
 				F95DC1392B91E005001D3419 /* SearchNoticeRepository.swift in Sources */,
 				F9AF3C5A2B416EF7001779E3 /* SettingView.swift in Sources */,
 				F9682B5A2B6B328A004A2EFE /* ScheduleRepository.swift in Sources */,
@@ -908,6 +947,7 @@
 				F9682B582B6B31A3004A2EFE /* ScheduleDTO.swift in Sources */,
 				F95DC1372B91BE55001D3419 /* SearchNotice.swift in Sources */,
 				F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */,
+				F93D030E2BB24F4A00F6AFDE /* NotificationResponseDTO.swift in Sources */,
 				F9F85E6C2B75C6A1005EFAE2 /* DateFormatExtension.swift in Sources */,
 				F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */,
 				F9EE42482B3C302600307BA7 /* Department.swift in Sources */,
