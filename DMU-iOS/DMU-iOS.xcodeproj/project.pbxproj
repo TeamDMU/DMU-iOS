@@ -75,6 +75,7 @@
 		F975313A2B9E953C0027F197 /* DMforU_Loading_GIF.json in Resources */ = {isa = PBXBuildFile; fileRef = F97531392B9E953C0027F197 /* DMforU_Loading_GIF.json */; };
 		F975313C2B9E95B80027F197 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975313B2B9E95B80027F197 /* LoadingView.swift */; };
 		F9831D792BB3B02E00EA868E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9831D782BB3B02E00EA868E /* Settings.bundle */; };
+		F9831D7B2BB3B26D00EA868E /* SettingWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9831D7A2BB3B26D00EA868E /* SettingWebView.swift */; };
 		F99A62FB2B83479B00EDB985 /* UniversityNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */; };
 		F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */; };
 		F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */; };
@@ -151,6 +152,7 @@
 		F97531392B9E953C0027F197 /* DMforU_Loading_GIF.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DMforU_Loading_GIF.json; sourceTree = "<group>"; };
 		F975313B2B9E95B80027F197 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F9831D782BB3B02E00EA868E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F9831D7A2BB3B26D00EA868E /* SettingWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebView.swift; sourceTree = "<group>"; };
 		F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeService.swift; sourceTree = "<group>"; };
 		F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeDTO.swift; sourceTree = "<group>"; };
 		F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeRepository.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 			children = (
 				F9AF3C592B416EF7001779E3 /* SettingView.swift */,
 				F914AD812B47C85400706D48 /* SettingDepartmentView.swift */,
+				F9831D7A2BB3B26D00EA868E /* SettingWebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				F95DC1322B91B6CD001D3419 /* SearchNoticeService.swift in Sources */,
 				F951145E2B6C8214009BDC98 /* MenuService.swift in Sources */,
 				F93F51242B47A31800654F6D /* UserSettings.swift in Sources */,
+				F9831D7B2BB3B26D00EA868E /* SettingWebView.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
 				F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,
