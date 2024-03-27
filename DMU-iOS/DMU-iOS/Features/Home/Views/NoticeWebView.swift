@@ -6,57 +6,54 @@
 //
 
 import SwiftUI
+
 import WebKit
-
-struct NoticeWebView: UIViewRepresentable {
-    let url: URL
-
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        webView.load(URLRequest(url: url))
-        return webView
-    }
-
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.load(URLRequest(url: url))
-    }
-}
 
 struct NoticeWebViewDetail: View {
     
-    @State private var webView = WKWebView()
-    
-    @Environment(\.presentationMode) var presentationMode
-    
     let urlString: String
     
+    @State private var showShareSheet = false
+    
+    @Environment(\.presentationMode) var presentationMode
+        
     var body: some View {
         VStack {
-            NoticeWebView(url: URL(string: urlString)!)
-            HStack(spacing: 70) {
+            WebView(url: URL(string: urlString)!)
+                .edgesIgnoringSafeArea(.all)
+            
+            HStack(spacing: 60) {
                 Button(action: {
-                    self.webView.goBack()
+                    NotificationCenter.default.post(name: NSNotification.Name("WebView.goBack"), object: nil)
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(Color.Gray400)
+                        .frame(width: 44, height: 44)
                 }
                 Button(action: {
-                    self.webView.goForward()
+                    NotificationCenter.default.post(name: NSNotification.Name("WebView.goForward"), object: nil)
                 }) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(Color.Gray400)
+                        .frame(width: 44, height: 44)
                 }
                 Button(action: {
                     UIPasteboard.general.string = urlString
+                    showShareSheet = true
                 }) {
                     Image(systemName: "square.and.arrow.up")
                         .foregroundColor(Color.Gray400)
+                        .frame(width: 44, height: 44)
+                }
+                .sheet(isPresented: $showShareSheet) {
+                    ActivityView(activityItems: [URL(string: urlString)!], applicationActivities: nil)
                 }
                 Button(action: {
-                    self.webView.reload()
+                    NotificationCenter.default.post(name: NSNotification.Name("WebView.reload"), object: nil)
                 }) {
                     Image(systemName: "arrow.clockwise")
                         .foregroundColor(Color.Gray400)
+                        .frame(width: 44, height: 44)
                 }
             }
             .padding()
@@ -81,6 +78,53 @@ struct NoticeWebViewDetail: View {
                         .font(.Medium12)
                         .accentColor(Color.Gray300)
                 }
+            }
+        }
+    }
+}
+
+struct ActivityView: UIViewControllerRepresentable {
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]?
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        
+    }
+}
+
+
+struct WebView: UIViewRepresentable {
+    let url: URL
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.load(URLRequest(url: url))
+        context.coordinator.setup(webView: webView)
+        return webView
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    class Coordinator: NSObject {
+        func setup(webView: WKWebView) {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("WebView.goBack"), object: nil, queue: .main) { _ in
+                webView.goBack()
+            }
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("WebView.goForward"), object: nil, queue: .main) { _ in
+                webView.goForward()
+            }
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("WebView.reload"), object: nil, queue: .main) { _ in
+                webView.reload()
             }
         }
     }

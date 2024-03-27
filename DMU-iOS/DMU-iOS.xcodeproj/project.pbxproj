@@ -74,12 +74,13 @@
 		F97531372B9E8CD70027F197 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F97531362B9E8CD70027F197 /* Lottie */; };
 		F975313A2B9E953C0027F197 /* DMforU_Loading_GIF.json in Resources */ = {isa = PBXBuildFile; fileRef = F97531392B9E953C0027F197 /* DMforU_Loading_GIF.json */; };
 		F975313C2B9E95B80027F197 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975313B2B9E95B80027F197 /* LoadingView.swift */; };
+		F9831D792BB3B02E00EA868E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9831D782BB3B02E00EA868E /* Settings.bundle */; };
+		F9831D7B2BB3B26D00EA868E /* SettingWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9831D7A2BB3B26D00EA868E /* SettingWebView.swift */; };
 		F99A62FB2B83479B00EDB985 /* UniversityNoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */; };
 		F99A62FF2B83480900EDB985 /* UniversityNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */; };
 		F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */; };
 		F99C6B992B44EF50007208B2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B982B44EF50007208B2 /* Schedule.swift */; };
 		F99C6B9C2B44EFC8007208B2 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */; };
-		F9A50E342BA02E7100E60090 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9A50E332BA02E7100E60090 /* Settings.bundle */; };
 		F9AEF1D62B6346A7004C6A62 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */; };
 		F9AF3C512B416E3A001779E3 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C502B416E3A001779E3 /* SearchView.swift */; };
 		F9AF3C542B416E5D001779E3 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF3C532B416E5D001779E3 /* ScheduleView.swift */; };
@@ -150,12 +151,13 @@
 		F9682B592B6B328A004A2EFE /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 		F97531392B9E953C0027F197 /* DMforU_Loading_GIF.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DMforU_Loading_GIF.json; sourceTree = "<group>"; };
 		F975313B2B9E95B80027F197 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F9831D782BB3B02E00EA868E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F9831D7A2BB3B26D00EA868E /* SettingWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebView.swift; sourceTree = "<group>"; };
 		F99A62FA2B83479B00EDB985 /* UniversityNoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeService.swift; sourceTree = "<group>"; };
 		F99A62FE2B83480900EDB985 /* UniversityNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeDTO.swift; sourceTree = "<group>"; };
 		F99A63002B834CB100EDB985 /* UniversityNoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNoticeRepository.swift; sourceTree = "<group>"; };
 		F99C6B982B44EF50007208B2 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		F99C6B9B2B44EFC8007208B2 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
-		F9A50E332BA02E7100E60090 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F9AEF1D52B6346A7004C6A62 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		F9AF3C502B416E3A001779E3 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F9AF3C532B416E5D001779E3 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 			children = (
 				F9AF3C592B416EF7001779E3 /* SettingView.swift */,
 				F914AD812B47C85400706D48 /* SettingDepartmentView.swift */,
+				F9831D7A2BB3B26D00EA868E /* SettingWebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -595,7 +598,6 @@
 		F96760552B3AE1CB00C09F29 = {
 			isa = PBXGroup;
 			children = (
-				F9A50E332BA02E7100E60090 /* Settings.bundle */,
 				F96760602B3AE1CB00C09F29 /* DMU-iOS */,
 				F967605F2B3AE1CB00C09F29 /* Products */,
 			);
@@ -612,6 +614,7 @@
 		F96760602B3AE1CB00C09F29 /* DMU-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9831D782BB3B02E00EA868E /* Settings.bundle */,
 				F942241F2BA1262D004B679E /* DMU-iOS.entitlements */,
 				F952652A2B576441003BC8DA /* App */,
 				F952652B2B576454003BC8DA /* Features */,
@@ -896,7 +899,7 @@
 				F9B77F372B3AF9D900A6E2D1 /* Pretendard-Light.otf in Resources */,
 				F92993552B63DA7D009DC2B6 /* Secrets.plist in Resources */,
 				F9B77F302B3AF9D900A6E2D1 /* Pretendard-Bold.otf in Resources */,
-				F9A50E342BA02E7100E60090 /* Settings.bundle in Resources */,
+				F9831D792BB3B02E00EA868E /* Settings.bundle in Resources */,
 				F9B77F352B3AF9D900A6E2D1 /* Pretendard-Thin.otf in Resources */,
 				F975313A2B9E953C0027F197 /* DMforU_Loading_GIF.json in Resources */,
 				F9B77F312B3AF9D900A6E2D1 /* Pretendard-ExtraLight.otf in Resources */,
@@ -952,6 +955,7 @@
 				F95DC1322B91B6CD001D3419 /* SearchNoticeService.swift in Sources */,
 				F951145E2B6C8214009BDC98 /* MenuService.swift in Sources */,
 				F93F51242B47A31800654F6D /* UserSettings.swift in Sources */,
+				F9831D7B2BB3B26D00EA868E /* SettingWebView.swift in Sources */,
 				F96760622B3AE1CB00C09F29 /* DMU_iOSApp.swift in Sources */,
 				F9DBEA872B464C49004B64D6 /* Menu.swift in Sources */,
 				F9D426242B3F076A008EBCC7 /* HomeView.swift in Sources */,

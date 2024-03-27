@@ -100,12 +100,13 @@ struct SettingView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                NavigationLink(destination:
+                                SettingWebViewDetail(urlString: "https://sites.google.com/view/dmforu-privacy-policy/%ED%99%88")){
                     Text("개인정보 처리방침")
                         .font(.Medium18)
                         .foregroundColor(Color.Gray500)
                         .padding(.horizontal, 20)
-                })
+                }
                 
                 Button(action: {
                     if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
