@@ -12,6 +12,7 @@ struct NotificationKeywordEditView: View {
     @State private var showKeywordBalloon = true
     
     @ObservedObject var userSettings = UserSettings()
+    @ObservedObject var viewModel: SettingViewModel
     
     @Binding var isNavigatingToKeywordEditView: Bool
     
@@ -42,7 +43,7 @@ struct NotificationKeywordEditView: View {
             CustomButton(
                 title: "완료",
                 action: {
-                    print("\(userSettings.selectedKeywordsContents)가 저장되었습니다.")
+                    viewModel.postUpdateKeyword()
                     isNavigatingToKeywordEditView = false
                 },
                 isEnabled: true
@@ -126,5 +127,5 @@ struct Triangle: Shape {
 }
 
 #Preview {
-    NotificationKeywordEditView(isNavigatingToKeywordEditView: .constant(true))
+    NotificationKeywordEditView(viewModel: SettingViewModel(userSettings: UserSettings()), isNavigatingToKeywordEditView: .constant(true))
 }

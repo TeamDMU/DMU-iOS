@@ -54,7 +54,7 @@ struct SettingView: View {
                 }
                 .padding(.horizontal, 20)
                 .fullScreenCover(isPresented: $isNavigatingSettingToKeywordEditView) {
-                    NotificationKeywordEditView(isNavigatingToKeywordEditView: $isNavigatingSettingToKeywordEditView)
+                    NotificationKeywordEditView(viewModel: viewModel, isNavigatingToKeywordEditView: $isNavigatingSettingToKeywordEditView)
                 }
                 
                 Divider()
