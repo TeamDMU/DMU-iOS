@@ -36,7 +36,7 @@ struct Onboarding_Step_Two: View {
             }, isEnabled: !selectedKeywords.isEmpty)
             .padding(.bottom, 20)
             .navigationDestination(isPresented: $isStepThreeViewActive) {
-                Onboarding_Step_Three(isFirstLanching: $isFirstLanching)
+                Onboarding_Step_Three(viewModel: NotificationViewModel(userSettings: userSettings), isFirstLanching: $isFirstLanching)
             }
         }
         .navigationBarBackButtonHidden(true)

@@ -38,6 +38,7 @@ struct SettingDepartmentView: View {
     var SettingDepartmentSaveButton: some View {
         Button(action: {
             viewModel.saveDepartment()
+            viewModel.postUpdateDepartment()
             self.presentationMode.wrappedValue.dismiss()
         }) {
             Text("완료")
