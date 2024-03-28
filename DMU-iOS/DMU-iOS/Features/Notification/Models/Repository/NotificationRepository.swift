@@ -16,15 +16,10 @@ class NotificationRepository {
         provider.request(.postInitToken(token: token, department: department, topics: topics)) { result in
             switch result {
             case .success(let response):
-                do {
-                    let decodedResponse = try JSONDecoder().decode(NotificationResponseDTO.self, from: response.data)
-                    if decodedResponse.success {
-                        completion(.success(true))
-                    } else {
-                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : decodedResponse.message ?? "Unknown error"])
-                        completion(.failure(error))
-                    }
-                } catch {
+                if response.statusCode == 200 {
+                    completion(.success(true))
+                } else {
+                    let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey : "Server returned an unexpected status code: \(response.statusCode)"])
                     completion(.failure(error))
                 }
             case .failure(let error):
@@ -37,15 +32,10 @@ class NotificationRepository {
         provider.request(.postUpdateKeyword(token: token, topics: topics)) { result in
             switch result {
             case .success(let response):
-                do {
-                    let decodedResponse = try JSONDecoder().decode(NotificationResponseDTO.self, from: response.data)
-                    if decodedResponse.success {
-                        completion(.success(true))
-                    } else {
-                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : decodedResponse.message ?? "Unknown error"])
-                        completion(.failure(error))
-                    }
-                } catch {
+                if response.statusCode == 200 {
+                    completion(.success(true))
+                } else {
+                    let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey : "Server returned an unexpected status code: \(response.statusCode)"])
                     completion(.failure(error))
                 }
             case .failure(let error):
@@ -58,15 +48,10 @@ class NotificationRepository {
         provider.request(.postDeleteKeyword(token: token)) { result in
             switch result {
             case .success(let response):
-                do {
-                    let decodedResponse = try JSONDecoder().decode(NotificationResponseDTO.self, from: response.data)
-                    if decodedResponse.success {
-                        completion(.success(true))
-                    } else {
-                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : decodedResponse.message ?? "Unknown error"])
-                        completion(.failure(error))
-                    }
-                } catch {
+                if response.statusCode == 200 {
+                    completion(.success(true))
+                } else {
+                    let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey : "Server returned an unexpected status code: \(response.statusCode)"])
                     completion(.failure(error))
                 }
             case .failure(let error):
@@ -79,15 +64,10 @@ class NotificationRepository {
         provider.request(.postUpdateDepartment(token: token, department: department)) { result in
             switch result {
             case .success(let response):
-                do {
-                    let decodedResponse = try JSONDecoder().decode(NotificationResponseDTO.self, from: response.data)
-                    if decodedResponse.success {
-                        completion(.success(true))
-                    } else {
-                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : decodedResponse.message ?? "Unknown error"])
-                        completion(.failure(error))
-                    }
-                } catch {
+                if response.statusCode == 200 {
+                    completion(.success(true))
+                } else {
+                    let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey : "Server returned an unexpected status code: \(response.statusCode)"])
                     completion(.failure(error))
                 }
             case .failure(let error):
@@ -100,15 +80,10 @@ class NotificationRepository {
         provider.request(.postDeleteDepartment(token: token)) { result in
             switch result {
             case .success(let response):
-                do {
-                    let decodedResponse = try JSONDecoder().decode(NotificationResponseDTO.self, from: response.data)
-                    if decodedResponse.success {
-                        completion(.success(true))
-                    } else {
-                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : decodedResponse.message ?? "Unknown error"])
-                        completion(.failure(error))
-                    }
-                } catch {
+                if response.statusCode == 200 {
+                    completion(.success(true))
+                } else {
+                    let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey : "Server returned an unexpected status code: \(response.statusCode)"])
                     completion(.failure(error))
                 }
             case .failure(let error):
