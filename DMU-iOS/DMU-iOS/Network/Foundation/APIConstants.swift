@@ -30,7 +30,9 @@ struct APIConstants {
     // 공지 검색 API 엔드포인트
     static let searchNoticeEndpoint = "/api/v1/dmu/notice"
     
-    // MARK: 백엔드 측 엔드포인트 업데이트 시 수정 필요
+    // 키워드 및 학과, 토큰 초기 설정 API 엔드포인트
+    static let initTokenEndpoint = "/token/v1/dmu/initToken"
+    
     // 키워드 알림 업데이트 API 엔드포인트
     static let updateKeywordEndpoint = "/token/v1/dmu/update_topic"
 
