@@ -11,7 +11,9 @@ struct Onboarding_Step_Three: View {
     
     @State private var isNotificationOn = false
     @State private var isMainViewActive = false
-        
+    
+    @ObservedObject var viewModel: NotificationViewModel
+    
     @StateObject private var userSettings = UserSettings()
     
     @Binding var isFirstLanching: Bool
@@ -27,6 +29,9 @@ struct Onboarding_Step_Three: View {
         Spacer()
         
         CustomButton(title: "시작하기", action: {
+            if self.isNotificationOn {
+                viewModel.initToken()
+            }
             self.isMainViewActive = true
             isFirstLanching.toggle()
         }, isEnabled: true)
@@ -176,5 +181,5 @@ struct OnboardingStepThreeSetNotificationView: View {
 }
 
 #Preview {
-    Onboarding_Step_Three(isFirstLanching: .constant(true))
+    Onboarding_Step_Three(viewModel: NotificationViewModel(userSettings: UserSettings()), isFirstLanching: .constant(true))
 }

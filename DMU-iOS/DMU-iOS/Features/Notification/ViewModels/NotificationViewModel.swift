@@ -45,7 +45,7 @@ class NotificationViewModel: ObservableObject {
                     print("최초 토큰 등록 실패")
                 }
             case .failure(let error):
-                print("키워드 업데이트 실패: \(error.localizedDescription)")
+                print("최초 토큰 등록 실패: \(error.localizedDescription)")
             }
         }
     }
