@@ -37,6 +37,13 @@ struct SettingView: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
                 .padding(.horizontal, 20)
+                .onChange(of: viewModel.userSettings.isKeywordNotificationOn) { newValue in
+                    if newValue {
+                        viewModel.postUpdateKeyword()
+                    } else {
+                        viewModel.postDeleteKeyword()
+                    }
+                }
                 
                 Button(action: {
                     self.isNavigatingSettingToKeywordEditView.toggle()
@@ -64,6 +71,13 @@ struct SettingView: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
                 .padding(.horizontal, 20)
+                .onChange(of: viewModel.userSettings.isDepartmentNotificationOn) { newValue in
+                    if newValue {
+                        viewModel.postUpdateDepartment()
+                    } else {
+                        viewModel.postDeleteDepartment()
+                    }
+                }
                 
                 HStack {
                     Text("학과 설정")
