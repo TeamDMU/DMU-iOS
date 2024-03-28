@@ -130,6 +130,9 @@ struct HomeUniversityNoticeListView: View {
             }
         }
         .background(Color.clear)
+        .refreshable {
+            viewModel.resetAndLoadFirstPageOfUniversityNotices()
+        }
     }
 }
 
@@ -157,6 +160,9 @@ struct HomeDepartmentNoticeListView: View {
             }
         }
         .background(Color.clear)
+        .refreshable {
+            viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
+        }
     }
 }
 
