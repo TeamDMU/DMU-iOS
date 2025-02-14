@@ -59,9 +59,11 @@ struct MealTitleView: View {
     var body: some View {
         Text("금주의 식단")
             .font(.SemiBold20)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color.Gray500)
             .environment(\.sizeCategory, .large)
-            .padding()
+            .padding(.all,20)
+            .multilineTextAlignment(.leading)
     }
 }
 
@@ -97,32 +99,46 @@ struct WeeklyCalendarSingleDateView: View {
         }()
         
         let weekday = calendar.shortWeekdaySymbols[calendar.component(.weekday, from: date) - 1]
+        let isToday = calendar.isDateInToday(date)
         
         VStack(alignment: .center) {
             Text("\(Calendar.current.component(.month, from: date))월")
                 .font(.Medium12)
-                .foregroundColor(Color.Gray500)
+                .foregroundColor(calendar.isDate(date, inSameDayAs: selectedDate) ? Color.white : Color.Gray500)
                 .environment(\.sizeCategory, .large)
                 .frame(width: 30)
                 .padding(.bottom, 10)
                 .lineLimit(1)
             Text("\(Calendar.current.component(.day, from: date))")
-                .font(.Medium16)
+                .font(.SemiBold16)
                 .foregroundColor(calendar.isDate(date, inSameDayAs: selectedDate) ? Color.white : Color.Gray500)
                 .environment(\.sizeCategory, .large)
                 .frame(width: 30, height: 30, alignment: .center)
-                .background(calendar.isDate(date, inSameDayAs: selectedDate) ? Color.Blue300 : Color.clear)
-                .cornerRadius(10)
                 .lineLimit(1)
             Text(weekday)
                 .font(.Medium12)
                 .padding(.top, 10)
-                .foregroundColor(Color.Gray500)
+                .foregroundColor(calendar.isDate(date, inSameDayAs: selectedDate) ? Color.white : Color.Gray500)
                 .environment(\.sizeCategory, .large)
                 .frame(width: 30)
                 .lineLimit(1)
         }
         .padding(.horizontal, 18)
+        .padding(.vertical, 10)
+        .background(
+            ZStack {
+                // 오늘 날짜
+                if isToday {
+                    Color.gray200
+                }
+                // 선택된 날짜
+                if calendar.isDate(date, inSameDayAs: selectedDate) {
+                    Color.Blue300
+                        .cornerRadius(10)
+                }
+            }
+        )
+        .cornerRadius(10)
         .onTapGesture {
             self.selectedDate = self.date
         }
