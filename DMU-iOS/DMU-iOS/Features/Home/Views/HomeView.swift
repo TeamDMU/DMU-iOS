@@ -56,7 +56,7 @@ struct HomeView: View {
     }
 }
 
-// MARK: - 공지사항 화면 상단바(로고 및 알림 버튼)
+// MARK: - 공지사항 화면 상단바(로고 및 검색 버튼)
 struct HomeTopBarView: View {
         
     var body: some View {
@@ -65,7 +65,17 @@ struct HomeTopBarView: View {
                 .resizable()
                 .frame(width: 128, height: 33)
                 .padding(.leading)
+            
             Spacer()
+            
+            // 검색 버튼
+            NavigationLink(destination: SearchView(viewModel: SearchViewModel())) {
+                Image(systemName: "magnifyingglass")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(Color.Gray500)
+                    .padding(.trailing)
+            }
         }
         .padding(.top, 15)
     }
