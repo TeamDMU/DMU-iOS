@@ -122,16 +122,17 @@ struct SettingView: View {
                         .environment(\.sizeCategory, .large)
                         .padding(.horizontal, 20)
                     
-                    Link(destination: URL(string: "https://forms.gle/dKdiLdKwNGmQdb11A")!) {
+                    NavigationLink(destination:
+                                    SettingWebViewDetail(urlString: "https://tally.so/r/n9oq91")){
                         HStack {
                             Text("문의하기")
                                 .font(.Medium18)
                                 .foregroundColor(Color.Gray500)
                                 .environment(\.sizeCategory, .large)
+                                .padding(.horizontal, 20)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(.horizontal, 20)
                     
                     NavigationLink(destination:
                                     SettingWebViewDetail(urlString: "https://sites.google.com/view/dmforu-privacy-policy/%ED%99%88")){
