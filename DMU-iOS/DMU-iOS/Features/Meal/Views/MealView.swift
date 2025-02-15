@@ -109,7 +109,7 @@ struct MealTitleView: View {
         Text("금주의 식단")
             .font(.SemiBold20)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundColor(Color.Gray500)
+            .foregroundColor(Color.Gray600)
             .environment(\.sizeCategory, .large)
             .padding(.all, 20)
             .multilineTextAlignment(.leading)

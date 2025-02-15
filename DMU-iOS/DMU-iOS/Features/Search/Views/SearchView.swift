@@ -60,8 +60,8 @@ struct SearchView: View {
                     }
                 }
             }
-            .navigationBarBackButtonHidden(true) // 기본 뒤로가기 버튼 숨기기
-            .navigationBarTitle("검색", displayMode: .inline) // 제목 설정
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("검색", displayMode: .inline)
             .navigationBarItems(leading: SearchBackButton)
             
             
