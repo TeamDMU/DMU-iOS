@@ -33,7 +33,7 @@ class NoticeViewModel: ObservableObject {
         loadNextPageOfUniversityNotices()
     }
     
-    private func loadNextPageOfUniversityNotices() {
+    func loadNextPageOfUniversityNotices() {
         self.isUniversityNoticeLoading = true
         self.isUniversityNoticeLoadingFailed = false
         
