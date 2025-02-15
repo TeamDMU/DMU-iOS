@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 import FirebaseMessaging
 
+
+
 @main
 struct DMU_iOSApp: App {
     
@@ -33,6 +35,11 @@ struct DMU_iOSApp: App {
         appearanceNavigationBar.shadowColor = nil
         
         UINavigationBar.appearance().standardAppearance = appearanceNavigationBar
+        
+        //MARK: SegmentedPicker 텍스트 스타일 변경
+        let appearanceSegmentedControl = UISegmentedControl.appearance()
+        appearanceSegmentedControl.setTitleTextAttributes([.font: UIFont.Medium16()], for: .normal)
+        appearanceSegmentedControl.setTitleTextAttributes([.font: UIFont.Medium16()], for: .selected)
     }
     
     @Environment(\.scenePhase) private var scenePhase
@@ -205,4 +212,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
+}
+
+extension UIFont {
+    static func Medium16() -> UIFont {
+        return UIFont(name: "Pretendard-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16)
+    }
 }

@@ -42,9 +42,7 @@ struct TabBarView: View {
                     }
                     .tag(Tab.Home)
                     .environmentObject(UserSettings())
-                    .onAppear {
-                        
-                    }
+
                 
                 // MARK: 일정 화면
                 ScheduleView(viewModel: ScheduleViewModel())
