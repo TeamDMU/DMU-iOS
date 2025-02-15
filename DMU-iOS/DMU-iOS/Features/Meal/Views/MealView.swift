@@ -38,7 +38,6 @@ struct MealView: View {
                         .tag(MenuType.oneDish)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding(.top, 20)
                 .padding(.bottom, 10)
                 .padding(.horizontal, 75)
                 
@@ -112,7 +111,7 @@ struct MealTitleView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color.Gray500)
             .environment(\.sizeCategory, .large)
-            .padding(.all,20)
+            .padding(.all, 20)
             .multilineTextAlignment(.leading)
     }
 }
@@ -204,7 +203,7 @@ struct RestaurantInfomationView: View {
                 .padding(.trailing, 20)
             InfomationSingleView(imageName: "clock", text: "11:00 - 14:00, 16:30 - 18:00")
         }
-        .padding(.top, 20)
+        .padding(.vertical, 20)
     }
 }
 
