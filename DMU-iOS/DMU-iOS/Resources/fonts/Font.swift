@@ -11,6 +11,7 @@ extension Font {
     
     // Bold
     static let Bold32: Font = .custom("Pretendard-Bold", size: 32)
+    static let Bold30: Font = .custom("Pretendard-Bold", size: 30)
     static let Bold24: Font = .custom("Pretendard-Bold", size: 24)
     static let Bold20: Font = .custom("Pretendard-Bold", size: 20)
     static let Bold18: Font = .custom("Pretendard-Bold", size: 18)
@@ -37,4 +38,6 @@ extension Font {
     static let Regular16: Font = .custom("Pretendard-Regular", size: 16)
     static let Regular12: Font = .custom("Pretendard-Regular", size: 12)
     
+    // Light
+    static let Light12: Font = .custom("Pretendard-Light", size: 12)
 }
