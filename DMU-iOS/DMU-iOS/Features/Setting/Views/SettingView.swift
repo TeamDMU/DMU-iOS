@@ -19,175 +19,180 @@ struct SettingView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("설정")
-                        .font(.system(size: 20, weight: .semibold))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(Color.Gray500)
-                        .environment(\.sizeCategory, .large)
-                        .padding()
-                    
-                    Text("대학 공지")
-                        .font(.SemiBold15)
-                        .foregroundColor(Color.Blue300)
-                        .environment(\.sizeCategory, .large)
-                        .padding(.horizontal, 20)
-                    
-                    Toggle(isOn: $viewModel.userSettings.isKeywordNotificationOn) {
-                        Text("알림 설정")
-                            .font(.Medium18)
-                            .foregroundColor(Color.Gray500)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("설정")
+                            .font(.system(size: 20, weight: .semibold))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .foregroundColor(Color.Gray600)
                             .environment(\.sizeCategory, .large)
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
-                    .padding(.horizontal, 20)
-                    .onChange(of: viewModel.userSettings.isKeywordNotificationOn) { newValue in
-                        if newValue {
-                            viewModel.postUpdateKeyword()
-                            print("\(UserSettings().selectedKeywordsContents)가 업데이트 되었습니다.")
-                        } else {
-                            viewModel.postDeleteKeyword()
-                        }
-                    }
-                    
-                    Button(action: {
-                        self.isNavigatingSettingToKeywordEditView.toggle()
-                    }) {
-                        HStack {
-                            Text("키워드 설정")
+                            .padding()
+                        
+                        Text("대학 공지")
+                            .font(.SemiBold15)
+                            .foregroundColor(Color.Blue300)
+                            .environment(\.sizeCategory, .large)
+                            .padding(.horizontal, 20)
+                        
+                        Toggle(isOn: $viewModel.userSettings.isKeywordNotificationOn) {
+                            Text("알림 설정")
                                 .font(.Medium18)
                                 .foregroundColor(Color.Gray500)
                                 .environment(\.sizeCategory, .large)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(.horizontal, 20)
-                    .fullScreenCover(isPresented: $isNavigatingSettingToKeywordEditView) {
-                        NotificationKeywordEditView(viewModel: viewModel, isNavigatingToKeywordEditView: $isNavigatingSettingToKeywordEditView)
-                    }
-                    
-                    Divider()
-                    
-                    Text("학과 공지")
-                        .font(.SemiBold15)
-                        .foregroundColor(Color.Blue300)
-                        .environment(\.sizeCategory, .large)
+                        .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
                         .padding(.horizontal, 20)
-                    
-                    Toggle(isOn: $viewModel.userSettings.isDepartmentNotificationOn) {
-                        Text("알림 설정")
-                            .font(.Medium18)
-                            .foregroundColor(Color.Gray500)
-                            .environment(\.sizeCategory, .large)
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
-                    .padding(.horizontal, 20)
-                    .onChange(of: viewModel.userSettings.isDepartmentNotificationOn) { newValue in
-                        if newValue {
-                            viewModel.postUpdateDepartment()
-                        } else {
-                            viewModel.postDeleteDepartment()
+                        .onChange(of: viewModel.userSettings.isKeywordNotificationOn) { newValue in
+                            if newValue {
+                                viewModel.postUpdateKeyword()
+                                print("\(UserSettings().selectedKeywordsContents)가 업데이트 되었습니다.")
+                            } else {
+                                viewModel.postDeleteKeyword()
+                            }
                         }
-                    }
-                    
-                    HStack {
+                        
                         Button(action: {
-                            self.isNavigationSettingToDepartmentSettingView.toggle()
+                            self.isNavigatingSettingToKeywordEditView.toggle()
                         }) {
                             HStack {
-                                Text("학과 설정")
+                                Text("키워드 설정")
                                     .font(.Medium18)
                                     .foregroundColor(Color.Gray500)
                                     .environment(\.sizeCategory, .large)
-                                
-                                Spacer()
-                                
-                                Text(viewModel.userSettings.selectedDepartment)
-                                    .font(.Medium14)
-                                    .foregroundColor(Color.Gray400)
-                                    .environment(\.sizeCategory, .large)
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color.Gray500)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    Divider()
-                    
-                    Text("앱 정보")
-                        .font(.SemiBold15)
-                        .foregroundColor(Color.Blue300)
-                        .environment(\.sizeCategory, .large)
                         .padding(.horizontal, 20)
-                    
-                    Link(destination: URL(string: "https://forms.gle/dKdiLdKwNGmQdb11A")!) {
-                        HStack {
-                            Text("문의하기")
-                                .font(.Medium18)
-                                .foregroundColor(Color.Gray500)
-                                .environment(\.sizeCategory, .large)
+                        .fullScreenCover(isPresented: $isNavigatingSettingToKeywordEditView) {
+                            NotificationKeywordEditView(viewModel: viewModel, isNavigatingToKeywordEditView: $isNavigatingSettingToKeywordEditView)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    NavigationLink(destination:
-                                    SettingWebViewDetail(urlString: "https://sites.google.com/view/dmforu-privacy-policy/%ED%99%88")){
-                        HStack {
-                            Text("개인정보 처리방침")
-                                .font(.Medium18)
-                                .foregroundColor(Color.Gray500)
-                                .environment(\.sizeCategory, .large)
-                                .padding(.horizontal, 20)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
-                    Button(action: {
-                        if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                            openURL(url)
-                        }
-                    }, label: {
-                        HStack {
-                            Text("오픈소스 라이선스")
-                                .font(.Medium18)
-                                .foregroundColor(Color.Gray500)
-                                .environment(\.sizeCategory, .large)
-                                .padding(.horizontal, 20)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    })
-                    
-                    HStack {
-                        Text("앱 버전")
-                            .font(.Medium18)
-                            .foregroundColor(Color.Gray500)
+                        
+                        Divider()
+                        
+                        Text("학과 공지")
+                            .font(.SemiBold15)
+                            .foregroundColor(Color.Blue300)
                             .environment(\.sizeCategory, .large)
+                            .padding(.horizontal, 20)
+                        
+                        Toggle(isOn: $viewModel.userSettings.isDepartmentNotificationOn) {
+                            Text("알림 설정")
+                                .font(.Medium18)
+                                .foregroundColor(Color.Gray500)
+                                .environment(\.sizeCategory, .large)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color.Blue300))
+                        .padding(.horizontal, 20)
+                        .onChange(of: viewModel.userSettings.isDepartmentNotificationOn) { newValue in
+                            if newValue {
+                                viewModel.postUpdateDepartment()
+                            } else {
+                                viewModel.postDeleteDepartment()
+                            }
+                        }
+                        
+                        HStack {
+                            Button(action: {
+                                self.isNavigationSettingToDepartmentSettingView.toggle()
+                            }) {
+                                HStack {
+                                    Text("학과 설정")
+                                        .font(.Medium18)
+                                        .foregroundColor(Color.Gray500)
+                                        .environment(\.sizeCategory, .large)
+                                    
+                                    Spacer()
+                                    
+                                    Text(viewModel.userSettings.selectedDepartment)
+                                        .font(.Medium14)
+                                        .foregroundColor(Color.Gray400)
+                                        .environment(\.sizeCategory, .large)
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(Color.Gray500)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        Divider()
+                        
+                        Text("앱 정보")
+                            .font(.SemiBold15)
+                            .foregroundColor(Color.Blue300)
+                            .environment(\.sizeCategory, .large)
+                            .padding(.horizontal, 20)
+                        
+                        NavigationLink(destination:
+                                        SettingWebViewDetail(urlString: "https://tally.so/r/n9oq91")){
+                            HStack {
+                                Text("문의하기")
+                                    .font(.Medium18)
+                                    .foregroundColor(Color.Gray500)
+                                    .environment(\.sizeCategory, .large)
+                                    .padding(.horizontal, 20)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        
+                        NavigationLink(destination:
+                                        SettingWebViewDetail(urlString: "https://sites.google.com/view/dmforu-privacy-policy/%ED%99%88")){
+                            HStack {
+                                Text("개인정보 처리방침")
+                                    .font(.Medium18)
+                                    .foregroundColor(Color.Gray500)
+                                    .environment(\.sizeCategory, .large)
+                                    .padding(.horizontal, 20)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        
+                        Button(action: {
+                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                                openURL(url)
+                            }
+                        }, label: {
+                            HStack {
+                                Text("오픈소스 라이선스")
+                                    .font(.Medium18)
+                                    .foregroundColor(Color.Gray500)
+                                    .environment(\.sizeCategory, .large)
+                                    .padding(.horizontal, 20)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        })
+                        
+                        HStack {
+                            Text("앱 버전")
+                                .font(.Medium18)
+                                .foregroundColor(Color.Gray500)
+                                .environment(\.sizeCategory, .large)
+                            
+                            Spacer()
+                            
+                            Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "버전 정보 없음")
+                                .font(.Medium14)
+                                .foregroundColor(Color.Gray400)
+                                .environment(\.sizeCategory, .large)
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        Divider()
                         
                         Spacer()
-                        
-                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "버전 정보 없음")
-                            .font(.Medium14)
-                            .foregroundColor(Color.Gray400)
-                            .environment(\.sizeCategory, .large)
                     }
-                    .padding(.horizontal, 20)
-                    
-                    Divider()
-                    
-                    Spacer()
                 }
                 .navigationDestination(isPresented: $isNavigationSettingToDepartmentSettingView) {
                     SettingDepartmentView(viewModel: viewModel)
                 }
+                
                 VStack {
                     if viewModel.isUpdateKeywordLoading || viewModel.isUpdateDepartmentLoading {
                         LoadingView(lottieFileName: "DMforU_Loading_GIF")
                             .frame(width: 100, height: 100)
                     }
                 }
+                    
             }
         }
     }

@@ -11,6 +11,8 @@ struct SearchView: View {
     
     @StateObject var viewModel: SearchViewModel
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -58,7 +60,22 @@ struct SearchView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("검색", displayMode: .inline)
+            .navigationBarItems(leading: SearchBackButton)
             
+            
+        }
+    }
+    
+    //MARK: 검색 화면 뒤로가기 버튼
+    @ViewBuilder
+    var SearchBackButton: some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.backward")
+                .foregroundColor(Color.Gray500)
         }
     }
 }

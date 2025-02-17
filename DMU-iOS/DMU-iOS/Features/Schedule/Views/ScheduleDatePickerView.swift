@@ -21,6 +21,7 @@ struct ScheduleDatePickerView: View {
                 Picker("년도", selection: $tempSelectedYear) {
                     Text("2024년").tag(2024)
                     Text("2025년").tag(2025)
+                    Text("2026년").tag(2026)
                 }
                 .pickerStyle(WheelPickerStyle())
                 

@@ -25,16 +25,44 @@ enum Weekday: String, CaseIterable {
     case friday = "금요일"
 }
 
+struct OneMenuItem: Identifiable {
+    var id = UUID()
+    var name: String
+    var englishName: String
+    var price: String
+    var imageName: String
+}
+
 struct OneMenu: Identifiable {
     var id = UUID()
-    var details: [String]
+    var items: [OneMenuItem]
     var availableDays: [Weekday]
 }
 
 let OneMenuList = [
-    OneMenu(details: ["라면 3,500원", "치즈라면 4,000원", "해물라면 4,500원"], availableDays: [.monday, .tuesday, .wednesday, .thursday, .friday]),
-    OneMenu(details: ["돈까스 5,000원", "치즈돈까스 5,500원", "고구마치즈돈까스 6,000원"], availableDays: [.monday, .tuesday, .wednesday, .thursday, .friday]),
-    OneMenu(details: ["스팸김치볶음밥 4,900원"], availableDays: [.monday, .tuesday]),
-    OneMenu(details: ["치킨마요덮밥 4,500원", "불닭마요덮밥 4,500원"], availableDays: [.wednesday, .thursday]),
-    OneMenu(details: ["오므라이스 5,500원"], availableDays: [.friday]),
+    OneMenu(items: [
+        OneMenuItem(name: "라면", englishName: "Ramen", price: "3,500원", imageName: "Ramen"),
+        OneMenuItem(name: "치즈라면", englishName: "Cheese Ramen", price: "4,000원", imageName: "CheeseRamen"),
+        OneMenuItem(name: "해물라면", englishName: "Seafood Ramen", price: "4,500원", imageName: "SeafoodRamen")
+    ], availableDays: [.monday, .tuesday, .wednesday, .thursday, .friday]),
+    
+    OneMenu(items: [
+        OneMenuItem(name: "돈까스", englishName: "Pork Cutlet", price: "5,000원", imageName: "Cutlet"),
+        OneMenuItem(name: "치즈돈까스", englishName: "Cheese Pork Cutlet", price: "5,500원", imageName: "CheeseCutlet"),
+        OneMenuItem(name: "고구마치즈돈까스", englishName: "Sweet Potato Cheese Cutlet", price: "6,000원", imageName: "SweetPotatoCheeseCutlet")
+    ], availableDays: [.monday, .tuesday, .wednesday, .thursday, .friday]),
+    
+    OneMenu(items: [
+        OneMenuItem(name: "스팸김치볶음밥", englishName: "Spam Kimchi Fried Rice", price: "4,900원", imageName: "SpamRice")
+    ], availableDays: [.monday, .tuesday]),
+    
+    OneMenu(items: [
+        OneMenuItem(name: "치킨마요덮밥", englishName: "Chicken Mayo Rice", price: "4,500원", imageName: "ChickenRice"),
+        OneMenuItem(name: "불닭마요덮밥", englishName: "Buldak Mayo Rice", price: "4,500원", imageName: "BuldakRice")
+    ], availableDays: [.wednesday, .thursday]),
+    
+    OneMenu(items: [
+        OneMenuItem(name: "오므라이스", englishName: "Omelette Rice", price: "5,500원", imageName: "Omurice")
+    ], availableDays: [.friday]),
 ]
+

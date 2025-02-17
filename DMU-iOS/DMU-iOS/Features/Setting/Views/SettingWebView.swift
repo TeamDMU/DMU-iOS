@@ -22,7 +22,7 @@ struct SettingWebViewDetail: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
-            leading: Button(action: {
+            trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "xmark")

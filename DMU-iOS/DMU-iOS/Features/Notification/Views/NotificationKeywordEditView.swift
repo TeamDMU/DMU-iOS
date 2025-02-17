@@ -78,7 +78,7 @@ struct NotificationKeywordEditTopBarView: View {
             
             Text("키워드 설정")
                 .font(.SemiBold20)
-                .foregroundColor(Color.Gray500)
+                .foregroundColor(Color.Gray600)
                 .environment(\.sizeCategory, .large)
             
             Spacer()

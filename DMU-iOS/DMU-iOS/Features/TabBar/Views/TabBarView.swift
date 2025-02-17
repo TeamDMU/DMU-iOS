@@ -16,7 +16,7 @@ class TabBarViewModel: ObservableObject {
 // MARK: - 탭 목록
 enum Tab: String {
     
-    case Home, Search, Schedule, Meal, Settings
+    case Home, Schedule, Meal, Settings
 }
 
 // MARK: - 메인화면 탭바 뷰
@@ -31,7 +31,7 @@ struct TabBarView: View {
                 // MARK: 공지사항 화면
                 HomeView(viewModel: NoticeViewModel(), userSettings: UserSettings())
                     .tabItem {
-                        Image(systemName: "house")
+                        Image(systemName: "megaphone.fill")
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(Color.Gray400)
@@ -42,23 +42,7 @@ struct TabBarView: View {
                     }
                     .tag(Tab.Home)
                     .environmentObject(UserSettings())
-                    .onAppear {
-                        
-                    }
-                
-                // MARK: 검색 화면
-                SearchView(viewModel: SearchViewModel())
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(Color.Gray400)
-                        
-                        Text("검색")
-                            .font(.Medium12)
-                            .foregroundColor(Color.Gray400)
-                    }
-                    .tag(Tab.Search)
+
                 
                 // MARK: 일정 화면
                 ScheduleView(viewModel: ScheduleViewModel())
