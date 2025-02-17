@@ -28,18 +28,12 @@ struct MealView: View {
                 WeeklyCalendarView(selectedDate: $selectedDate, startDate: viewModel.startOfWeek(date: Date()))
                 
                 RestaurantInfomationView()
-            
                 
-                Picker("메뉴 선택", selection: $selectedMenuType) {
-                    Text("한식 🍚")
-                        .tag(MenuType.korean)
-                    
-                    Text("일품 🍛")
-                        .tag(MenuType.oneDish)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.bottom, 10)
-                .padding(.horizontal, 75)
+                
+                CustomSegmentedControl(selection: $selectedMenuType, items: ["한식 🍚", "일품 🍛"])
+                    .frame(height: 44)
+                    .padding(.bottom, 10)
+                    .padding(.horizontal, 75)
                 
                 ScrollView{
                     if viewModel.isWeekend(selectedDate) {

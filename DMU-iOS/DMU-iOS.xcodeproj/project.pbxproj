@@ -25,6 +25,7 @@
 		F92993592B63E3F4009DC2B6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92993582B63E3F4009DC2B6 /* Networking.swift */; };
 		F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935A2B63E4D9009DC2B6 /* APIService.swift */; };
 		F929935E2B63E59F009DC2B6 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929935D2B63E59F009DC2B6 /* ScheduleService.swift */; };
+		F92B142A2D62C63A00B39BC8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B14292D62C62F00B39BC8 /* CustomSegmentedControl.swift */; };
 		F93816882B561BEF00DA15F9 /* NotificationKeywordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */; };
 		F93BC5D42B47CB9100F52108 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */; };
 		F93D03042BB24D8300F6AFDE /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D03032BB24D8300F6AFDE /* NotificationService.swift */; };
@@ -130,6 +131,7 @@
 		F92993582B63E3F4009DC2B6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F929935A2B63E4D9009DC2B6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F929935D2B63E59F009DC2B6 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
+		F92B14292D62C62F00B39BC8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		F93816872B561BEF00DA15F9 /* NotificationKeywordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeywordEditView.swift; sourceTree = "<group>"; };
 		F93BC5D32B47CB9100F52108 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F93D03032BB24D8300F6AFDE /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 		F952653D2B5765CD003BC8DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F92B14292D62C62F00B39BC8 /* CustomSegmentedControl.swift */,
 				F9AF3C562B416EE2001779E3 /* MealView.swift */,
 			);
 			path = Views;
@@ -970,6 +973,7 @@
 				F9AF3C672B418DFE001779E3 /* NoticeViewModel.swift in Sources */,
 				F9AF3C572B416EE2001779E3 /* MealView.swift in Sources */,
 				F929935B2B63E4D9009DC2B6 /* APIService.swift in Sources */,
+				F92B142A2D62C63A00B39BC8 /* CustomSegmentedControl.swift in Sources */,
 				F99A63012B834CB100EDB985 /* UniversityNoticeRepository.swift in Sources */,
 				F92116192B90627100A5507A /* DepartmentNoticeRepository.swift in Sources */,
 				F951145C2B6C8138009BDC98 /* MenuRepository.swift in Sources */,
