@@ -92,6 +92,7 @@ struct SchedulesListView: View {
                     ScheduleSingleView(for: schedule)
                 }
             }
+            .padding(.vertical, 0)
         }
         .refreshable {
             loadScheduleData()

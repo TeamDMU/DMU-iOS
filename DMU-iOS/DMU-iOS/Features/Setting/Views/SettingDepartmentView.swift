@@ -23,6 +23,7 @@ struct SettingDepartmentView: View {
             .onAppear {
                 self.tempSettingDepartment = viewModel.settingDepartment
             }
+            .background(Color.Gray100)
     }
     
     //MARK: 학과 설정 화면 뒤로가기 버튼
@@ -63,9 +64,10 @@ struct SettingDepartmentView: View {
                     departmentSingleView(for: department)
                 }
             }
-            .padding(20)
+            .padding(.horizontal, 20)
             .background(Color.Gray100)
         }
+        .padding(.vertical, 0)
     }
     
     @ViewBuilder

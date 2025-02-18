@@ -13,45 +13,44 @@ struct HomeView: View {
     @ObservedObject var userSettings: UserSettings
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                VStack {
-                    HomeTopBarView()
-                    
-                    NoticeTabBarView(viewModel: viewModel)
-                    
-                    NoticeTabSwipeView(userSettings: userSettings, viewModel: viewModel)
-                }
+        ZStack {
+            
+            VStack(spacing: 0) {
+                HomeTopBarView()
                 
-                VStack{
-                    if viewModel.isUniversityNoticeLoadingFailed || viewModel.isDepartmentNoticeLoadingFailed {
-                        VStack(alignment: .center) {
-                            Text("공지를 불러오지 못했어요")
-                                .font(.SemiBold20)
-                                .foregroundColor(Color.Gray600)
-                                .environment(\.sizeCategory, .large)
-                                .padding(.bottom, 12)
-                            Text("네트워크 상태를 확인한 후,\n새로고침 버튼을 눌러 페이지를 불러올 수 있어요.")
-                                .font(.Medium16)
-                                .foregroundColor(Color.Gray400)
-                                .environment(\.sizeCategory, .large)
-                                .padding(.bottom, 28)
-                            CustomButton(title: "새로고침", action: {
-                                viewModel.resetAndLoadFirstPageOfUniversityNotices()
-                                viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
-                            }, isEnabled: true)
-                        }
-                        .multilineTextAlignment(.center)
-                    } else if viewModel.isDepartmentNoticeLoading || viewModel.isUniversityNoticeLoading {
-                        LoadingView(lottieFileName: "DMforU_Loading_GIF")
-                            .frame(width: 100, height: 100)
+                NoticeTabBarView(viewModel: viewModel)
+                
+                NoticeTabSwipeView(userSettings: userSettings, viewModel: viewModel)
+            }
+            
+            VStack(spacing: 0) {
+                if viewModel.isUniversityNoticeLoadingFailed || viewModel.isDepartmentNoticeLoadingFailed {
+                    VStack(alignment: .center) {
+                        Text("공지를 불러오지 못했어요")
+                            .font(.SemiBold20)
+                            .foregroundColor(Color.Gray600)
+                            .environment(\.sizeCategory, .large)
+                            .padding(.bottom, 12)
+                        Text("네트워크 상태를 확인한 후,\n새로고침 버튼을 눌러 페이지를 불러올 수 있어요.")
+                            .font(.Medium16)
+                            .foregroundColor(Color.Gray400)
+                            .environment(\.sizeCategory, .large)
+                            .padding(.bottom, 28)
+                        CustomButton(title: "새로고침", action: {
+                            viewModel.resetAndLoadFirstPageOfUniversityNotices()
+                            viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
+                        }, isEnabled: true)
                     }
+                    .multilineTextAlignment(.center)
+                } else if viewModel.isDepartmentNoticeLoading || viewModel.isUniversityNoticeLoading {
+                    LoadingView(lottieFileName: "DMforU_Loading_GIF")
+                        .frame(width: 100, height: 100)
                 }
             }
-            .onAppear {
-                viewModel.resetAndLoadFirstPageOfUniversityNotices()
-                viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
-            }
+        }
+        .onAppear {
+            viewModel.resetAndLoadFirstPageOfUniversityNotices()
+            viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
         }
     }
 }
@@ -137,6 +136,8 @@ struct NoticeTabSwipeView: View {
 // MARK: - 대학, 학과 공지사항 리스트뷰
 struct HomeUniversityNoticeListView: View {
     
+    @State var isHomeUniversityNoticeSingleView = false
+    
     let universityNotices: [UniversityNotice]
     let viewModel: NoticeViewModel
     
@@ -144,19 +145,19 @@ struct HomeUniversityNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(universityNotices) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
-                        NoticeSingleView(notices: notice)
-                    }
-                    .onAppear {
-                        if self.universityNotices.isLastItem(notice) {
-                            self.viewModel.loadNextPageOfUniversityNoticesIfNotLoading()
+                    NoticeSingleView(notices: notice)
+                        .fullScreenCover(isPresented: $isHomeUniversityNoticeSingleView){
+                            NoticeWebViewDetail(urlString: notice.noticeURL)
                         }
-                    }
+                        .onAppear {
+                            if self.universityNotices.isLastItem(notice) {
+                                self.viewModel.loadNextPageOfUniversityNoticesIfNotLoading()
+                            }
+                        }
                     Divider().background(Color.Gray200)
                 }
             }
         }
-        .background(Color.clear)
         .refreshable {
             viewModel.resetAndLoadFirstPageOfUniversityNotices()
         }
@@ -164,6 +165,8 @@ struct HomeUniversityNoticeListView: View {
 }
 
 struct HomeDepartmentNoticeListView: View {
+    
+    @State var isHomeDepartmentNoticeSingleView = false
     
     @ObservedObject var userSettings: UserSettings
     
@@ -174,19 +177,19 @@ struct HomeDepartmentNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(departmentNotices) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
-                        NoticeSingleView(notices: notice)
-                    }
-                    .onAppear {
-                        if self.departmentNotices.isLastItem(notice) {
-                            self.viewModel.loadNextPageIfNotLoading(department: userSettings.selectedDepartment)
+                    NoticeSingleView(notices: notice)
+                        .fullScreenCover(isPresented: $isHomeDepartmentNoticeSingleView){
+                            NoticeWebViewDetail(urlString: notice.noticeURL)
                         }
-                    }
+                        .onAppear {
+                            if self.departmentNotices.isLastItem(notice) {
+                                self.viewModel.loadNextPageIfNotLoading(department: userSettings.selectedDepartment)
+                            }
+                        }
                     Divider().background(Color.Gray200)
                 }
             }
         }
-        .background(Color.clear)
         .refreshable {
             viewModel.resetAndLoadFirstPageOfDepartmentNotices(department: userSettings.selectedDepartment)
         }
@@ -223,7 +226,7 @@ struct NoticeSingleView: View {
             .padding(.top, 1)
         }
         .padding(.horizontal, 20)
-        .padding(.vertical, 12)
+        .padding(.vertical, 10)
         .cornerRadius(0)
         .shadow(color: Color.gray200, radius: 0, x: 0, y: 0)
     }

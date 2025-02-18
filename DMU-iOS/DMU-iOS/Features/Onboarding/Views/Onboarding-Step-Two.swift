@@ -66,8 +66,10 @@ struct OnboardingStepTwoTitleView: View {
                         .foregroundColor(Color.Gray500)
                         .environment(\.sizeCategory, .large)
                 }
+                
+                Spacer()
             }
-            .padding(.leading, -20)
+            .padding(.leading, 20)
         }
         .padding(.top, 60)
     }

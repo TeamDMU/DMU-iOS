@@ -13,6 +13,7 @@ class ScheduleViewModel: ObservableObject {
         didSet {
             selectedYear = calendar.component(.year, from: currentDate)
             selectedMonth = calendar.component(.month, from: currentDate)
+            loadScheduleData() // currentDate가 변경될 때만 데이터 로드
         }
     }
     
@@ -26,12 +27,6 @@ class ScheduleViewModel: ObservableObject {
     private let calendar = Calendar.current
     private let scheduleService = ScheduleService()
     
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd(E)"
-        return formatter
-    }()
-    
     // MARK: 학사일정 데이터 주입
     func loadScheduleData() {
         let year = calendar.component(.year, from: currentDate)
@@ -41,17 +36,17 @@ class ScheduleViewModel: ObservableObject {
         self.isScheduleLoadingFailed = false
         
         scheduleService.getSchedules(year: year, month: month) { [weak self] result in
-            switch result {
-            case .success(let yearSchedule):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async { // UI 업데이트는 메인 스레드에서
+                switch result {
+                case .success(let yearSchedule):
                     self?.schedules = yearSchedule.filter { $0.year == year && $0.month == month }
                     self?.isScheduleLoadingFailed = false
+                case .failure(let error):
+                    print("Failed to get schedules: \(error)")
+                    self?.isScheduleLoadingFailed = true
                 }
-            case .failure(let error):
-                print("Failed to get schedules: \(error)")
-                self?.isScheduleLoadingFailed = true
+                self?.isScheduleLoading = false
             }
-            self?.isScheduleLoading = false
         }
     }
     
@@ -59,7 +54,6 @@ class ScheduleViewModel: ObservableObject {
     func selectYearMonth() {
         if let newDate = Calendar.current.date(from: DateComponents(year: selectedYear, month: selectedMonth)) {
             currentDate = newDate
-            loadScheduleData()
         }
     }
     
@@ -72,7 +66,6 @@ class ScheduleViewModel: ObservableObject {
     private func formatDateToYearMonth(_ date: Date) -> String {
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
-        
         return "\(year)년 \(month)월"
     }
 }

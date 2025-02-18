@@ -29,71 +29,91 @@ struct MealView: View {
                 
                 RestaurantInfomationView()
                 
-                
                 CustomSegmentedControl(selection: $selectedMenuType, items: ["한식 🍚", "일품 🍛"])
                     .frame(height: 44)
                     .padding(.bottom, 10)
                     .padding(.horizontal, 75)
                 
-                ScrollView{
+                ScrollView {
                     if viewModel.isWeekend(selectedDate) {
-                        Text("⛔️ 주말은 식당을 운영하지 않아요.")
-                            .font(.Medium18)
-                            .foregroundColor(Color.Gray600)
-                            .environment(\.sizeCategory, .large)
-                            .padding(10)
-                            .background(Color.Gray100)
-                            .cornerRadius(10)
+                        weekendMessageView
                     } else {
-                        if selectedMenuType == .korean {
-                            if let menu = viewModel.getMenuForDate(for: selectedDate) {
-                                KoreanMenuView(menu: menu) // 한식 메뉴 뷰 추가
-                            }
-                        } else {
-                            let oneMenu = viewModel.filteredOneMenu(for: selectedDate)
-                            
-                            Text("*해당 사진은 AI를 통해 생성된 이미지입니다.")
-                                .font(.Medium12)
-                                .foregroundColor(Color.Gray400)
-                                .environment(\.sizeCategory, .large)
-                            
-                            ForEach(oneMenu) { menu in
-                                ForEach(menu.items) { item in
-                                    OneMenuItemView(item: item) // 일품 메뉴 뷰 추가
-                                }
-                            }
-                        }
+                        menuView
                     }
                 }
+                .padding(.vertical, 0)
                 
                 Spacer()
             }
             
-            VStack {
-                if viewModel.isMenuLoadingFailed {
-                    VStack(alignment: .center) {
-                        Text("식단을 불러오지 못했어요")
-                            .font(.SemiBold20)
-                            .foregroundColor(Color.Gray600)
-                            .environment(\.sizeCategory, .large)
-                            .padding(.bottom, 12)
-                        Text("네트워크 상태를 확인한 후,\n새로고침 버튼을 눌러 페이지를 불러올 수 있어요.")
-                            .font(.Medium16)
-                            .foregroundColor(Color.Gray400)
-                            .environment(\.sizeCategory, .large)
-                            .padding(.bottom, 28)
-                        CustomButton(title: "새로고침", action: {
-                            viewModel.loadMenuData()
-                        }, isEnabled: true)
+            loadingView
+        }
+        .onAppear(perform: viewModel.loadMenuData)
+    }
+    
+    private var weekendMessageView: some View {
+        Text("⛔️ 주말은 식당을 운영하지 않아요.")
+            .font(.Medium18)
+            .foregroundColor(Color.Gray600)
+            .environment(\.sizeCategory, .large)
+            .padding(10)
+            .background(Color.Gray100)
+            .cornerRadius(10)
+    }
+    
+    private var menuView: some View {
+        Group {
+            if selectedMenuType == .korean {
+                if let menu = viewModel.getMenuForDate(for: selectedDate) {
+                    KoreanMenuView(menu: menu)
+                } else {
+                    Text("등록된 한식 메뉴가 없습니다.")
+                }
+            } else {
+                let oneMenu = viewModel.filteredOneMenu(for: selectedDate)
+                
+                Text("*해당 사진은 AI를 통해 생성된 이미지입니다.")
+                    .font(.Medium12)
+                    .foregroundColor(Color.Gray400)
+                    .environment(\.sizeCategory, .large)
+                
+                ForEach(oneMenu) { menu in
+                    ForEach(menu.items) { item in
+                        OneMenuItemView(item: item)
                     }
-                    .multilineTextAlignment(.center)
-                } else if viewModel.isMenuLoading {
-                    LoadingView(lottieFileName: "DMforU_Loading_GIF")
-                        .frame(width: 100, height: 100)
                 }
             }
         }
-        .onAppear(perform: viewModel.loadMenuData)
+    }
+    
+    private var loadingView: some View {
+        VStack {
+            if viewModel.isMenuLoadingFailed {
+                errorMessageView
+            } else if viewModel.isMenuLoading {
+                LoadingView(lottieFileName: "DMforU_Loading_GIF")
+                    .frame(width: 100, height: 100)
+            }
+        }
+    }
+    
+    private var errorMessageView: some View {
+        VStack(alignment: .center) {
+            Text("식단을 불러오지 못했어요")
+                .font(.SemiBold20)
+                .foregroundColor(Color.Gray600)
+                .environment(\.sizeCategory, .large)
+                .padding(.bottom, 12)
+            Text("네트워크 상태를 확인한 후,\n새로고침 버튼을 눌러 페이지를 불러올 수 있어요.")
+                .font(.Medium16)
+                .foregroundColor(Color.Gray400)
+                .environment(\.sizeCategory, .large)
+                .padding(.bottom, 28)
+            CustomButton(title: "새로고침", action: {
+                viewModel.loadMenuData()
+            }, isEnabled: true)
+        }
+        .multilineTextAlignment(.center)
     }
 }
 

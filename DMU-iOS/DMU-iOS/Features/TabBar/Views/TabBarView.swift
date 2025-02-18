@@ -22,74 +22,41 @@ enum Tab: String {
 // MARK: - 메인화면 탭바 뷰
 struct TabBarView: View {
     
+    @ObservedObject var userSettings = UserSettings()
+    
     @ObservedObject var viewModel: TabBarViewModel
     
     var body: some View {
-        NavigationStack {
-            TabView(selection: $viewModel.selectedTab) {
-                
-                // MARK: 공지사항 화면
-                HomeView(viewModel: NoticeViewModel(), userSettings: UserSettings())
-                    .tabItem {
-                        Image(systemName: "megaphone.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(Color.Gray400)
-                        
-                        Text("공지")
-                            .font(.Medium12)
-                            .foregroundColor(Color.Gray400)
-                    }
-                    .tag(Tab.Home)
-                    .environmentObject(UserSettings())
-
-                
-                // MARK: 일정 화면
-                ScheduleView(viewModel: ScheduleViewModel())
-                    .tabItem {
-                        Image(systemName: "calendar")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(Color.Gray400)
-                        
-                        Text("일정")
-                            .font(.Medium12)
-                            .foregroundColor(Color.Gray400)
-                    }
-                    .tag(Tab.Schedule)
-                
-                // MARK: 식단 화면
-                MealView(viewModel: MealViewModel())
-                    .tabItem {
-                        Image(systemName: "fork.knife")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(Color.Gray400)
-                        
-                        Text("식단")
-                            .font(.Medium12)
-                            .foregroundColor(Color.Gray400)
-                    }
-                    .tag(Tab.Meal)
-                
-                // MARK: 설정 화면
-                SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
-                    .tabItem {
-                        Image(systemName: "gearshape")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(Color.Gray400)
-                        
-                        Text("설정")
-                            .font(.Medium12)
-                            .foregroundColor(Color.Gray400)
-                    }
-                    .tag(Tab.Settings)
-            }
-            .accentColor(Color.Blue300)
-            .ignoresSafeArea(edges: .all)
+        TabView(selection: $viewModel.selectedTab) {
+            HomeView(viewModel: NoticeViewModel(), userSettings: UserSettings())
+                .tabItem {
+                    Image(systemName: "megaphone.fill")
+                    Text("공지")
+                }
+                .tag(Tab.Home)
             
-            Spacer()
+            ScheduleView(viewModel: ScheduleViewModel())
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("일정")
+                }
+                .tag(Tab.Schedule)
+            
+            MealView(viewModel: MealViewModel())
+                .tabItem {
+                    Image(systemName: "fork.knife")
+                    Text("식단")
+                }
+                .tag(Tab.Meal)
+            
+            SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("설정")
+                }
+                .tag(Tab.Settings)
         }
+        .accentColor(Color.Blue300)
     }
 }
+

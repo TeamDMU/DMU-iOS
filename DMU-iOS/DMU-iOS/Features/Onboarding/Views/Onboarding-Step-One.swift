@@ -74,8 +74,10 @@ struct OnboardingStepOneTitleView: View {
                     .environment(\.sizeCategory, .large)
             }
             .padding(.top, 60)
+            
+            Spacer()
         }
-        .padding(.leading, -20)
+        .padding(.leading, 20)
     }
 }
 
@@ -166,13 +168,15 @@ struct OnboardingStepOneSearchDepartmentView: View {
             if isListVisible {
                 List {
                     ForEach(Department.departmentlist.filter({ "\($0)".contains(searchText) }), id: \.self) { department in
-                        Text(department).onTapGesture {
-                            self.searchText = department
-                            self.isListVisible = false
-                        }
-                        .foregroundColor(.gray300)
-                        .environment(\.sizeCategory, .large)
-                        .listRowSeparator(.hidden)
+                        Text(department)
+                            .onTapGesture {
+                                self.searchText = department
+                                self.isListVisible = false
+                                self.isTextInList = true // 추가된 부분
+                            }
+                            .foregroundColor(.gray300)
+                            .environment(\.sizeCategory, .large)
+                            .listRowSeparator(.hidden)
                     }
                     .listRowBackground(Color.clear)
                 }
@@ -180,11 +184,13 @@ struct OnboardingStepOneSearchDepartmentView: View {
                 .padding(.horizontal, 20)
                 .padding(.leading, -20)
                 .frame(maxHeight: 200)
+                .background(Color.white)
             }
         }
         .padding(.top, 40)
     }
 }
+
 
 #Preview {
     Onboarding_Step_One(isFirstLanching: .constant(true))

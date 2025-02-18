@@ -34,64 +34,52 @@ class MealViewModel: ObservableObject {
         self.isMenuLoadingFailed = false
         
         menuService.getMenus { [weak self] result in
-            switch result {
-            case .success(let menus):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self?.isMenuLoading = false
+                switch result {
+                case .success(let menus):
                     self?.weeklyMenu = menus
                     self?.isMenuLoadingFailed = false
+                case .failure(let error):
+                    print("Failed to get menus: \(error)")
+                    self?.isMenuLoadingFailed = true
                 }
-            case .failure(let error):
-                print("Failed to get menus: \(error)")
-                self?.isMenuLoadingFailed = true
             }
-            self?.isMenuLoading = false
         }
     }
     
     // MARK: 첫 번째 요일(월요일) 날짜 변환
     func startOfWeek(date: Date) -> Date {
         let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date)
-        let startOfWeek = calendar.date(from: components)!
-        
-        return startOfWeek
+        return calendar.date(from: components) ?? date
     }
     
     // MARK: 현재 날짜가 주말(토요일 또는 일요일)인지 여부 반환
     func isWeekend(_ date: Date) -> Bool {
         let weekday = calendar.component(.weekday, from: date)
-        let isWeekend = (weekday == 7 || weekday == 1)
-        
-        return isWeekend
+        return Set([1, 7]).contains(weekday) // 1: 토요일, 7: 일요일
     }
     
     // MARK: 주어진 날짜에 해당하는 메뉴를 반환
     func getMenuForDate(for date: Date) -> Menu? {
         let dateString = dateFormatter.string(from: date)
-        let menuForDate = weeklyMenu.first(where: { $0.date == dateString })
-        
-        return menuForDate
+        return weeklyMenu.first(where: { $0.date == dateString })
     }
     
     // MARK: - 요일별 일품 메뉴 필터링
-        func filteredOneMenu(for date: Date) -> [OneMenu] {
-            let weekday = calendar.component(.weekday, from: date)
-            let selectedWeekday: Weekday
-
-            switch weekday {
-            case 2:
-                selectedWeekday = .monday
-            case 3:
-                selectedWeekday = .tuesday
-            case 4:
-                selectedWeekday = .wednesday
-            case 5:
-                selectedWeekday = .thursday
-            case 6:
-                selectedWeekday = .friday
-            default:
-                return [] // 월요일에서 금요일, 외의 요일은 처리하지 않음
-            }
-            
-            return weeklyOneMenu.filter { $0.availableDays.contains(selectedWeekday) }
+    func filteredOneMenu(for date: Date) -> [OneMenu] {
+        let weekday = calendar.component(.weekday, from: date)
+        let selectedWeekday: Weekday
+        
+        switch weekday {
+        case 2: selectedWeekday = .monday
+        case 3: selectedWeekday = .tuesday
+        case 4: selectedWeekday = .wednesday
+        case 5: selectedWeekday = .thursday
+        case 6: selectedWeekday = .friday
+        default: return [] // 월요일에서 금요일, 외의 요일은 처리하지 않음
         }
+        
+        return weeklyOneMenu.filter { $0.availableDays.contains(selectedWeekday) }
+    }
 }
