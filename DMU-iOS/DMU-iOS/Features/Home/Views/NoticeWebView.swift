@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 import WebKit
 
 struct NoticeWebViewDetail: View {
@@ -16,11 +15,44 @@ struct NoticeWebViewDetail: View {
     @State private var showShareSheet = false
     
     @Environment(\.presentationMode) var presentationMode
-        
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
+            HStack {
+                Button(action: {
+                }) {
+                    Image(systemName: "xmark").hidden()
+                }
+                .disabled(true)
+                
+                Spacer()
+                
+                VStack {
+                    Text("동양미래대학교")
+                        .font(.Medium16)
+                        .accentColor(Color.Gray500)
+                        .environment(\.sizeCategory, .large)
+                    Text("www.dongyang.ac.kr")
+                        .font(.Medium12)
+                        .accentColor(Color.Gray300)
+                        .environment(\.sizeCategory, .large)
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color.Gray400)
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .background(Color.white)
+            
             WebView(url: URL(string: urlString)!)
-                .edgesIgnoringSafeArea(.all)
+                .padding(.top, 0)
             
             HStack(spacing: 60) {
                 Button(action: {
@@ -56,29 +88,10 @@ struct NoticeWebViewDetail: View {
                         .frame(width: 44, height: 44)
                 }
             }
-            .padding()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
             .background(Color.white)
             .frame(height: 44)
-        }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            trailing: Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "xmark")
-                    .foregroundColor(Color.Gray400)
-            })
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack {
-                    Text("동양미래대학교")
-                        .font(.Medium16)
-                        .accentColor(Color.Gray500)
-                    Text("www.dongyang.ac.kr")
-                        .font(.Medium12)
-                        .accentColor(Color.Gray300)
-                }
-            }
         }
     }
 }
@@ -96,7 +109,6 @@ struct ActivityView: UIViewControllerRepresentable {
         
     }
 }
-
 
 struct WebView: UIViewRepresentable {
     let url: URL

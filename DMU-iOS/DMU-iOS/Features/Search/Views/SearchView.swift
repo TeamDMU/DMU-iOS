@@ -173,19 +173,17 @@ struct SearchBarView: View {
 struct SearchResultsListView: View {
     
     @ObservedObject var viewModel: SearchViewModel
-        
+    
     var body: some View {
         VStack {
             LazyVStack(alignment: .leading) {
                 ForEach(viewModel.searchNotices, id: \.id) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
-                        SearchResultSingleView(notice: notice)
-                    }
-                    .onAppear {
-                        if viewModel.searchNotices.isLastItem(notice) {
-                            viewModel.loadNextPageIfNotLoading()
+                    SearchResultSingleView(notice: notice)
+                        .onAppear {
+                            if viewModel.searchNotices.isLastItem(notice) {
+                                viewModel.loadNextPageIfNotLoading()
+                            }
                         }
-                    }
                     
                     Divider().background(Color.Gray200)
                 }
@@ -197,6 +195,7 @@ struct SearchResultsListView: View {
 struct SearchResultSingleView: View {
     
     var notice: SearchNotice
+    @State private var isWebViewPresented = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -226,6 +225,12 @@ struct SearchResultSingleView: View {
         .background(Color.white)
         .cornerRadius(0)
         .shadow(color: .gray, radius: 0, x: 0, y: 0)
+        .onTapGesture {
+            isWebViewPresented = true
+        }
+        .fullScreenCover(isPresented: $isWebViewPresented) {
+            NoticeWebViewDetail(urlString: notice.noticeURL)
+        }
     }
 }
 

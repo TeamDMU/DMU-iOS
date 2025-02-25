@@ -24,7 +24,7 @@ struct SettingView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .foregroundColor(Color.Gray600)
                         .environment(\.sizeCategory, .large)
-                        .padding()
+                        .padding(.top, 10)
 
                     Text("대학 공지")
                         .font(.SemiBold15)

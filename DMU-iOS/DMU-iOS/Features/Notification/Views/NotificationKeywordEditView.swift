@@ -66,13 +66,12 @@ struct NotificationKeywordEditTopBarView: View {
     
     var body: some View {
         HStack {
-            Button(action: {
-                isNavigatingToKeywordEditView = false
-            }) {
-                Image(systemName: "xmark")
-                    .foregroundColor(Color.black)
-                    .padding()
+            
+            Button(action: {}) {
+                Image(systemName: "xmark").hidden()
             }
+            .padding()
+            .disabled(true)
             
             Spacer()
             
@@ -83,11 +82,13 @@ struct NotificationKeywordEditTopBarView: View {
             
             Spacer()
             
-            Button(action: {}) {
-                Image(systemName: "xmark").hidden()
+            Button(action: {
+                isNavigatingToKeywordEditView = false
+            }) {
+                Image(systemName: "xmark")
+                    .foregroundColor(Color.black)
+                    .padding()
             }
-            .padding()
-            .disabled(true)
         }
     }
 }

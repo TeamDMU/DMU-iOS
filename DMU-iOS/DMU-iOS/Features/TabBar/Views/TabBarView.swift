@@ -15,7 +15,6 @@ class TabBarViewModel: ObservableObject {
 
 // MARK: - 탭 목록
 enum Tab: String {
-    
     case Home, Schedule, Meal, Settings
 }
 
@@ -23,40 +22,67 @@ enum Tab: String {
 struct TabBarView: View {
     
     @ObservedObject var userSettings = UserSettings()
-    
     @ObservedObject var viewModel: TabBarViewModel
     
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
-            HomeView(viewModel: NoticeViewModel(), userSettings: UserSettings())
-                .tabItem {
-                    Image(systemName: "megaphone.fill")
-                    Text("공지")
-                }
-                .tag(Tab.Home)
-            
-            ScheduleView(viewModel: ScheduleViewModel())
-                .tabItem {
-                    Image(systemName: "calendar")
-                    Text("일정")
-                }
-                .tag(Tab.Schedule)
-            
-            MealView(viewModel: MealViewModel())
-                .tabItem {
-                    Image(systemName: "fork.knife")
-                    Text("식단")
-                }
-                .tag(Tab.Meal)
-            
-            SettingView(viewModel: SettingViewModel(userSettings: UserSettings()))
-                .tabItem {
-                    Image(systemName: "gearshape")
-                    Text("설정")
-                }
-                .tag(Tab.Settings)
+        VStack {
+            switch viewModel.selectedTab {
+            case .Home:
+                HomeView(viewModel: NoticeViewModel(), userSettings: userSettings)
+            case .Schedule:
+                ScheduleView(viewModel: ScheduleViewModel())
+            case .Meal:
+                MealView(viewModel: MealViewModel())
+            case .Settings:
+                SettingView(viewModel: SettingViewModel(userSettings: userSettings))
+            }
+                        
+            CustomTabView(selectedTab: $viewModel.selectedTab)
+                .frame(height: 60)
         }
         .accentColor(Color.Blue300)
     }
 }
 
+// MARK: - 커스텀 탭바 뷰
+struct CustomTabView: View {
+    
+    @Binding var selectedTab: Tab
+
+    var body: some View {
+        HStack {
+            TabButton(tab: .Home, selectedTab: $selectedTab, image: "megaphone.fill", title: "공지")
+            TabButton(tab: .Schedule, selectedTab: $selectedTab, image: "calendar", title: "일정")
+            TabButton(tab: .Meal, selectedTab: $selectedTab, image: "fork.knife", title: "식단")
+            TabButton(tab: .Settings, selectedTab: $selectedTab, image: "gearshape", title: "설정")
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+    }
+}
+
+// MARK: - 탭 버튼 뷰
+struct TabButton: View {
+    
+    var tab: Tab
+    @Binding var selectedTab: Tab
+    var image: String
+    var title: String
+    
+    var body: some View {
+        Button(action: {
+            selectedTab = tab
+        }) {
+            VStack(spacing: 4) {
+                Image(systemName: image)
+                    .foregroundColor(selectedTab == tab ? .Blue300 : .Gray400)
+                
+                Text(title)
+                    .font(.Medium12)
+                    .foregroundColor(selectedTab == tab ? .Blue300 : .Gray400)
+                    .environment(\.sizeCategory, .large)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+}

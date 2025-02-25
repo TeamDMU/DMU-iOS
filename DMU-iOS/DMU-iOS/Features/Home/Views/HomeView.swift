@@ -144,9 +144,7 @@ struct HomeUniversityNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(universityNotices) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
-                        NoticeSingleView(notices: notice)
-                    }
+                    NoticeSingleView(notices: notice)
                         .onAppear {
                             if self.universityNotices.isLastItem(notice) {
                                 self.viewModel.loadNextPageOfUniversityNoticesIfNotLoading()
@@ -173,9 +171,7 @@ struct HomeDepartmentNoticeListView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(departmentNotices) { notice in
-                    NavigationLink(destination: NoticeWebViewDetail(urlString: notice.noticeURL)){
-                        NoticeSingleView(notices: notice)
-                    }
+                    NoticeSingleView(notices: notice)
                         .onAppear {
                             if self.departmentNotices.isLastItem(notice) {
                                 self.viewModel.loadNextPageIfNotLoading(department: userSettings.selectedDepartment)
@@ -191,10 +187,10 @@ struct HomeDepartmentNoticeListView: View {
     }
 }
 
-
 struct NoticeSingleView: View {
     let notices: any NoticeProtocol
-
+    @State private var isWebViewPresented = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -224,6 +220,12 @@ struct NoticeSingleView: View {
         .padding(.vertical, 10)
         .cornerRadius(0)
         .shadow(color: Color.gray200, radius: 0, x: 0, y: 0)
+        .onTapGesture {
+            isWebViewPresented = true // 웹뷰 표시 상태 변경
+        }
+        .fullScreenCover(isPresented: $isWebViewPresented) {
+            NoticeWebViewDetail(urlString: notices.noticeURL) // 웹뷰로 연결
+        }
     }
 }
 
