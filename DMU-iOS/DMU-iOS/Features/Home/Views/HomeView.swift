@@ -19,6 +19,7 @@ struct HomeView: View {
                     HomeTopBarView()
                     
                     NoticeTabBarView(viewModel: viewModel)
+                        .padding(.bottom, 5)
                     
                     NoticeTabSwipeView(userSettings: userSettings, viewModel: viewModel)
                 }

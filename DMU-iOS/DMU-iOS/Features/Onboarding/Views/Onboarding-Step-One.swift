@@ -172,7 +172,7 @@ struct OnboardingStepOneSearchDepartmentView: View {
                             .onTapGesture {
                                 self.searchText = department
                                 self.isListVisible = false
-                                self.isTextInList = true // 추가된 부분
+                                self.isTextInList = true
                             }
                             .foregroundColor(.gray300)
                             .environment(\.sizeCategory, .large)
