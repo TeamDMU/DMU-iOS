@@ -308,7 +308,7 @@ struct KoreanMenuView: View {
                         .environment(\.sizeCategory, .large)
                         .padding(.bottom, 8)
                     
-                    Text("6,000원")
+                    Text("6,500원")
                         .font(.SemiBold16)
                         .foregroundColor(Color.Gray600)
                         .environment(\.sizeCategory, .large)
